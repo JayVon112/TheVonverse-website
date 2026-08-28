@@ -37,7 +37,7 @@ html{
 
 body{
     font-family:Inter,Arial,sans-serif;
-    background:var(--bg);
+    background:#050508;
     color:#fff;
     min-height:100vh;
     overflow-x:hidden;
@@ -65,6 +65,10 @@ a{
     color:var(--red);
 }
 
+.ai-word{
+    color:#fff;
+}
+
 /* =========================================================
    BACKGROUND
 ========================================================= */
@@ -72,20 +76,19 @@ a{
 .global-bg{
     position:fixed;
     inset:0;
+    z-index:-10;
     overflow:hidden;
     pointer-events:none;
-    z-index:-5;
-
     background:
         radial-gradient(
-            circle at 15% 20%,
+            circle at 20% 20%,
             rgba(59,130,246,.10),
             transparent 30%
         ),
         radial-gradient(
-            circle at 85% 75%,
+            circle at 85% 70%,
             rgba(239,68,68,.08),
-            transparent 32%
+            transparent 30%
         ),
         #050508;
 }
@@ -97,12 +100,12 @@ a{
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,.022) 1px,
+            rgba(255,255,255,.018) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.022) 1px,
+            rgba(255,255,255,.018) 1px,
             transparent 1px
         );
 
@@ -112,107 +115,42 @@ a{
         perspective(700px)
         rotateX(55deg);
 
-    opacity:.5;
+    opacity:.45;
 }
 
-/* Big background globe */
+/* floating light */
 
-.globe{
-    position:absolute;
-    right:-190px;
-    top:50%;
-
-    font-size:620px;
-
-    opacity:.025;
-
-    animation:
-        globeFloat 18s ease-in-out infinite,
-        globePulse 8s ease-in-out infinite;
-}
-
-@keyframes globeFloat{
-
-    0%,100%{
-        transform:
-            translateY(-50%)
-            rotate(-3deg);
-    }
-
-    50%{
-        transform:
-            translateY(-50%)
-            rotate(9deg);
-    }
-}
-
-@keyframes globePulse{
-
-    0%,100%{
-        opacity:.018;
-    }
-
-    50%{
-        opacity:.035;
-    }
-}
-
-/* Orbit */
-
-.orbit{
+.bg-light{
     position:absolute;
 
-    width:540px;
-    height:540px;
+    width:500px;
+    height:500px;
 
-    right:-65px;
-    top:50%;
-
-    border:
-        1px solid
-        rgba(59,130,246,.065);
+    right:-160px;
+    top:20%;
 
     border-radius:50%;
 
-    transform:
-        translateY(-50%)
-        rotate(-20deg);
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,.09),
+            transparent 65%
+        );
 
-    animation:
-        orbitSpin 24s linear infinite;
+    filter:blur(30px);
+
+    animation:bgLight 9s ease-in-out infinite;
 }
 
-.orbit:after{
-    content:"";
+@keyframes bgLight{
 
-    position:absolute;
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#3b82f6;
-
-    box-shadow:
-        0 0 20px #3b82f6;
-
-    top:8%;
-    left:18%;
-}
-
-@keyframes orbitSpin{
-
-    from{
-        transform:
-            translateY(-50%)
-            rotate(-20deg);
+    0%,100%{
+        transform:translate(0,0) scale(1);
     }
 
-    to{
-        transform:
-            translateY(-50%)
-            rotate(340deg);
+    50%{
+        transform:translate(-50px,40px) scale(1.12);
     }
 }
 
@@ -221,45 +159,36 @@ a{
 ========================================================= */
 
 .logo-image{
-    object-fit:contain;
     display:block;
+    object-fit:contain;
 
     /*
-       Important:
-       the logo itself gets a soft glow,
-       while the image background is removed
-       by the startup logo processing.
+       If the PNG has a black background,
+       screen blending makes that black
+       disappear into the dark website.
     */
 
+    mix-blend-mode:screen;
+
     filter:
         drop-shadow(
-            0 0 18px
-            rgba(59,130,246,.16)
+            0 0 25px
+            rgba(59,130,246,.22)
         );
 
-    transition:
-        transform .4s ease,
-        filter .4s ease;
-}
-
-.logo-image:hover{
-    transform:scale(1.06);
-    filter:
-        drop-shadow(
-            0 0 28px
-            rgba(59,130,246,.30)
-        );
+    user-select:none;
+    pointer-events:none;
 }
 
 /* =========================================================
-   LANDING / INTRO
+   INTRO
 ========================================================= */
 
 #landing{
     position:fixed;
     inset:0;
 
-    z-index:9999;
+    z-index:99999;
 
     display:flex;
     align-items:center;
@@ -271,11 +200,11 @@ a{
         radial-gradient(
             circle at 50% 45%,
             rgba(59,130,246,.13),
-            transparent 30%
+            transparent 32%
         ),
         radial-gradient(
             circle at 50% 65%,
-            rgba(239,68,68,.07),
+            rgba(139,92,246,.08),
             transparent 32%
         ),
         #050508;
@@ -294,57 +223,28 @@ a{
     pointer-events:none;
 }
 
-/* Intro logo */
-
-.landing-logo-image{
-    width:145px;
-    height:145px;
-
-    margin:0 auto 24px;
-
-    animation:
-        introLogo 2.8s ease-in-out infinite;
-}
-
-@keyframes introLogo{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-2deg)
-            scale(1);
-    }
-
-    50%{
-        transform:
-            translateY(-10px)
-            rotate(3deg)
-            scale(1.04);
-    }
-}
-
 .landing-glow{
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:420px;
+    height:420px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(59,130,246,.13),
-            transparent 65%
+            rgba(59,130,246,.14),
+            transparent 67%
         );
 
-    filter:blur(10px);
+    filter:blur(15px);
 
     animation:
-        introGlow 4s ease-in-out infinite;
+        landingGlow 4s ease-in-out infinite;
 }
 
-@keyframes introGlow{
+@keyframes landingGlow{
 
     0%,100%{
         transform:scale(.9);
@@ -359,7 +259,6 @@ a{
 
 .landing-content{
     position:relative;
-
     z-index:2;
 
     text-align:center;
@@ -370,13 +269,40 @@ a{
         forwards;
 }
 
+.landing-logo{
+    width:185px;
+    height:185px;
+
+    margin:0 auto 24px;
+
+    animation:
+        landingLogoFloat 3s ease-in-out infinite;
+}
+
+@keyframes landingLogoFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-3deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-12px)
+            rotate(3deg)
+            scale(1.05);
+    }
+}
+
 @keyframes landingIn{
 
     from{
         opacity:0;
         transform:
             translateY(25px)
-            scale(.94);
+            scale(.92);
     }
 
     to{
@@ -391,53 +317,66 @@ a{
     color:#777781;
 
     font-size:11px;
-    font-weight:600;
+    font-weight:700;
 
     letter-spacing:6px;
 
     margin-bottom:18px;
+
+    animation:
+        landingSmall 2s ease-in-out infinite;
+}
+
+@keyframes landingSmall{
+
+    0%,100%{
+        opacity:.55;
+    }
+
+    50%{
+        opacity:1;
+    }
 }
 
 .landing-title{
     font-family:"Space Grotesk",sans-serif;
 
     font-size:
-        clamp(58px,10vw,112px);
+        clamp(58px,10vw,110px);
 
     font-weight:700;
 
-    letter-spacing:-6px;
-
     line-height:.95;
+
+    letter-spacing:-6px;
 
     white-space:nowrap;
 
     animation:
-        titleFloat 4s ease-in-out infinite;
+        landingTitle 4s ease-in-out infinite;
 }
 
-@keyframes titleFloat{
+@keyframes landingTitle{
 
     0%,100%{
         transform:translateY(0);
     }
 
     50%{
-        transform:translateY(-4px);
+        transform:translateY(-5px);
     }
 }
 
 .landing-ai{
     color:#fff;
-
-    margin-left:12px;
+    margin-left:10px;
 }
 
 .landing-line{
-    width:250px;
+    width:280px;
     height:2px;
 
-    margin:25px auto 20px;
+    margin:26px auto 19px;
 
     background:
         linear-gradient(
@@ -448,8 +387,8 @@ a{
         );
 
     box-shadow:
-        0 0 18px
-        rgba(59,130,246,.25);
+        0 0 22px
+        rgba(59,130,246,.3);
 
     animation:
         linePulse 3s ease-in-out infinite;
@@ -458,8 +397,8 @@ a{
 @keyframes linePulse{
 
     0%,100%{
-        opacity:.55;
-        transform:scaleX(.88);
+        opacity:.45;
+        transform:scaleX(.8);
     }
 
     50%{
@@ -470,17 +409,16 @@ a{
 
 .landing-sub{
     color:#888892;
-
     font-size:13px;
 
     animation:
-        subPulse 4s ease-in-out infinite;
+        subPulse 3s ease-in-out infinite;
 }
 
 @keyframes subPulse{
 
     0%,100%{
-        opacity:.65;
+        opacity:.6;
     }
 
     50%{
@@ -491,13 +429,13 @@ a{
 .landing-credit{
     position:absolute;
 
-    bottom:30px;
+    bottom:28px;
     left:0;
     right:0;
 
     text-align:center;
 
-    color:#50505a;
+    color:#4f4f59;
 
     font-size:11px;
 }
@@ -513,7 +451,9 @@ a{
     flex-direction:column;
 }
 
-/* NAV */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .home-nav{
     height:78px;
@@ -529,7 +469,7 @@ a{
         rgba(255,255,255,.06);
 
     background:
-        rgba(5,5,8,.68);
+        rgba(5,5,8,.72);
 
     backdrop-filter:blur(22px);
 
@@ -537,21 +477,18 @@ a{
     z-index:20;
 }
 
+/*
+   No logo here.
+   This keeps ONE logo on the homepage.
+*/
+
 .home-brand{
-    display:flex;
-    align-items:center;
-
-    gap:11px;
-
     font-family:"Space Grotesk",sans-serif;
 
     font-size:22px;
     font-weight:700;
-}
 
-.logo-small{
-    width:46px;
-    height:46px;
+    letter-spacing:-1px;
 }
 
 .home-links{
@@ -599,49 +536,45 @@ a{
 .hero{
     flex:1;
 
-    min-height:680px;
+    min-height:700px;
+
+    position:relative;
 
     display:flex;
     align-items:center;
-    justify-content:center;
 
-    text-align:center;
+    padding:
+        90px
+        7%
+        80px;
 
-    padding:100px 20px 75px;
-
-    position:relative;
+    overflow:hidden;
 }
 
 .hero-content{
-    max-width:850px;
+    width:100%;
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(420px,520px);
+
+    align-items:center;
+
+    gap:50px;
 
     position:relative;
-    z-index:2;
+    z-index:3;
 }
 
-.hero-logo{
-    width:125px;
-    height:125px;
+/* LEFT */
 
-    margin:0 auto 24px;
-
-    animation:
-        heroLogoFloat 5s ease-in-out infinite;
-}
-
-@keyframes heroLogoFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50%{
-        transform:
-            translateY(-9px)
-            rotate(3deg);
-    }
+.hero-copy{
+    max-width:680px;
 }
 
 .hero-badge{
@@ -668,7 +601,7 @@ a{
 
     letter-spacing:.8px;
 
-    margin-bottom:26px;
+    margin-bottom:25px;
 }
 
 .hero-badge span{
@@ -695,7 +628,7 @@ a{
     }
 
     50%{
-        opacity:.55;
+        opacity:.45;
         transform:scale(.75);
     }
 }
@@ -704,13 +637,15 @@ a{
     font-family:"Space Grotesk",sans-serif;
 
     font-size:
-        clamp(55px,8vw,90px);
+        clamp(60px,7vw,96px);
 
     line-height:.95;
 
-    letter-spacing:-5px;
+    letter-spacing:-6px;
 
     margin-bottom:27px;
+
+    white-space:nowrap;
 
     animation:
         heroTitle 5s ease-in-out infinite;
@@ -723,20 +658,18 @@ a{
     }
 
     50%{
-        transform:translateY(-3px);
+        transform:translateY(-4px);
     }
 }
 
-.ai-word{
-    color:#fff;
-
-    margin-left:10px;
+.hero h1 .jay,
+.hero h1 .von,
+.hero h1 .ai-word{
+    display:inline;
 }
 
-.hero p{
-    max-width:680px;
-
-    margin:auto;
+.hero-description{
+    max-width:670px;
 
     color:#858590;
 
@@ -745,14 +678,12 @@ a{
     line-height:1.9;
 }
 
-.hero p b{
-    color:#c8c8d0;
+.hero-description b{
+    color:#d1d1da;
 }
 
 .hero-buttons{
     display:flex;
-
-    justify-content:center;
 
     gap:14px;
 
@@ -803,6 +734,10 @@ a{
 }
 
 .secondary-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
     border:
         1px solid
         rgba(255,255,255,.09);
@@ -814,8 +749,190 @@ a{
 
 .secondary-btn:hover{
     transform:translateY(-3px);
-
     background:#17171f;
+}
+
+/* =========================================================
+   BIG RIGHT-SIDE LOGO
+========================================================= */
+
+.hero-visual{
+    position:relative;
+
+    height:520px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-visual-glow{
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,.13),
+            rgba(139,92,246,.06) 38%,
+            transparent 70%
+        );
+
+    filter:blur(15px);
+
+    animation:
+        visualGlow 5s ease-in-out infinite;
+}
+
+@keyframes visualGlow{
+
+    0%,100%{
+        transform:scale(.92);
+        opacity:.65;
+    }
+
+    50%{
+        transform:scale(1.1);
+        opacity:1;
+    }
+}
+
+/* orbit rings */
+
+.logo-orbit{
+    position:absolute;
+
+    width:440px;
+    height:440px;
+
+    border:
+        1px solid
+        rgba(59,130,246,.15);
+
+    border-radius:50%;
+
+    transform:rotate(-18deg);
+
+    animation:
+        orbitRotate 18s linear infinite;
+}
+
+.logo-orbit:before{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#3b82f6;
+
+    box-shadow:
+        0 0 18px
+        #3b82f6;
+
+    top:8%;
+    left:17%;
+}
+
+.logo-orbit:after{
+    content:"";
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#ef4444;
+
+    box-shadow:
+        0 0 15px
+        #ef4444;
+
+    bottom:12%;
+    right:18%;
+}
+
+@keyframes orbitRotate{
+
+    from{
+        transform:rotate(-18deg);
+    }
+
+    to{
+        transform:rotate(342deg);
+    }
+}
+
+.logo-orbit-two{
+    position:absolute;
+
+    width:355px;
+    height:355px;
+
+    border:
+        1px solid
+        rgba(139,92,246,.10);
+
+    border-radius:50%;
+
+    transform:
+        rotate(25deg)
+        scaleY(.55);
+
+    animation:
+        orbitTwo 13s linear infinite;
+}
+
+@keyframes orbitTwo{
+
+    from{
+        transform:
+            rotate(25deg)
+            scaleY(.55);
+    }
+
+    to{
+        transform:
+            rotate(385deg)
+            scaleY(.55);
+    }
+}
+
+.hero-logo{
+    position:relative;
+    z-index:4;
+
+    width:370px;
+    height:370px;
+
+    animation:
+        heroLogoFloat 5s ease-in-out infinite;
+}
+
+@keyframes heroLogoFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-3deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-17px)
+            rotate(3deg)
+            scale(1.045);
+    }
 }
 
 /* =========================================================
@@ -828,19 +945,22 @@ a{
 
     margin:auto;
 
-    padding:60px 25px 80px;
+    padding:
+        65px
+        25px
+        85px;
 }
 
 .home-section-title{
     text-align:center;
 
-    margin-bottom:34px;
+    margin-bottom:35px;
 }
 
 .home-section-title h2{
     font-family:"Space Grotesk",sans-serif;
 
-    font-size:29px;
+    font-size:30px;
 
     margin-bottom:8px;
 }
@@ -918,7 +1038,6 @@ a{
 
 .feature h3{
     font-size:15px;
-
     margin-bottom:8px;
 }
 
@@ -956,16 +1075,9 @@ a{
 }
 
 .footer-brand{
-    display:flex;
+    font-family:"Space Grotesk",sans-serif;
 
-    align-items:center;
-
-    gap:9px;
-}
-
-.footer-logo{
-    width:34px;
-    height:34px;
+    font-weight:700;
 }
 
 .credit{
@@ -997,7 +1109,7 @@ a{
 
     backdrop-filter:blur(10px);
 
-    z-index:99999;
+    z-index:999999;
 }
 
 .modal.show{
@@ -1129,19 +1241,13 @@ a{
     background:#8b5cf6;
 }
 
-/* Credits logo */
+/* credits */
 
-.credits-logo{
-    width:115px;
-    height:115px;
-
-    margin:0 auto 20px;
-
-    animation:
-        heroLogoFloat 5s ease-in-out infinite;
+.credits-title{
+    text-align:center;
 }
 
-/* Upcoming */
+/* upcoming */
 
 .upcoming-icon{
     font-size:46px;
@@ -1149,7 +1255,18 @@ a{
     margin-bottom:14px;
 
     animation:
-        heroLogoFloat 3s ease-in-out infinite;
+        upcomingFloat 3s ease-in-out infinite;
+}
+
+@keyframes upcomingFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
 }
 
 .upcoming-box{
@@ -1185,18 +1302,48 @@ a{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:950px){
+
+    .hero-content{
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:15px;
+    }
+
+    .hero-copy{
+        max-width:760px;
+        margin:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        height:470px;
+
+        order:-1;
+    }
+
+    .hero-logo{
+        width:330px;
+        height:330px;
+    }
+
+    .logo-orbit{
+        width:400px;
+        height:400px;
+    }
+
+    .logo-orbit-two{
+        width:325px;
+        height:325px;
+    }
 
     .feature-grid{
         grid-template-columns:1fr 1fr;
-    }
-
-    .globe{
-        right:-300px;
-    }
-
-    .orbit{
-        right:-220px;
     }
 }
 
@@ -1207,11 +1354,15 @@ a{
 
         min-height:72px;
 
-        padding:14px 18px;
+        padding:16px 18px;
 
         gap:12px;
 
         flex-wrap:wrap;
+    }
+
+    .home-brand{
+        font-size:20px;
     }
 
     .home-links{
@@ -1224,35 +1375,63 @@ a{
 
     .home-link{
         padding:8px 10px;
-
         font-size:10px;
     }
 
     .hero{
-        min-height:600px;
+        min-height:auto;
 
-        padding:75px 18px 60px;
+        padding:
+            45px
+            18px
+            70px;
+    }
+
+    .hero-visual{
+        height:390px;
+    }
+
+    .hero-logo{
+        width:280px;
+        height:280px;
+    }
+
+    .hero-visual-glow{
+        width:330px;
+        height:330px;
+    }
+
+    .logo-orbit{
+        width:330px;
+        height:330px;
+    }
+
+    .logo-orbit-two{
+        width:270px;
+        height:270px;
     }
 
     .hero h1{
+        font-size:
+            clamp(48px,14vw,70px);
+
         letter-spacing:-4px;
     }
 
-    .hero p{
+    .hero-description{
         font-size:13px;
     }
 
     .hero-buttons{
         flex-direction:column;
+
+        align-items:center;
     }
 
     .primary-btn,
     .secondary-btn{
         width:100%;
-
         max-width:280px;
-
-        margin:auto;
     }
 
     .feature-grid{
@@ -1261,28 +1440,32 @@ a{
 
     .home-footer{
         flex-direction:column;
-
         text-align:center;
     }
 
-    .landing-title{
-        font-size:54px;
+    .landing-logo{
+        width:145px;
+        height:145px;
+    }
 
+    .landing-title{
+        font-size:52px;
         letter-spacing:-4px;
     }
 
-    .landing-logo-image{
-        width:120px;
-        height:120px;
+    .landing-line{
+        width:220px;
     }
+}
 
-    .globe{
-        font-size:380px;
-    }
+@media(prefers-reduced-motion:reduce){
 
-    .orbit{
-        width:380px;
-        height:380px;
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
     }
 }
 
@@ -1292,36 +1475,24 @@ a{
 
 <body>
 
-<!-- =========================================================
-     BACKGROUND
-========================================================= -->
-
 <div class="global-bg">
-
-```
-<div class="globe">
-    🌐
-</div>
-
-<div class="orbit"></div>
-```
-
+    <div class="bg-light"></div>
 </div>
 
 <!-- =========================================================
-     INTRO
+     3 SECOND INTRO
 ========================================================= -->
 
 <div id="landing">
 
-```
+
 <div class="landing-glow"></div>
 
 <div class="landing-content">
 
     <img
         src="vonverse-logo.png"
-        class="logo-image landing-logo-image"
+        class="logo-image landing-logo"
         alt="The Vonverse"
     >
 
@@ -1330,9 +1501,7 @@ a{
     </div>
 
     <div class="landing-title">
-
         <span class="jay">Jay</span><span class="von">Von</span><span class="landing-ai">AI</span>
-
     </div>
 
     <div class="landing-line"></div>
@@ -1346,7 +1515,7 @@ a{
 <div class="landing-credit">
     The Vonverse • JayVon AI
 </div>
-```
+
 
 </div>
 
@@ -1356,23 +1525,13 @@ a{
 
 <div id="home">
 
-```
+
 <!-- NAVIGATION -->
 
 <nav class="home-nav">
 
     <div class="home-brand">
-
-        <img
-            src="vonverse-logo.png"
-            class="logo-image logo-small"
-            alt="The Vonverse"
-        >
-
-        <div>
-            <span class="jay">Jay</span><span class="von">Von</span> AI
-        </div>
-
+        <span class="jay">Jay</span><span class="von">Von</span> AI
     </div>
 
 
@@ -1381,41 +1540,31 @@ a{
         <button
             class="home-link"
             onclick="openInfo('featuresModal')">
-
             Features
-
         </button>
 
         <button
             class="home-link"
             onclick="openInfo('creditsModal')">
-
             Credits
-
         </button>
 
         <a
             class="home-link"
             href="terms.html">
-
             Terms
-
         </a>
 
         <a
             class="home-link"
             href="privacy.html">
-
             Privacy
-
         </a>
 
         <a
             class="home-link primary-nav"
             href="dashboard.html">
-
             📊 Dashboard
-
         </a>
 
     </div>
@@ -1429,65 +1578,71 @@ a{
 
     <div class="hero-content">
 
-        <img
-            src="vonverse-logo.png"
-            class="logo-image hero-logo"
-            alt="The Vonverse"
-        >
 
-        <div class="hero-badge">
+        <!-- TEXT -->
 
-            <span></span>
+        <div class="hero-copy">
 
-            JAYVON AI IS ONLINE
+            <div class="hero-badge">
+                <span></span>
+                JAYVON AI IS ONLINE
+            </div>
+
+
+            <h1>
+                <span class="jay">Jay</span><span class="von">Von</span><span class="ai-word"> AI</span>
+            </h1>
+
+
+            <p class="hero-description">
+
+                The intelligent Discord control center
+                built for communities inside
+                <b>The Vonverse</b>.
+
+                Manage AI, advanced moderation,
+                media channels, social notifications,
+                tickets, giveaways, welcome systems
+                and more from one dashboard.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="addJayVon()">
+                    ✨ Add JayVon AI
+                </button>
+
+
+                <a
+                    class="secondary-btn"
+                    href="dashboard.html">
+                    📊 Dashboard
+                </a>
+
+            </div>
 
         </div>
 
 
-        <h1>
+        <!-- ONE BIG LOGO -->
 
-            <span class="jay">Jay</span><span class="von">Von</span><span class="ai-word">AI</span>
+        <div class="hero-visual">
 
-        </h1>
+            <div class="hero-visual-glow"></div>
 
+            <div class="logo-orbit"></div>
 
-        <p>
+            <div class="logo-orbit-two"></div>
 
-            The intelligent Discord control center
-            built for communities inside
-            <b>The Vonverse</b>.
-
-            Manage AI, advanced moderation,
-            media channels, social notifications,
-            tickets, giveaways, welcome systems
-            and more from one dashboard.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <button
-                class="primary-btn"
-                onclick="addJayVon()">
-
-                ✨ Add JayVon AI
-
-            </button>
-
-
-            <a
-                class="secondary-btn"
-                href="dashboard.html"
-                style="
-                    display:inline-flex;
-                    align-items:center;
-                    justify-content:center;
-                ">
-
-                📊 Dashboard
-
-            </a>
+            <img
+                src="vonverse-logo.png"
+                class="logo-image hero-logo"
+                alt="The Vonverse"
+            >
 
         </div>
 
@@ -1514,6 +1669,7 @@ a{
 
 
     <div class="feature-grid">
+
 
         <div class="feature">
 
@@ -1680,6 +1836,7 @@ a{
 
         </div>
 
+
     </div>
 
 </section>
@@ -1690,38 +1847,21 @@ a{
 <footer class="home-footer">
 
     <div class="footer-brand">
-
-        <img
-            src="vonverse-logo.png"
-            class="logo-image footer-logo"
-            alt="The Vonverse"
-        >
-
-        <span>
-            © 2026 JayVon AI
-        </span>
-
+        <span class="jay">Jay</span><span class="von">Von</span> AI
     </div>
-
 
     <div class="credit">
-
         Made by
         <strong>SS_DEMON2</strong>
-
-        • JayVon AI
-
-        • The Vonverse
-
+        • JayVon AI • The Vonverse
     </div>
 
-
     <div>
-        The Vonverse
+        © 2026 The Vonverse
     </div>
 
 </footer>
-```
+
 
 </div>
 
@@ -1734,7 +1874,7 @@ a{
     id="featuresModal"
     onclick="closeOutside(event,this)">
 
-```
+
 <div class="modal-box">
 
     <h2>
@@ -1748,6 +1888,7 @@ a{
 
 
     <div class="modal-content">
+
 
         <div class="modal-feature">
 
@@ -1916,6 +2057,7 @@ a{
 
         </div>
 
+
     </div>
 
 
@@ -1924,15 +2066,13 @@ a{
         <button
             class="modal-button"
             onclick="closeInfo('featuresModal')">
-
             Close
-
         </button>
 
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -1945,21 +2085,14 @@ a{
     id="creditsModal"
     onclick="closeOutside(event,this)">
 
-```
+
 <div class="modal-box">
 
-    <img
-        src="vonverse-logo.png"
-        class="logo-image credits-logo"
-        alt="The Vonverse"
-    >
-
-
-    <h2>
-        The Vonverse
+    <h2 class="credits-title">
+        🌐 The Vonverse
     </h2>
 
-    <p>
+    <p class="credits-title">
         JayVon AI is part of The Vonverse.
     </p>
 
@@ -2000,15 +2133,13 @@ a{
         <button
             class="modal-button"
             onclick="closeInfo('creditsModal')">
-
             Close
-
         </button>
 
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -2021,25 +2152,22 @@ a{
     id="upcomingModal"
     onclick="closeOutside(event,this)">
 
-```
+
 <div class="modal-box">
 
     <div
         style="
             text-align:center;
             padding:15px 5px 5px;
-        "
-    >
+        ">
 
         <div class="upcoming-icon">
             📈
         </div>
 
-
         <h2>
             Levels & XP
         </h2>
-
 
         <p>
             This feature is currently being worked on.
@@ -2062,11 +2190,9 @@ a{
             <br><br>
 
             <span class="stay">
-
                 Stay tuned for XP,
                 level-up messages,
                 level roles and leaderboards.
-
             </span>
 
         </div>
@@ -2077,9 +2203,7 @@ a{
             <button
                 class="modal-button"
                 onclick="closeInfo('upcomingModal')">
-
                 Close
-
             </button>
 
         </div>
@@ -2087,7 +2211,7 @@ a{
     </div>
 
 </div>
-```
+
 
 </div>
 
@@ -2095,10 +2219,10 @@ a{
 
 /* =========================================================
    INTRO
-   About 3 seconds, then smoothly disappears.
+   EXACTLY 3 SECONDS
 ========================================================= */
 
-window.addEventListener("load",function(){
+window.addEventListener("load", function(){
 
     setTimeout(function(){
 
@@ -2109,13 +2233,13 @@ window.addEventListener("load",function(){
             landing.classList.add("hidden");
         }
 
-    },3000);
+    }, 3000);
 
 });
 
 
 /* =========================================================
-   ADD JAYVON
+   ADD JAYVON AI
 ========================================================= */
 
 function addJayVon(){
@@ -2135,14 +2259,14 @@ function openInfo(id){
     const modal =
         document.getElementById(id);
 
-    if(modal){
-
-        modal.classList.add("show");
-
-        document.body.style.overflow =
-            "hidden";
-
+    if(!modal){
+        return;
     }
+
+    modal.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -2152,19 +2276,19 @@ function closeInfo(id){
     const modal =
         document.getElementById(id);
 
-    if(modal){
-
-        modal.classList.remove("show");
-
-        document.body.style.overflow =
-            "";
-
+    if(!modal){
+        return;
     }
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow =
+        "";
 
 }
 
 
-function closeOutside(event,element){
+function closeOutside(event, element){
 
     if(event.target === element){
 
@@ -2178,24 +2302,28 @@ function closeOutside(event,element){
 }
 
 
+/* =========================================================
+   ESC CLOSE
+========================================================= */
+
 document.addEventListener(
     "keydown",
     function(event){
 
-        if(event.key === "Escape"){
-
-            document
-                .querySelectorAll(".modal.show")
-                .forEach(function(modal){
-
-                    modal.classList.remove("show");
-
-                });
-
-            document.body.style.overflow =
-                "";
-
+        if(event.key !== "Escape"){
+            return;
         }
+
+        document
+            .querySelectorAll(".modal.show")
+            .forEach(function(modal){
+
+                modal.classList.remove("show");
+
+            });
+
+        document.body.style.overflow =
+            "";
 
     }
 );
