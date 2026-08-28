@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -25,10 +24,8 @@
     --panel2:#111119;
     --line:rgba(255,255,255,.08);
     --muted:#858590;
-
     --blue:#3b82f6;
     --blue2:#60a5fa;
-
     --red:#ef4444;
     --purple:#8b5cf6;
     --green:#22c55e;
@@ -41,13 +38,17 @@ html{
 body{
     font-family:Inter,Arial,sans-serif;
     background:var(--bg);
-    color:white;
+    color:#fff;
     min-height:100vh;
     overflow-x:hidden;
 }
 
-button{
+button,
+a{
     font:inherit;
+}
+
+button{
     cursor:pointer;
 }
 
@@ -56,10 +57,15 @@ a{
     color:inherit;
 }
 
+.jay{
+    color:var(--blue);
+}
 
-/* =========================================================
-   GLOBAL VONVERSE BACKGROUND
-========================================================= */
+.von{
+    color:var(--red);
+}
+
+/* BACKGROUND */
 
 .global-bg{
     position:fixed;
@@ -67,43 +73,21 @@ a{
     overflow:hidden;
     pointer-events:none;
     z-index:-5;
-
     background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(59,130,246,.10),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 75%,
-            rgba(239,68,68,.08),
-            transparent 32%
-        ),
+        radial-gradient(circle at 15% 20%,rgba(59,130,246,.10),transparent 30%),
+        radial-gradient(circle at 85% 75%,rgba(239,68,68,.08),transparent 32%),
         #050508;
 }
 
-.global-bg::before{
+.global-bg:before{
     content:"";
     position:absolute;
     inset:-20%;
-
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.022) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.022) 1px,
-            transparent 1px
-        );
-
+        linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
     background-size:70px 70px;
-
-    transform:
-        perspective(700px)
-        rotateX(55deg);
-
+    transform:perspective(700px) rotateX(55deg);
     opacity:.5;
 }
 
@@ -111,206 +95,100 @@ a{
     position:absolute;
     right:-150px;
     top:50%;
-
     font-size:650px;
-
     opacity:.028;
-
     filter:blur(.3px);
-
-    animation:
-        globeFloat 14s ease-in-out infinite,
-        globePulse 7s ease-in-out infinite;
+    animation:globeFloat 14s ease-in-out infinite,
+              globePulse 7s ease-in-out infinite;
 }
 
 @keyframes globeFloat{
-
     0%,100%{
-        transform:
-            translateY(-50%)
-            rotate(-2deg);
+        transform:translateY(-50%) rotate(-2deg);
     }
-
     50%{
-        transform:
-            translateY(-50%)
-            rotate(10deg);
+        transform:translateY(-50%) rotate(10deg);
     }
-
 }
 
 @keyframes globePulse{
-
-    0%,100%{
-        opacity:.022;
-    }
-
-    50%{
-        opacity:.04;
-    }
-
+    0%,100%{opacity:.022}
+    50%{opacity:.04}
 }
 
 .orbit{
     position:absolute;
-
     width:520px;
     height:520px;
-
     right:-50px;
     top:50%;
-
-    border:
-        1px solid
-        rgba(59,130,246,.07);
-
+    border:1px solid rgba(59,130,246,.07);
     border-radius:50%;
-
-    transform:
-        translateY(-50%)
-        rotate(-20deg);
-
-    animation:
-        orbitSpin 20s linear infinite;
+    transform:translateY(-50%) rotate(-20deg);
+    animation:orbitSpin 20s linear infinite;
 }
 
-.orbit::after{
+.orbit:after{
     content:"";
-
     position:absolute;
-
     width:7px;
     height:7px;
-
     border-radius:50%;
-
     background:#3b82f6;
-
-    box-shadow:
-        0 0 20px #3b82f6;
-
+    box-shadow:0 0 20px #3b82f6;
     top:8%;
     left:18%;
 }
 
 @keyframes orbitSpin{
-
     from{
-        transform:
-            translateY(-50%)
-            rotate(-20deg);
+        transform:translateY(-50%) rotate(-20deg);
     }
-
     to{
-        transform:
-            translateY(-50%)
-            rotate(340deg);
+        transform:translateY(-50%) rotate(340deg);
     }
-
 }
 
+/* LOGO */
 
-/* =========================================================
-   BRAND COLORS
-========================================================= */
-
-.jay{
-    color:#3b82f6;
+.logo-image{
+    object-fit:contain;
+    display:block;
+    transition:.3s ease;
 }
 
-.von{
-    color:#ef4444;
-}
-
-
-/* =========================================================
-   VONVERSE LOGO
-========================================================= */
-
-.vonverse-logo{
+.logo-small{
     width:38px;
     height:38px;
-
-    object-fit:contain;
-
-    display:block;
-
-    filter:
-        drop-shadow(
-            0 0 15px
-            rgba(59,130,246,.16)
-        );
-
-    transition:
-        transform .25s ease,
-        filter .25s ease;
 }
 
-.vonverse-logo:hover{
-    transform:scale(1.06);
-
-    filter:
-        drop-shadow(
-            0 0 22px
-            rgba(59,130,246,.28)
-        );
+.logo-large{
+    width:82px;
+    height:82px;
+    margin:0 auto 20px;
 }
 
-.vonverse-logo-large{
-    width:76px;
-    height:76px;
-
-    object-fit:contain;
-
-    margin:0 auto 22px;
-
-    filter:
-        drop-shadow(
-            0 0 30px
-            rgba(59,130,246,.20)
-        );
+.logo-image:hover{
+    transform:scale(1.06) rotate(2deg);
 }
 
-.logo-placeholder{
-    display:none;
-}
-
-
-/* =========================================================
-   INTRO / LOADING
-========================================================= */
+/* LANDING */
 
 #landing{
     position:fixed;
     inset:0;
-
     z-index:9999;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     overflow:hidden;
-
     background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(59,130,246,.13),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 50% 65%,
-            rgba(239,68,68,.07),
-            transparent 30%
-        ),
+        radial-gradient(circle at 50% 45%,rgba(59,130,246,.13),transparent 28%),
+        radial-gradient(circle at 50% 65%,rgba(239,68,68,.07),transparent 30%),
         #050508;
-
     opacity:1;
     visibility:visible;
-
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
+    transition:opacity .8s ease,visibility .8s ease;
 }
 
 #landing.hidden{
@@ -321,227 +199,114 @@ a{
 
 .landing-globe{
     position:absolute;
-
     font-size:520px;
-
     opacity:0;
-
-    animation:
-        landingGlobe 1.5s ease forwards;
+    animation:landingGlobe 1.5s ease forwards;
 }
 
 @keyframes landingGlobe{
-
     0%{
-        transform:
-            scale(.72)
-            rotate(-18deg);
-
+        transform:scale(.72) rotate(-18deg);
         opacity:0;
     }
-
-    60%{
-        opacity:.035;
-    }
-
+    60%{opacity:.035}
     100%{
-        transform:
-            scale(1)
-            rotate(0deg);
-
+        transform:scale(1) rotate(0);
         opacity:.035;
     }
-
 }
 
 .landing-content{
     position:relative;
     z-index:2;
-
     text-align:center;
-
-    animation:
-        landingIn
-        1s
-        cubic-bezier(.2,.8,.2,1)
-        forwards;
+    animation:landingIn 1s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 @keyframes landingIn{
-
     from{
         opacity:0;
-
-        transform:
-            translateY(24px)
-            scale(.95);
+        transform:translateY(24px) scale(.95);
     }
-
     to{
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
-
 }
 
 .landing-small{
     color:#777781;
-
     font-size:11px;
-
     font-weight:600;
-
     letter-spacing:6px;
-
     margin-bottom:18px;
 }
 
 .landing-logo{
     font-family:"Space Grotesk",sans-serif;
-
-    font-size:
-        clamp(
-            58px,
-            10vw,
-            112px
-        );
-
+    font-size:clamp(58px,10vw,112px);
     font-weight:700;
-
     letter-spacing:-7px;
-
     line-height:.95;
-
-    text-shadow:
-        0 0 45px
-        rgba(255,255,255,.04);
 }
 
 .landing-ai{
-    color:white;
-
+    color:#fff;
     margin-left:14px;
 }
 
 .landing-line{
     width:0;
-
     height:2px;
-
-    margin:
-        25px
-        auto
-        20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #3b82f6,
-            #8b5cf6,
-            #ef4444
-        );
-
-    box-shadow:
-        0 0 18px
-        rgba(59,130,246,.25);
-
-    animation:
-        lineGrow
-        1.15s
-        ease
-        forwards
-        .35s;
+    margin:25px auto 20px;
+    background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ef4444);
+    box-shadow:0 0 18px rgba(59,130,246,.25);
+    animation:lineGrow 1.15s ease forwards .35s;
 }
 
 @keyframes lineGrow{
-
-    to{
-        width:250px;
-    }
-
+    to{width:250px}
 }
 
 .landing-sub{
     color:#888892;
-
     font-size:13px;
-
-    letter-spacing:.2px;
-
     opacity:0;
-
-    animation:
-        subIn
-        .7s
-        ease
-        forwards
-        1s;
+    animation:subIn .7s ease forwards 1s;
 }
 
 @keyframes subIn{
-
-    to{
-        opacity:1;
-    }
-
+    to{opacity:1}
 }
 
 .landing-credit{
     position:absolute;
-
     bottom:30px;
-
     left:0;
     right:0;
-
     text-align:center;
-
     color:#50505a;
-
     font-size:11px;
-
-    letter-spacing:.5px;
 }
 
-
-/* =========================================================
-   HOME
-========================================================= */
+/* HOME */
 
 #home{
     min-height:100vh;
-
     display:flex;
     flex-direction:column;
 }
 
 .home-nav{
     height:78px;
-
     display:flex;
-
     align-items:center;
     justify-content:space-between;
-
-    padding:
-        0
-        7%;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    background:
-        rgba(5,5,8,.68);
-
-    backdrop-filter:
-        blur(22px);
-
+    padding:0 7%;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    background:rgba(5,5,8,.68);
+    backdrop-filter:blur(22px);
     position:relative;
-
     z-index:20;
 }
 
@@ -549,243 +314,125 @@ a{
     display:flex;
     align-items:center;
     gap:10px;
-
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
+    font-family:"Space Grotesk",sans-serif;
     font-size:22px;
-
     font-weight:700;
-
-    letter-spacing:-.7px;
-}
-
-.home-brand-text{
-    white-space:nowrap;
-}
-
-.home-brand-ai{
-    color:white;
 }
 
 .home-links{
     display:flex;
-
     align-items:center;
-
-    gap:8px;
+    gap:7px;
 }
 
 .home-link{
     border:0;
-
     background:transparent;
-
     color:#858590;
-
-    padding:
-        10px
-        15px;
-
+    padding:10px 14px;
     border-radius:9px;
-
     font-size:12px;
-
     transition:.22s ease;
 }
 
 .home-link:hover{
-    color:white;
-
+    color:#fff;
     background:#111119;
 }
 
-.home-link.primary-nav{
-    color:white;
-
-    background:
-        rgba(59,130,246,.12);
-
-    border:
-        1px solid
-        rgba(59,130,246,.18);
+.primary-nav{
+    color:#fff;
+    background:rgba(59,130,246,.12);
+    border:1px solid rgba(59,130,246,.18);
 }
 
-.home-link.primary-nav:hover{
-    background:
-        rgba(59,130,246,.2);
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     flex:1;
-
     min-height:680px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     text-align:center;
-
-    padding:
-        100px
-        20px
-        75px;
-
+    padding:100px 20px 75px;
     position:relative;
 }
 
 .hero-content{
     max-width:850px;
-
     position:relative;
-
     z-index:2;
 }
 
 .hero-logo{
-    width:86px;
-    height:86px;
-
-    object-fit:contain;
-
-    margin:
-        0
-        auto
-        24px;
-
-    filter:
-        drop-shadow(
-            0 0 35px
-            rgba(59,130,246,.18)
-        );
-
-    animation:
-        heroLogoFloat
-        4s
-        ease-in-out
-        infinite;
+    width:88px;
+    height:88px;
+    margin:0 auto 25px;
+    animation:heroLogo 4s ease-in-out infinite;
 }
 
-@keyframes heroLogoFloat{
-
+@keyframes heroLogo{
     0%,100%{
         transform:translateY(0);
     }
-
     50%{
-        transform:translateY(-5px);
+        transform:translateY(-6px) rotate(2deg);
     }
-
 }
 
 .hero-badge{
     display:inline-flex;
-
     align-items:center;
-
     gap:9px;
-
-    padding:
-        8px
-        14px;
-
-    border:
-        1px solid
-        rgba(59,130,246,.2);
-
-    background:
-        rgba(59,130,246,.065);
-
+    padding:8px 14px;
+    border:1px solid rgba(59,130,246,.2);
+    background:rgba(59,130,246,.065);
     border-radius:999px;
-
     color:#9cc5ff;
-
     font-size:10px;
-
     font-weight:600;
-
     letter-spacing:.8px;
-
     margin-bottom:26px;
-
-    box-shadow:
-        0 0 25px
-        rgba(59,130,246,.04);
 }
 
 .hero-badge span{
     width:7px;
     height:7px;
-
     border-radius:50%;
-
     background:#22c55e;
-
-    box-shadow:
-        0 0 10px
-        #22c55e;
-
-    animation:
-        onlinePulse
-        2s
-        ease-in-out
-        infinite;
+    box-shadow:0 0 10px #22c55e;
+    animation:onlinePulse 2s ease-in-out infinite;
 }
 
 @keyframes onlinePulse{
-
     0%,100%{
         opacity:1;
         transform:scale(1);
     }
-
     50%{
         opacity:.55;
         transform:scale(.75);
     }
-
 }
 
 .hero h1{
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
-    font-size:
-        clamp(
-            55px,
-            8vw,
-            90px
-        );
-
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(55px,8vw,90px);
     line-height:.95;
-
     letter-spacing:-6px;
-
     margin-bottom:27px;
 }
 
 .ai-word{
-    color:white;
+    color:#fff;
 }
 
 .hero p{
     max-width:680px;
-
     margin:auto;
-
     color:#858590;
-
     font-size:14px;
-
     line-height:1.9;
 }
 
@@ -795,238 +442,136 @@ a{
 
 .hero-buttons{
     display:flex;
-
     justify-content:center;
-    align-items:center;
-
     gap:14px;
-
     margin-top:36px;
-
     flex-wrap:wrap;
 }
 
 .primary-btn,
 .secondary-btn{
     min-width:155px;
-
     border-radius:10px;
-
-    padding:
-        13px
-        21px;
-
+    padding:13px 21px;
     font-size:13px;
-
     font-weight:700;
-
     transition:.25s ease;
 }
 
 .primary-btn{
-    border:
-        1px solid
-        rgba(59,130,246,.25);
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #7c3aed
-        );
-
-    color:white;
-
-    box-shadow:
-        0 12px 35px
-        rgba(59,130,246,.14);
+    border:1px solid rgba(59,130,246,.25);
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#fff;
+    box-shadow:0 12px 35px rgba(59,130,246,.14);
 }
 
 .primary-btn:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 17px 45px
-        rgba(59,130,246,.25);
+    box-shadow:0 17px 45px rgba(59,130,246,.25);
 }
 
 .secondary-btn{
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
+    border:1px solid rgba(255,255,255,.09);
     background:#111119;
-
     color:#dddde5;
 }
 
 .secondary-btn:hover{
     transform:translateY(-3px);
-
     background:#17171f;
-
-    border-color:
-        rgba(255,255,255,.14);
 }
 
-
-/* =========================================================
-   HOME FEATURES
-========================================================= */
+/* FEATURES */
 
 .home-section{
     width:100%;
-
     max-width:1150px;
-
     margin:auto;
-
-    padding:
-        60px
-        25px
-        80px;
+    padding:60px 25px 80px;
 }
 
 .home-section-title{
     text-align:center;
-
     margin-bottom:34px;
 }
 
 .home-section-title h2{
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
+    font-family:"Space Grotesk",sans-serif;
     font-size:29px;
-
     margin-bottom:8px;
-
-    letter-spacing:-.8px;
 }
 
 .home-section-title p{
     color:#73737e;
-
     font-size:12px;
 }
 
 .feature-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:17px;
 }
 
 .feature{
-    background:
-        linear-gradient(
-            145deg,
-            rgba(16,16,23,.92),
-            rgba(10,10,15,.88)
-        );
-
-    border:
-        1px solid
-        var(--line);
-
+    background:linear-gradient(145deg,rgba(16,16,23,.92),rgba(10,10,15,.88));
+    border:1px solid var(--line);
     padding:24px;
-
     border-radius:15px;
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+    transition:.25s ease;
 }
 
 .feature:hover{
     transform:translateY(-5px);
-
-    border-color:
-        rgba(59,130,246,.24);
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.22);
+    border-color:rgba(59,130,246,.24);
+    box-shadow:0 15px 40px rgba(0,0,0,.22);
 }
 
 .feature-icon{
     width:43px;
     height:43px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     border-radius:11px;
-
     background:#17171f;
-
     font-size:22px;
-
     margin-bottom:16px;
 }
 
 .feature h3{
     font-size:15px;
-
     margin-bottom:8px;
 }
 
 .feature p{
     color:#777781;
-
     font-size:12px;
-
     line-height:1.7;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 .home-footer{
-    border-top:
-        1px solid
-        var(--line);
-
-    padding:
-        30px
-        7%;
-
+    border-top:1px solid var(--line);
+    padding:30px 7%;
     display:flex;
-
     align-items:center;
     justify-content:space-between;
-
     gap:20px;
-
     color:#5e5e68;
-
     font-size:11px;
-
-    background:
-        rgba(5,5,8,.5);
+    background:rgba(5,5,8,.5);
 }
 
 .footer-brand{
     display:flex;
-
     align-items:center;
-
     gap:9px;
 }
 
 .footer-brand img{
     width:27px;
     height:27px;
-
-    object-fit:contain;
 }
 
 .credit{
@@ -1037,33 +582,17 @@ a{
     color:#aaaab3;
 }
 
-.footer-vonverse{
-    color:#888892;
-}
-
-
-/* =========================================================
-   INFO MODALS
-========================================================= */
+/* MODALS */
 
 .modal{
     position:fixed;
-
     inset:0;
-
     display:none;
-
     align-items:center;
     justify-content:center;
-
     padding:20px;
-
-    background:
-        rgba(0,0,0,.78);
-
-    backdrop-filter:
-        blur(10px);
-
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(10px);
     z-index:99999;
 }
 
@@ -1072,96 +601,52 @@ a{
 }
 
 .modal-box{
-    width:min(600px,100%);
-
+    width:min(650px,100%);
     max-height:85vh;
-
     overflow:auto;
-
     background:#111116;
-
-    border:
-        1px solid
-        rgba(139,92,246,.2);
-
+    border:1px solid rgba(139,92,246,.2);
     border-radius:18px;
-
     padding:29px;
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.65);
-
-    animation:
-        modalIn
-        .25s
-        ease;
+    box-shadow:0 30px 100px rgba(0,0,0,.65);
+    animation:modalIn .25s ease;
 }
 
 @keyframes modalIn{
-
     from{
         opacity:0;
-
-        transform:
-            translateY(15px)
-            scale(.98);
+        transform:translateY(15px) scale(.98);
     }
-
     to{
         opacity:1;
-
         transform:none;
     }
-
 }
 
 .modal-box h2{
-    font-family:
-        "Space Grotesk",
-        sans-serif;
-
+    font-family:"Space Grotesk",sans-serif;
     font-size:22px;
-
     margin-bottom:8px;
 }
 
 .modal-box > p{
     color:#888892;
-
     font-size:12px;
-
     line-height:1.7;
 }
 
 .modal-content{
     margin-top:22px;
-
-    color:#aaaab3;
-
-    font-size:13px;
-
-    line-height:1.85;
 }
 
 .modal-feature{
     display:flex;
-
     gap:12px;
-
     align-items:flex-start;
-
     padding:12px;
-
     margin-bottom:8px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid
-        rgba(255,255,255,.045);
-
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.045);
     border-radius:10px;
 }
 
@@ -1171,122 +656,69 @@ a{
 
 .modal-feature strong{
     display:block;
-
     color:#dddde5;
-
     margin-bottom:2px;
 }
 
 .modal-feature span{
     color:#777781;
-
     font-size:11px;
 }
 
 .modal-actions{
     display:flex;
-
     justify-content:flex-end;
-
-    gap:10px;
-
     margin-top:25px;
 }
 
 .modal-button{
     border:0;
-
     background:#7c3aed;
-
-    color:white;
-
-    padding:
-        10px
-        17px;
-
+    color:#fff;
+    padding:10px 17px;
     border-radius:8px;
-
     font-weight:700;
-
-    transition:.2s;
 }
 
 .modal-button:hover{
     background:#8b5cf6;
-
-    transform:translateY(-1px);
 }
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* RESPONSIVE */
 
 @media(max-width:900px){
-
     .feature-grid{
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns:1fr 1fr;
     }
 
     .globe{
         right:-300px;
     }
-
-    .orbit{
-        right:-250px;
-    }
-
 }
 
 @media(max-width:700px){
-
     .home-nav{
         height:auto;
-
         min-height:72px;
-
-        padding:
-            14px
-            18px;
-
+        padding:14px 18px;
         gap:12px;
-
         flex-wrap:wrap;
     }
 
     .home-links{
         width:100%;
-
         justify-content:center;
-
-        gap:3px;
+        flex-wrap:wrap;
     }
 
     .home-link{
-        padding:
-            8px
-            10px;
-
+        padding:8px 10px;
         font-size:10px;
-    }
-
-    .home-brand{
-        font-size:19px;
-    }
-
-    .vonverse-logo{
-        width:32px;
-        height:32px;
     }
 
     .hero{
         min-height:600px;
-
-        padding:
-            75px
-            18px
-            60px;
+        padding:75px 18px 60px;
     }
 
     .hero h1{
@@ -1295,8 +727,6 @@ a{
 
     .hero p{
         font-size:13px;
-
-        line-height:1.8;
     }
 
     .hero-buttons{
@@ -1306,8 +736,8 @@ a{
     .primary-btn,
     .secondary-btn{
         width:100%;
-
         max-width:280px;
+        margin:auto;
     }
 
     .feature-grid{
@@ -1316,111 +746,51 @@ a{
 
     .home-footer{
         flex-direction:column;
-
         text-align:center;
     }
 
     .landing-logo{
         font-size:54px;
-
         letter-spacing:-4px;
-    }
-
-    .landing-small{
-        letter-spacing:4px;
     }
 
     .landing-globe{
         font-size:340px;
     }
-
-    .globe{
-        font-size:400px;
-
-        right:-220px;
-    }
-
-    .orbit{
-        width:330px;
-        height:330px;
-
-        right:-180px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
-     GLOBAL VONVERSE BACKGROUND
-========================================================= -->
-
 <div class="global-bg">
-
     <div class="globe">🌐</div>
-
     <div class="orbit"></div>
-
 </div>
-
-
-<!-- =========================================================
-     INTRO
-========================================================= -->
 
 <div id="landing">
 
-    <div class="landing-globe">
-        🌐
-    </div>
-
+    <div class="landing-globe">🌐</div>
 
     <div class="landing-content">
 
-        <!--
-            PUT YOUR TRANSPARENT VONVERSE LOGO HERE
-
-            File name:
-            vonverse-logo.png
-        -->
-
         <img
             src="vonverse-logo.png"
-            class="vonverse-logo-large"
+            class="logo-image logo-large"
             alt="The Vonverse"
-            onerror="this.style.display='none'"
+            data-remove-background
         >
-
 
         <div class="landing-small">
             THE VONVERSE
         </div>
 
-
         <div class="landing-logo">
-
-            <span class="jay">
-                Jay
-            </span>
-
-            <span class="von">
-                Von
-            </span>
-
-            <span class="landing-ai">
-                AI
-            </span>
-
+            <span class="jay">Jay</span><span class="von">Von</span>
+            <span class="landing-ai">AI</span>
         </div>
 
-
         <div class="landing-line"></div>
-
 
         <div class="landing-sub">
             Intelligent tools for your Discord community.
@@ -1428,187 +798,105 @@ a{
 
     </div>
 
-
     <div class="landing-credit">
         🌐 The Vonverse • JayVon AI
     </div>
 
 </div>
 
-
-<!-- =========================================================
-     HOME
-========================================================= -->
-
 <div id="home">
 
-
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
-
     <nav class="home-nav">
-
 
         <div class="home-brand">
 
             <img
                 src="vonverse-logo.png"
-                class="vonverse-logo"
+                class="logo-image logo-small"
                 alt="The Vonverse"
-                onerror="this.style.display='none'"
+                data-remove-background
             >
 
-
-            <div class="home-brand-text">
-
-                <span class="jay">
-                    Jay
-                </span>
-
-                <span class="von">
-                    Von
-                </span>
-
-                <span class="home-brand-ai">
-                    AI
-                </span>
-
+            <div>
+                <span class="jay">Jay</span>
+                <span class="von">Von</span>
+                <span> AI</span>
             </div>
 
         </div>
 
-
         <div class="home-links">
-
 
             <button
                 class="home-link"
                 onclick="openInfo('featuresModal')">
-
                 Features
-
             </button>
-
 
             <button
                 class="home-link"
                 onclick="openInfo('creditsModal')">
-
                 Credits
-
             </button>
 
-
-            <a
-                class="home-link"
-                href="terms.html">
-
+            <a class="home-link" href="terms.html">
                 Terms
-
             </a>
 
-
-            <a
-                class="home-link"
-                href="privacy.html">
-
+            <a class="home-link" href="privacy.html">
                 Privacy
-
             </a>
 
-
-            <a
-                class="home-link primary-nav"
-                href="dashboard.html">
-
-                Dashboard
-
+            <a class="home-link primary-nav" href="dashboard.html">
+                📊 Dashboard
             </a>
 
         </div>
 
     </nav>
 
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
     <main class="hero">
-
 
         <div class="hero-content">
 
-
             <img
                 src="vonverse-logo.png"
-                class="hero-logo"
+                class="logo-image hero-logo"
                 alt="The Vonverse"
-                onerror="this.style.display='none'"
+                data-remove-background
             >
 
-
             <div class="hero-badge">
-
                 <span></span>
-
                 JAYVON AI IS ONLINE
-
             </div>
 
-
             <h1>
-
-                <span class="jay">
-                    Jay
-                </span>
-
-                <span class="von">
-                    Von
-                </span>
-
-                <span class="ai-word">
-                    AI
-                </span>
-
+                <span class="jay">Jay</span><span class="von">Von</span>
+                <span class="ai-word"> AI</span>
             </h1>
 
-
             <p>
-
                 The intelligent Discord control center built for
                 communities inside <b>The Vonverse</b>.
-                Manage AI, moderation, tickets, giveaways,
-                welcome systems, notifications and more
-                from one dashboard.
-
+                Manage AI, advanced moderation, media channels,
+                social notifications, tickets, giveaways,
+                welcome systems and more from one dashboard.
             </p>
 
-
             <div class="hero-buttons">
-
 
                 <button
                     class="primary-btn"
                     onclick="addJayVon()">
-
                     ✨ Add JayVon AI
-
                 </button>
-
 
                 <a
                     class="secondary-btn"
                     href="dashboard.html"
-                    style="
-                        display:inline-flex;
-                        align-items:center;
-                        justify-content:center;
-                    ">
-
+                    style="display:inline-flex;align-items:center;justify-content:center;">
                     📊 Dashboard
-
                 </a>
 
             </div>
@@ -1617,19 +905,11 @@ a{
 
     </main>
 
-
-    <!-- =====================================================
-         FEATURES
-    ====================================================== -->
-
     <section class="home-section">
-
 
         <div class="home-section-title">
 
-            <h2>
-                Built for your community.
-            </h2>
+            <h2>Built for your community.</h2>
 
             <p>
                 Powerful server tools without the clutter.
@@ -1637,210 +917,104 @@ a{
 
         </div>
 
-
         <div class="feature-grid">
 
-
-            <!-- AI -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🤖
-                </div>
-
-                <h3>
-                    JayVon AI
-                </h3>
-
+                <div class="feature-icon">🤖</div>
+                <h3>JayVon AI</h3>
                 <p>
-                    Give your Discord server an intelligent
-                    conversation layer with configurable AI controls.
+                    Intelligent conversation tools and
+                    configurable AI controls.
                 </p>
-
             </div>
 
-
-            <!-- Moderation -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🛡️
-                </div>
-
-                <h3>
-                    Advanced Moderation
-                </h3>
-
+                <div class="feature-icon">🛡️</div>
+                <h3>Advanced Moderation</h3>
                 <p>
                     Anti-spam, filters, raid protection,
-                    warnings, timeouts, kicks, bans and
-                    detailed moderation logs.
+                    warnings, timeouts, kicks, bans and logs.
                 </p>
-
             </div>
 
-
-            <!-- Media -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🖼️
-                </div>
-
-                <h3>
-                    Media Channels
-                </h3>
-
+                <div class="feature-icon">🖼️</div>
+                <h3>Media Channels</h3>
                 <p>
-                    Create image-only, video-only or
-                    media channels with configurable
-                    file and link restrictions.
+                    Image-only, video-only or combined
+                    media channels with configurable restrictions.
                 </p>
-
             </div>
 
-
-            <!-- Notifications -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🔔
-                </div>
-
-                <h3>
-                    Social Notifications
-                </h3>
-
+                <div class="feature-icon">🔔</div>
+                <h3>Social Notifications</h3>
                 <p>
-                    Connect social accounts and automatically
-                    notify your Discord community when new
-                    content is posted.
+                    TikTok and YouTube notifications automatically
+                    sent to selected Discord channels.
                 </p>
-
             </div>
 
-
-            <!-- Tickets -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🎫
-                </div>
-
-                <h3>
-                    Tickets
-                </h3>
-
+                <div class="feature-icon">🎫</div>
+                <h3>Tickets</h3>
                 <p>
-                    Build private support channels with
-                    staff permissions, claiming and transcripts.
+                    Private support channels, staff roles,
+                    claiming and transcripts.
                 </p>
-
             </div>
 
-
-            <!-- Giveaways -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🎉
-                </div>
-
-                <h3>
-                    Giveaways
-                </h3>
-
+                <div class="feature-icon">🎉</div>
+                <h3>Giveaways</h3>
                 <p>
-                    Create configurable giveaways with
-                    winners, durations, rewards and entry controls.
+                    Rewards, winners, durations and
+                    entry management.
                 </p>
-
             </div>
 
-
-            <!-- Welcome -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    👋
-                </div>
-
-                <h3>
-                    Welcome System
-                </h3>
-
+                <div class="feature-icon">👋</div>
+                <h3>Welcome System</h3>
                 <p>
-                    Welcome new members with profile cards,
-                    backgrounds, custom messages and auto roles.
+                    Welcome cards, auto roles, custom messages,
+                    avatars and server information.
                 </p>
-
             </div>
 
-
-            <!-- Levels -->
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    📈
-                </div>
-
-                <h3>
-                    Levels & XP
-                </h3>
-
+            <div
+                class="feature"
+                onclick="openInfo('upcomingModal')"
+                style="cursor:pointer;">
+                <div class="feature-icon">📈</div>
+                <h3>Levels & XP</h3>
                 <p>
-                    Build community activity with XP,
-                    level-up messages, roles and leaderboards.
+                    XP, level roles and leaderboards.
+                    <b style="color:#8b5cf6;">Upcoming</b>
                 </p>
-
             </div>
 
-
-            <!-- Music -->
-
             <div class="feature">
-
-                <div class="feature-icon">
-                    🎵
-                </div>
-
-                <h3>
-                    Music
-                </h3>
-
+                <div class="feature-icon">🎵</div>
+                <h3>Music</h3>
                 <p>
-                    Control music permissions and decide
-                    which Discord roles receive access.
+                    Music permissions and role-based
+                    access controls.
                 </p>
-
             </div>
 
         </div>
 
     </section>
 
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
     <footer class="home-footer">
-
 
         <div class="footer-brand">
 
             <img
                 src="vonverse-logo.png"
                 alt="The Vonverse"
-                onerror="this.style.display='none'"
+                data-remove-background
             >
 
             <span>
@@ -1849,355 +1023,234 @@ a{
 
         </div>
 
-
         <div class="credit">
-
-            Made by
-
-            <strong>
-                SS_DEMON2
-            </strong>
-
-            •
-
-            JayVon AI
-
-            •
-
-            🌐
-
-            <strong>
-                The Vonverse
-            </strong>
-
+            Made by <strong>SS_DEMON2</strong>
+            • JayVon AI • 🌐 <strong>The Vonverse</strong>
         </div>
 
-
-        <div class="footer-vonverse">
-
+        <div>
             🌐 The Vonverse
-
         </div>
 
     </footer>
 
 </div>
 
-
-<!-- =========================================================
-     FEATURES MODAL
-========================================================= -->
-
 <div
     class="modal"
     id="featuresModal"
     onclick="closeOutside(event,this)">
 
-
     <div class="modal-box">
 
-
-        <h2>
-            ✨ JayVon AI Features
-        </h2>
-
+        <h2>✨ JayVon AI Features</h2>
 
         <p>
             Everything you need to manage your community
             from one place.
         </p>
 
-
         <div class="modal-content">
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    🤖
-                </div>
-
+                <div class="modal-feature-icon">🤖</div>
                 <div>
-
-                    <strong>
-                        JayVon AI
-                    </strong>
-
-                    <span>
-                        Intelligent conversation tools for your community.
-                    </span>
-
+                    <strong>JayVon AI</strong>
+                    <span>Intelligent conversation and AI tools.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    🛡️
-                </div>
-
+                <div class="modal-feature-icon">🛡️</div>
                 <div>
-
-                    <strong>
-                        Advanced Moderation
-                    </strong>
-
-                    <span>
-                        Spam, raid, link, mention and content protection.
-                    </span>
-
+                    <strong>Advanced Moderation</strong>
+                    <span>Spam, raid, link, mention and content protection.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    🖼️
-                </div>
-
+                <div class="modal-feature-icon">🖼️</div>
                 <div>
-
-                    <strong>
-                        Media Channels
-                    </strong>
-
-                    <span>
-                        Configure image, video and media-only channels.
-                    </span>
-
+                    <strong>Media Channels</strong>
+                    <span>Image, video and media-only channel controls.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    🔔
-                </div>
-
+                <div class="modal-feature-icon">🔔</div>
                 <div>
-
-                    <strong>
-                        Social Notifications
-                    </strong>
-
-                    <span>
-                        Automatic TikTok and YouTube posting notifications.
-                    </span>
-
+                    <strong>Social Notifications</strong>
+                    <span>TikTok and YouTube notification automation.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    🎫
-                </div>
-
+                <div class="modal-feature-icon">🎫</div>
                 <div>
-
-                    <strong>
-                        Tickets
-                    </strong>
-
-                    <span>
-                        Private support channels and staff controls.
-                    </span>
-
+                    <strong>Tickets</strong>
+                    <span>Private support channels and staff controls.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    🎉
-                </div>
-
+                <div class="modal-feature-icon">🎉</div>
                 <div>
-
-                    <strong>
-                        Giveaways
-                    </strong>
-
-                    <span>
-                        Rewards, winners, durations and entry management.
-                    </span>
-
+                    <strong>Giveaways</strong>
+                    <span>Rewards, winners and entry management.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    👋
-                </div>
-
+                <div class="modal-feature-icon">👋</div>
                 <div>
-
-                    <strong>
-                        Welcome System
-                    </strong>
-
-                    <span>
-                        Custom welcome messages, profiles and auto roles.
-                    </span>
-
+                    <strong>Welcome System</strong>
+                    <span>Welcome profiles, messages and auto roles.</span>
                 </div>
-
             </div>
 
-
             <div class="modal-feature">
-
-                <div class="modal-feature-icon">
-                    📈
-                </div>
-
+                <div class="modal-feature-icon">📈</div>
                 <div>
-
-                    <strong>
-                        Levels & XP
-                    </strong>
-
-                    <span>
-                        XP, level-up messages, roles and leaderboards.
-                    </span>
-
+                    <strong>Levels & XP</strong>
+                    <span>Coming soon to JayVon AI.</span>
                 </div>
-
             </div>
-
 
         </div>
 
-
         <div class="modal-actions">
-
             <button
                 class="modal-button"
                 onclick="closeInfo('featuresModal')">
-
                 Close
-
             </button>
-
         </div>
 
     </div>
-
 </div>
-
-
-<!-- =========================================================
-     CREDITS MODAL
-========================================================= -->
 
 <div
     class="modal"
     id="creditsModal"
     onclick="closeOutside(event,this)">
 
-
     <div class="modal-box">
-
 
         <img
             src="vonverse-logo.png"
-            class="vonverse-logo-large"
+            class="logo-image logo-large"
             alt="The Vonverse"
-            onerror="this.style.display='none'"
+            data-remove-background
         >
 
-
-        <h2>
-            🌐 Credits
-        </h2>
-
+        <h2>🌐 Credits</h2>
 
         <p>
             JayVon AI is part of The Vonverse.
         </p>
 
-
         <div class="modal-content">
-
 
             <b style="color:#3b82f6;">
                 SS_DEMON2
             </b>
 
             <br>
-
             Creator / Developer
 
-
             <br><br>
 
-
-            <span class="jay">
-                Jay
-            </span>
-
-            <span class="von">
-                Von
-            </span>
-
-            AI
+            <span class="jay">Jay</span>
+            <span class="von">Von</span> AI
 
             <br>
-
             Discord Community Assistant
 
-
             <br><br>
 
-
-            🌐
-
-            <b>
-                The Vonverse
-            </b>
+            🌐 <b>The Vonverse</b>
 
             <br>
-
             The universe behind JayVon AI.
 
         </div>
 
-
         <div class="modal-actions">
-
             <button
                 class="modal-button"
                 onclick="closeInfo('creditsModal')">
-
                 Close
-
             </button>
+        </div>
+
+    </div>
+</div>
+
+<div
+    class="modal"
+    id="upcomingModal"
+    onclick="closeOutside(event,this)">
+
+    <div class="modal-box">
+
+        <div style="
+            text-align:center;
+            padding:15px 5px 5px;
+        ">
+
+            <div style="
+                font-size:46px;
+                margin-bottom:14px;
+                animation:heroLogo 3s ease-in-out infinite;
+            ">
+                📈
+            </div>
+
+            <h2>
+                Levels & XP
+            </h2>
+
+            <p>
+                This feature is currently being worked on.
+            </p>
+
+            <div style="
+                margin-top:22px;
+                padding:18px;
+                border-radius:12px;
+                background:rgba(139,92,246,.07);
+                border:1px solid rgba(139,92,246,.18);
+                color:#aaaab3;
+                font-size:13px;
+                line-height:1.8;
+            ">
+                🚧 <b style="color:#fff;">Coming Soon</b>
+                <br>
+                JayVon AI's Levels & XP system is coming
+                in a future update.
+                <br><br>
+                <span style="color:#777781;">
+                    Stay tuned for XP, level-up messages,
+                    level roles and leaderboards.
+                </span>
+            </div>
+
+            <div class="modal-actions">
+                <button
+                    class="modal-button"
+                    onclick="closeInfo('upcomingModal')">
+                    Close
+                </button>
+            </div>
 
         </div>
 
     </div>
-
 </div>
-
 
 <script>
 
-/* =========================================================
-   INTRO
-========================================================= */
+/* INTRO */
 
 window.addEventListener("load",function(){
 
@@ -2207,36 +1260,23 @@ window.addEventListener("load",function(){
             document.getElementById("landing");
 
         if(landing){
-
             landing.classList.add("hidden");
-
         }
 
     },2200);
 
 });
 
-
-/* =========================================================
-   ADD JAYVON AI
-========================================================= */
+/* ADD JAYVON */
 
 function addJayVon(){
-
-    /*
-        Replace this with your real Discord OAuth
-        URL when the backend is connected.
-    */
 
     window.location.href =
         "/api/auth/discord";
 
 }
 
-
-/* =========================================================
-   MODALS
-========================================================= */
+/* MODALS */
 
 function openInfo(id){
 
@@ -2254,7 +1294,6 @@ function openInfo(id){
 
 }
 
-
 function closeInfo(id){
 
     const modal =
@@ -2271,7 +1310,6 @@ function closeInfo(id){
 
 }
 
-
 function closeOutside(event,element){
 
     if(event.target === element){
@@ -2285,11 +1323,6 @@ function closeOutside(event,element){
 
 }
 
-
-/* =========================================================
-   ESC TO CLOSE MODALS
-========================================================= */
-
 document.addEventListener(
     "keydown",
     function(event){
@@ -2299,18 +1332,133 @@ document.addEventListener(
             document
                 .querySelectorAll(".modal.show")
                 .forEach(function(modal){
-
                     modal.classList.remove("show");
-
                 });
 
-            document.body.style.overflow =
-                "";
+            document.body.style.overflow = "";
 
         }
 
     }
 );
+
+/*
+   VONVERSE LOGO BACKGROUND REMOVER
+
+   Removes very light/white pixels while keeping
+   dark/black artwork visible.
+
+   This is useful when the supplied logo has a
+   white background instead of transparency.
+*/
+
+function removeLogoBackground(img){
+
+    if(!img.complete || !img.naturalWidth){
+        return;
+    }
+
+    const canvas =
+        document.createElement("canvas");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    canvas.width =
+        img.naturalWidth;
+
+    canvas.height =
+        img.naturalHeight;
+
+    ctx.drawImage(
+        img,
+        0,
+        0
+    );
+
+    const imageData =
+        ctx.getImageData(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    const pixels =
+        imageData.data;
+
+    for(let i = 0; i < pixels.length; i += 4){
+
+        const r = pixels[i];
+        const g = pixels[i + 1];
+        const b = pixels[i + 2];
+
+        /*
+           White/light background becomes transparent.
+           Dark pixels remain visible.
+        */
+
+        if(
+            r > 220 &&
+            g > 220 &&
+            b > 220
+        ){
+
+            pixels[i + 3] = 0;
+
+        }
+
+        else if(
+            r > 180 &&
+            g > 180 &&
+            b > 180
+        ){
+
+            const brightness =
+                (r + g + b) / 3;
+
+            pixels[i + 3] =
+                Math.max(
+                    0,
+                    255 - ((brightness - 180) * 3)
+                );
+
+        }
+
+    }
+
+    ctx.putImageData(
+        imageData,
+        0,
+        0
+    );
+
+    img.src =
+        canvas.toDataURL("image/png");
+
+}
+
+document
+    .querySelectorAll("[data-remove-background]")
+    .forEach(function(img){
+
+        if(img.complete){
+
+            removeLogoBackground(img);
+
+        }
+        else{
+
+            img.addEventListener(
+                "load",
+                function(){
+                    removeLogoBackground(img);
+                }
+            );
+
+        }
+
+    });
 
 </script>
 
