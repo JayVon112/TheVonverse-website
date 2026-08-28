@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -79,6 +78,7 @@ a{
     z-index:-10;
     overflow:hidden;
     pointer-events:none;
+
     background:
         radial-gradient(
             circle at 20% 20%,
@@ -118,8 +118,6 @@ a{
     opacity:.45;
 }
 
-/* floating light */
-
 .bg-light{
     position:absolute;
 
@@ -155,26 +153,37 @@ a{
 }
 
 /* =========================================================
-   LOGO
+   VONVERSE LOGO
 ========================================================= */
+
+/*
+   The uploaded Vonverse logo has a light background.
+
+   invert(1):
+   - turns the black Vonverse artwork white
+   - turns the white/light background dark
+
+   screen:
+   - makes that dark background blend into the website
+
+   Result:
+   - NO white rectangle
+   - Vonverse artwork remains visible
+*/
 
 .logo-image{
     display:block;
+
     object-fit:contain;
 
-    /*
-       If the PNG has a black background,
-       screen blending makes that black
-       disappear into the dark website.
-    */
-
-    mix-blend-mode:screen;
-
     filter:
+        invert(1)
         drop-shadow(
             0 0 25px
             rgba(59,130,246,.22)
         );
+
+    mix-blend-mode:screen;
 
     user-select:none;
     pointer-events:none;
@@ -477,11 +486,6 @@ a{
     z-index:20;
 }
 
-/*
-   No logo here.
-   This keeps ONE logo on the homepage.
-*/
-
 .home-brand{
     font-family:"Space Grotesk",sans-serif;
 
@@ -570,8 +574,6 @@ a{
     position:relative;
     z-index:3;
 }
-
-/* LEFT */
 
 .hero-copy{
     max-width:680px;
@@ -800,8 +802,6 @@ a{
         opacity:1;
     }
 }
-
-/* orbit rings */
 
 .logo-orbit{
     position:absolute;
@@ -1241,13 +1241,9 @@ a{
     background:#8b5cf6;
 }
 
-/* credits */
-
 .credits-title{
     text-align:center;
 }
-
-/* upcoming */
 
 .upcoming-icon{
     font-size:46px;
@@ -1323,7 +1319,6 @@ a{
 
     .hero-visual{
         height:470px;
-
         order:-1;
     }
 
@@ -1424,7 +1419,6 @@ a{
 
     .hero-buttons{
         flex-direction:column;
-
         align-items:center;
     }
 
@@ -1470,7 +1464,6 @@ a{
 }
 
 </style>
-
 </head>
 
 <body>
@@ -1485,37 +1478,35 @@ a{
 
 <div id="landing">
 
+    <div class="landing-glow"></div>
 
-<div class="landing-glow"></div>
+    <div class="landing-content">
 
-<div class="landing-content">
+        <img
+            src="vonverse-logo.png"
+            class="logo-image landing-logo"
+            alt="The Vonverse"
+        >
 
-    <img
-        src="vonverse-logo.png"
-        class="logo-image landing-logo"
-        alt="The Vonverse"
-    >
+        <div class="landing-small">
+            THE VONVERSE
+        </div>
 
-    <div class="landing-small">
-        THE VONVERSE
+        <div class="landing-title">
+            <span class="jay">Jay</span><span class="von">Von</span><span class="landing-ai">AI</span>
+        </div>
+
+        <div class="landing-line"></div>
+
+        <div class="landing-sub">
+            Intelligent tools for your Discord community.
+        </div>
+
     </div>
 
-    <div class="landing-title">
-        <span class="jay">Jay</span><span class="von">Von</span><span class="landing-ai">AI</span>
+    <div class="landing-credit">
+        The Vonverse • JayVon AI
     </div>
-
-    <div class="landing-line"></div>
-
-    <div class="landing-sub">
-        Intelligent tools for your Discord community.
-    </div>
-
-</div>
-
-<div class="landing-credit">
-    The Vonverse • JayVon AI
-</div>
-
 
 </div>
 
@@ -1525,15 +1516,11 @@ a{
 
 <div id="home">
 
-
-<!-- NAVIGATION -->
-
 <nav class="home-nav">
 
     <div class="home-brand">
         <span class="jay">Jay</span><span class="von">Von</span> AI
     </div>
-
 
     <div class="home-links">
 
@@ -1571,15 +1558,13 @@ a{
 
 </nav>
 
-
-<!-- HERO -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <main class="hero">
 
     <div class="hero-content">
-
-
-        <!-- TEXT -->
 
         <div class="hero-copy">
 
@@ -1588,11 +1573,9 @@ a{
                 JAYVON AI IS ONLINE
             </div>
 
-
             <h1>
                 <span class="jay">Jay</span><span class="von">Von</span><span class="ai-word"> AI</span>
             </h1>
-
 
             <p class="hero-description">
 
@@ -1607,7 +1590,6 @@ a{
 
             </p>
 
-
             <div class="hero-buttons">
 
                 <button
@@ -1615,7 +1597,6 @@ a{
                     onclick="addJayVon()">
                     ✨ Add JayVon AI
                 </button>
-
 
                 <a
                     class="secondary-btn"
@@ -1626,9 +1607,6 @@ a{
             </div>
 
         </div>
-
-
-        <!-- ONE BIG LOGO -->
 
         <div class="hero-visual">
 
@@ -1650,8 +1628,9 @@ a{
 
 </main>
 
-
-<!-- FEATURES -->
+<!-- =========================================================
+     FEATURES
+========================================================= -->
 
 <section class="home-section">
 
@@ -1667,9 +1646,7 @@ a{
 
     </div>
 
-
     <div class="feature-grid">
-
 
         <div class="feature">
 
@@ -1688,7 +1665,6 @@ a{
 
         </div>
 
-
         <div class="feature">
 
             <div class="feature-icon">
@@ -1705,7 +1681,6 @@ a{
             </p>
 
         </div>
-
 
         <div class="feature">
 
@@ -1724,7 +1699,6 @@ a{
 
         </div>
 
-
         <div class="feature">
 
             <div class="feature-icon">
@@ -1741,7 +1715,6 @@ a{
             </p>
 
         </div>
-
 
         <div class="feature">
 
@@ -1760,7 +1733,6 @@ a{
 
         </div>
 
-
         <div class="feature">
 
             <div class="feature-icon">
@@ -1778,7 +1750,6 @@ a{
 
         </div>
 
-
         <div class="feature">
 
             <div class="feature-icon">
@@ -1795,7 +1766,6 @@ a{
             </p>
 
         </div>
-
 
         <div
             class="feature upcoming-feature"
@@ -1818,7 +1788,6 @@ a{
 
         </div>
 
-
         <div class="feature">
 
             <div class="feature-icon">
@@ -1836,13 +1805,13 @@ a{
 
         </div>
 
-
     </div>
 
 </section>
 
-
-<!-- FOOTER -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer class="home-footer">
 
@@ -1862,7 +1831,6 @@ a{
 
 </footer>
 
-
 </div>
 
 <!-- =========================================================
@@ -1874,205 +1842,96 @@ a{
     id="featuresModal"
     onclick="closeOutside(event,this)">
 
+    <div class="modal-box">
 
-<div class="modal-box">
+        <h2>
+            ✨ JayVon AI Features
+        </h2>
 
-    <h2>
-        ✨ JayVon AI Features
-    </h2>
+        <p>
+            Everything you need to manage your community
+            from one place.
+        </p>
 
-    <p>
-        Everything you need to manage your community
-        from one place.
-    </p>
+        <div class="modal-content">
 
-
-    <div class="modal-content">
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                🤖
+            <div class="modal-feature">
+                <div class="modal-feature-icon">🤖</div>
+                <div>
+                    <strong>JayVon AI</strong>
+                    <span>Intelligent conversation and AI tools.</span>
+                </div>
             </div>
 
-            <div>
-
-                <strong>
-                    JayVon AI
-                </strong>
-
-                <span>
-                    Intelligent conversation and AI tools.
-                </span>
-
+            <div class="modal-feature">
+                <div class="modal-feature-icon">🛡️</div>
+                <div>
+                    <strong>Advanced Moderation</strong>
+                    <span>Spam, raid, link, mention and content protection.</span>
+                </div>
             </div>
 
-        </div>
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                🛡️
+            <div class="modal-feature">
+                <div class="modal-feature-icon">🖼️</div>
+                <div>
+                    <strong>Media Channels</strong>
+                    <span>Image, video and media-only channel controls.</span>
+                </div>
             </div>
 
-            <div>
-
-                <strong>
-                    Advanced Moderation
-                </strong>
-
-                <span>
-                    Spam, raid, link, mention and content protection.
-                </span>
-
+            <div class="modal-feature">
+                <div class="modal-feature-icon">🔔</div>
+                <div>
+                    <strong>Social Notifications</strong>
+                    <span>TikTok and YouTube notification automation.</span>
+                </div>
             </div>
 
-        </div>
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                🖼️
+            <div class="modal-feature">
+                <div class="modal-feature-icon">🎫</div>
+                <div>
+                    <strong>Tickets</strong>
+                    <span>Private support channels and staff controls.</span>
+                </div>
             </div>
 
-            <div>
-
-                <strong>
-                    Media Channels
-                </strong>
-
-                <span>
-                    Image, video and media-only channel controls.
-                </span>
-
+            <div class="modal-feature">
+                <div class="modal-feature-icon">🎉</div>
+                <div>
+                    <strong>Giveaways</strong>
+                    <span>Rewards, winners and entry management.</span>
+                </div>
             </div>
 
-        </div>
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                🔔
+            <div class="modal-feature">
+                <div class="modal-feature-icon">👋</div>
+                <div>
+                    <strong>Welcome System</strong>
+                    <span>Welcome profiles, messages and auto roles.</span>
+                </div>
             </div>
 
-            <div>
-
-                <strong>
-                    Social Notifications
-                </strong>
-
-                <span>
-                    TikTok and YouTube notification automation.
-                </span>
-
+            <div class="modal-feature">
+                <div class="modal-feature-icon">📈</div>
+                <div>
+                    <strong>Levels & XP</strong>
+                    <span>Coming soon to JayVon AI.</span>
+                </div>
             </div>
 
         </div>
 
+        <div class="modal-actions">
 
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                🎫
-            </div>
-
-            <div>
-
-                <strong>
-                    Tickets
-                </strong>
-
-                <span>
-                    Private support channels and staff controls.
-                </span>
-
-            </div>
+            <button
+                class="modal-button"
+                onclick="closeInfo('featuresModal')">
+                Close
+            </button>
 
         </div>
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                🎉
-            </div>
-
-            <div>
-
-                <strong>
-                    Giveaways
-                </strong>
-
-                <span>
-                    Rewards, winners and entry management.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                👋
-            </div>
-
-            <div>
-
-                <strong>
-                    Welcome System
-                </strong>
-
-                <span>
-                    Welcome profiles, messages and auto roles.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="modal-feature">
-
-            <div class="modal-feature-icon">
-                📈
-            </div>
-
-            <div>
-
-                <strong>
-                    Levels & XP
-                </strong>
-
-                <span>
-                    Coming soon to JayVon AI.
-                </span>
-
-            </div>
-
-        </div>
-
 
     </div>
-
-
-    <div class="modal-actions">
-
-        <button
-            class="modal-button"
-            onclick="closeInfo('featuresModal')">
-            Close
-        </button>
-
-    </div>
-
-</div>
-
 
 </div>
 
@@ -2085,61 +1944,57 @@ a{
     id="creditsModal"
     onclick="closeOutside(event,this)">
 
+    <div class="modal-box">
 
-<div class="modal-box">
+        <h2 class="credits-title">
+            🌐 The Vonverse
+        </h2>
 
-    <h2 class="credits-title">
-        🌐 The Vonverse
-    </h2>
+        <p class="credits-title">
+            JayVon AI is part of The Vonverse.
+        </p>
 
-    <p class="credits-title">
-        JayVon AI is part of The Vonverse.
-    </p>
+        <div class="modal-content">
 
+            <b style="color:#3b82f6;">
+                SS_DEMON2
+            </b>
 
-    <div class="modal-content">
+            <br>
 
-        <b style="color:#3b82f6;">
-            SS_DEMON2
-        </b>
+            Creator / Developer
 
-        <br>
+            <br><br>
 
-        Creator / Developer
+            <span class="jay">Jay</span><span class="von">Von</span> AI
 
-        <br><br>
+            <br>
 
-        <span class="jay">Jay</span><span class="von">Von</span> AI
+            Discord Community Assistant
 
-        <br>
+            <br><br>
 
-        Discord Community Assistant
+            <b>
+                The Vonverse
+            </b>
 
-        <br><br>
+            <br>
 
-        <b>
-            The Vonverse
-        </b>
+            The universe behind JayVon AI.
 
-        <br>
+        </div>
 
-        The universe behind JayVon AI.
+        <div class="modal-actions">
+
+            <button
+                class="modal-button"
+                onclick="closeInfo('creditsModal')">
+                Close
+            </button>
+
+        </div>
 
     </div>
-
-
-    <div class="modal-actions">
-
-        <button
-            class="modal-button"
-            onclick="closeInfo('creditsModal')">
-            Close
-        </button>
-
-    </div>
-
-</div>
-
 
 </div>
 
@@ -2152,66 +2007,62 @@ a{
     id="upcomingModal"
     onclick="closeOutside(event,this)">
 
+    <div class="modal-box">
 
-<div class="modal-box">
+        <div
+            style="
+                text-align:center;
+                padding:15px 5px 5px;
+            ">
 
-    <div
-        style="
-            text-align:center;
-            padding:15px 5px 5px;
-        ">
+            <div class="upcoming-icon">
+                📈
+            </div>
 
-        <div class="upcoming-icon">
-            📈
-        </div>
+            <h2>
+                Levels & XP
+            </h2>
 
-        <h2>
-            Levels & XP
-        </h2>
+            <p>
+                This feature is currently being worked on.
+            </p>
 
-        <p>
-            This feature is currently being worked on.
-        </p>
+            <div class="upcoming-box">
 
+                🚧
 
-        <div class="upcoming-box">
+                <b class="coming">
+                    Coming Soon
+                </b>
 
-            🚧
+                <br>
 
-            <b class="coming">
-                Coming Soon
-            </b>
+                JayVon AI's Levels & XP system is coming
+                in a future update.
 
-            <br>
+                <br><br>
 
-            JayVon AI's Levels & XP system is coming
-            in a future update.
+                <span class="stay">
+                    Stay tuned for XP,
+                    level-up messages,
+                    level roles and leaderboards.
+                </span>
 
-            <br><br>
+            </div>
 
-            <span class="stay">
-                Stay tuned for XP,
-                level-up messages,
-                level roles and leaderboards.
-            </span>
+            <div class="modal-actions">
 
-        </div>
+                <button
+                    class="modal-button"
+                    onclick="closeInfo('upcomingModal')">
+                    Close
+                </button>
 
-
-        <div class="modal-actions">
-
-            <button
-                class="modal-button"
-                onclick="closeInfo('upcomingModal')">
-                Close
-            </button>
+            </div>
 
         </div>
 
     </div>
-
-</div>
-
 
 </div>
 
@@ -2237,7 +2088,6 @@ window.addEventListener("load", function(){
 
 });
 
-
 /* =========================================================
    ADD JAYVON AI
 ========================================================= */
@@ -2248,7 +2098,6 @@ function addJayVon(){
         "/api/auth/discord";
 
 }
-
 
 /* =========================================================
    MODALS
@@ -2270,7 +2119,6 @@ function openInfo(id){
 
 }
 
-
 function closeInfo(id){
 
     const modal =
@@ -2287,7 +2135,6 @@ function closeInfo(id){
 
 }
 
-
 function closeOutside(event, element){
 
     if(event.target === element){
@@ -2300,7 +2147,6 @@ function closeOutside(event, element){
     }
 
 }
-
 
 /* =========================================================
    ESC CLOSE
