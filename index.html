@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vonverse — JayVon AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07070a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            width: 100%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(7,7,10,0.85);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #a9a9b2;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-button {
+            background: #ffffff;
+            color: #09090b !important;
+            padding: 10px 17px;
+            border-radius: 9px;
+            font-weight: 700;
+        }
+
+        .nav-button:hover {
+            background: #e8e8e8;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 90px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #6d28d9;
+            opacity: 0.12;
+            filter: blur(130px);
+            border-radius: 50%;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(139,92,246,0.35);
+            background: rgba(139,92,246,0.08);
+            color: #bda4ff;
+            border-radius: 999px;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #ffffff, #9b7cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #a7a7b1;
+            font-size: 19px;
+            line-height: 1.7;
+            max-width: 680px;
+            margin: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .primary {
+            background: #7c3aed;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .primary:hover {
+            background: #8b5cf6;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            letter-spacing: -1.5px;
+        }
+
+        .section-title p {
+            color: #92929b;
+            line-height: 1.7;
+        }
+
+        /* CARDS */
+
+        .cards {
+            max-width: 1100px;
+            margin: 55px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #101015;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139,92,246,0.35);
+        }
+
+        .icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(139,92,246,0.12);
+            border-radius: 12px;
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #92929b;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 70px 30px;
+            background: linear-gradient(
+                135deg,
+                rgba(124,58,237,0.18),
+                rgba(255,255,255,0.03)
+            );
+            border: 1px solid rgba(139,92,246,0.18);
+            border-radius: 22px;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #9999a3;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #777781;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+            .nav-links a:not(.nav-button) {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            section {
+                padding: 75px 5%;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">The <span>Vonverse</span></a>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/dashboard" class="nav-button">Dashboard</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="hero">
+
+            <div class="glow"></div>
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    ✦ Powered by JayVon AI
+                </div>
+
+                <h1>
+                    Welcome to<br>
+                    <span>The Vonverse.</span>
+                </h1>
+
+                <p>
+                    Meet JayVon AI — an intelligent Discord companion
+                    built to bring conversations, community tools,
+                    automation, and smarter server experiences together.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#" class="primary">
+                        Add JayVon AI
+                    </a>
+
+                    <a href="/dashboard" class="secondary">
+                        Open Dashboard
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="features">
+
+            <div class="section-title">
+
+                <h2>Built for your community.</h2>
+
+                <p>
+                    JayVon AI is designed to become the central assistant
+                    for your Discord community.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icon">🤖</div>
+
+                    <h3>JayVon AI</h3>
+
+                    <p>
+                        An AI conversation layer that can interact with
+                        your community and provide intelligent responses.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">⚙️</div>
+
+                    <h3>Server Dashboard</h3>
+
+                    <p>
+                        Manage JayVon AI and configure your server from
+                        one clean dashboard.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">🛡️</div>
+
+                    <h3>Community Tools</h3>
+
+                    <p>
+                        Powerful tools designed to help administrators
+                        manage and organize their communities.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="about">
+
+            <div class="cta">
+
+                <h2>The Vonverse is growing.</h2>
+
+                <p>
+                    JayVon AI is only the beginning.
+                    More features, tools, and experiences are coming.
+                </p>
+
+                <a href="/dashboard" class="primary">
+                    Enter the Dashboard
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div>
+            © 2026 The Vonverse. All rights reserved.
+        </div>
+
+        <div class="footer-links">
+            <a href="/terms">Terms of Service</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+
+    </footer>
+
+</body>
+</html>
