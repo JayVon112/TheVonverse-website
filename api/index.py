@@ -86,13 +86,14 @@ def discord_login():
 
 
     authorization_url = (
-        "https://discord.com/oauth2/authorize"
-        f"?client_id={DISCORD_CLIENT_ID}"
-        f"&redirect_uri={requests.utils.quote(DISCORD_REDIRECT_URI, safe='')}"
-        "&response_type=code"
-        "&scope=identify%20guilds"
-        f"&state={state}"
-    )
+    "https://discord.com/oauth2/authorize"
+    f"?client_id={DISCORD_CLIENT_ID}"
+    f"&redirect_uri={requests.utils.quote(DISCORD_REDIRECT_URI, safe='')}"
+    "&response_type=code"
+    "&scope=bot%20identify%20guilds"
+    "&permissions=8"
+    f"&state={state}"
+)
 
 
     return redirect(authorization_url)
