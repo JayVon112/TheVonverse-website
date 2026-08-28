@@ -1,7 +1,6 @@
 import os
 import secrets
 import requests
-
 from flask import Flask, redirect, request, session, jsonify
 
 
@@ -16,6 +15,7 @@ app.secret_key = os.getenv("SESSION_SECRET")
 
 if not app.secret_key:
     raise RuntimeError("SESSION_SECRET is missing")
+
 
 app.config.update(
     SESSION_COOKIE_SECURE=True,
@@ -38,6 +38,11 @@ DISCORD_CLIENT_SECRET = os.getenv(
     ""
 ).strip()
 
+DISCORD_BOT_TOKEN = os.getenv(
+    "DISCORD_BOT_TOKEN",
+    ""
+).strip()
+
 DISCORD_REDIRECT_URI = os.getenv(
     "DISCORD_REDIRECT_URI",
     "https://thevonverse.vercel.app/api/auth/discord/callback"
@@ -47,7 +52,7 @@ DISCORD_API = "https://discord.com/api/v10"
 
 
 # ============================================================
-# API TEST
+# BASIC TEST
 # ============================================================
 
 @app.route("/api")
@@ -74,9 +79,11 @@ def discord_login():
     if not DISCORD_CLIENT_SECRET:
         return "DISCORD_CLIENT_SECRET is missing.", 500
 
+
     state = secrets.token_urlsafe(32)
 
     session["oauth_state"] = state
+
 
     authorization_url = (
         "https://discord.com/oauth2/authorize"
@@ -86,6 +93,7 @@ def discord_login():
         "&scope=identify%20guilds"
         f"&state={state}"
     )
+
 
     return redirect(authorization_url)
 
@@ -100,6 +108,7 @@ def discord_callback():
     error = request.args.get("error")
 
     if error:
+
         return f"""
         <html>
         <body style="
@@ -115,6 +124,21 @@ def discord_callback():
             <p style="color:#888;">
                 {error}
             </p>
+
+            <br>
+
+            <a
+                href="/"
+                style="
+                    color:#fff;
+                    background:#5865F2;
+                    padding:12px 20px;
+                    border-radius:8px;
+                    text-decoration:none;
+                "
+            >
+                Return to JayVon AI
+            </a>
 
         </body>
         </html>
@@ -132,17 +156,56 @@ def discord_callback():
     # ========================================================
 
     received_state = request.args.get("state")
+
     saved_state = session.get("oauth_state")
+
 
     if (
         not received_state
+        or not saved_state
         or received_state != saved_state
     ):
-        return "Invalid OAuth state.", 400
+
+        session.pop("oauth_state", None)
+
+        return """
+        <html>
+        <body style="
+            background:#050508;
+            color:white;
+            font-family:Arial;
+            text-align:center;
+            padding-top:100px;
+        ">
+
+            <h1>Invalid OAuth state</h1>
+
+            <p style="color:#888;">
+                Please start the Discord connection again.
+            </p>
+
+            <br>
+
+            <a
+                href="/api/auth/discord"
+                style="
+                    color:white;
+                    background:#5865F2;
+                    padding:12px 20px;
+                    border-radius:8px;
+                    text-decoration:none;
+                "
+            >
+                Connect Discord
+            </a>
+
+        </body>
+        </html>
+        """, 400
 
 
     # ========================================================
-    # EXCHANGE CODE FOR TOKEN
+    # EXCHANGE CODE
     # ========================================================
 
     token_response = requests.post(
@@ -184,10 +247,10 @@ def discord_callback():
 
 
     # ========================================================
-    # GET DISCORD USER
+    # USER
     # ========================================================
 
-    headers = {
+    user_headers = {
         "Authorization":
             f"Bearer {access_token}"
     }
@@ -197,13 +260,14 @@ def discord_callback():
 
         f"{DISCORD_API}/users/@me",
 
-        headers=headers,
+        headers=user_headers,
 
         timeout=15
     )
 
 
     if not user_response.ok:
+
         return "Could not retrieve Discord user information.", 500
 
 
@@ -211,14 +275,14 @@ def discord_callback():
 
 
     # ========================================================
-    # GET USER SERVERS
+    # USER GUILDS
     # ========================================================
 
     guild_response = requests.get(
 
         f"{DISCORD_API}/users/@me/guilds",
 
-        headers=headers,
+        headers=user_headers,
 
         timeout=15
     )
@@ -228,11 +292,12 @@ def discord_callback():
 
 
     if guild_response.ok:
+
         guilds = guild_response.json()
 
 
     # ========================================================
-    # SAVE SESSION
+    # SAVE USER
     # ========================================================
 
     session.pop("oauth_state", None)
@@ -268,14 +333,14 @@ def discord_callback():
 
 
     # ========================================================
-    # SEND USER TO DASHBOARD
+    # GO TO DASHBOARD
     # ========================================================
 
     return redirect("/dashboard.html")
 
 
 # ============================================================
-# CURRENT USER
+# GET CURRENT USER + SERVERS
 # ============================================================
 
 @app.route("/api/me")
@@ -287,8 +352,85 @@ def current_user():
     if not user:
 
         return jsonify({
-            "logged_in": False
+            "logged_in": False,
+            "user": None,
+            "guilds": []
         })
+
+
+    guilds = session.get(
+        "discord_guilds",
+        []
+    )
+
+
+    manageable_guilds = []
+
+
+    for guild in guilds:
+
+        try:
+
+            permissions = int(
+                guild.get("permissions", 0)
+            )
+
+        except:
+
+            permissions = 0
+
+
+        owner = guild.get(
+            "owner",
+            False
+        )
+
+
+        # Discord permission bits:
+        #
+        # ADMINISTRATOR = 8
+        # MANAGE_GUILD = 32
+
+        administrator = (
+            permissions & 8
+        ) == 8
+
+
+        manage_guild = (
+            permissions & 32
+        ) == 32
+
+
+        can_manage = (
+            owner
+            or administrator
+            or manage_guild
+        )
+
+
+        if can_manage:
+
+            manageable_guilds.append({
+
+                "id":
+                    guild.get("id"),
+
+                "name":
+                    guild.get("name"),
+
+                "icon":
+                    guild.get("icon"),
+
+                "owner":
+                    owner,
+
+                "permissions":
+                    permissions,
+
+                "can_manage":
+                    True
+
+            })
 
 
     return jsonify({
@@ -299,11 +441,244 @@ def current_user():
             user,
 
         "guilds":
-            session.get(
-                "discord_guilds",
-                []
-            )
+            manageable_guilds
     })
+
+
+# ============================================================
+# CHECK IF JAYVON IS IN A SERVER
+# ============================================================
+
+@app.route("/api/guild/<guild_id>")
+def guild_info(guild_id):
+
+    user = session.get("discord_user")
+
+
+    if not user:
+
+        return jsonify({
+            "error": "Not logged in"
+        }), 401
+
+
+    guilds = session.get(
+        "discord_guilds",
+        []
+    )
+
+
+    selected_guild = None
+
+
+    for guild in guilds:
+
+        if guild.get("id") == guild_id:
+
+            selected_guild = guild
+            break
+
+
+    if not selected_guild:
+
+        return jsonify({
+            "error":
+                "You do not have access to this server."
+        }), 403
+
+
+    try:
+
+        permissions = int(
+            selected_guild.get(
+                "permissions",
+                0
+            )
+        )
+
+    except:
+
+        permissions = 0
+
+
+    owner = selected_guild.get(
+        "owner",
+        False
+    )
+
+
+    can_manage = (
+
+        owner
+
+        or (permissions & 8) == 8
+
+        or (permissions & 32) == 32
+    )
+
+
+    if not can_manage:
+
+        return jsonify({
+            "error":
+                "You do not have permission to configure this server."
+        }), 403
+
+
+    # ========================================================
+    # CHECK BOT
+    # ========================================================
+
+    bot_present = False
+
+
+    if DISCORD_BOT_TOKEN:
+
+        bot_response = requests.get(
+
+            f"{DISCORD_API}/guilds/{guild_id}/members/{DISCORD_CLIENT_ID}",
+
+            headers={
+                "Authorization":
+                    f"Bot {DISCORD_BOT_TOKEN}"
+            },
+
+            timeout=15
+        )
+
+
+        bot_present = (
+            bot_response.status_code == 200
+        )
+
+
+    return jsonify({
+
+        "id":
+            selected_guild.get("id"),
+
+        "name":
+            selected_guild.get("name"),
+
+        "icon":
+            selected_guild.get("icon"),
+
+        "owner":
+            owner,
+
+        "can_manage":
+            True,
+
+        "bot_present":
+            bot_present
+
+    })
+
+
+# ============================================================
+# CREATE BOT INVITE FOR A SERVER
+# ============================================================
+
+@app.route("/api/add/<guild_id>")
+def add_bot(guild_id):
+
+    user = session.get("discord_user")
+
+
+    if not user:
+
+        return redirect(
+            "/api/auth/discord"
+        )
+
+
+    guilds = session.get(
+        "discord_guilds",
+        []
+    )
+
+
+    selected_guild = None
+
+
+    for guild in guilds:
+
+        if guild.get("id") == guild_id:
+
+            selected_guild = guild
+            break
+
+
+    if not selected_guild:
+
+        return """
+        <h1>Server not available</h1>
+        <p>You do not have access to configure this server.</p>
+        """, 403
+
+
+    try:
+
+        permissions = int(
+            selected_guild.get(
+                "permissions",
+                0
+            )
+        )
+
+    except:
+
+        permissions = 0
+
+
+    owner = selected_guild.get(
+        "owner",
+        False
+    )
+
+
+    can_manage = (
+
+        owner
+
+        or (permissions & 8) == 8
+
+        or (permissions & 32) == 32
+    )
+
+
+    if not can_manage:
+
+        return """
+        <h1>Permission denied</h1>
+        <p>You cannot configure this server.</p>
+        """, 403
+
+
+    # ========================================================
+    # BOT INVITE
+    # ========================================================
+
+    permissions_to_request = "8"
+
+
+    invite_url = (
+
+        "https://discord.com/oauth2/authorize"
+
+        f"?client_id={DISCORD_CLIENT_ID}"
+
+        "&scope=bot%20applications.commands"
+
+        f"&permissions={permissions_to_request}"
+
+        f"&guild_id={guild_id}"
+
+        "&disable_guild_select=true"
+    )
+
+
+    return redirect(invite_url)
 
 
 # ============================================================
@@ -322,5 +697,4 @@ def logout():
 # VERCEL
 # ============================================================
 
-# Vercel automatically imports the Flask
-# application from this file.
+# Vercel imports the Flask app automatically.
