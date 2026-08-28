@@ -85,13 +85,13 @@ def discord_login():
     session["oauth_state"] = state
 
 
-    authorization_url = (
+  authorization_url = (
     "https://discord.com/oauth2/authorize"
     f"?client_id={DISCORD_CLIENT_ID}"
     f"&redirect_uri={requests.utils.quote(DISCORD_REDIRECT_URI, safe='')}"
     "&response_type=code"
     "&scope=bot%20identify%20guilds"
-    "&permissions=8"
+    "&permissions=268446806"
     f"&state={state}"
 )
 
