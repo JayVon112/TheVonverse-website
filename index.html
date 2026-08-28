@@ -3,21 +3,33 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Dashboard — JayVon AI</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+    --bg:#07070a;
+    --panel:#101015;
+    --panel2:#141419;
+    --border:rgba(255,255,255,.08);
+    --muted:#85858f;
+    --purple:#7c3aed;
+    --purple2:#8b5cf6;
+    --green:#22c55e;
+    --blue:#3b82f6;
+    --danger:#ef4444;
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#07070a;
+    background:var(--bg);
     color:white;
     min-height:100vh;
 }
@@ -30,6 +42,78 @@ button{
     cursor:pointer;
 }
 
+/* =========================
+   VONVERSE LOADING SCREEN
+========================= */
+
+.boot-screen{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:
+        radial-gradient(circle at center,rgba(124,58,237,.18),transparent 40%),
+        #050507;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:.7s ease;
+}
+
+.boot-screen.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.boot-logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:-2px;
+    animation:bootPulse 1.5s infinite;
+}
+
+.boot-logo span{
+    color:var(--purple2);
+}
+
+.boot-sub{
+    color:#777781;
+    font-size:12px;
+    margin-top:9px;
+    letter-spacing:2px;
+}
+
+.boot-line{
+    width:190px;
+    height:3px;
+    background:#17171d;
+    border-radius:10px;
+    margin-top:25px;
+    overflow:hidden;
+}
+
+.boot-line div{
+    width:40%;
+    height:100%;
+    background:linear-gradient(90deg,var(--purple),var(--blue));
+    animation:bootLine 1.2s infinite;
+}
+
+@keyframes bootPulse{
+    0%,100%{transform:scale(1);opacity:.8}
+    50%{transform:scale(1.04);opacity:1}
+}
+
+@keyframes bootLine{
+    from{transform:translateX(-150%)}
+    to{transform:translateX(400%)}
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
 .sidebar{
     position:fixed;
     left:0;
@@ -37,7 +121,7 @@ button{
     bottom:0;
     width:250px;
     background:#0c0c10;
-    border-right:1px solid rgba(255,255,255,.08);
+    border-right:1px solid var(--border);
     padding:24px 15px;
     z-index:100;
 }
@@ -46,19 +130,24 @@ button{
     font-size:21px;
     font-weight:800;
     padding:0 12px;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .logo span{
-    color:#8b5cf6;
+    color:var(--purple2);
 }
 
 .server-box{
-    background:#141419;
-    border:1px solid rgba(255,255,255,.08);
+    background:var(--panel2);
+    border:1px solid var(--border);
     border-radius:11px;
     padding:13px;
     margin-bottom:25px;
+    transition:.2s;
+}
+
+.server-box:hover{
+    border-color:rgba(139,92,246,.35);
 }
 
 .server-label{
@@ -66,12 +155,42 @@ button{
     font-size:10px;
     text-transform:uppercase;
     letter-spacing:1px;
-    margin-bottom:5px;
+    margin-bottom:7px;
 }
 
-.server-name{
-    font-size:14px;
+.server-select{
+    width:100%;
+    background:transparent;
+    border:0;
+    padding:0;
+    color:white;
+    outline:none;
     font-weight:700;
+}
+
+.server-select option{
+    background:#141419;
+}
+
+.bot-installed{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:8px;
+    color:#777781;
+    font-size:10px;
+}
+
+.bot-installed-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#555;
+}
+
+.bot-installed.online .bot-installed-dot{
+    background:var(--green);
+    box-shadow:0 0 8px var(--green);
 }
 
 .nav-title{
@@ -122,11 +241,22 @@ button{
     color:#777781;
     padding:8px 12px;
     font-size:13px;
+    text-decoration:none;
 }
 
 .sidebar-link:hover{
     color:white;
 }
+
+.made-by{
+    color:#55555f;
+    font-size:10px;
+    padding:8px 12px;
+}
+
+/* =========================
+   MAIN
+========================= */
 
 .main{
     margin-left:250px;
@@ -135,7 +265,7 @@ button{
 
 .topbar{
     height:72px;
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid var(--border);
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -162,9 +292,9 @@ button{
 .status-dot{
     width:8px;
     height:8px;
-    background:#22c55e;
+    background:var(--green);
     border-radius:50%;
-    box-shadow:0 0 10px #22c55e;
+    box-shadow:0 0 10px var(--green);
 }
 
 .content{
@@ -175,10 +305,22 @@ button{
 
 .section{
     display:none;
+    animation:sectionIn .25s ease;
 }
 
 .section.active{
     display:block;
+}
+
+@keyframes sectionIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
 }
 
 .heading{
@@ -196,6 +338,10 @@ button{
     font-size:14px;
 }
 
+/* =========================
+   CARDS
+========================= */
+
 .grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -203,8 +349,8 @@ button{
 }
 
 .card{
-    background:#101015;
-    border:1px solid rgba(255,255,255,.08);
+    background:var(--panel);
+    border:1px solid var(--border);
     border-radius:15px;
     padding:23px;
     transition:.2s;
@@ -230,9 +376,13 @@ button{
     line-height:1.6;
 }
 
+/* =========================
+   SETTINGS
+========================= */
+
 .settings-card{
-    background:#101015;
-    border:1px solid rgba(255,255,255,.08);
+    background:var(--panel);
+    border:1px solid var(--border);
     border-radius:14px;
     margin-bottom:18px;
     overflow:hidden;
@@ -307,8 +457,58 @@ textarea{
 select:focus,
 input:focus,
 textarea:focus{
-    border-color:#8b5cf6;
+    border-color:var(--purple2);
 }
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button{
+    border:0;
+    background:var(--purple);
+    color:white;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.button:hover{
+    background:var(--purple2);
+    transform:translateY(-1px);
+}
+
+.button.secondary{
+    background:#1b1b22;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.button.success{
+    background:var(--green);
+    color:#031208;
+}
+
+.button.blue{
+    background:var(--blue);
+}
+
+.button.danger{
+    background:#7f1d1d;
+}
+
+.button.disabled,
+.button:disabled{
+    background:#292930;
+    color:#666670;
+    cursor:not-allowed;
+    transform:none;
+    opacity:.7;
+}
+
+/* =========================
+   TOGGLE
+========================= */
 
 .toggle{
     width:46px;
@@ -341,7 +541,7 @@ textarea:focus{
 }
 
 .toggle input:checked + .slider{
-    background:#7c3aed;
+    background:var(--purple);
 }
 
 .toggle input:checked + .slider:before{
@@ -349,33 +549,126 @@ textarea:focus{
     background:white;
 }
 
-.button{
-    border:0;
-    background:#7c3aed;
-    color:white;
-    padding:11px 18px;
-    border-radius:8px;
-    font-weight:700;
+/* =========================
+   ROLE SELECTOR
+========================= */
+
+.role-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    max-width:500px;
+}
+
+.role{
+    padding:8px 12px;
+    background:#18181e;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:7px;
+    color:#aaaab3;
+    cursor:pointer;
     transition:.2s;
 }
 
-.button:hover{
-    background:#8b5cf6;
-    transform:translateY(-1px);
+.role:hover{
+    border-color:#666675;
 }
 
-.button.secondary{
-    background:#1b1b22;
-    border:1px solid rgba(255,255,255,.08);
+.role.selected{
+    background:#21153d;
+    border-color:var(--purple2);
+    color:#d7c7ff;
 }
 
-.button.danger{
-    background:#7f1d1d;
+.role.none.selected{
+    background:#25252c;
+    border-color:#777781;
+    color:white;
 }
+
+/* =========================
+   DISCORD SELECTORS
+========================= */
+
+.discord-selector{
+    width:100%;
+    max-width:500px;
+}
+
+.discord-selector select{
+    width:100%;
+}
+
+.selector-status{
+    color:#676772;
+    font-size:11px;
+    margin-top:6px;
+}
+
+.selector-status.ready{
+    color:#4ade80;
+}
+
+/* =========================
+   ACTION ROW
+========================= */
+
+.save-row{
+    display:flex;
+    justify-content:flex-end;
+    padding:18px 22px;
+    gap:10px;
+}
+
+.action-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+    background:rgba(124,58,237,.08);
+    border:1px solid rgba(139,92,246,.2);
+    padding:15px;
+    border-radius:10px;
+    color:#bca9df;
+    font-size:12px;
+    line-height:1.6;
+    margin:18px 22px;
+}
+
+.warning{
+    background:rgba(245,158,11,.07);
+    border-color:rgba(245,158,11,.2);
+    color:#d6b06a;
+}
+
+.success-notice{
+    background:rgba(34,197,94,.07);
+    border:1px solid rgba(34,197,94,.18);
+    color:#86efac;
+    padding:13px;
+    border-radius:9px;
+    font-size:12px;
+    display:none;
+}
+
+.success-notice.show{
+    display:block;
+}
+
+/* =========================
+   WELCOME
+========================= */
 
 .message-builder{
     display:grid;
-    grid-template-columns:1fr 300px;
+    grid-template-columns:1fr 320px;
     gap:20px;
 }
 
@@ -393,19 +686,30 @@ textarea:focus{
     margin-bottom:16px;
 }
 
+.profile-card{
+    background:
+        linear-gradient(rgba(10,10,15,.45),rgba(10,10,15,.85)),
+        url("https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=900&q=80");
+    background-size:cover;
+    background-position:center;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:15px;
+}
+
 .profile-preview{
     display:flex;
     align-items:center;
     gap:12px;
-    margin-bottom:15px;
 }
 
 .profile-preview img{
-    width:45px;
-    height:45px;
+    width:55px;
+    height:55px;
     border-radius:50%;
     object-fit:cover;
     background:#292930;
+    border:2px solid rgba(255,255,255,.25);
 }
 
 .preview-message{
@@ -414,63 +718,118 @@ textarea:focus{
     line-height:1.6;
 }
 
-.notice{
-    background:rgba(124,58,237,.08);
-    border:1px solid rgba(139,92,246,.2);
-    padding:15px;
-    border-radius:10px;
-    color:#bca9df;
-    font-size:12px;
-    line-height:1.6;
-    margin:18px 22px;
+/* =========================
+   BAD WORDS
+========================= */
+
+.word-manager{
+    padding:22px;
 }
 
-.warning{
-    background:rgba(245,158,11,.07);
-    border:1px solid rgba(245,158,11,.2);
-    color:#d6b06a;
+.word-input-row{
+    display:flex;
+    gap:10px;
 }
 
-.role-list{
+.word-input-row input{
+    flex:1;
+    width:auto;
+}
+
+.word-list{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
+    margin-top:15px;
 }
 
-.role{
-    padding:8px 12px;
+.word-chip{
+    display:flex;
+    align-items:center;
+    gap:7px;
     background:#18181e;
     border:1px solid rgba(255,255,255,.08);
     border-radius:7px;
-    color:#aaaab3;
-    cursor:pointer;
+    padding:7px 10px;
+    color:#c9c9d0;
+    font-size:12px;
 }
 
-.role.selected{
-    background:#21153d;
-    border-color:#8b5cf6;
-    color:#d7c7ff;
+.word-chip button{
+    border:0;
+    background:none;
+    color:#777781;
 }
 
-.optional{
-    color:#7c7c86;
-    font-size:10px;
-    margin-left:7px;
-    border:1px solid rgba(255,255,255,.1);
-    padding:3px 6px;
-    border-radius:5px;
+.word-chip button:hover{
+    color:#ef4444;
 }
 
-.upcoming{
+/* =========================
+   UNSAVED MODAL
+========================= */
+
+.modal{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.72);
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(9px);
     display:none;
     align-items:center;
     justify-content:center;
-    z-index:999;
+    z-index:9999;
 }
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(450px,92%);
+    background:#111116;
+    border:1px solid rgba(139,92,246,.25);
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 25px 100px rgba(0,0,0,.6);
+    animation:modalIn .2s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:scale(.96) translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.modal-icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.modal-box h2{
+    margin-bottom:8px;
+}
+
+.modal-box p{
+    color:#85858f;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:24px;
+}
+
+/* =========================
+   UPCOMING
+========================= */
 
 .upcoming-box{
     width:min(430px,90%);
@@ -510,12 +869,36 @@ textarea:focus{
     margin-bottom:15px;
 }
 
-.save-row{
-    display:flex;
-    justify-content:flex-end;
-    padding:18px 22px;
-    gap:10px;
+/* =========================
+   EMPTY SERVER
+========================= */
+
+.empty-server{
+    text-align:center;
+    padding:70px 20px;
+    color:#777781;
 }
+
+.empty-server-icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.empty-server h2{
+    color:white;
+    margin-bottom:8px;
+}
+
+.empty-server p{
+    max-width:450px;
+    margin:auto;
+    line-height:1.6;
+    font-size:13px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:900px){
 
@@ -566,83 +949,145 @@ textarea:focus{
     input{
         width:100%;
     }
-}
 
+    .topbar{
+        padding:0 18px;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<!-- =========================
+     BOOT SCREEN
+========================= -->
+
+<div class="boot-screen" id="bootScreen">
+
+    <div class="boot-logo">
+        JayVon <span>AI</span>
+    </div>
+
+    <div class="boot-sub">
+        POWERED BY THE VONVERSE
+    </div>
+
+    <div class="boot-line">
+        <div></div>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
 <aside class="sidebar">
 
-<div class="logo">
-    JayVon <span>AI</span>
-</div>
-
-<div class="server-box">
-    <div class="server-label">Managing Server</div>
-    <div class="server-name" id="serverName">
-        Your Discord Server
+    <div class="logo">
+        JayVon <span>AI</span>
     </div>
-</div>
 
-<div class="nav-title">Dashboard</div>
+    <div class="server-box">
 
-<button class="nav-item active" onclick="showSection('overview',this)">
-    <span class="nav-icon">🏠</span> Overview
-</button>
+        <div class="server-label">
+            Managing Server
+        </div>
 
-<button class="nav-item" onclick="showSection('ai',this)">
-    <span class="nav-icon">🤖</span> AI
-</button>
+        <select
+            id="serverSelect"
+            class="server-select"
+            onchange="switchServer(this.value)"
+        >
+            <option value="">
+                Loading servers...
+            </option>
+        </select>
 
-<button class="nav-item" onclick="showSection('music',this)">
-    <span class="nav-icon">🎵</span> Music
-</button>
+        <div class="bot-installed" id="botStatus">
+            <span class="bot-installed-dot"></span>
+            Checking JayVon AI...
+        </div>
 
-<button class="nav-item" onclick="showSection('tickets',this)">
-    <span class="nav-icon">🎫</span> Tickets
-</button>
+    </div>
 
-<button class="nav-item" onclick="showSection('giveaways',this)">
-    <span class="nav-icon">🎉</span> Giveaways
-</button>
 
-<button class="nav-item" onclick="showSection('welcome',this)">
-    <span class="nav-icon">👋</span> Welcome
-</button>
+    <div class="nav-title">
+        Dashboard
+    </div>
 
-<button class="nav-item" onclick="showSection('moderation',this)">
-    <span class="nav-icon">🛡️</span> Moderation
-</button>
+    <button class="nav-item active" onclick="navigate('overview',this)">
+        <span class="nav-icon">🏠</span>
+        Overview
+    </button>
 
-<button class="nav-item" onclick="showSection('commands',this)">
-    <span class="nav-icon">📋</span> Commands
-</button>
+    <button class="nav-item" onclick="navigate('ai',this)">
+        <span class="nav-icon">🤖</span>
+        AI
+    </button>
 
-<button class="nav-item" onclick="showUpcoming()">
-    <span class="nav-icon">📈</span> Levels
-</button>
+    <button class="nav-item" onclick="navigate('music',this)">
+        <span class="nav-icon">🎵</span>
+        Music
+    </button>
 
-<button class="nav-item" onclick="showSection('settings',this)">
-    <span class="nav-icon">⚙️</span> Server Settings
-</button>
+    <button class="nav-item" onclick="navigate('tickets',this)">
+        <span class="nav-icon">🎫</span>
+        Tickets
+    </button>
 
-<div class="sidebar-bottom">
+    <button class="nav-item" onclick="navigate('giveaways',this)">
+        <span class="nav-icon">🎉</span>
+        Giveaways
+    </button>
 
-<a href="/terms.html" class="sidebar-link">
-Terms of Service
-</a>
+    <button class="nav-item" onclick="navigate('welcome',this)">
+        <span class="nav-icon">👋</span>
+        Welcome
+    </button>
 
-<a href="/privacy.html" class="sidebar-link">
-Privacy Policy
-</a>
+    <button class="nav-item" onclick="navigate('moderation',this)">
+        <span class="nav-icon">🛡️</span>
+        Moderation
+    </button>
 
-<a href="/" class="sidebar-link">
-← Back to The Vonverse
-</a>
+    <button class="nav-item" onclick="navigate('commands',this)">
+        <span class="nav-icon">📋</span>
+        Commands
+    </button>
 
-</div>
+    <button class="nav-item" onclick="showUpcoming()">
+        <span class="nav-icon">📈</span>
+        Levels
+    </button>
+
+    <button class="nav-item" onclick="navigate('settings',this)">
+        <span class="nav-icon">⚙️</span>
+        Server Settings
+    </button>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="made-by">
+            Made by 🌐 The Vonverse
+        </div>
+
+        <a href="/terms.html" class="sidebar-link">
+            Terms of Service
+        </a>
+
+        <a href="/privacy.html" class="sidebar-link">
+            Privacy Policy
+        </a>
+
+        <a href="/" class="sidebar-link">
+            ← Back to The Vonverse
+        </a>
+
+    </div>
 
 </aside>
 
@@ -651,14 +1096,14 @@ Privacy Policy
 
 <header class="topbar">
 
-<div class="page-title">
-JayVon AI • Overview
-</div>
+    <div class="page-title">
+        JayVon AI • Overview
+    </div>
 
-<div class="status">
-<span class="status-dot"></span>
-Bot Online
-</div>
+    <div class="status">
+        <span class="status-dot"></span>
+        Bot Online
+    </div>
 
 </header>
 
@@ -666,7 +1111,9 @@ Bot Online
 <div class="content">
 
 
-<!-- OVERVIEW -->
+<!-- =========================
+     OVERVIEW
+========================= -->
 
 <section id="overview" class="section active">
 
@@ -679,6 +1126,8 @@ Your server's control center for AI, moderation, music, tickets and community to
 </p>
 
 </div>
+
+<div id="serverDashboard">
 
 <div class="grid">
 
@@ -720,10 +1169,14 @@ Your server's control center for AI, moderation, music, tickets and community to
 
 </div>
 
+</div>
+
 </section>
 
 
-<!-- AI -->
+<!-- =========================
+     AI
+========================= -->
 
 <section id="ai" class="section">
 
@@ -747,7 +1200,7 @@ Your server's control center for AI, moderation, music, tickets and community to
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input id="aiEnabled" type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -760,9 +1213,17 @@ Your server's control center for AI, moderation, music, tickets and community to
 <p>Choose the Discord channel where automatic AI responses are allowed.</p>
 </div>
 
-<select>
-<option>Select Discord channel</option>
+<div class="discord-selector">
+
+<select id="aiChannel" onchange="markDirty()">
+<option value="">Select Discord channel</option>
 </select>
+
+<div class="selector-status" id="aiChannelStatus">
+Choose a channel.
+</div>
+
+</div>
 
 </div>
 
@@ -773,13 +1234,21 @@ Your server's control center for AI, moderation, music, tickets and community to
 <p>Choose the default personality for JayVon AI.</p>
 </div>
 
-<select>
+<select id="aiPersonality" onchange="markDirty()">
 <option>Friendly</option>
 <option>Professional</option>
 <option>Funny</option>
+<option>Helpful</option>
+<option>Strict</option>
 <option>Custom</option>
 </select>
 
+</div>
+
+<div class="save-row">
+<button class="button" onclick="saveSettings('ai')">
+Save AI Settings
+</button>
 </div>
 
 </div>
@@ -787,7 +1256,9 @@ Your server's control center for AI, moderation, music, tickets and community to
 </section>
 
 
-<!-- MUSIC -->
+<!-- =========================
+     MUSIC
+========================= -->
 
 <section id="music" class="section">
 
@@ -800,7 +1271,7 @@ Your server's control center for AI, moderation, music, tickets and community to
 
 <div class="settings-header">
 <h3>Music Permissions</h3>
-<p>Select real Discord roles that should receive instant music controls.</p>
+<p>Select real Discord roles that should receive music controls.</p>
 </div>
 
 <div class="setting">
@@ -811,7 +1282,7 @@ Your server's control center for AI, moderation, music, tickets and community to
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -821,23 +1292,15 @@ Your server's control center for AI, moderation, music, tickets and community to
 
 <div class="setting-info">
 <h4>Music Control Roles</h4>
-<p>Members with these roles can use !play, !pause, !skip and other controls instantly.</p>
+<p>Select real Discord roles.</p>
 </div>
 
-<div class="role-list">
-
-<div class="role" onclick="toggleRole(this)">
-DJ
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-Music
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-Moderator
-</div>
-
+<div class="role-list" id="musicRoles">
+    <div class="role none selected"
+         data-role="none"
+         onclick="selectRole(this,'musicRoles')">
+        None
+    </div>
 </div>
 
 </div>
@@ -846,11 +1309,11 @@ Moderator
 
 <div class="setting-info">
 <h4>Require Voting</h4>
-<p>Members without a control role must receive enough votes before controlling playback.</p>
+<p>Members without a control role must receive enough votes.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -863,7 +1326,7 @@ Moderator
 <p>Number of regular members required.</p>
 </div>
 
-<select>
+<select onchange="markDirty()">
 <option>1</option>
 <option selected>2</option>
 <option>3</option>
@@ -873,25 +1336,33 @@ Moderator
 
 </div>
 
+<div class="save-row">
+<button class="button" onclick="saveSettings('music')">
+Save Music Settings
+</button>
+</div>
+
 </div>
 
 </section>
 
 
-<!-- TICKETS -->
+<!-- =========================
+     TICKETS
+========================= -->
 
 <section id="tickets" class="section">
 
 <div class="heading">
 <h1>🎫 Tickets</h1>
-<p>Build a complete private ticket system for your server.</p>
+<p>Build a complete private support system for your server.</p>
 </div>
 
 <div class="settings-card">
 
 <div class="settings-header">
 <h3>Ticket Panel</h3>
-<p>Choose where your ticket panel is posted and customize exactly what members see.</p>
+<p>Choose where your ticket panel is posted.</p>
 </div>
 
 <div class="setting">
@@ -901,8 +1372,8 @@ Moderator
 <p>The Discord channel where members will see the ticket panel.</p>
 </div>
 
-<select>
-<option>Select Discord channel</option>
+<select id="ticketPanelChannel" onchange="updateTicketState();markDirty()">
+<option value="">Select Discord channel</option>
 </select>
 
 </div>
@@ -914,7 +1385,7 @@ Moderator
 <p>Title displayed above the ticket button.</p>
 </div>
 
-<input value="Need help?">
+<input value="Need help?" onchange="markDirty()">
 
 </div>
 
@@ -925,7 +1396,8 @@ Moderator
 <p>Explain why members should create a ticket.</p>
 </div>
 
-<input value="Create a ticket below and our staff team will assist you.">
+<input value="Create a ticket below and our staff team will assist you."
+onchange="markDirty()">
 
 </div>
 
@@ -936,7 +1408,25 @@ Moderator
 <p>Short text displayed directly on the button.</p>
 </div>
 
-<input value="🎫 Open Ticket" maxlength="32">
+<input value="🎫 Open Ticket" maxlength="32" onchange="markDirty()">
+
+</div>
+
+<div class="save-row">
+
+<button
+id="ticketSendButton"
+class="button disabled"
+disabled
+onclick="sendTicketPanel()">
+
+Send Ticket Panel
+
+</button>
+
+<button class="button secondary" onclick="saveSettings('tickets')">
+Save Ticket Settings
+</button>
 
 </div>
 
@@ -947,28 +1437,22 @@ Moderator
 
 <div class="settings-header">
 <h3>Ticket Access</h3>
-<p>Control exactly who can create and view tickets.</p>
+<p>Select real Discord roles that can manage tickets.</p>
 </div>
 
 <div class="setting">
 
 <div class="setting-info">
 <h4>Ticket Staff Roles</h4>
-<p>These roles can see tickets created by members. The ticket owner can always see their own ticket.</p>
+<p>Choose real server roles.</p>
 </div>
 
-<div class="role-list">
+<div class="role-list" id="ticketStaffRoles">
 
-<div class="role selected" onclick="toggleRole(this)">
-Support
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-Moderator
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-Administrator
+<div class="role none selected"
+data-role="none"
+onclick="selectRole(this,'ticketStaffRoles')">
+None
 </div>
 
 </div>
@@ -979,38 +1463,15 @@ Administrator
 
 <div class="setting-info">
 <h4>Who Can Create Tickets?</h4>
-<p>Select roles that are allowed to open tickets.</p>
+<p>Select roles allowed to open tickets.</p>
 </div>
 
-<div class="role-list">
+<div class="role-list" id="ticketCreateRoles">
 
-<div class="role selected" onclick="toggleRole(this)">
-Member
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-VIP
-</div>
-
-</div>
-
-</div>
-
-<div class="setting">
-
-<div class="setting-info">
-<h4>Blocked Ticket Roles</h4>
-<p>Members with these roles cannot create tickets.</p>
-</div>
-
-<div class="role-list">
-
-<div class="role" onclick="toggleRole(this)">
-Muted
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-Banned
+<div class="role none selected"
+data-role="none"
+onclick="selectRole(this,'ticketCreateRoles')">
+None
 </div>
 
 </div>
@@ -1021,11 +1482,11 @@ Banned
 
 <div class="setting-info">
 <h4>Ticket Category</h4>
-<p>Private tickets can automatically be created inside this Discord category.</p>
+<p>Private tickets will be created inside this Discord category.</p>
 </div>
 
-<select>
-<option>Select ticket category</option>
+<select id="ticketCategory" onchange="markDirty()">
+<option value="">Select ticket category</option>
 </select>
 
 </div>
@@ -1037,17 +1498,25 @@ Banned
 <p>Save closed ticket transcripts here.</p>
 </div>
 
-<select>
-<option>Select Discord channel</option>
+<select id="ticketLogChannel" onchange="markDirty()">
+<option value="">Select Discord channel</option>
 </select>
 
 </div>
 
 <div class="notice">
-💡 <b>How ticket privacy works:</b> when someone opens a ticket, JayVon AI creates a private channel such as <b>#ticket-0042</b>. The ticket creator and selected staff roles can view it. Everyone else is denied access.
+💡 <b>Ticket privacy:</b> JayVon AI creates a private channel for each ticket.
+Only the ticket creator and selected staff roles can access it.
+</div>
+
+<div class="save-row">
+<button class="button" onclick="saveSettings('tickets')">
+Save Ticket Access
+</button>
 </div>
 
 </div>
+
 
 <div class="settings-card">
 
@@ -1059,11 +1528,11 @@ Banned
 <div class="setting">
 <div class="setting-info">
 <h4>Claim Ticket</h4>
-<p>Allow a staff member to claim a ticket.</p>
+<p>Allow staff members to claim tickets.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 </div>
@@ -1071,11 +1540,11 @@ Banned
 <div class="setting">
 <div class="setting-info">
 <h4>Close Ticket</h4>
-<p>Allow authorized staff to close the ticket.</p>
+<p>Allow authorized staff to close tickets.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 </div>
@@ -1085,31 +1554,39 @@ Banned
 </section>
 
 
-<!-- GIVEAWAYS -->
+<!-- =========================
+     GIVEAWAYS
+========================= -->
 
 <section id="giveaways" class="section">
 
 <div class="heading">
 <h1>🎉 Giveaways</h1>
-<p>Create giveaways without needing to manually configure every command.</p>
+<p>Create giveaways directly through your Discord server.</p>
 </div>
 
 <div class="settings-card">
 
 <div class="settings-header">
 <h3>Giveaway Builder</h3>
-<p>Configure the giveaway message members will see.</p>
+<p>Configure the giveaway before sending it.</p>
 </div>
 
 <div class="setting">
 
 <div class="setting-info">
 <h4>Giveaway Channel</h4>
-<p>Discord channel where the giveaway will be posted.</p>
+<p>Select a real Discord channel.</p>
 </div>
 
-<select>
-<option>Select Discord channel</option>
+<select
+id="giveawayChannel"
+onchange="updateGiveawayState();markDirty()">
+
+<option value="">
+Select Discord channel
+</option>
+
 </select>
 
 </div>
@@ -1118,10 +1595,13 @@ Banned
 
 <div class="setting-info">
 <h4>Giveaway Title</h4>
-<p>The main title displayed in the giveaway.</p>
+<p>Main title displayed in the giveaway.</p>
 </div>
 
-<input value="🎉 Giveaway Time!">
+<input
+id="giveawayTitle"
+value="🎉 Giveaway Time!"
+oninput="markDirty()">
 
 </div>
 
@@ -1132,7 +1612,10 @@ Banned
 <p>Tell members what they can win and how to enter.</p>
 </div>
 
-<input value="React below to enter for a chance to win!">
+<input
+id="giveawayMessage"
+value="React below to enter for a chance to win!"
+oninput="markDirty()">
 
 </div>
 
@@ -1140,10 +1623,14 @@ Banned
 
 <div class="setting-info">
 <h4>Entry Button</h4>
-<p>Short text shown on the giveaway button.</p>
+<p>Text displayed on the giveaway button.</p>
 </div>
 
-<input value="🎉 Enter Giveaway" maxlength="32">
+<input
+id="giveawayButton"
+value="🎉 Enter Giveaway"
+maxlength="32"
+oninput="markDirty()">
 
 </div>
 
@@ -1154,7 +1641,7 @@ Banned
 <p>How many members should win?</p>
 </div>
 
-<select>
+<select id="giveawayWinners" onchange="markDirty()">
 <option>1</option>
 <option>2</option>
 <option>3</option>
@@ -1168,19 +1655,41 @@ Banned
 
 <div class="setting-info">
 <h4>Duration</h4>
-<p>How long the giveaway should remain active.</p>
+<p>How long the giveaway remains active.</p>
 </div>
 
-<select>
-<option>10 minutes</option>
-<option>30 minutes</option>
-<option>1 hour</option>
-<option>6 hours</option>
-<option>12 hours</option>
-<option>1 day</option>
-<option>3 days</option>
-<option>7 days</option>
+<select id="giveawayDuration" onchange="markDirty()">
+<option value="10m">10 minutes</option>
+<option value="30m">30 minutes</option>
+<option value="1h">1 hour</option>
+<option value="6h">6 hours</option>
+<option value="12h">12 hours</option>
+<option value="1d">1 day</option>
+<option value="3d">3 days</option>
+<option value="7d">7 days</option>
 </select>
+
+</div>
+
+<div class="save-row">
+
+<button
+id="sendGiveawayButton"
+class="button disabled"
+disabled
+onclick="sendGiveaway()">
+
+🎉 Send Giveaway
+
+</button>
+
+<button
+class="button secondary"
+onclick="saveSettings('giveaways')">
+
+Save Giveaway Settings
+
+</button>
 
 </div>
 
@@ -1191,18 +1700,18 @@ Banned
 
 <div class="settings-header">
 <h3>Winner Rewards</h3>
-<p>Optional rewards that can be given after someone wins.</p>
+<p>Optional rewards for giveaway winners.</p>
 </div>
 
 <div class="setting">
 
 <div class="setting-info">
 <h4>Winner Role <span class="optional">OPTIONAL</span></h4>
-<p>Automatically give the selected Discord role to giveaway winners.</p>
+<p>Automatically give winners a real Discord role.</p>
 </div>
 
-<select>
-<option>No winner role</option>
+<select id="winnerRole" onchange="markDirty()">
+<option value="">No winner role</option>
 </select>
 
 </div>
@@ -1214,20 +1723,15 @@ Banned
 <p>Send winners to this channel to claim their prize.</p>
 </div>
 
-<select>
-<option>No claim channel</option>
+<select id="claimChannel" onchange="markDirty()">
+<option value="">No claim channel</option>
 </select>
 
 </div>
 
 <div class="notice">
-🎁 <b>Optional means optional.</b> You can run a normal giveaway without giving winners a role or using a separate claim channel.
-</div>
-
-<div class="save-row">
-<button class="button">
-Save Giveaway Settings
-</button>
+🎁 <b>Optional means optional.</b>
+You can run a normal giveaway without a winner role or claim channel.
 </div>
 
 </div>
@@ -1235,7 +1739,9 @@ Save Giveaway Settings
 </section>
 
 
-<!-- WELCOME -->
+<!-- =========================
+     WELCOME
+========================= -->
 
 <section id="welcome" class="section">
 
@@ -1248,18 +1754,18 @@ Save Giveaway Settings
 
 <div class="settings-header">
 <h3>Welcome System</h3>
-<p>Choose where your welcome messages are sent.</p>
+<p>Configure the public welcome message.</p>
 </div>
 
 <div class="setting">
 
 <div class="setting-info">
 <h4>Enable Welcome Messages</h4>
-<p>Send a welcome message when a member joins.</p>
+<p>Send a welcome message whenever a member joins.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -1269,11 +1775,11 @@ Save Giveaway Settings
 
 <div class="setting-info">
 <h4>Welcome Channel</h4>
-<p>Discord channel where the public welcome message is sent.</p>
+<p>Discord channel where the welcome message is sent.</p>
 </div>
 
-<select>
-<option>Select Discord channel</option>
+<select id="welcomeChannel" onchange="markDirty()">
+<option value="">Select Discord channel</option>
 </select>
 
 </div>
@@ -1282,11 +1788,11 @@ Save Giveaway Settings
 
 <div class="setting-info">
 <h4>Welcome Profile</h4>
-<p>Show the new member's Discord avatar in the welcome message.</p>
+<p>Show the new member's Discord profile.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -1296,15 +1802,14 @@ Save Giveaway Settings
 
 <div class="setting-info">
 <h4>Welcome Background</h4>
-<p>Choose the background used behind the member's welcome profile.</p>
+<p>Background used behind the member profile.</p>
 </div>
 
-<select>
-<option>JayVon AI — Purple</option>
-<option>JayVon AI — Dark</option>
-<option>JayVon AI — Neon</option>
-<option>JayVon AI — Vonverse</option>
-<option>Custom Upload</option>
+<select id="welcomeBackground" onchange="updateWelcomeBackground();markDirty()">
+<option value="purple">JayVon AI — Purple</option>
+<option value="dark">JayVon AI — Dark</option>
+<option value="neon">JayVon AI — Neon</option>
+<option value="vonverse">JayVon AI — Vonverse</option>
 </select>
 
 </div>
@@ -1327,29 +1832,66 @@ Use {user}, {username}, {server}, and {membercount}.
 
 <div>
 
-<textarea id="welcomeMessage" oninput="updatePreview()">👋 Welcome {user} to {server}!
+<textarea
+id="welcomeMessage"
+oninput="updatePreview();markDirty()">👋 Welcome {user} to {server}!
 
 You are member #{membercount}.
 
 Enjoy your stay in the community!</textarea>
 
-<br><br>
+<div class="action-row">
 
-<button class="button">
-Save Welcome Message
+<button
+class="button blue"
+onclick="testWelcome()">
+
+🧪 Test
+
+</button>
+
+<button
+class="button success"
+onclick="sendWelcome()">
+
+📨 Send Welcome
+
+</button>
+
+<button
+class="button secondary"
+onclick="saveWelcome()">
+
+💾 Save
+
 </button>
 
 </div>
 
+<div
+id="welcomeSuccess"
+class="success-notice"
+style="margin-top:15px;">
+
+Welcome message sent successfully.
+
+</div>
+
+</div>
+
+
 <div class="preview">
 
 <div class="preview-title">
-Live Preview
+Live Discord-style Preview
 </div>
+
+<div class="profile-card" id="profileCard">
 
 <div class="profile-preview">
 
-<img id="previewAvatar"
+<img
+id="previewAvatar"
 src="https://cdn.discordapp.com/embed/avatars/0.png">
 
 <div>
@@ -1362,12 +1904,22 @@ New member
 
 </div>
 
-<div id="welcomePreview" class="preview-message">
+</div>
+
+<div
+id="welcomePreview"
+class="preview-message">
+
 👋 Welcome @NewMember to Your Server!
+
 <br><br>
+
 You are member #125.
+
 <br><br>
+
 Enjoy your stay in the community!
+
 </div>
 
 </div>
@@ -1383,18 +1935,18 @@ Enjoy your stay in the community!
 
 <div class="settings-header">
 <h3>Welcome DM</h3>
-<p>JayVon AI can also send a private welcome message directly to the new member.</p>
+<p>Send a private welcome message directly to new members.</p>
 </div>
 
 <div class="setting">
 
 <div class="setting-info">
 <h4>Send Welcome DM</h4>
-<p>Send a private message when the member joins.</p>
+<p>Automatically send a DM when a member joins.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox">
+<input type="checkbox" onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -1402,7 +1954,8 @@ Enjoy your stay in the community!
 
 <div style="padding:22px">
 
-<textarea>👋 Welcome to {server}, {username}!
+<textarea
+id="welcomeDM">👋 Welcome to {server}, {username}!
 
 We're glad to have you here.
 
@@ -1410,8 +1963,12 @@ Make sure to check out the server rules and enjoy your stay!</textarea>
 
 <br><br>
 
-<button class="button">
+<button
+class="button"
+onclick="saveWelcomeDM()">
+
 Save Welcome DM
+
 </button>
 
 </div>
@@ -1421,7 +1978,9 @@ Save Welcome DM
 </section>
 
 
-<!-- MODERATION -->
+<!-- =========================
+     MODERATION
+========================= -->
 
 <section id="moderation" class="section">
 
@@ -1430,7 +1989,7 @@ Save Welcome DM
 <h1>🛡️ Advanced Moderation</h1>
 
 <p>
-Powerful protection, filtering, staff controls and detailed server logging.
+Powerful protection, filtering, staff controls and server logging.
 </p>
 
 </div>
@@ -1440,7 +1999,7 @@ Powerful protection, filtering, staff controls and detailed server logging.
 
 <div class="settings-header">
 <h3>Moderation System</h3>
-<p>Core protection settings for your community.</p>
+<p>Core protection settings.</p>
 </div>
 
 <div class="setting">
@@ -1451,36 +2010,37 @@ Powerful protection, filtering, staff controls and detailed server logging.
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
 </div>
 
+
 <div class="setting">
 
 <div class="setting-info">
 <h4>Moderator Roles</h4>
-<p>Select the real Discord roles that can use moderation commands.</p>
+<p>Select real Discord roles that can use moderation commands.</p>
 </div>
 
-<div class="role-list">
+<div
+class="role-list"
+id="moderatorRoles">
 
-<div class="role selected" onclick="toggleRole(this)">
-Moderator
-</div>
+<div
+class="role none selected"
+data-role="none"
+onclick="selectRole(this,'moderatorRoles')">
 
-<div class="role" onclick="toggleRole(this)">
-Admin
-</div>
-
-<div class="role" onclick="toggleRole(this)">
-Staff
-</div>
+None
 
 </div>
 
 </div>
+
+</div>
+
 
 <div class="setting">
 
@@ -1489,22 +2049,43 @@ Staff
 <p>Channel where JayVon AI records moderation actions.</p>
 </div>
 
-<select>
-<option>Select Discord channel</option>
+<select
+id="moderationLogChannel"
+onchange="markDirty()">
+
+<option value="">
+Select Discord channel
+</option>
+
 </select>
 
 </div>
 
+
 <div class="notice warning">
 
-⚠️ <b>Recommended:</b> create a private channel such as
-<b>#mod-logs</b> and only allow your moderation/admin roles to view it.
-JayVon AI should use that channel for moderation logs.
+⚠️ <b>Recommended:</b>
+use a private #mod-logs channel and restrict access to trusted staff.
+
+</div>
+
+
+<div class="save-row">
+
+<button
+class="button"
+onclick="saveSettings('moderation')">
+
+Save Moderation Settings
+
+</button>
 
 </div>
 
 </div>
 
+
+<!-- LINK PROTECTION -->
 
 <div class="settings-card">
 
@@ -1517,11 +2098,11 @@ JayVon AI should use that channel for moderation logs.
 
 <div class="setting-info">
 <h4>Block Links</h4>
-<p>Delete links sent by members who are not allowed to post them.</p>
+<p>Delete links sent by unauthorized members.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -1531,24 +2112,12 @@ JayVon AI should use that channel for moderation logs.
 
 <div class="setting-info">
 <h4>Allowed Link Domains</h4>
-<p>Domains that should be allowed even when link protection is enabled.</p>
-</div>
-
-<input placeholder="discord.com, youtube.com">
-
-</div>
-
-<div class="setting">
-
-<div class="setting-info">
-<h4>Blocked Link Message</h4>
-<p>Message JayVon AI sends after removing a blocked link.</p>
+<p>Domains allowed when link protection is enabled.</p>
 </div>
 
 <input
-value="@{user} you can't send that link here!"
-maxlength="150"
->
+value="discord.com, youtube.com"
+onchange="markDirty()">
 
 </div>
 
@@ -1560,309 +2129,208 @@ maxlength="150"
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
 </div>
 
-<div class="setting">
-
-<div class="setting-info">
-<h4>Link Warning Channel</h4>
-<p>Optional channel for link protection events.</p>
 </div>
 
-<select>
-<option>Use moderation log channel</option>
-</select>
 
-</div>
-
-</div>
-
+<!-- CHAT PROTECTION -->
 
 <div class="settings-card">
 
 <div class="settings-header">
 <h3>💬 Chat Protection</h3>
-<p>Prevent spam and abusive behavior before it becomes a problem.</p>
+<p>Prevent spam and abusive behavior.</p>
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
 <h4>Anti-Spam</h4>
 <p>Detect members repeatedly sending messages quickly.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
 <h4>Anti-Caps</h4>
 <p>Detect excessive capital letters.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox">
+<input type="checkbox" onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
 <h4>Mention Spam</h4>
 <p>Detect members mentioning too many users or roles.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
 <h4>Bad Word Filter</h4>
-<p>Automatically detect configured blocked words.</p>
+<p>Enable the configurable blocked-word system.</p>
 </div>
 
 <label class="toggle">
-<input type="checkbox">
+<input
+id="badWordToggle"
+type="checkbox"
+onchange="toggleBadWords(this);markDirty()">
+
 <span class="slider"></span>
 </label>
-</div>
 
 </div>
 
+</div>
 
-<div class="settings-card">
+
+<!-- BAD WORD MANAGER -->
+
+<div
+class="settings-card"
+id="badWordManager"
+style="display:none;">
 
 <div class="settings-header">
-<h3>🚨 Raid & Join Protection</h3>
-<p>Additional protection against suspicious waves of new members.</p>
-</div>
 
-<div class="setting">
+<h3>🚫 Blocked Words</h3>
 
-<div class="setting-info">
-<h4>Anti-Raid Mode</h4>
-<p>Detect unusually high numbers of joins within a short period.</p>
-</div>
-
-<label class="toggle">
-<input type="checkbox">
-<span class="slider"></span>
-</label>
+<p>
+Add the words JayVon AI should automatically detect.
+</p>
 
 </div>
 
-<div class="setting">
+<div class="word-manager">
 
-<div class="setting-info">
-<h4>Join Alert Channel</h4>
-<p>Send suspicious join alerts to your moderation logs.</p>
-</div>
-
-<select>
-<option>Use moderation log channel</option>
-</select>
-
-</div>
-
-<div class="setting">
-
-<div class="setting-info">
-<h4>Automatic Protection</h4>
-<p>Temporarily increase protection when a raid is detected.</p>
-</div>
-
-<label class="toggle">
-<input type="checkbox">
-<span class="slider"></span>
-</label>
-
-</div>
-
-</div>
-
-
-<div class="settings-card">
-
-<div class="settings-header">
-<h3>⚖️ Moderation Actions</h3>
-<p>Configure the actions JayVon AI can perform.</p>
-</div>
-
-<div class="setting">
-<div class="setting-info">
-<h4>Warn</h4>
-<p>Allow staff to warn members.</p>
-</div>
-
-<label class="toggle">
-<input type="checkbox" checked>
-<span class="slider"></span>
-</label>
-</div>
-
-<div class="setting">
-<div class="setting-info">
-<h4>Timeout</h4>
-<p>Allow staff to temporarily restrict members.</p>
-</div>
-
-<label class="toggle">
-<input type="checkbox" checked>
-<span class="slider"></span>
-</label>
-</div>
-
-<div class="setting">
-<div class="setting-info">
-<h4>Kick</h4>
-<p>Allow authorized staff to kick members.</p>
-</div>
-
-<label class="toggle">
-<input type="checkbox" checked>
-<span class="slider"></span>
-</label>
-</div>
-
-<div class="setting">
-<div class="setting-info">
-<h4>Ban</h4>
-<p>Allow authorized staff to ban members.</p>
-</div>
-
-<label class="toggle">
-<input type="checkbox" checked>
-<span class="slider"></span>
-</label>
-</div>
-
-</div>
-
-
-<div class="settings-card">
-
-<div class="settings-header">
-<h3>📝 Custom Moderation Messages</h3>
-<p>Owners can customize what JayVon AI says to members.</p>
-</div>
-
-<div style="padding:22px">
-
-<label style="display:block;color:#aaa;font-size:12px;margin-bottom:8px;">
-Blocked Link Response
-</label>
+<div class="word-input-row">
 
 <input
-style="width:100%;"
-value="@{user} you can't send that link here!"
-maxlength="150"
->
+id="badWordInput"
+placeholder="Enter blocked word...">
 
-<br><br>
+<button
+class="button"
+onclick="addBadWord()">
 
-<label style="display:block;color:#aaa;font-size:12px;margin-bottom:8px;">
-Spam Response
-</label>
+Add
 
-<input
-style="width:100%;"
-value="@{user} please slow down — spam isn't allowed here."
-maxlength="150"
->
+</button>
 
-<br><br>
+</div>
 
-<label style="display:block;color:#aaa;font-size:12px;margin-bottom:8px;">
-Unauthorized Command Response
-</label>
+<div
+id="badWordList"
+class="word-list">
 
-<input
-style="width:100%;"
-value="@{user} you don't have permission to use this command."
-maxlength="150"
->
+</div>
 
-<br><br>
+<div class="save-row" style="padding:18px 0 0;">
 
-<button class="button">
-Save Moderation Messages
+<button
+class="button"
+onclick="saveBadWords()">
+
+Save Blocked Words
+
 </button>
 
 </div>
 
 </div>
 
+</div>
+
+
+<!-- MODERATION ACTIONS -->
 
 <div class="settings-card">
 
 <div class="settings-header">
-<h3>📋 What Gets Logged?</h3>
-<p>JayVon AI can record important moderation activity.</p>
+<h3>⚖️ Moderation Actions</h3>
+<p>Configure what authorized moderators can perform.</p>
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
-<h4>Warnings</h4>
-<p>Who was warned, who issued it and why.</p>
+<h4>Warn</h4>
+<p>Allow staff to warn members.</p>
 </div>
+
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
-<h4>Timeouts</h4>
-<p>Member, moderator, duration and reason.</p>
+<h4>Timeout</h4>
+<p>Temporarily restrict members.</p>
 </div>
+
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
-<h4>Kicks & Bans</h4>
-<p>Detailed staff action records.</p>
+<h4>Kick</h4>
+<p>Allow authorized staff to kick members.</p>
 </div>
+
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 <div class="setting">
+
 <div class="setting-info">
-<h4>Deleted Messages</h4>
-<p>Record protected messages removed by JayVon AI.</p>
-</div>
-<label class="toggle">
-<input type="checkbox" checked>
-<span class="slider"></span>
-</label>
+<h4>Ban</h4>
+<p>Allow authorized staff to ban members.</p>
 </div>
 
-<div class="setting">
-<div class="setting-info">
-<h4>Configuration Changes</h4>
-<p>Record important dashboard setting changes.</p>
-</div>
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
 </div>
 
 </div>
@@ -1870,7 +2338,9 @@ Save Moderation Messages
 </section>
 
 
-<!-- COMMANDS -->
+<!-- =========================
+     COMMANDS
+========================= -->
 
 <section id="commands" class="section">
 
@@ -1883,7 +2353,7 @@ Save Moderation Messages
 
 <div class="settings-header">
 <h3>Command System</h3>
-<p>JayVon AI supports both slash and traditional prefix commands.</p>
+<p>JayVon AI supports slash and traditional prefix commands.</p>
 </div>
 
 <div class="setting">
@@ -1893,7 +2363,10 @@ Save Moderation Messages
 <p>Prefix used for commands such as !play and !giveaway.</p>
 </div>
 
-<input value="!" maxlength="3">
+<input
+value="!"
+maxlength="3"
+onchange="markDirty()">
 
 </div>
 
@@ -1905,7 +2378,7 @@ Save Moderation Messages
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
@@ -1919,10 +2392,16 @@ Save Moderation Messages
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
 
+</div>
+
+<div class="save-row">
+<button class="button" onclick="saveSettings('commands')">
+Save Command Settings
+</button>
 </div>
 
 </div>
@@ -1930,7 +2409,9 @@ Save Moderation Messages
 </section>
 
 
-<!-- SETTINGS -->
+<!-- =========================
+     SERVER SETTINGS
+========================= -->
 
 <section id="settings" class="section">
 
@@ -1946,18 +2427,47 @@ Save Moderation Messages
 <p>Configure your server's JayVon AI experience.</p>
 </div>
 
+
 <div class="setting">
 
 <div class="setting-info">
+
 <h4>Bot Language</h4>
-<p>Choose JayVon AI's default language.</p>
+
+<p>
+Choose JayVon AI's default language.
+The bot will use this language for supported responses,
+notifications and automated messages.
+</p>
+
 </div>
 
-<select>
-<option>English</option>
+<select
+id="botLanguage"
+onchange="markDirty()">
+
+<option value="en">🇺🇸 English</option>
+<option value="af">🇿🇦 Afrikaans</option>
+<option value="es">🇪🇸 Spanish</option>
+<option value="fr">🇫🇷 French</option>
+<option value="de">🇩🇪 German</option>
+<option value="pt">🇵🇹 Portuguese</option>
+<option value="it">🇮🇹 Italian</option>
+<option value="nl">🇳🇱 Dutch</option>
+<option value="pl">🇵🇱 Polish</option>
+<option value="tr">🇹🇷 Turkish</option>
+<option value="ru">🇷🇺 Russian</option>
+<option value="uk">🇺🇦 Ukrainian</option>
+<option value="ar">🇸🇦 Arabic</option>
+<option value="hi">🇮🇳 Hindi</option>
+<option value="ja">🇯🇵 Japanese</option>
+<option value="ko">🇰🇷 Korean</option>
+<option value="zh">🇨🇳 Chinese</option>
+
 </select>
 
 </div>
+
 
 <div class="setting">
 
@@ -1967,9 +2477,22 @@ Save Moderation Messages
 </div>
 
 <label class="toggle">
-<input type="checkbox" checked>
+<input type="checkbox" checked onchange="markDirty()">
 <span class="slider"></span>
 </label>
+
+</div>
+
+
+<div class="save-row">
+
+<button
+class="button"
+onclick="saveSettings('settings')">
+
+Save Server Settings
+
+</button>
 
 </div>
 
@@ -1982,9 +2505,61 @@ Save Moderation Messages
 </main>
 
 
-<!-- UPCOMING MODAL -->
+<!-- =========================
+     UNSAVED MODAL
+========================= -->
 
-<div class="upcoming" id="upcomingModal">
+<div
+class="modal"
+id="unsavedModal">
+
+<div class="modal-box">
+
+<div class="modal-icon">
+⚠️
+</div>
+
+<h2>
+Unsaved Changes
+</h2>
+
+<p>
+Are you sure you don't want to save your changes?
+If you leave this section now, your changes may be lost.
+</p>
+
+<div class="modal-actions">
+
+<button
+class="button secondary"
+onclick="stayOnPage()">
+
+Keep Editing
+
+</button>
+
+<button
+class="button danger"
+onclick="leaveWithoutSaving()">
+
+Leave Without Saving
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     UPCOMING MODAL
+========================= -->
+
+<div
+class="modal"
+id="upcomingModal">
 
 <div class="upcoming-box">
 
@@ -2000,12 +2575,16 @@ UPCOMING FEATURE
 
 <p>
 JayVon AI Levels is currently being developed.
-Members will eventually be able to earn XP, level up, unlock rewards,
-and compete on a server leaderboard.
+Members will eventually be able to earn XP, level up,
+unlock rewards and compete on a server leaderboard.
 </p>
 
-<button class="button" onclick="closeUpcoming()">
+<button
+class="button"
+onclick="closeUpcoming()">
+
 Close
+
 </button>
 
 </div>
@@ -2015,89 +2594,1704 @@ Close
 
 <script>
 
-function showSection(sectionId,button){
+/* ==========================================
+   JAYVON AI DASHBOARD
+   Discord API integration-ready frontend
+========================================== */
 
-document.querySelectorAll(".section").forEach(section=>{
-section.classList.remove("active");
+let currentServerId = null;
+let dirty = false;
+let pendingNavigation = null;
+
+let badWords = [];
+
+
+/* ==========================================
+   API HELPER
+========================================== */
+
+async function api(url, options = {}){
+
+    const response = await fetch(url, {
+        credentials:"include",
+        headers:{
+            "Content-Type":"application/json",
+            ...(options.headers || {})
+        },
+        ...options
+    });
+
+    if(response.status === 401){
+
+        window.location.href="/login";
+
+        return null;
+    }
+
+    if(!response.ok){
+
+        throw new Error(
+            "API request failed: " +
+            response.status
+        );
+
+    }
+
+    return response.json();
+}
+
+
+/* ==========================================
+   BOOT
+========================================== */
+
+window.addEventListener("load",async()=>{
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("bootScreen")
+            .classList.add("hide");
+
+    },1100);
+
+    await loadServers();
+
+    updatePreview();
+
 });
 
-document.getElementById(sectionId).classList.add("active");
 
-document.querySelectorAll(".nav-item").forEach(item=>{
-item.classList.remove("active");
-});
+/* ==========================================
+   LOAD USER SERVERS
+========================================== */
 
-button.classList.add("active");
+async function loadServers(){
 
-const titles={
-overview:"Overview",
-ai:"AI Settings",
-music:"Music",
-tickets:"Tickets",
-giveaways:"Giveaways",
-welcome:"Welcome",
-moderation:"Moderation",
-commands:"Commands",
-settings:"Server Settings"
-};
+    const select =
+        document.getElementById("serverSelect");
 
-document.querySelector(".page-title").textContent=
-"JayVon AI • "+titles[sectionId];
+    try{
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+        /*
+         Backend should return:
+
+         {
+            servers:[
+                {
+                    id:"123",
+                    name:"The Vonverse",
+                    icon:"...",
+                    canManage:true,
+                    botInstalled:true
+                }
+            ]
+         }
+        */
+
+        const data =
+            await api("/api/discord/servers");
+
+        select.innerHTML="";
+
+        if(!data || !data.servers || !data.servers.length){
+
+            select.innerHTML=
+                `<option value="">
+                    No manageable servers
+                </option>`;
+
+            updateBotStatus(false);
+
+            return;
+        }
+
+
+        data.servers.forEach(server=>{
+
+            const option =
+                document.createElement("option");
+
+            option.value=server.id;
+
+            option.textContent=
+                server.name +
+                (server.botInstalled ? "" : " • Add JayVon AI");
+
+            option.dataset.installed =
+                server.botInstalled ? "true" : "false";
+
+            select.appendChild(option);
+
+        });
+
+
+        currentServerId =
+            select.options[0].value;
+
+        await loadServer(currentServerId);
+
+    }catch(error){
+
+        console.error(error);
+
+        select.innerHTML=
+            `<option value="">
+                Discord connection unavailable
+            </option>`;
+
+        updateBotStatus(false);
+
+    }
 
 }
 
 
-function toggleRole(role){
+/* ==========================================
+   LOAD SELECTED SERVER
+========================================== */
 
-role.classList.toggle("selected");
+async function switchServer(serverId){
+
+    if(dirty){
+
+        pendingNavigation = {
+            type:"server",
+            value:serverId
+        };
+
+        showUnsaved();
+
+        return;
+
+    }
+
+    await loadServer(serverId);
 
 }
 
+
+async function loadServer(serverId){
+
+    if(!serverId)
+        return;
+
+    currentServerId=serverId;
+
+    const option =
+        [...document
+            .getElementById("serverSelect")
+            .options]
+            .find(o=>o.value===serverId);
+
+    const installed =
+        option?.dataset.installed === "true";
+
+    updateBotStatus(installed);
+
+    if(!installed){
+
+        showAddBotState();
+
+        return;
+
+    }
+
+    try{
+
+        /*
+         Backend should return:
+
+         {
+            channels:[],
+            categories:[],
+            roles:[],
+            config:{}
+         }
+        */
+
+        const data =
+            await api(
+                `/api/discord/servers/${serverId}/resources`
+            );
+
+        if(data){
+
+            populateChannels(data.channels || []);
+            populateCategories(data.categories || []);
+            populateRoles(data.roles || []);
+
+            if(data.config){
+
+                applyServerConfig(data.config);
+
+            }
+
+        }
+
+        dirty=false;
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* ==========================================
+   BOT STATUS
+========================================== */
+
+function updateBotStatus(installed){
+
+    const status =
+        document.getElementById("botStatus");
+
+    if(installed){
+
+        status.classList.add("online");
+
+        status.innerHTML=
+            `<span class="bot-installed-dot"></span>
+             JayVon AI is installed`;
+
+    }else{
+
+        status.classList.remove("online");
+
+        status.innerHTML=
+            `<span class="bot-installed-dot"></span>
+             JayVon AI is not installed`;
+
+    }
+
+}
+
+
+/* ==========================================
+   ADD BOT STATE
+========================================== */
+
+function showAddBotState(){
+
+    document.getElementById("serverDashboard").innerHTML=`
+
+        <div class="empty-server">
+
+            <div class="empty-server-icon">
+                🤖
+            </div>
+
+            <h2>
+                JayVon AI isn't in this server yet.
+            </h2>
+
+            <p>
+                Add JayVon AI to this Discord server before
+                configuring its settings.
+            </p>
+
+            <br>
+
+            <button
+                class="button"
+                onclick="addJayVonAI()">
+
+                ➕ Add JayVon AI
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   DISCORD INVITE
+========================================== */
+
+function addJayVonAI(){
+
+    /*
+      Your backend should generate the correct
+      Discord OAuth2 invite URL.
+
+      Example endpoint:
+
+      /api/discord/invite?guild_id=SERVER_ID
+    */
+
+    window.location.href =
+        `/api/discord/invite?guild_id=${encodeURIComponent(currentServerId)}`;
+
+}
+
+
+/* ==========================================
+   CHANNEL POPULATION
+========================================== */
+
+function populateChannels(channels){
+
+    const ids=[
+        "aiChannel",
+        "ticketPanelChannel",
+        "ticketLogChannel",
+        "giveawayChannel",
+        "claimChannel",
+        "welcomeChannel",
+        "moderationLogChannel"
+    ];
+
+    ids.forEach(id=>{
+
+        const select=document.getElementById(id);
+
+        if(!select)
+            return;
+
+        const current=select.value;
+
+        select.innerHTML=
+            `<option value="">
+                Select Discord channel
+            </option>`;
+
+        channels.forEach(channel=>{
+
+            if(channel.type==="category")
+                return;
+
+            const option=
+                document.createElement("option");
+
+            option.value=channel.id;
+
+            option.textContent=
+                "#" + channel.name;
+
+            select.appendChild(option);
+
+        });
+
+        if(current)
+            select.value=current;
+
+    });
+
+}
+
+
+/* ==========================================
+   CATEGORY POPULATION
+========================================== */
+
+function populateCategories(categories){
+
+    const select=
+        document.getElementById("ticketCategory");
+
+    if(!select)
+        return;
+
+    const current=select.value;
+
+    select.innerHTML=
+        `<option value="">
+            Select ticket category
+        </option>`;
+
+    categories.forEach(category=>{
+
+        const option=
+            document.createElement("option");
+
+        option.value=category.id;
+        option.textContent=category.name;
+
+        select.appendChild(option);
+
+    });
+
+    if(current)
+        select.value=current;
+
+}
+
+
+/* ==========================================
+   REAL DISCORD ROLE POPULATION
+========================================== */
+
+function populateRoles(roles){
+
+    const containers={
+        musicRoles:"musicRoles",
+        ticketStaffRoles:"ticketStaffRoles",
+        ticketCreateRoles:"ticketCreateRoles",
+        moderatorRoles:"moderatorRoles"
+    };
+
+
+    Object.values(containers).forEach(id=>{
+
+        const container=
+            document.getElementById(id);
+
+        if(!container)
+            return;
+
+        container
+            .querySelectorAll(".role:not(.none)")
+            .forEach(role=>role.remove());
+
+
+        roles.forEach(role=>{
+
+            const div=
+                document.createElement("div");
+
+            div.className="role";
+
+            div.dataset.role=role.id;
+
+            div.textContent=
+                "@" + role.name;
+
+            div.onclick=()=>{
+
+                selectRole(
+                    div,
+                    id
+                );
+
+                markDirty();
+
+            };
+
+            container.appendChild(div);
+
+        });
+
+    });
+
+
+    populateWinnerRole(roles);
+
+}
+
+
+/* ==========================================
+   WINNER ROLE
+========================================== */
+
+function populateWinnerRole(roles){
+
+    const select=
+        document.getElementById("winnerRole");
+
+    if(!select)
+        return;
+
+    select.innerHTML=
+        `<option value="">
+            No winner role
+        </option>`;
+
+    roles.forEach(role=>{
+
+        const option=
+            document.createElement("option");
+
+        option.value=role.id;
+
+        option.textContent=
+            "@" + role.name;
+
+        select.appendChild(option);
+
+    });
+
+}
+
+
+/* ==========================================
+   ROLE SELECTION
+========================================== */
+
+function selectRole(role,containerId){
+
+    const container=
+        document.getElementById(containerId);
+
+    if(!container)
+        return;
+
+
+    if(role.dataset.role==="none"){
+
+        container
+            .querySelectorAll(".role")
+            .forEach(r=>r.classList.remove("selected"));
+
+        role.classList.add("selected");
+
+        return;
+
+    }
+
+
+    const none=
+        container.querySelector(".role.none");
+
+    if(none)
+        none.classList.remove("selected");
+
+    role.classList.toggle("selected");
+
+
+    const selected=
+        container.querySelectorAll(
+            ".role.selected:not(.none)"
+        );
+
+    if(!selected.length && none){
+
+        none.classList.add("selected");
+
+    }
+
+}
+
+
+/* ==========================================
+   GIVEAWAY SEND BUTTON
+========================================== */
+
+function updateGiveawayState(){
+
+    const channel=
+        document.getElementById(
+            "giveawayChannel"
+        ).value;
+
+    const button=
+        document.getElementById(
+            "sendGiveawayButton"
+        );
+
+    if(channel){
+
+        button.disabled=false;
+
+        button.classList.remove("disabled");
+
+        button.classList.add("success");
+
+    }else{
+
+        button.disabled=true;
+
+        button.classList.add("disabled");
+
+        button.classList.remove("success");
+
+    }
+
+}
+
+
+/* ==========================================
+   TICKET SEND BUTTON
+========================================== */
+
+function updateTicketState(){
+
+    const channel=
+        document.getElementById(
+            "ticketPanelChannel"
+        ).value;
+
+    const button=
+        document.getElementById(
+            "ticketSendButton"
+        );
+
+    if(channel){
+
+        button.disabled=false;
+
+        button.classList.remove("disabled");
+
+        button.classList.add("blue");
+
+    }else{
+
+        button.disabled=true;
+
+        button.classList.add("disabled");
+
+        button.classList.remove("blue");
+
+    }
+
+}
+
+
+/* ==========================================
+   SEND GIVEAWAY
+========================================== */
+
+async function sendGiveaway(){
+
+    if(!currentServerId)
+        return;
+
+    const channel=
+        document.getElementById(
+            "giveawayChannel"
+        ).value;
+
+    if(!channel)
+        return;
+
+
+    const payload={
+
+        channelId:channel,
+
+        title:
+            document.getElementById(
+                "giveawayTitle"
+            ).value,
+
+        message:
+            document.getElementById(
+                "giveawayMessage"
+            ).value,
+
+        buttonText:
+            document.getElementById(
+                "giveawayButton"
+            ).value,
+
+        winners:
+            Number(
+                document.getElementById(
+                    "giveawayWinners"
+                ).value
+            ),
+
+        duration:
+            document.getElementById(
+                "giveawayDuration"
+            ).value,
+
+        winnerRole:
+            document.getElementById(
+                "winnerRole"
+            ).value || null,
+
+        claimChannel:
+            document.getElementById(
+                "claimChannel"
+            ).value || null
+
+    };
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/giveaway/send`,
+            {
+                method:"POST",
+                body:JSON.stringify(payload)
+            }
+        );
+
+
+        dirty=false;
+
+        alert(
+            "🎉 Giveaway sent successfully!"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to send the giveaway."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   SEND TICKET PANEL
+========================================== */
+
+async function sendTicketPanel(){
+
+    const channel=
+        document.getElementById(
+            "ticketPanelChannel"
+        ).value;
+
+    if(!channel)
+        return;
+
+
+    const inputs=
+        document
+        .querySelectorAll("#tickets input");
+
+
+    const payload={
+
+        channelId:channel,
+
+        title:inputs[0]?.value,
+
+        message:inputs[1]?.value,
+
+        buttonText:inputs[2]?.value
+
+    };
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/tickets/send-panel`,
+            {
+                method:"POST",
+                body:JSON.stringify(payload)
+            }
+        );
+
+
+        dirty=false;
+
+        alert(
+            "🎫 Ticket panel sent successfully!"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to send ticket panel."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   WELCOME PREVIEW
+========================================== */
 
 function updatePreview(){
 
-const message=
-document.getElementById("welcomeMessage").value;
+    const message=
+        document.getElementById(
+            "welcomeMessage"
+        ).value;
 
-const preview=
-message
-.replaceAll("{user}","@NewMember")
-.replaceAll("{username}","NewMember")
-.replaceAll("{server}","Your Server")
-.replaceAll("{membercount}","125")
-.replace(/\n/g,"<br>");
 
-document.getElementById("welcomePreview").innerHTML=preview;
+    const preview=
+        message
+
+        .replaceAll(
+            "{user}",
+            "@NewMember"
+        )
+
+        .replaceAll(
+            "{username}",
+            "NewMember"
+        )
+
+        .replaceAll(
+            "{server}",
+            "Your Server"
+        )
+
+        .replaceAll(
+            "{membercount}",
+            "125"
+        )
+
+        .replace(/\n/g,"<br>");
+
+
+    document.getElementById(
+        "welcomePreview"
+    ).innerHTML=preview;
 
 }
 
 
+/* ==========================================
+   WELCOME BACKGROUND
+========================================== */
+
+function updateWelcomeBackground(){
+
+    const type=
+        document.getElementById(
+            "welcomeBackground"
+        ).value;
+
+    const card=
+        document.getElementById(
+            "profileCard"
+        );
+
+
+    const backgrounds={
+
+        purple:
+        "linear-gradient(rgba(10,10,15,.45),rgba(10,10,15,.85)),linear-gradient(135deg,#6d28d9,#111827)",
+
+        dark:
+        "linear-gradient(rgba(10,10,15,.35),rgba(10,10,15,.85)),linear-gradient(135deg,#18181b,#09090b)",
+
+        neon:
+        "linear-gradient(rgba(10,10,15,.35),rgba(10,10,15,.85)),linear-gradient(135deg,#312e81,#0f172a,#064e3b)",
+
+        vonverse:
+        "linear-gradient(rgba(10,10,15,.25),rgba(10,10,15,.85)),linear-gradient(135deg,#7c3aed,#2563eb,#111827)"
+
+    };
+
+
+    card.style.background=
+        backgrounds[type] ||
+        backgrounds.purple;
+
+}
+
+
+/* ==========================================
+   TEST WELCOME
+========================================== */
+
+async function testWelcome(){
+
+    if(!currentServerId)
+        return;
+
+
+    const channel=
+        document.getElementById(
+            "welcomeChannel"
+        ).value;
+
+
+    if(!channel){
+
+        alert(
+            "Select a Welcome Channel first."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/welcome/test`,
+            {
+                method:"POST",
+                body:JSON.stringify({
+
+                    channelId:channel,
+
+                    message:
+                        document.getElementById(
+                            "welcomeMessage"
+                        ).value,
+
+                    background:
+                        document.getElementById(
+                            "welcomeBackground"
+                        ).value
+
+                })
+            }
+        );
+
+
+        showWelcomeSuccess(
+            "🧪 Test welcome message sent to Discord."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to send test welcome."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   SEND WELCOME
+========================================== */
+
+async function sendWelcome(){
+
+    if(!currentServerId)
+        return;
+
+
+    const channel=
+        document.getElementById(
+            "welcomeChannel"
+        ).value;
+
+
+    if(!channel){
+
+        alert(
+            "Select a Welcome Channel first."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/welcome/send`,
+            {
+                method:"POST",
+                body:JSON.stringify({
+
+                    channelId:channel,
+
+                    message:
+                        document.getElementById(
+                            "welcomeMessage"
+                        ).value,
+
+                    background:
+                        document.getElementById(
+                            "welcomeBackground"
+                        ).value
+
+                })
+            }
+        );
+
+
+        showWelcomeSuccess(
+            "📨 Welcome message sent successfully."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to send welcome message."
+        );
+
+    }
+
+}
+
+
+function showWelcomeSuccess(text){
+
+    const box=
+        document.getElementById(
+            "welcomeSuccess"
+        );
+
+    box.textContent=text;
+
+    box.classList.add("show");
+
+    setTimeout(()=>{
+
+        box.classList.remove("show");
+
+    },3500);
+
+}
+
+
+/* ==========================================
+   BAD WORDS
+========================================== */
+
+function toggleBadWords(toggle){
+
+    const manager=
+        document.getElementById(
+            "badWordManager"
+        );
+
+    manager.style.display=
+        toggle.checked
+            ? "block"
+            : "none";
+
+}
+
+
+function addBadWord(){
+
+    const input=
+        document.getElementById(
+            "badWordInput"
+        );
+
+    const word=
+        input.value.trim();
+
+    if(!word)
+        return;
+
+    if(badWords.includes(word.toLowerCase()))
+        return;
+
+
+    badWords.push(
+        word.toLowerCase()
+    );
+
+    input.value="";
+
+    renderBadWords();
+
+    markDirty();
+
+}
+
+
+function removeBadWord(word){
+
+    badWords=
+        badWords.filter(
+            item=>item!==word
+        );
+
+    renderBadWords();
+
+    markDirty();
+
+}
+
+
+function renderBadWords(){
+
+    const list=
+        document.getElementById(
+            "badWordList"
+        );
+
+    list.innerHTML="";
+
+
+    badWords.forEach(word=>{
+
+        const chip=
+            document.createElement("div");
+
+        chip.className="word-chip";
+
+        chip.innerHTML=`
+
+            <span>
+                ${escapeHTML(word)}
+            </span>
+
+            <button
+                onclick="removeBadWord('${escapeJS(word)}')">
+
+                ×
+
+            </button>
+
+        `;
+
+        list.appendChild(chip);
+
+    });
+
+}
+
+
+async function saveBadWords(){
+
+    if(!currentServerId)
+        return;
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/moderation/bad-words`,
+            {
+                method:"PUT",
+                body:JSON.stringify({
+
+                    enabled:
+                        document.getElementById(
+                            "badWordToggle"
+                        ).checked,
+
+                    words:badWords
+
+                })
+            }
+        );
+
+
+        dirty=false;
+
+        alert(
+            "🚫 Blocked words saved."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to save blocked words."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   SAVE WELCOME
+========================================== */
+
+async function saveWelcome(){
+
+    if(!currentServerId)
+        return;
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/welcome`,
+            {
+                method:"PUT",
+                body:JSON.stringify({
+
+                    channelId:
+                        document.getElementById(
+                            "welcomeChannel"
+                        ).value,
+
+                    message:
+                        document.getElementById(
+                            "welcomeMessage"
+                        ).value,
+
+                    background:
+                        document.getElementById(
+                            "welcomeBackground"
+                        ).value
+
+                })
+            }
+        );
+
+
+        dirty=false;
+
+        showWelcomeSuccess(
+            "💾 Welcome settings saved."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to save welcome settings."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   SAVE WELCOME DM
+========================================== */
+
+async function saveWelcomeDM(){
+
+    if(!currentServerId)
+        return;
+
+
+    try{
+
+        await api(
+            `/api/discord/servers/${currentServerId}/welcome/dm`,
+            {
+                method:"PUT",
+                body:JSON.stringify({
+
+                    message:
+                        document.getElementById(
+                            "welcomeDM"
+                        ).value
+
+                })
+            }
+        );
+
+
+        dirty=false;
+
+        alert(
+            "💾 Welcome DM saved."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to save Welcome DM."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   GENERIC SETTINGS SAVE
+========================================== */
+
+async function saveSettings(section){
+
+    if(!currentServerId)
+        return;
+
+
+    try{
+
+        /*
+         Replace this payload with the exact
+         values your bot stores.
+
+         The important part is that the dashboard
+         sends the selected guild ID with the config.
+        */
+
+        const payload={
+            section:section,
+            guildId:currentServerId
+        };
+
+
+        await api(
+            `/api/discord/servers/${currentServerId}/config`,
+            {
+                method:"PUT",
+                body:JSON.stringify(payload)
+            }
+        );
+
+
+        dirty=false;
+
+        alert(
+            "💾 " +
+            section.charAt(0).toUpperCase() +
+            section.slice(1) +
+            " settings saved."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to save settings."
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   APPLY SERVER CONFIG
+========================================== */
+
+function applyServerConfig(config){
+
+    /*
+      Backend can return saved values here.
+
+      Example:
+
+      config.language = "en"
+      config.welcome.message = "..."
+      config.giveaway.channelId = "..."
+    */
+
+    if(config.language){
+
+        const language=
+            document.getElementById(
+                "botLanguage"
+            );
+
+        if(language)
+            language.value=config.language;
+
+    }
+
+
+    if(config.welcome){
+
+        if(config.welcome.message){
+
+            document.getElementById(
+                "welcomeMessage"
+            ).value=
+                config.welcome.message;
+
+            updatePreview();
+
+        }
+
+        if(config.welcome.channelId){
+
+            document.getElementById(
+                "welcomeChannel"
+            ).value=
+                config.welcome.channelId;
+
+        }
+
+        if(config.welcome.background){
+
+            document.getElementById(
+                "welcomeBackground"
+            ).value=
+                config.welcome.background;
+
+            updateWelcomeBackground();
+
+        }
+
+    }
+
+
+    if(config.giveaway?.channelId){
+
+        document.getElementById(
+            "giveawayChannel"
+        ).value=
+            config.giveaway.channelId;
+
+        updateGiveawayState();
+
+    }
+
+
+    if(config.ticket?.panelChannelId){
+
+        document.getElementById(
+            "ticketPanelChannel"
+        ).value=
+            config.ticket.panelChannelId;
+
+        updateTicketState();
+
+    }
+
+}
+
+
+/* ==========================================
+   DIRTY STATE
+========================================== */
+
+function markDirty(){
+
+    dirty=true;
+
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+function navigate(sectionId,button){
+
+    if(dirty){
+
+        pendingNavigation={
+            type:"section",
+            sectionId:sectionId,
+            button:button
+        };
+
+        showUnsaved();
+
+        return;
+
+    }
+
+    performNavigation(
+        sectionId,
+        button
+    );
+
+}
+
+
+function performNavigation(sectionId,button){
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section=>{
+            section.classList.remove("active");
+        });
+
+
+    const section=
+        document.getElementById(sectionId);
+
+    if(section)
+        section.classList.add("active");
+
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(item=>{
+            item.classList.remove("active");
+        });
+
+
+    if(button)
+        button.classList.add("active");
+
+
+    const titles={
+
+        overview:"Overview",
+        ai:"AI Settings",
+        music:"Music",
+        tickets:"Tickets",
+        giveaways:"Giveaways",
+        welcome:"Welcome",
+        moderation:"Moderation",
+        commands:"Commands",
+        settings:"Server Settings"
+
+    };
+
+
+    document.querySelector(
+        ".page-title"
+    ).textContent=
+        "JayVon AI • " +
+        titles[sectionId];
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ==========================================
+   UNSAVED CHANGES
+========================================== */
+
+function showUnsaved(){
+
+    document
+        .getElementById("unsavedModal")
+        .classList.add("show");
+
+}
+
+
+function stayOnPage(){
+
+    pendingNavigation=null;
+
+    document
+        .getElementById("unsavedModal")
+        .classList.remove("show");
+
+}
+
+
+function leaveWithoutSaving(){
+
+    dirty=false;
+
+    document
+        .getElementById("unsavedModal")
+        .classList.remove("show");
+
+
+    if(!pendingNavigation)
+        return;
+
+
+    const pending=
+        pendingNavigation;
+
+    pendingNavigation=null;
+
+
+    if(pending.type==="section"){
+
+        performNavigation(
+            pending.sectionId,
+            pending.button
+        );
+
+    }
+
+
+    if(pending.type==="server"){
+
+        loadServer(
+            pending.value
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   UPCOMING
+========================================== */
+
 function showUpcoming(){
 
-document.getElementById("upcomingModal").style.display="flex";
+    document
+        .getElementById("upcomingModal")
+        .classList.add("show");
 
 }
 
 
 function closeUpcoming(){
 
-document.getElementById("upcomingModal").style.display="none";
+    document
+        .getElementById("upcomingModal")
+        .classList.remove("show");
 
 }
 
 
-document.getElementById("upcomingModal").addEventListener("click",function(e){
+/* ==========================================
+   SECURITY HELPERS
+========================================== */
 
-if(e.target===this){
-closeUpcoming();
+function escapeHTML(value){
+
+    return String(value)
+
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
 }
 
-});
+
+function escapeJS(value){
+
+    return String(value)
+        .replaceAll("\\","\\\\")
+        .replaceAll("'","\\'");
+
+}
+
+
+/* ==========================================
+   MODAL CLICK OUTSIDE
+========================================== */
+
+document
+    .getElementById("upcomingModal")
+    .addEventListener("click",function(e){
+
+        if(e.target===this)
+            closeUpcoming();
+
+    });
+
+
+document
+    .getElementById("unsavedModal")
+    .addEventListener("click",function(e){
+
+        if(e.target===this)
+            stayOnPage();
+
+    });
+
+
+/* ==========================================
+   BROWSER LEAVE PROTECTION
+========================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(e){
+
+        if(!dirty)
+            return;
+
+        e.preventDefault();
+
+        e.returnValue="";
+
+    }
+);
 
 </script>
 
