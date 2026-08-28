@@ -107,8 +107,12 @@ a{
 }
 
 @keyframes dashGlobe{
-    0%,100%{transform:rotate(-3deg);}
-    50%{transform:rotate(9deg);}
+    0%,100%{
+        transform:rotate(-3deg);
+    }
+    50%{
+        transform:rotate(9deg);
+    }
 }
 
 .jay{
@@ -161,7 +165,7 @@ a{
 
 .sidebar-brand-text{
     font-family:"Space Grotesk",sans-serif;
-    font-size:18px;
+    font-size:17px;
     font-weight:700;
 }
 
@@ -193,14 +197,14 @@ a{
     border:1px solid transparent;
     background:transparent;
     color:#858590;
-    padding:11px 11px;
+    padding:10px 11px;
     margin-bottom:3px;
     border-radius:9px;
     display:flex;
     align-items:center;
     gap:10px;
     text-align:left;
-    font-size:12px;
+    font-size:11px;
     transition:.2s ease;
 }
 
@@ -280,13 +284,13 @@ a{
 
 .page-heading h1{
     font-family:"Space Grotesk",sans-serif;
-    font-size:22px;
+    font-size:20px;
     letter-spacing:-.5px;
 }
 
 .page-heading p{
     color:#62626c;
-    font-size:11px;
+    font-size:10px;
     margin-top:4px;
 }
 
@@ -296,10 +300,10 @@ a{
     gap:9px;
     background:#111119;
     border:1px solid var(--line);
-    padding:9px 12px;
+    padding:8px 11px;
     border-radius:9px;
     color:#b9b9c2;
-    font-size:11px;
+    font-size:10px;
 }
 
 .server-dot{
@@ -343,7 +347,7 @@ a{
 
 .section-header h2{
     font-family:"Space Grotesk",sans-serif;
-    font-size:27px;
+    font-size:25px;
     letter-spacing:-.6px;
 }
 
@@ -378,7 +382,7 @@ a{
     justify-content:space-between;
     align-items:center;
     color:#71717b;
-    font-size:11px;
+    font-size:10px;
 }
 
 .stat-icon{
@@ -387,13 +391,13 @@ a{
 
 .stat-number{
     font-family:"Space Grotesk",sans-serif;
-    font-size:27px;
+    font-size:25px;
     margin-top:13px;
 }
 
 .stat-small{
     color:#5e5e68;
-    font-size:10px;
+    font-size:9px;
     margin-top:4px;
 }
 
@@ -403,7 +407,7 @@ a{
 
 .card h3{
     font-family:"Space Grotesk",sans-serif;
-    font-size:16px;
+    font-size:14px;
     margin-bottom:6px;
 }
 
@@ -426,7 +430,7 @@ a{
     gap:16px;
 }
 
-/* SETTINGS ROWS */
+/* TOGGLES */
 
 .setting-row{
     display:flex;
@@ -454,38 +458,43 @@ a{
     margin-top:3px;
 }
 
-/* BETTER STRAIGHT TOGGLES */
+/* FIXED TOGGLE SWITCH */
 
 .toggle{
     position:relative;
     width:42px;
-    height:23px;
-    border-radius:7px;
+    height:22px;
+    min-width:42px;
+    border-radius:999px;
     border:1px solid rgba(255,255,255,.10);
     background:#1b1b23;
     padding:2px;
-    transition:.2s;
+    transition:.2s ease;
     flex-shrink:0;
+    display:flex;
+    align-items:center;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);
 }
 
 .toggle span{
     display:block;
-    width:17px;
-    height:17px;
-    border-radius:5px;
+    width:16px;
+    height:16px;
+    flex:0 0 16px;
+    border-radius:50%;
     background:#686873;
-    transition:.2s;
+    transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
 }
 
 .toggle.on{
-    background:rgba(59,130,246,.32);
-    border-color:rgba(59,130,246,.4);
+    background:rgba(59,130,246,.25);
+    border-color:rgba(59,130,246,.45);
 }
 
 .toggle.on span{
     background:#3b82f6;
-    transform:translateX(19px);
-    box-shadow:0 0 9px rgba(59,130,246,.45);
+    transform:translateX(18px);
+    box-shadow:0 0 10px rgba(59,130,246,.5);
 }
 
 /* FORMS */
@@ -509,7 +518,7 @@ a{
     background:#09090e;
     border:1px solid rgba(255,255,255,.075);
     color:#dddde5;
-    padding:11px 12px;
+    padding:10px 11px;
     border-radius:8px;
     font-size:10px;
     transition:.2s;
@@ -531,7 +540,7 @@ a{
     border:1px solid rgba(59,130,246,.2);
     background:linear-gradient(135deg,#2563eb,#7c3aed);
     color:#fff;
-    padding:11px 16px;
+    padding:10px 15px;
     border-radius:8px;
     font-size:10px;
     font-weight:700;
@@ -553,34 +562,6 @@ a{
     background:rgba(239,68,68,.1);
     border-color:rgba(239,68,68,.2);
     color:#f87171;
-}
-
-.button.green{
-    background:linear-gradient(135deg,#16a34a,#22c55e);
-    border-color:rgba(34,197,94,.3);
-}
-
-/* SAVE BAR */
-
-.save-bar{
-    display:flex;
-    justify-content:flex-end;
-    gap:8px;
-    margin-top:18px;
-    padding-top:16px;
-    border-top:1px solid rgba(255,255,255,.045);
-}
-
-.save-status{
-    align-self:center;
-    color:#4ade80;
-    font-size:9px;
-    opacity:0;
-    transition:.2s;
-}
-
-.save-status.show{
-    opacity:1;
 }
 
 /* CHIPS */
@@ -753,13 +734,17 @@ a{
 }
 
 @keyframes floatIcon{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-6px);}
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
 }
 
 .upcoming h3{
     font-family:"Space Grotesk",sans-serif;
-    font-size:22px;
+    font-size:21px;
 }
 
 .upcoming p{
@@ -810,7 +795,7 @@ a{
 
 .social-title strong{
     display:block;
-    font-size:14px;
+    font-size:13px;
 }
 
 .social-title span{
@@ -876,14 +861,13 @@ a{
 }
 
 .ticket-preview h3{
-    font-size:15px;
+    font-size:14px;
 }
 
 .ticket-preview p{
     color:#b5bac1;
     font-size:9px;
     margin:7px 0 15px;
-    white-space:pre-line;
 }
 
 .ticket-button{
@@ -923,16 +907,6 @@ a{
     line-height:1.8;
 }
 
-.giveaway-entry{
-    display:inline-block;
-    margin-top:15px;
-    padding:9px 14px;
-    background:#5865f2;
-    border-radius:7px;
-    font-size:9px;
-    font-weight:700;
-}
-
 /* WELCOME */
 
 .welcome-preview{
@@ -964,31 +938,6 @@ a{
     color:#70707a;
     font-size:9px;
     margin-top:7px;
-    white-space:pre-line;
-}
-
-/* LINK STATUS */
-
-.link-status{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 12px;
-    border-radius:8px;
-    background:#09090e;
-    border:1px solid rgba(255,255,255,.055);
-    color:#777781;
-    font-size:9px;
-    margin-bottom:14px;
-}
-
-.link-status.connected{
-    color:#4ade80;
-}
-
-.link-status.connected:before{
-    width:7px;
-    height:7px;
 }
 
 /* FOOTER */
@@ -998,31 +947,6 @@ a{
     text-align:center;
     padding:30px;
     font-size:9px;
-}
-
-/* TOAST */
-
-.toast{
-    position:fixed;
-    right:22px;
-    bottom:22px;
-    z-index:10000;
-    padding:13px 16px;
-    border-radius:10px;
-    background:#111119;
-    border:1px solid rgba(59,130,246,.25);
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
-    color:#ddd;
-    font-size:10px;
-    transform:translateY(20px);
-    opacity:0;
-    pointer-events:none;
-    transition:.25s;
-}
-
-.toast.show{
-    transform:translateY(0);
-    opacity:1;
 }
 
 /* MOBILE */
@@ -1116,7 +1040,7 @@ a{
 
 <aside class="sidebar" id="sidebar">
 
-
+```
 <div class="sidebar-brand">
 
     <img
@@ -1127,22 +1051,31 @@ a{
     >
 
     <div class="sidebar-brand-text">
+
         <span class="jay">Jay</span><span class="von">Von</span> AI
-        <small>THE VONVERSE</small>
+
+        <small>
+            THE VONVERSE
+        </small>
+
     </div>
 
 </div>
 
 <div class="sidebar-scroll">
 
-    <div class="menu-label">OVERVIEW</div>
+    <div class="menu-label">
+        OVERVIEW
+    </div>
 
     <button class="menu-item active" data-section="overview">
         <span class="menu-icon">⌂</span>
         Overview
     </button>
 
-    <div class="menu-label">AI & COMMUNITY</div>
+    <div class="menu-label">
+        AI & COMMUNITY
+    </div>
 
     <button class="menu-item" data-section="ai">
         <span class="menu-icon">🤖</span>
@@ -1159,14 +1092,18 @@ a{
         Media Channels
     </button>
 
-    <div class="menu-label">SOCIAL</div>
+    <div class="menu-label">
+        SOCIAL
+    </div>
 
     <button class="menu-item" data-section="notifications">
         <span class="menu-icon">🔔</span>
         Notifications
     </button>
 
-    <div class="menu-label">COMMUNITY TOOLS</div>
+    <div class="menu-label">
+        COMMUNITY TOOLS
+    </div>
 
     <button class="menu-item" data-section="welcome">
         <span class="menu-icon">👋</span>
@@ -1188,15 +1125,22 @@ a{
         Music
     </button>
 
-    <div class="menu-label">COMMUNITY GROWTH</div>
+    <div class="menu-label">
+        COMMUNITY GROWTH
+    </div>
 
     <button class="menu-item" data-section="levels">
         <span class="menu-icon">📈</span>
         Levels & XP
-        <span class="menu-badge">SOON</span>
+
+        <span class="menu-badge">
+            SOON
+        </span>
     </button>
 
-    <div class="menu-label">SETTINGS</div>
+    <div class="menu-label">
+        SETTINGS
+    </div>
 
     <button class="menu-item" data-section="settings">
         <span class="menu-icon">⚙️</span>
@@ -1212,7 +1156,7 @@ a{
     </a>
 
 </div>
-
+```
 
 </aside>
 
@@ -1220,14 +1164,18 @@ a{
 
 <header class="topbar">
 
-
-<button class="mobile-menu" onclick="toggleSidebar()">
+```
+<button
+    class="mobile-menu"
+    onclick="toggleSidebar()">
     ☰
 </button>
 
 <div class="page-heading">
 
-    <h1 id="pageTitle">Dashboard</h1>
+    <h1 id="pageTitle">
+        Dashboard
+    </h1>
 
     <p id="pageDescription">
         Manage JayVon AI and your Discord community.
@@ -1236,65 +1184,88 @@ a{
 </div>
 
 <div class="server-selector">
-    <span class="server-dot"></span>
-    Discord Server
-    ▾
-</div>
 
+    <span class="server-dot"></span>
+
+    Your Discord Server
+
+    ▾
+
+</div>
+```
 
 </header>
 
 <div class="content">
 
-<!-- ================= OVERVIEW ================= -->
+<!-- OVERVIEW -->
 
 <section class="section active" id="overview">
 
-
+```
 <div class="section-header">
-    <h2>Welcome to JayVon AI.</h2>
-    <p>Your control center for The Vonverse.</p>
+
+    <h2>
+        Welcome to JayVon AI.
+    </h2>
+
+    <p>
+        Your control center for The Vonverse.
+    </p>
+
 </div>
 
 <div class="card-grid">
 
     <div class="stat-card">
+
         <div class="stat-top">
             Connected Servers
             <span class="stat-icon">🌐</span>
         </div>
 
-        <div class="stat-number">1</div>
+        <div class="stat-number">
+            1
+        </div>
 
         <div class="stat-small">
             JayVon AI connected
         </div>
+
     </div>
 
     <div class="stat-card">
+
         <div class="stat-top">
             Moderation
             <span class="stat-icon">🛡️</span>
         </div>
 
-        <div class="stat-number">Protected</div>
+        <div class="stat-number">
+            Protected
+        </div>
 
         <div class="stat-small">
             Security systems ready
         </div>
+
     </div>
 
     <div class="stat-card">
+
         <div class="stat-top">
             Features
             <span class="stat-icon">✨</span>
         </div>
 
-        <div class="stat-number">9+</div>
+        <div class="stat-number">
+            9+
+        </div>
 
         <div class="stat-small">
             Available and planned
         </div>
+
     </div>
 
 </div>
@@ -1303,7 +1274,9 @@ a{
 
     <div class="card">
 
-        <h3>🚀 JayVon AI</h3>
+        <h3>
+            🚀 JayVon AI
+        </h3>
 
         <p class="card-description">
             Configure your intelligent Discord assistant.
@@ -1335,18 +1308,13 @@ a{
 
         </div>
 
-        <div class="save-bar">
-            <span class="save-status">✓ Saved</span>
-            <button class="button" onclick="saveSettings(this)">
-                Save Settings
-            </button>
-        </div>
-
     </div>
 
     <div class="card">
 
-        <h3>🛡️ Security Status</h3>
+        <h3>
+            🛡️ Security Status
+        </h3>
 
         <p class="card-description">
             Your moderation protection overview.
@@ -1381,18 +1349,20 @@ a{
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= AI ================= -->
+<!-- AI -->
 
 <section class="section" id="ai">
 
-
+```
 <div class="section-header">
 
-    <h2>🤖 JayVon AI</h2>
+    <h2>
+        🤖 JayVon AI
+    </h2>
 
     <p>
         Configure how JayVon AI interacts with your community.
@@ -1404,7 +1374,9 @@ a{
 
     <div class="card">
 
-        <h3>AI Configuration</h3>
+        <h3>
+            AI Configuration
+        </h3>
 
         <p class="card-description">
             Control where and how JayVon AI responds.
@@ -1449,56 +1421,55 @@ a{
 
         </div>
 
-        <div class="save-bar">
-            <span class="save-status">✓ Saved</span>
-            <button class="button" onclick="saveSettings(this)">
-                Save Settings
-            </button>
-        </div>
-
     </div>
 
     <div class="card">
 
-        <h3>Allowed Channels</h3>
+        <h3>
+            Allowed Channels
+        </h3>
 
         <p class="card-description">
-            Add the Discord channels where JayVon AI may respond.
+            Choose where JayVon AI can respond.
         </p>
 
-        <div class="field">
-            <label>CHANNEL NAME</label>
+        <div class="chips">
 
-            <input
-                class="input"
-                id="aiChannelInput"
-                placeholder="#channel-name"
-            >
+            <span class="chip active">
+                #general
+            </span>
+
+            <span class="chip active">
+                #chat
+            </span>
+
+            <span class="chip">
+                #media
+            </span>
+
+            <span class="chip">
+                #support
+            </span>
+
         </div>
-
-        <button class="button secondary" onclick="addChip('aiChannelInput','aiChannels')">
-            + Add Channel
-        </button>
-
-        <br><br>
-
-        <div class="chips" id="aiChannels"></div>
 
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= MODERATION ================= -->
+<!-- MODERATION -->
 
 <section class="section" id="moderation">
 
-
+```
 <div class="section-header">
 
-    <h2>🛡️ Advanced Moderation</h2>
+    <h2>
+        🛡️ Advanced Moderation
+    </h2>
 
     <p>
         Configure JayVon AI's complete server protection system.
@@ -1508,10 +1479,12 @@ a{
 
 <div class="card">
 
-    <h3>Protection Systems</h3>
+    <h3>
+        Protection Systems
+    </h3>
 
     <p class="card-description">
-        Choose which protection systems you want JayVon AI to use.
+        Enable or disable individual protection systems.
     </p>
 
     <div class="mod-grid">
@@ -1533,7 +1506,7 @@ a{
                 <strong>Anti-Caps</strong>
                 <span>Excessive capitals</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1544,7 +1517,7 @@ a{
                 <strong>Mention Spam</strong>
                 <span>Repeated mentions</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1555,7 +1528,7 @@ a{
                 <strong>Mass Mention Protection</strong>
                 <span>@everyone and @here abuse</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1566,7 +1539,7 @@ a{
                 <strong>Bad Word Filter</strong>
                 <span>Blocked terminology</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1577,7 +1550,7 @@ a{
                 <strong>Link Filter</strong>
                 <span>Unauthorized links</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1588,7 +1561,7 @@ a{
                 <strong>Discord Invite Filter</strong>
                 <span>Unauthorized invites</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1599,7 +1572,7 @@ a{
                 <strong>Scam / Phishing Protection</strong>
                 <span>Suspicious links</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1621,7 +1594,7 @@ a{
                 <strong>Duplicate Messages</strong>
                 <span>Repeated content</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1643,7 +1616,7 @@ a{
                 <strong>Join Spam Protection</strong>
                 <span>Rapid member joins</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1665,7 +1638,7 @@ a{
                 <strong>Bot Join Protection</strong>
                 <span>Unexpected bots</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1687,7 +1660,7 @@ a{
                 <strong>Emoji Spam</strong>
                 <span>Excessive emoji usage</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1698,18 +1671,11 @@ a{
                 <strong>Repeated Characters</strong>
                 <span>AAAAAAA / !!!!! protection</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
 
-    </div>
-
-    <div class="save-bar">
-        <span class="save-status">✓ Saved</span>
-        <button class="button" onclick="saveSettings(this)">
-            Save Moderation Settings
-        </button>
     </div>
 
 </div>
@@ -1720,7 +1686,9 @@ a{
 
     <div class="card">
 
-        <h3>⚡ Automatic Punishments</h3>
+        <h3>
+            ⚡ Automatic Punishments
+        </h3>
 
         <p class="card-description">
             Decide what JayVon AI does after detecting violations.
@@ -1731,7 +1699,7 @@ a{
                 <strong>Auto Warning</strong>
                 <span>Warn the member automatically.</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1741,7 +1709,7 @@ a{
                 <strong>Auto Delete</strong>
                 <span>Remove violating messages.</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1751,7 +1719,7 @@ a{
                 <strong>Auto Timeout</strong>
                 <span>Temporarily restrict members.</span>
             </div>
-            <button class="toggle" onclick="toggleSetting(this)">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1776,28 +1744,30 @@ a{
             </button>
         </div>
 
-        <div class="save-bar">
-            <span class="save-status">✓ Saved</span>
-            <button class="button" onclick="saveSettings(this)">
-                Save Settings
-            </button>
-        </div>
-
     </div>
 
     <div class="card">
 
-        <h3>📋 Moderation Logs</h3>
+        <h3>
+            📋 Moderation Logs
+        </h3>
 
         <p class="card-description">
-            Configure where JayVon AI reports moderation actions.
+            Preview how JayVon AI will report actions.
         </p>
 
         <div class="log-preview">
 
             <div class="log-header">
-                <div class="log-header-icon">🛡️</div>
-                <strong>Moderation Action</strong>
+
+                <div class="log-header-icon">
+                    🛡️
+                </div>
+
+                <strong>
+                    Moderation Action
+                </strong>
+
             </div>
 
             <div class="log-line">
@@ -1830,36 +1800,34 @@ a{
         <br>
 
         <div class="field">
-            <label>MOD-LOG CHANNEL</label>
 
-            <input
-                class="input"
-                placeholder="#mod-logs"
-            >
-        </div>
+            <label>
+                MOD-LOG CHANNEL
+            </label>
 
-        <div class="save-bar">
-            <span class="save-status">✓ Saved</span>
-            <button class="button" onclick="saveSettings(this)">
-                Save Settings
-            </button>
+            <select class="select channel-select">
+                <option value="">Loading server channels...</option>
+            </select>
+
         </div>
 
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= MEDIA ================= -->
+<!-- MEDIA -->
 
 <section class="section" id="media">
 
-
+```
 <div class="section-header">
 
-    <h2>🖼️ Media Channels</h2>
+    <h2>
+        🖼️ Media Channels
+    </h2>
 
     <p>
         Create channels where JayVon controls exactly what members can send.
@@ -1871,30 +1839,31 @@ a{
 
     <div class="card">
 
-        <h3>Channel Configuration</h3>
+        <h3>
+            Channel Configuration
+        </h3>
 
         <p class="card-description">
-            Enter your own Discord channel and choose the media rules.
+            Select what content is allowed.
         </p>
 
         <div class="field">
             <label>MEDIA CHANNEL</label>
 
-            <input
-                class="input"
-                id="mediaChannel"
-                placeholder="#media"
-            >
+            <select class="select channel-select">
+                <option value="">Loading server channels...</option>
+            </select>
         </div>
 
         <div class="field">
             <label>CHANNEL TYPE</label>
 
-            <select class="select" id="mediaType">
-                <option value="Images Only">Images Only</option>
-                <option value="Videos Only">Videos Only</option>
-                <option value="Images + Videos">Images + Videos</option>
-                <option value="All Media">All Media</option>
+            <select class="select">
+                <option value="">Select channel type</option>
+                <option>Images Only</option>
+                <option>Videos Only</option>
+                <option>Images + Videos</option>
+                <option>All Media</option>
             </select>
         </div>
 
@@ -1904,7 +1873,7 @@ a{
                 <span>Delete normal text messages.</span>
             </div>
 
-            <button class="toggle on" onclick="toggleSetting(this);updateMediaPreview()">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1915,7 +1884,7 @@ a{
                 <span>Prevent external links.</span>
             </div>
 
-            <button class="toggle" onclick="toggleSetting(this);updateMediaPreview()">
+            <button class="toggle" onclick="toggleSetting(this)">
                 <span></span>
             </button>
         </div>
@@ -1926,15 +1895,8 @@ a{
                 <span>Only allow configured media types.</span>
             </div>
 
-            <button class="toggle on" onclick="toggleSetting(this);updateMediaPreview()">
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
-            </button>
-        </div>
-
-        <div class="save-bar">
-            <span class="save-status">✓ Saved</span>
-            <button class="button" onclick="saveSettings(this)">
-                Save Media Settings
             </button>
         </div>
 
@@ -1942,22 +1904,27 @@ a{
 
     <div class="card">
 
-        <h3>🖼️ Media Preview</h3>
+        <h3>
+            🖼️ Media Preview
+        </h3>
 
         <p class="card-description">
-            Live preview of your media channel.
+            Example of an image-only channel.
         </p>
 
         <div class="media-preview">
 
-            <div class="media-preview-icon">🖼️</div>
+            <div class="media-preview-icon">
+                🖼️
+            </div>
 
-            <strong id="mediaPreviewChannel">
-                #your-media-channel
+            <strong>
+                #media
             </strong>
 
-            <p id="mediaPreviewText">
-                Choose your settings to control what members can upload.
+            <p>
+                Images are allowed here.
+                Text messages are automatically removed.
             </p>
 
         </div>
@@ -1965,249 +1932,189 @@ a{
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= NOTIFICATIONS ================= -->
+<!-- NOTIFICATIONS -->
 
 <section class="section" id="notifications">
 
-
+```
 <div class="section-header">
 
-    <h2>🔔 Social Notifications</h2>
+    <h2>
+        🔔 Social Notifications
+    </h2>
 
     <p>
-        Link your TikTok and YouTube accounts and automatically notify your Discord community.
+        Connect TikTok and YouTube and automatically notify your Discord community.
     </p>
 
 </div>
 
 <div class="two-column">
 
-    <!-- TIKTOK -->
-
     <div class="social-card">
 
         <div class="social-title">
 
-            <div class="social-icon">🎵</div>
+            <div class="social-icon">
+                🎵
+            </div>
 
             <div>
-                <strong>TikTok</strong>
-                <span>New video notifications</span>
+
+                <strong>
+                    TikTok
+                </strong>
+
+                <span>
+                    New video notifications
+                </span>
+
             </div>
 
         </div>
 
-        <div id="tiktokStatus" class="link-status">
-            ⚪ TikTok account not linked
-        </div>
-
         <div class="field">
 
-            <label>TIKTOK ACCOUNT</label>
+            <label>
+                TIKTOK USERNAME
+            </label>
 
             <input
                 class="input"
-                id="tiktokUsername"
-                placeholder="@yourusername"
-            >
-
-        </div>
-
-        <button
-            class="button"
-            onclick="connectSocial('TikTok')"
-            style="margin-bottom:15px;"
-        >
-            🔗 Link TikTok Account
-        </button>
-
-        <div class="field">
-
-            <label>NOTIFICATION CHANNEL</label>
-
-            <input
-                class="input"
-                id="tiktokChannel"
-                placeholder="#social-notifications"
+                placeholder="@username"
             >
 
         </div>
 
         <div class="field">
 
-            <label>MENTION</label>
+            <label>
+                NOTIFICATION CHANNEL
+            </label>
 
-            <input
-                class="input"
-                id="tiktokMention"
-                placeholder="@everyone / @Members / role"
-            >
+            <select class="select channel-select">
+                <option value="">Loading server channels...</option>
+            </select>
 
         </div>
 
         <div class="field">
 
-            <label>CUSTOM MESSAGE</label>
+            <label>
+                MENTION ROLE
+            </label>
 
-            <textarea
-                class="textarea"
-                id="tiktokMessage"
-            >🔥 {user} just posted a new TikTok!
+            <select class="select role-select">
+                <option value="">Loading server roles...</option>
+            </select>
 
+        </div>
+
+        <div class="field">
+
+            <label>
+                CUSTOM MESSAGE
+            </label>
+
+            <textarea class="textarea">🔥 {user} just posted a new TikTok!
+```
 
 🔗 {link}</textarea>
 
-
+```
         </div>
 
-        <div class="discord-preview">
+        <button class="button">
+            Connect TikTok
+        </button>
 
-            <div class="preview-user">
-                <div class="preview-avatar">JV</div>
-
-                <div>
-                    <div class="preview-name">JayVon AI</div>
-                    <div class="preview-tag">TikTok Notification</div>
-                </div>
-            </div>
-
-            <div
-                class="preview-message"
-                id="tiktokPreview"
-            >
-                🔥 {user} just posted a new TikTok!
-                <br><br>
-                🔗 https://tiktok.com/your-video
-            </div>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save TikTok Settings
-            </button>
-
-        </div>
+        <span class="connected" style="margin-left:10px;">
+            Ready
+        </span>
 
     </div>
 
 
-    <!-- YOUTUBE -->
-
     <div class="social-card">
 
         <div class="social-title">
 
-            <div class="social-icon">▶️</div>
+            <div class="social-icon">
+                ▶️
+            </div>
 
             <div>
-                <strong>YouTube</strong>
-                <span>New video notifications</span>
+
+                <strong>
+                    YouTube
+                </strong>
+
+                <span>
+                    New video notifications
+                </span>
+
             </div>
 
         </div>
 
-        <div id="youtubeStatus" class="link-status">
-            ⚪ YouTube channel not linked
-        </div>
-
         <div class="field">
 
-            <label>YOUTUBE CHANNEL</label>
+            <label>
+                YOUTUBE CHANNEL
+            </label>
 
             <input
                 class="input"
-                id="youtubeChannelAccount"
                 placeholder="Channel URL or username"
             >
 
         </div>
 
-        <button
-            class="button"
-            onclick="connectSocial('YouTube')"
-            style="margin-bottom:15px;"
-        >
-            🔗 Link YouTube Channel
-        </button>
-
         <div class="field">
 
-            <label>NOTIFICATION CHANNEL</label>
+            <label>
+                NOTIFICATION CHANNEL
+            </label>
 
-            <input
-                class="input"
-                id="youtubeDiscordChannel"
-                placeholder="#social-notifications"
-            >
+            <select class="select channel-select">
+                <option value="">Loading server channels...</option>
+            </select>
 
         </div>
 
         <div class="field">
 
-            <label>MENTION</label>
+            <label>
+                MENTION ROLE
+            </label>
 
-            <input
-                class="input"
-                id="youtubeMention"
-                placeholder="@everyone / @Members / role"
-            >
+            <select class="select role-select">
+                <option value="">Loading server roles...</option>
+            </select>
 
         </div>
 
         <div class="field">
 
-            <label>CUSTOM MESSAGE</label>
+            <label>
+                CUSTOM MESSAGE
+            </label>
 
-            <textarea
-                class="textarea"
-                id="youtubeMessage"
-            >🎬 {user} just uploaded a new YouTube video!
-
+            <textarea class="textarea">🎬 {user} just uploaded a new YouTube video!
+```
 
 🔗 {link}</textarea>
 
-
+```
         </div>
 
-        <div class="discord-preview">
-
-            <div class="preview-user">
-                <div class="preview-avatar">JV</div>
-
-                <div>
-                    <div class="preview-name">JayVon AI</div>
-                    <div class="preview-tag">YouTube Notification</div>
-                </div>
-            </div>
-
-            <div
-                class="preview-message"
-                id="youtubePreview"
-            >
-                🎬 {user} just uploaded a new YouTube video!
-                <br><br>
-                🔗 https://youtube.com/watch?v=your-video
-            </div>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save YouTube Settings
-            </button>
-
-        </div>
+        <button class="button">
+            Connect YouTube
+        </button>
 
     </div>
 
@@ -2217,7 +2124,9 @@ a{
 
 <div class="card">
 
-    <h3>Available Variables</h3>
+    <h3>
+        Available Variables
+    </h3>
 
     <p class="card-description">
         Use these variables inside your notification messages.
@@ -2234,18 +2143,20 @@ a{
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= WELCOME ================= -->
+<!-- WELCOME -->
 
 <section class="section" id="welcome">
 
-
+```
 <div class="section-header">
 
-    <h2>👋 Welcome System</h2>
+    <h2>
+        👋 Welcome System
+    </h2>
 
     <p>
         Automatically welcome members and give them roles.
@@ -2257,7 +2168,9 @@ a{
 
     <div class="card">
 
-        <h3>Welcome Settings</h3>
+        <h3>
+            Welcome Settings
+        </h3>
 
         <p class="card-description">
             Configure what happens when someone joins.
@@ -2265,41 +2178,40 @@ a{
 
         <div class="field">
 
-            <label>WELCOME CHANNEL</label>
+            <label>
+                WELCOME CHANNEL
+            </label>
 
-            <input
-                class="input"
-                id="welcomeChannel"
-                placeholder="#welcome"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>AUTO ROLE</label>
-
-            <input
-                class="input"
-                id="welcomeRole"
-                placeholder="@Member"
-            >
+            <select class="select channel-select">
+                <option value="">Loading server channels...</option>
+            </select>
 
         </div>
 
         <div class="field">
 
-            <label>WELCOME MESSAGE</label>
+            <label>
+                AUTO ROLE
+            </label>
 
-            <textarea
-                class="textarea"
-                id="welcomeMessage"
-            >👋 Welcome {user} to The Vonverse!
+            <select class="select role-select">
+                <option value="">Loading server roles...</option>
+            </select>
 
+        </div>
+
+        <div class="field">
+
+            <label>
+                WELCOME MESSAGE
+            </label>
+
+            <textarea class="textarea">👋 Welcome {user} to The Vonverse!
+```
 
 You are member #{membercount}.</textarea>
 
-
+```
         </div>
 
         <div class="setting-row">
@@ -2309,32 +2221,9 @@ You are member #{membercount}.</textarea>
                 <span>Send the member a private welcome message.</span>
             </div>
 
-            <button
-                class="toggle"
-                id="welcomeDMToggle"
-                onclick="toggleSetting(this);toggleDMFields()"
-            >
+            <button class="toggle" onclick="toggleSetting(this)">
                 <span></span>
             </button>
-
-        </div>
-
-        <div id="dmFields" style="display:none;margin-top:5px;">
-
-            <div class="field">
-
-                <label>WELCOME DM MESSAGE</label>
-
-                <textarea
-                    class="textarea"
-                    id="welcomeDMMessage"
-                >👋 Welcome to The Vonverse!
-
-
-We're glad to have you here, {user}.</textarea>
-
-
-            </div>
 
         </div>
 
@@ -2345,21 +2234,8 @@ We're glad to have you here, {user}.</textarea>
                 <span>Show the member's avatar and server information.</span>
             </div>
 
-            <button
-                class="toggle on"
-                onclick="toggleSetting(this);updateWelcomePreview()"
-            >
+            <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
-            </button>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save Welcome Settings
             </button>
 
         </div>
@@ -2368,26 +2244,25 @@ We're glad to have you here, {user}.</textarea>
 
     <div class="card">
 
-        <h3>Welcome Preview</h3>
+        <h3>
+            Welcome Preview
+        </h3>
 
         <p class="card-description">
-            Live preview of your welcome message.
+            Live-style preview of your welcome message.
         </p>
 
         <div class="welcome-preview">
 
-            <div
-                class="welcome-preview-avatar"
-                id="welcomeAvatar"
-            >
+            <div class="welcome-preview-avatar">
                 JD
             </div>
 
-            <h3 id="welcomePreviewTitle">
-                Welcome @User
+            <h3>
+                Welcome @SS_DEMON2
             </h3>
 
-            <p id="welcomePreviewText">
+            <p>
                 👋 Welcome to The Vonverse!
                 <br>
                 You are member #126.
@@ -2395,54 +2270,23 @@ We're glad to have you here, {user}.</textarea>
 
         </div>
 
-        <br>
-
-        <div
-            id="dmPreview"
-            class="discord-preview"
-            style="display:none;"
-        >
-
-            <div class="preview-user">
-
-                <div class="preview-avatar">
-                    ✉️
-                </div>
-
-                <div>
-                    <div class="preview-name">
-                        JayVon AI
-                    </div>
-
-                    <div class="preview-tag">
-                        Private Welcome DM
-                    </div>
-                </div>
-
-            </div>
-
-            <div
-                class="preview-message"
-                id="dmPreviewText"
-            ></div>
-
-        </div>
-
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= TICKETS ================= -->
+<!-- TICKETS -->
 
 <section class="section" id="tickets">
 
-
+```
 <div class="section-header">
 
-    <h2>🎫 Tickets</h2>
+    <h2>
+        🎫 Tickets
+    </h2>
 
     <p>
         Build private support channels for your community.
@@ -2454,102 +2298,39 @@ We're glad to have you here, {user}.</textarea>
 
     <div class="card">
 
-        <h3>Ticket Configuration</h3>
+        <h3>
+            Ticket Configuration
+        </h3>
 
         <p class="card-description">
-            Customize exactly what your ticket panel says.
+            Configure your ticket system.
         </p>
 
         <div class="field">
+            <label>TICKET CHANNEL</label>
 
-            <label>TICKET PANEL CHANNEL</label>
-
-            <input
-                class="input"
-                id="ticketChannel"
-                placeholder="#support"
-            >
-
+            <select class="select channel-select">
+                <option value="">Loading server channels...</option>
+            </select>
         </div>
 
         <div class="field">
-
             <label>TICKET CATEGORY</label>
 
-            <input
-                class="input"
-                id="ticketCategory"
-                placeholder="Support Tickets"
-            >
-
+            <select class="select category-select">
+                <option value="">Loading server categories...</option>
+            </select>
         </div>
 
         <div class="field">
-
             <label>STAFF ROLE</label>
 
-            <input
-                class="input"
-                id="ticketStaffRole"
-                placeholder="@Staff"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>TICKET TITLE</label>
-
-            <input
-                class="input"
-                id="ticketTitle"
-                value="Need Help?"
-                maxlength="80"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>TICKET MESSAGE</label>
-
-            <textarea
-                class="textarea"
-                id="ticketMessage"
-            >Click below to contact the staff team.</textarea>
-
-        </div>
-
-        <div class="field">
-
-            <label>OPEN TICKET BUTTON</label>
-
-            <input
-                class="input"
-                id="ticketButton"
-                value="🎫 Open Ticket"
-                maxlength="35"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>OPENED TICKET MESSAGE</label>
-
-            <textarea
-                class="textarea"
-                id="openedTicketMessage"
-            >Thanks for opening a ticket!
-
-
-Please explain what you need help with and a staff member will assist you shortly.</textarea>
-
-
+            <select class="select role-select">
+                <option value="">Loading server roles...</option>
+            </select>
         </div>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>Claim System</strong>
                 <span>Allow staff members to claim tickets.</span>
@@ -2558,11 +2339,9 @@ Please explain what you need help with and a staff member will assist you shortl
             <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
-
         </div>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>Transcripts</strong>
                 <span>Save ticket transcripts when closed.</span>
@@ -2571,34 +2350,18 @@ Please explain what you need help with and a staff member will assist you shortl
             <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save Ticket Settings
-            </button>
-
-            <button
-                class="button green"
-                onclick="sendTicketPanel()"
-            >
-                🎫 Send Ticket Panel
-            </button>
-
         </div>
 
     </div>
 
     <div class="card">
 
-        <h3>Ticket Panel Preview</h3>
+        <h3>
+            Ticket Panel Preview
+        </h3>
 
         <p class="card-description">
-            This preview updates as you edit your ticket settings.
+            This is what members will see.
         </p>
 
         <div class="ticket-preview">
@@ -2607,58 +2370,37 @@ Please explain what you need help with and a staff member will assist you shortl
                 🎫
             </div>
 
-            <h3 id="ticketPreviewTitle">
+            <h3>
                 Need Help?
             </h3>
 
-            <p id="ticketPreviewMessage">
+            <p>
                 Click below to contact the staff team.
             </p>
 
-            <span
-                class="ticket-button"
-                id="ticketPreviewButton"
-            >
+            <span class="ticket-button">
                 🎫 Open Ticket
             </span>
-
-        </div>
-
-        <br>
-
-        <div class="discord-preview">
-
-            <div class="preview-message">
-
-                <strong style="font-size:11px;">
-                    When the ticket opens:
-                </strong>
-
-                <br><br>
-
-                <span id="openedTicketPreview">
-                    Thanks for opening a ticket!
-                </span>
-
-            </div>
 
         </div>
 
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= GIVEAWAYS ================= -->
+<!-- GIVEAWAYS -->
 
 <section class="section" id="giveaways">
 
-
+```
 <div class="section-header">
 
-    <h2>🎉 Giveaways</h2>
+    <h2>
+        🎉 Giveaways
+    </h2>
 
     <p>
         Create and configure community giveaways.
@@ -2670,173 +2412,59 @@ Please explain what you need help with and a staff member will assist you shortl
 
     <div class="card">
 
-        <h3>Giveaway Configuration</h3>
+        <h3>
+            Giveaway Configuration
+        </h3>
 
         <p class="card-description">
             Configure your giveaway before launching it.
         </p>
 
         <div class="field">
-
-            <label>GIVEAWAY CHANNEL</label>
-
-            <input
-                class="input"
-                id="giveawayChannel"
-                placeholder="#giveaways"
-            >
-
-        </div>
-
-        <div class="field">
-
             <label>PRIZE</label>
 
             <input
                 class="input"
-                id="giveawayPrize"
                 value="$50 Roblox Gift Card"
             >
-
         </div>
 
         <div class="field">
-
             <label>WINNERS</label>
 
             <input
                 class="input"
-                id="giveawayWinners"
                 type="number"
-                min="1"
                 value="2"
             >
-
         </div>
 
         <div class="field">
-
             <label>DURATION</label>
 
-            <select
-                class="select"
-                id="giveawayDuration"
-            >
+            <select class="select">
                 <option>1 hour</option>
                 <option>6 hours</option>
                 <option>12 hours</option>
                 <option>24 hours</option>
                 <option>7 days</option>
             </select>
-
         </div>
 
-        <div class="field">
-
-            <label>WINNER ROLE — OPTIONAL</label>
-
-            <input
-                class="input"
-                id="giveawayWinnerRole"
-                placeholder="@Giveaway Winner"
-            >
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Winner Role</strong>
-                <span>Automatically give winners the selected role.</span>
-            </div>
-
-            <button
-                class="toggle"
-                id="winnerRoleToggle"
-                onclick="toggleSetting(this)"
-            >
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Private Winner Claim</strong>
-                <span>Allow winners to privately claim their prize.</span>
-            </div>
-
-            <button
-                class="toggle"
-                id="claimToggle"
-                onclick="toggleSetting(this);toggleClaimFields()"
-            >
-                <span></span>
-            </button>
-
-        </div>
-
-        <div
-            id="claimFields"
-            style="display:none;margin-top:8px;"
-        >
-
-            <div class="field">
-
-                <label>CLAIM MESSAGE</label>
-
-                <textarea
-                    class="textarea"
-                    id="claimMessage"
-                >🎉 Congratulations!
-
-
-You won the giveaway.
-
-Please follow the instructions from the staff team to claim your prize.</textarea>
-
-
-            </div>
-
-        </div>
-
-        <div class="field">
-
-            <label>GIVEAWAY MESSAGE</label>
-
-            <textarea
-                class="textarea"
-                id="giveawayMessage"
-            >React below to enter!</textarea>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save Giveaway Settings
-            </button>
-
-            <button
-                class="button green"
-                onclick="sendGiveaway()"
-            >
-                🎉 Send Giveaway
-            </button>
-
-        </div>
+        <button class="button">
+            🎉 Create Giveaway
+        </button>
 
     </div>
 
     <div class="card">
 
-        <h3>Giveaway Preview</h3>
+        <h3>
+            Giveaway Preview
+        </h3>
 
         <p class="card-description">
-            Your Discord giveaway message updates live while you edit it.
+            Example of the Discord giveaway message.
         </p>
 
         <div class="giveaway-preview">
@@ -2845,78 +2473,39 @@ Please follow the instructions from the staff team to claim your prize.</textare
                 🎉 GIVEAWAY
             </div>
 
-            <div
-                class="giveaway-prize"
-                id="giveawayPreviewPrize"
-            >
+            <div class="giveaway-prize">
                 $50 Roblox Gift Card
             </div>
 
-            <div
-                class="giveaway-info"
-                id="giveawayPreviewInfo"
-            >
+            <div class="giveaway-info">
                 React below to enter!
                 <br>
                 🏆 Winners: 2
                 <br>
                 ⏰ Ends: 1 hour
-            </div>
-
-            <span class="giveaway-entry">
+                <br><br>
                 🎉 Enter Giveaway
-            </span>
-
-        </div>
-
-        <br>
-
-        <div
-            id="claimPreview"
-            class="discord-preview"
-            style="display:none;"
-        >
-
-            <div class="preview-user">
-
-                <div class="preview-avatar">
-                    🏆
-                </div>
-
-                <div>
-                    <div class="preview-name">
-                        JayVon AI
-                    </div>
-
-                    <div class="preview-tag">
-                        Private Winner Claim
-                    </div>
-                </div>
-
             </div>
-
-            <div
-                class="preview-message"
-                id="claimPreviewText"
-            ></div>
 
         </div>
 
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= MUSIC ================= -->
+<!-- MUSIC -->
 
 <section class="section" id="music">
 
-
+```
 <div class="section-header">
 
-    <h2>🎵 Music</h2>
+    <h2>
+        🎵 Music
+    </h2>
 
     <p>
         Control music permissions and access.
@@ -2928,14 +2517,15 @@ Please follow the instructions from the staff team to claim your prize.</textare
 
     <div class="card">
 
-        <h3>Music Controls</h3>
+        <h3>
+            Music Controls
+        </h3>
 
         <p class="card-description">
             Decide who can use JayVon's music commands.
         </p>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>Music System</strong>
                 <span>Enable music commands.</span>
@@ -2944,11 +2534,9 @@ Please follow the instructions from the staff team to claim your prize.</textare
             <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
-
         </div>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>DJ Role</strong>
                 <span>Allow a role to control playback.</span>
@@ -2957,11 +2545,9 @@ Please follow the instructions from the staff team to claim your prize.</textare
             <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
-
         </div>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>Queue Control</strong>
                 <span>Control who can modify the queue.</span>
@@ -2970,78 +2556,56 @@ Please follow the instructions from the staff team to claim your prize.</textare
             <button class="toggle on" onclick="toggleSetting(this)">
                 <span></span>
             </button>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save Music Settings
-            </button>
-
         </div>
 
     </div>
 
     <div class="card">
 
-        <h3>Allowed Roles</h3>
+        <h3>
+            Allowed Roles
+        </h3>
 
         <p class="card-description">
-            Add the roles allowed to use music controls.
+            Roles allowed to use music controls.
         </p>
 
         <div class="field">
+            <label>MUSIC ROLE</label>
 
-            <label>ROLE</label>
-
-            <input
-                class="input"
-                id="musicRoleInput"
-                placeholder="@DJ"
-            >
-
+            <select class="select role-select">
+                <option value="">Loading server roles...</option>
+            </select>
         </div>
-
-        <button
-            class="button secondary"
-            onclick="addChip('musicRoleInput','musicRoles')"
-        >
-            + Add Role
-        </button>
-
-        <br><br>
-
-        <div class="chips" id="musicRoles"></div>
 
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= LEVELS ================= -->
+<!-- LEVELS -->
 
 <section class="section" id="levels">
 
-
+```
 <div class="card">
 
     <div class="upcoming">
 
-        <div class="upcoming-icon">📈</div>
+        <div class="upcoming-icon">
+            📈
+        </div>
 
-        <h3>Levels & XP</h3>
+        <h3>
+            Levels & XP
+        </h3>
 
         <div style="margin-top:10px;">
-
             <span class="upcoming-badge">
                 🚧 UPCOMING
             </span>
-
         </div>
 
         <p>
@@ -3054,26 +2618,27 @@ Please follow the instructions from the staff team to claim your prize.</textare
 
         <button
             class="button secondary"
-            onclick="showUpcoming()"
-        >
+            onclick="showUpcoming()">
             Stay Tuned
         </button>
 
     </div>
 
 </div>
-
+```
 
 </section>
 
-<!-- ================= SETTINGS ================= -->
+<!-- SETTINGS -->
 
 <section class="section" id="settings">
 
-
+```
 <div class="section-header">
 
-    <h2>⚙️ Settings</h2>
+    <h2>
+        ⚙️ Settings
+    </h2>
 
     <p>
         General JayVon AI dashboard settings.
@@ -3085,117 +2650,40 @@ Please follow the instructions from the staff team to claim your prize.</textare
 
     <div class="card">
 
-        <h3>Server Configuration</h3>
+        <h3>
+            Server Configuration
+        </h3>
 
         <p class="card-description">
             General server preferences.
         </p>
 
         <div class="field">
-
             <label>SERVER NAME</label>
 
             <input
                 class="input"
-                id="serverName"
-                placeholder="Your Discord Server"
+                value="The Vonverse"
             >
-
         </div>
 
-        <div class="field">
-
-            <label>SYSTEM LANGUAGE</label>
-
-            <select
-                class="select"
-                id="systemLanguage"
-                onchange="changeLanguage()"
-            >
-
-                <option value="English">English</option>
-                <option value="Spanish">Español</option>
-                <option value="French">Français</option>
-                <option value="German">Deutsch</option>
-                <option value="Portuguese">Português</option>
-                <option value="Italian">Italiano</option>
-                <option value="Dutch">Nederlands</option>
-                <option value="Polish">Polski</option>
-                <option value="Turkish">Türkçe</option>
-                <option value="Arabic">العربية</option>
-                <option value="Hindi">हिन्दी</option>
-                <option value="Chinese">中文</option>
-                <option value="Japanese">日本語</option>
-                <option value="Korean">한국어</option>
-                <option value="Russian">Русский</option>
-                <option value="Ukrainian">Українська</option>
-                <option value="Swedish">Svenska</option>
-                <option value="Norwegian">Norsk</option>
-                <option value="Danish">Dansk</option>
-                <option value="Finnish">Suomi</option>
-
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>TIMEZONE</label>
-
-            <select class="select">
-
-                <option value="">
-                    Auto Detect
-                </option>
-
-                <option>UTC</option>
-                <option>GMT+2</option>
-                <option>GMT-5</option>
-                <option>GMT+1</option>
-                <option>GMT+8</option>
-                <option>GMT+9</option>
-
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>DATE FORMAT</label>
-
-            <select class="select">
-
-                <option>DD/MM/YYYY</option>
-                <option>MM/DD/YYYY</option>
-                <option>YYYY-MM-DD</option>
-
-            </select>
-
-        </div>
-
-        <div class="save-bar">
-
-            <span class="save-status">✓ Saved</span>
-
-            <button class="button" onclick="saveSettings(this)">
-                Save Settings
-            </button>
-
-        </div>
+        <button class="button">
+            Save Changes
+        </button>
 
     </div>
 
-
     <div class="card">
 
-        <h3>JayVon AI</h3>
+        <h3>
+            JayVon AI
+        </h3>
 
         <p class="card-description">
             Dashboard and bot information.
         </p>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>JayVon AI</strong>
                 <span>Discord community assistant.</span>
@@ -3204,11 +2692,9 @@ Please follow the instructions from the staff team to claim your prize.</textare
             <span style="color:#4ade80;font-size:9px;">
                 ONLINE
             </span>
-
         </div>
 
         <div class="setting-row">
-
             <div class="setting-info">
                 <strong>The Vonverse</strong>
                 <span>JayVon AI's home universe.</span>
@@ -3217,60 +2703,20 @@ Please follow the instructions from the staff team to claim your prize.</textare
             <span style="color:#9cc5ff;font-size:9px;">
                 ACTIVE
             </span>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Dashboard Language</strong>
-                <span id="languageStatus">
-                    English
-                </span>
-            </div>
-
-            <span style="color:#9cc5ff;font-size:9px;">
-                SYSTEM
-            </span>
-
         </div>
 
     </div>
 
 </div>
-
-<br>
-
-<div class="card">
-
-    <h3>🌐 Language Information</h3>
-
-    <p class="card-description">
-        Choose the language you want the JayVon AI dashboard interface to use.
-        Your Discord messages, server content and bot responses are not automatically translated by this setting.
-    </p>
-
-    <div class="chips">
-
-        <span class="chip active">Dashboard UI</span>
-        <span class="chip active">Navigation</span>
-        <span class="chip active">Settings</span>
-        <span class="chip active">Controls</span>
-        <span class="chip">Discord content</span>
-        <span class="chip">AI responses</span>
-
-    </div>
-
-</div>
-
+```
 
 </section>
 
 <div class="dashboard-footer">
 
-
+```
 © 2026 JayVon AI • 🌐 The Vonverse • Created by SS_DEMON2
-
+```
 
 </div>
 
@@ -3298,7 +2744,7 @@ Please follow the instructions from the staff team to claim your prize.</textare
     onclick="closeUpcomingOutside(event,this)"
 >
 
-
+```
 <div
     style="
         width:min(430px,100%);
@@ -3321,7 +2767,7 @@ Please follow the instructions from the staff team to claim your prize.</textare
 
     <h2 style="
         font-family:'Space Grotesk',sans-serif;
-        font-size:23px;
+        font-size:22px;
     ">
         Coming Soon
     </h2>
@@ -3348,21 +2794,13 @@ Please follow the instructions from the staff team to claim your prize.</textare
     </button>
 
 </div>
+```
 
-
-</div>
-
-<!-- TOAST -->
-
-<div id="toast" class="toast">
-    Saved successfully.
 </div>
 
 <script>
 
-/* =========================================================
-   SECTION SWITCHING
-========================================================= */
+/* SECTION SWITCHING */
 
 const menuItems =
     document.querySelectorAll(".menu-item");
@@ -3490,9 +2928,7 @@ menuItems.forEach(function(item){
 });
 
 
-/* =========================================================
-   TOGGLES
-========================================================= */
+/* TOGGLES */
 
 function toggleSetting(button){
 
@@ -3501,9 +2937,7 @@ function toggleSetting(button){
 }
 
 
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
+/* MOBILE SIDEBAR */
 
 function toggleSidebar(){
 
@@ -3514,66 +2948,7 @@ function toggleSidebar(){
 }
 
 
-/* =========================================================
-   SAVE SETTINGS
-========================================================= */
-
-function saveSettings(button){
-
-    const bar =
-        button.closest(".save-bar");
-
-    const status =
-        bar.querySelector(".save-status");
-
-    if(status){
-
-        status.classList.add("show");
-
-        setTimeout(function(){
-
-            status.classList.remove("show");
-
-        },2200);
-
-    }
-
-    showToast("✓ Settings saved successfully.");
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent =
-        message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer =
-        setTimeout(function(){
-
-            toast.classList.remove("show");
-
-        },2500);
-
-}
-
-
-/* =========================================================
-   UPCOMING
-========================================================= */
+/* LEVELS UPCOMING */
 
 function showUpcoming(){
 
@@ -3609,601 +2984,297 @@ function closeUpcomingOutside(
 }
 
 
-/* =========================================================
-   ESCAPE
-========================================================= */
+/* ESCAPE */
 
 document.addEventListener(
     "keydown",
     function(event){
 
         if(event.key === "Escape"){
-
             closeUpcoming();
-
         }
 
     }
 );
 
 
-/* =========================================================
-   SOCIAL ACCOUNT LINKING UI
-========================================================= */
+/*
+    DISCORD SERVER DATA
 
-function connectSocial(platform){
+    The backend will eventually replace these
+    empty arrays with the actual Discord server
+    roles, channels and categories.
 
-    if(platform === "TikTok"){
+    Example:
 
-        const username =
-            document
-                .getElementById("tiktokUsername")
-                .value
-                .trim();
+    serverRoles = [
+        { id:"123", name:"Staff" },
+        { id:"456", name:"Moderator" },
+        { id:"789", name:"Member" }
+    ];
 
-        if(!username){
+    serverChannels = [
+        { id:"111", name:"welcome", type:"text" },
+        { id:"222", name:"social-notifications", type:"text" }
+    ];
 
-            showToast("Enter your TikTok username first.");
+    serverCategories = [
+        { id:"333", name:"Support Tickets" }
+    ];
+*/
 
-            document
-                .getElementById("tiktokUsername")
-                .focus();
+let serverRoles = [];
+
+let serverChannels = [];
+
+let serverCategories = [];
+
+
+/* POPULATE ROLE DROPDOWNS */
+
+function populateRoles(){
+
+    const roleSelects =
+        document.querySelectorAll(".role-select");
+
+    roleSelects.forEach(function(select){
+
+        const previousValue =
+            select.value;
+
+        select.innerHTML = "";
+
+        if(!serverRoles.length){
+
+            const option =
+                document.createElement("option");
+
+            option.value = "";
+
+            option.textContent =
+                "No server roles loaded yet";
+
+            select.appendChild(option);
 
             return;
 
         }
 
-        const status =
-            document.getElementById("tiktokStatus");
+        const defaultOption =
+            document.createElement("option");
 
-        status.classList.add("connected");
+        defaultOption.value = "";
 
-        status.textContent =
-            "🟢 TikTok account ready to connect";
+        defaultOption.textContent =
+            "Select a server role";
 
-        showToast(
-            "TikTok account prepared for connection."
-        );
+        select.appendChild(defaultOption);
 
-    }
+        serverRoles.forEach(function(role){
 
-    if(platform === "YouTube"){
+            const option =
+                document.createElement("option");
 
-        const channel =
-            document
-                .getElementById("youtubeChannelAccount")
-                .value
-                .trim();
+            option.value =
+                role.id;
 
-        if(!channel){
+            option.textContent =
+                "@" + role.name;
 
-            showToast("Enter your YouTube channel first.");
+            select.appendChild(option);
 
-            document
-                .getElementById("youtubeChannelAccount")
-                .focus();
+        });
+
+        if(previousValue){
+            select.value = previousValue;
+        }
+
+    });
+
+}
+
+
+/* POPULATE CHANNEL DROPDOWNS */
+
+function populateChannels(){
+
+    const channelSelects =
+        document.querySelectorAll(".channel-select");
+
+    channelSelects.forEach(function(select){
+
+        const previousValue =
+            select.value;
+
+        select.innerHTML = "";
+
+        if(!serverChannels.length){
+
+            const option =
+                document.createElement("option");
+
+            option.value = "";
+
+            option.textContent =
+                "No server channels loaded yet";
+
+            select.appendChild(option);
 
             return;
 
         }
 
-        const status =
-            document.getElementById("youtubeStatus");
+        const defaultOption =
+            document.createElement("option");
 
-        status.classList.add("connected");
+        defaultOption.value = "";
 
-        status.textContent =
-            "🟢 YouTube channel ready to connect";
+        defaultOption.textContent =
+            "Select a server channel";
 
-        showToast(
-            "YouTube channel prepared for connection."
-        );
+        select.appendChild(defaultOption);
 
+        serverChannels.forEach(function(channel){
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                channel.id;
+
+            option.textContent =
+                "#" + channel.name;
+
+            select.appendChild(option);
+
+        });
+
+        if(previousValue){
+            select.value = previousValue;
+        }
+
+    });
+
+}
+
+
+/* POPULATE CATEGORY DROPDOWNS */
+
+function populateCategories(){
+
+    const categorySelects =
+        document.querySelectorAll(".category-select");
+
+    categorySelects.forEach(function(select){
+
+        const previousValue =
+            select.value;
+
+        select.innerHTML = "";
+
+        if(!serverCategories.length){
+
+            const option =
+                document.createElement("option");
+
+            option.value = "";
+
+            option.textContent =
+                "No server categories loaded yet";
+
+            select.appendChild(option);
+
+            return;
+
+        }
+
+        const defaultOption =
+            document.createElement("option");
+
+        defaultOption.value = "";
+
+        defaultOption.textContent =
+            "Select a server category";
+
+        select.appendChild(defaultOption);
+
+        serverCategories.forEach(function(category){
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                category.id;
+
+            option.textContent =
+                category.name;
+
+            select.appendChild(option);
+
+        });
+
+        if(previousValue){
+            select.value = previousValue;
+        }
+
+    });
+
+}
+
+
+/*
+    BACKEND HOOK
+
+    When we build the backend, call:
+
+    setServerData({
+        roles: [
+            { id:"123", name:"Staff" },
+            { id:"456", name:"Moderator" }
+        ],
+
+        channels: [
+            { id:"111", name:"general" },
+            { id:"222", name:"social-notifications" }
+        ],
+
+        categories: [
+            { id:"333", name:"Support Tickets" }
+        ]
+    });
+
+    The real Discord server data will then
+    automatically appear in every relevant
+    dropdown.
+*/
+
+function setServerData(data){
+
+    if(data && Array.isArray(data.roles)){
+        serverRoles = data.roles;
     }
 
-}
-
-
-/* =========================================================
-   SOCIAL LIVE PREVIEWS
-========================================================= */
-
-function updateSocialPreview(){
-
-    const tiktokMessage =
-        document
-            .getElementById("tiktokMessage")
-            .value;
-
-    const youtubeMessage =
-        document
-            .getElementById("youtubeMessage")
-            .value;
-
-    document
-        .getElementById("tiktokPreview")
-        .innerHTML =
-        escapeHTML(
-            tiktokMessage
-                .replaceAll(
-                    "{link}",
-                    "https://tiktok.com/your-video"
-                )
-        )
-        .replaceAll("\n","<br>");
-
-    document
-        .getElementById("youtubePreview")
-        .innerHTML =
-        escapeHTML(
-            youtubeMessage
-                .replaceAll(
-                    "{link}",
-                    "https://youtube.com/watch?v=your-video"
-                )
-        )
-        .replaceAll("\n","<br>");
-
-}
-
-document
-    .getElementById("tiktokMessage")
-    .addEventListener("input",updateSocialPreview);
-
-document
-    .getElementById("youtubeMessage")
-    .addEventListener("input",updateSocialPreview);
-
-
-/* =========================================================
-   MEDIA PREVIEW
-========================================================= */
-
-function updateMediaPreview(){
-
-    const channel =
-        document
-            .getElementById("mediaChannel")
-            .value
-            .trim();
-
-    const type =
-        document
-            .getElementById("mediaType")
-            .value;
-
-    document
-        .getElementById("mediaPreviewChannel")
-        .textContent =
-        channel || "#your-media-channel";
-
-    document
-        .getElementById("mediaPreviewText")
-        .textContent =
-        type + " are allowed in this channel.";
-
-}
-
-document
-    .getElementById("mediaChannel")
-    .addEventListener("input",updateMediaPreview);
-
-document
-    .getElementById("mediaType")
-    .addEventListener("change",updateMediaPreview);
-
-
-/* =========================================================
-   WELCOME PREVIEW
-========================================================= */
-
-function updateWelcomePreview(){
-
-    const message =
-        document
-            .getElementById("welcomeMessage")
-            .value;
-
-    const dmMessage =
-        document
-            .getElementById("welcomeDMMessage")
-            .value;
-
-    document
-        .getElementById("welcomePreviewText")
-        .textContent =
-        message
-            .replaceAll("{user}","@User")
-            .replaceAll("{membercount}","126");
-
-    document
-        .getElementById("dmPreviewText")
-        .textContent =
-        dmMessage
-            .replaceAll("{user}","@User");
-
-}
-
-document
-    .getElementById("welcomeMessage")
-    .addEventListener(
-        "input",
-        updateWelcomePreview
-    );
-
-document
-    .getElementById("welcomeDMMessage")
-    .addEventListener(
-        "input",
-        updateWelcomePreview
-    );
-
-
-function toggleDMFields(){
-
-    const toggle =
-        document.getElementById("welcomeDMToggle");
-
-    const fields =
-        document.getElementById("dmFields");
-
-    const preview =
-        document.getElementById("dmPreview");
-
-    if(toggle.classList.contains("on")){
-
-        fields.style.display =
-            "block";
-
-        preview.style.display =
-            "block";
-
-    }
-    else{
-
-        fields.style.display =
-            "none";
-
-        preview.style.display =
-            "none";
-
+    if(data && Array.isArray(data.channels)){
+        serverChannels = data.channels;
     }
 
-    updateWelcomePreview();
-
-}
-
-
-/* =========================================================
-   TICKET LIVE PREVIEW
-========================================================= */
-
-function updateTicketPreview(){
-
-    const title =
-        document.getElementById("ticketTitle").value;
-
-    const message =
-        document.getElementById("ticketMessage").value;
-
-    const button =
-        document.getElementById("ticketButton").value;
-
-    const opened =
-        document.getElementById("openedTicketMessage").value;
-
-    document
-        .getElementById("ticketPreviewTitle")
-        .textContent =
-        title || "Need Help?";
-
-    document
-        .getElementById("ticketPreviewMessage")
-        .textContent =
-        message ||
-        "Click below to contact the staff team.";
-
-    document
-        .getElementById("ticketPreviewButton")
-        .textContent =
-        button || "🎫 Open Ticket";
-
-    document
-        .getElementById("openedTicketPreview")
-        .textContent =
-        opened ||
-        "Thanks for opening a ticket!";
-
-}
-
-[
-    "ticketTitle",
-    "ticketMessage",
-    "ticketButton",
-    "openedTicketMessage"
-].forEach(function(id){
-
-    document
-        .getElementById(id)
-        .addEventListener(
-            "input",
-            updateTicketPreview
-        );
-
-});
-
-
-function sendTicketPanel(){
-
-    const channel =
-        document
-            .getElementById("ticketChannel")
-            .value
-            .trim();
-
-    if(!channel){
-
-        showToast(
-            "Choose a ticket panel channel first."
-        );
-
-        return;
-
+    if(data && Array.isArray(data.categories)){
+        serverCategories = data.categories;
     }
 
-    showToast(
-        "🎫 Ticket panel ready to send to " + channel
-    );
+    populateRoles();
+    populateChannels();
+    populateCategories();
 
 }
 
 
-/* =========================================================
-   GIVEAWAY LIVE PREVIEW
-========================================================= */
-
-function updateGiveawayPreview(){
-
-    const prize =
-        document
-            .getElementById("giveawayPrize")
-            .value;
-
-    const winners =
-        document
-            .getElementById("giveawayWinners")
-            .value;
-
-    const duration =
-        document
-            .getElementById("giveawayDuration")
-            .value;
-
-    const message =
-        document
-            .getElementById("giveawayMessage")
-            .value;
-
-    document
-        .getElementById("giveawayPreviewPrize")
-        .textContent =
-        prize || "Your Prize";
-
-    document
-        .getElementById("giveawayPreviewInfo")
-        .innerHTML =
-        escapeHTML(
-            message || "React below to enter!"
-        ).replaceAll("\n","<br>") +
-        "<br>🏆 Winners: " +
-        escapeHTML(winners || "1") +
-        "<br>⏰ Ends: " +
-        escapeHTML(duration);
-
-}
-
-[
-    "giveawayPrize",
-    "giveawayWinners",
-    "giveawayMessage"
-].forEach(function(id){
-
-    document
-        .getElementById(id)
-        .addEventListener(
-            "input",
-            updateGiveawayPreview
-        );
-
-});
-
-document
-    .getElementById("giveawayDuration")
-    .addEventListener(
-        "change",
-        updateGiveawayPreview
-    );
-
-
-function toggleClaimFields(){
-
-    const toggle =
-        document.getElementById("claimToggle");
-
-    const fields =
-        document.getElementById("claimFields");
-
-    const preview =
-        document.getElementById("claimPreview");
-
-    if(toggle.classList.contains("on")){
-
-        fields.style.display =
-            "block";
-
-        preview.style.display =
-            "block";
-
-    }
-    else{
-
-        fields.style.display =
-            "none";
-
-        preview.style.display =
-            "none";
-
-    }
-
-    updateClaimPreview();
-
-}
-
-
-function updateClaimPreview(){
-
-    const message =
-        document
-            .getElementById("claimMessage")
-            .value;
-
-    document
-        .getElementById("claimPreviewText")
-        .textContent =
-        message;
-
-}
-
-document
-    .getElementById("claimMessage")
-    .addEventListener(
-        "input",
-        updateClaimPreview
-    );
-
-
-function sendGiveaway(){
-
-    const channel =
-        document
-            .getElementById("giveawayChannel")
-            .value
-            .trim();
-
-    const prize =
-        document
-            .getElementById("giveawayPrize")
-            .value
-            .trim();
-
-    if(!channel){
-
-        showToast(
-            "Choose a giveaway channel first."
-        );
-
-        return;
-
-    }
-
-    if(!prize){
-
-        showToast(
-            "Enter a giveaway prize first."
-        );
-
-        return;
-
-    }
-
-    showToast(
-        "🎉 Giveaway ready to send to " + channel
-    );
-
-}
-
-
-/* =========================================================
-   DYNAMIC CHIPS
-========================================================= */
-
-function addChip(
-    inputId,
-    containerId
-){
-
-    const input =
-        document.getElementById(inputId);
-
-    const container =
-        document.getElementById(containerId);
-
-    const value =
-        input.value.trim();
-
-    if(!value){
-
-        showToast("Enter something first.");
-
-        return;
-
-    }
-
-    const chip =
-        document.createElement("span");
-
-    chip.className =
-        "chip active";
-
-    chip.textContent =
-        value;
-
-    chip.style.cursor =
-        "pointer";
-
-    chip.title =
-        "Click to remove";
-
-    chip.onclick =
-        function(){
-
-            chip.remove();
-
-        };
-
-    container.appendChild(chip);
-
-    input.value = "";
-
-}
-
-
-/* =========================================================
-   LANGUAGE SYSTEM
-========================================================= */
-
-function changeLanguage(){
-
-    const language =
-        document
-            .getElementById("systemLanguage")
-            .value;
-
-    document
-        .getElementById("languageStatus")
-        .textContent =
-        language;
-
-    showToast(
-        "🌐 Dashboard language changed to " + language
-    );
-
-}
-
-
-/* =========================================================
-   LOGO BACKGROUND REMOVER
-========================================================= */
+/*
+    LOGO BACKGROUND REMOVER
+
+    Keeps dark/black artwork while removing
+    light/white background pixels.
+*/
 
 function cleanLogo(img){
 
@@ -4317,32 +3388,16 @@ document
     });
 
 
-/* =========================================================
-   BASIC HTML ESCAPE
-========================================================= */
+/*
+    INITIALIZE EMPTY SERVER DATA
 
-function escapeHTML(value){
+    These remain empty until the backend
+    connects to Discord.
+*/
 
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================================
-   INITIAL PREVIEWS
-========================================================= */
-
-updateSocialPreview();
-updateMediaPreview();
-updateWelcomePreview();
-updateTicketPreview();
-updateGiveawayPreview();
-updateClaimPreview();
+populateRoles();
+populateChannels();
+populateCategories();
 
 </script>
 
