@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -107,12 +107,8 @@ a{
 }
 
 @keyframes dashGlobe{
-    0%,100%{
-        transform:rotate(-3deg);
-    }
-    50%{
-        transform:rotate(9deg);
-    }
+    0%,100%{transform:rotate(-3deg);}
+    50%{transform:rotate(9deg);}
 }
 
 .jay{
@@ -165,7 +161,7 @@ a{
 
 .sidebar-brand-text{
     font-family:"Space Grotesk",sans-serif;
-    font-size:17px;
+    font-size:18px;
     font-weight:700;
 }
 
@@ -197,14 +193,14 @@ a{
     border:1px solid transparent;
     background:transparent;
     color:#858590;
-    padding:10px 11px;
+    padding:11px 11px;
     margin-bottom:3px;
     border-radius:9px;
     display:flex;
     align-items:center;
     gap:10px;
     text-align:left;
-    font-size:11px;
+    font-size:12px;
     transition:.2s ease;
 }
 
@@ -284,13 +280,13 @@ a{
 
 .page-heading h1{
     font-family:"Space Grotesk",sans-serif;
-    font-size:20px;
+    font-size:22px;
     letter-spacing:-.5px;
 }
 
 .page-heading p{
     color:#62626c;
-    font-size:10px;
+    font-size:11px;
     margin-top:4px;
 }
 
@@ -300,10 +296,10 @@ a{
     gap:9px;
     background:#111119;
     border:1px solid var(--line);
-    padding:8px 11px;
+    padding:9px 12px;
     border-radius:9px;
     color:#b9b9c2;
-    font-size:10px;
+    font-size:11px;
 }
 
 .server-dot{
@@ -347,7 +343,7 @@ a{
 
 .section-header h2{
     font-family:"Space Grotesk",sans-serif;
-    font-size:25px;
+    font-size:27px;
     letter-spacing:-.6px;
 }
 
@@ -382,7 +378,7 @@ a{
     justify-content:space-between;
     align-items:center;
     color:#71717b;
-    font-size:10px;
+    font-size:11px;
 }
 
 .stat-icon{
@@ -391,13 +387,13 @@ a{
 
 .stat-number{
     font-family:"Space Grotesk",sans-serif;
-    font-size:25px;
+    font-size:27px;
     margin-top:13px;
 }
 
 .stat-small{
     color:#5e5e68;
-    font-size:9px;
+    font-size:10px;
     margin-top:4px;
 }
 
@@ -407,7 +403,7 @@ a{
 
 .card h3{
     font-family:"Space Grotesk",sans-serif;
-    font-size:14px;
+    font-size:16px;
     margin-bottom:6px;
 }
 
@@ -430,7 +426,7 @@ a{
     gap:16px;
 }
 
-/* TOGGLES */
+/* SETTINGS ROWS */
 
 .setting-row{
     display:flex;
@@ -458,12 +454,15 @@ a{
     margin-top:3px;
 }
 
+/* BETTER STRAIGHT TOGGLES */
+
 .toggle{
-    width:39px;
-    height:21px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.08);
-    background:#191920;
+    position:relative;
+    width:42px;
+    height:23px;
+    border-radius:7px;
+    border:1px solid rgba(255,255,255,.10);
+    background:#1b1b23;
     padding:2px;
     transition:.2s;
     flex-shrink:0;
@@ -471,22 +470,22 @@ a{
 
 .toggle span{
     display:block;
-    width:15px;
-    height:15px;
-    border-radius:50%;
-    background:#666671;
+    width:17px;
+    height:17px;
+    border-radius:5px;
+    background:#686873;
     transition:.2s;
 }
 
 .toggle.on{
-    background:rgba(59,130,246,.3);
-    border-color:rgba(59,130,246,.35);
+    background:rgba(59,130,246,.32);
+    border-color:rgba(59,130,246,.4);
 }
 
 .toggle.on span{
     background:#3b82f6;
-    transform:translateX(17px);
-    box-shadow:0 0 10px rgba(59,130,246,.5);
+    transform:translateX(19px);
+    box-shadow:0 0 9px rgba(59,130,246,.45);
 }
 
 /* FORMS */
@@ -510,7 +509,7 @@ a{
     background:#09090e;
     border:1px solid rgba(255,255,255,.075);
     color:#dddde5;
-    padding:10px 11px;
+    padding:11px 12px;
     border-radius:8px;
     font-size:10px;
     transition:.2s;
@@ -532,7 +531,7 @@ a{
     border:1px solid rgba(59,130,246,.2);
     background:linear-gradient(135deg,#2563eb,#7c3aed);
     color:#fff;
-    padding:10px 15px;
+    padding:11px 16px;
     border-radius:8px;
     font-size:10px;
     font-weight:700;
@@ -554,6 +553,34 @@ a{
     background:rgba(239,68,68,.1);
     border-color:rgba(239,68,68,.2);
     color:#f87171;
+}
+
+.button.green{
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    border-color:rgba(34,197,94,.3);
+}
+
+/* SAVE BAR */
+
+.save-bar{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.045);
+}
+
+.save-status{
+    align-self:center;
+    color:#4ade80;
+    font-size:9px;
+    opacity:0;
+    transition:.2s;
+}
+
+.save-status.show{
+    opacity:1;
 }
 
 /* CHIPS */
@@ -726,17 +753,13 @@ a{
 }
 
 @keyframes floatIcon{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-6px);
-    }
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
 }
 
 .upcoming h3{
     font-family:"Space Grotesk",sans-serif;
-    font-size:21px;
+    font-size:22px;
 }
 
 .upcoming p{
@@ -787,7 +810,7 @@ a{
 
 .social-title strong{
     display:block;
-    font-size:13px;
+    font-size:14px;
 }
 
 .social-title span{
@@ -853,13 +876,14 @@ a{
 }
 
 .ticket-preview h3{
-    font-size:14px;
+    font-size:15px;
 }
 
 .ticket-preview p{
     color:#b5bac1;
     font-size:9px;
     margin:7px 0 15px;
+    white-space:pre-line;
 }
 
 .ticket-button{
@@ -899,6 +923,16 @@ a{
     line-height:1.8;
 }
 
+.giveaway-entry{
+    display:inline-block;
+    margin-top:15px;
+    padding:9px 14px;
+    background:#5865f2;
+    border-radius:7px;
+    font-size:9px;
+    font-weight:700;
+}
+
 /* WELCOME */
 
 .welcome-preview{
@@ -930,6 +964,31 @@ a{
     color:#70707a;
     font-size:9px;
     margin-top:7px;
+    white-space:pre-line;
+}
+
+/* LINK STATUS */
+
+.link-status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 12px;
+    border-radius:8px;
+    background:#09090e;
+    border:1px solid rgba(255,255,255,.055);
+    color:#777781;
+    font-size:9px;
+    margin-bottom:14px;
+}
+
+.link-status.connected{
+    color:#4ade80;
+}
+
+.link-status.connected:before{
+    width:7px;
+    height:7px;
 }
 
 /* FOOTER */
@@ -939,6 +998,31 @@ a{
     text-align:center;
     padding:30px;
     font-size:9px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:10000;
+    padding:13px 16px;
+    border-radius:10px;
+    background:#111119;
+    border:1px solid rgba(59,130,246,.25);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    color:#ddd;
+    font-size:10px;
+    transform:translateY(20px);
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
 }
 
 /* MOBILE */
@@ -1019,6 +1103,7 @@ a{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -1031,174 +1116,103 @@ a{
 
 <aside class="sidebar" id="sidebar">
 
-    <div class="sidebar-brand">
+```
+<div class="sidebar-brand">
 
-        <img
-            src="vonverse-logo.png"
-            class="sidebar-logo"
-            alt="The Vonverse"
-            data-logo
-        >
+    <img
+        src="vonverse-logo.png"
+        class="sidebar-logo"
+        alt="The Vonverse"
+        data-logo
+    >
 
-        <div class="sidebar-brand-text">
-
-            <span class="jay">Jay</span><span class="von">Von</span> AI
-
-            <small>
-                THE VONVERSE
-            </small>
-
-        </div>
-
+    <div class="sidebar-brand-text">
+        <span class="jay">Jay</span><span class="von">Von</span> AI
+        <small>THE VONVERSE</small>
     </div>
 
-    <div class="sidebar-scroll">
+</div>
 
-        <div class="menu-label">
-            OVERVIEW
-        </div>
+<div class="sidebar-scroll">
 
-        <button
-            class="menu-item active"
-            data-section="overview">
+    <div class="menu-label">OVERVIEW</div>
 
-            <span class="menu-icon">⌂</span>
-            Overview
+    <button class="menu-item active" data-section="overview">
+        <span class="menu-icon">⌂</span>
+        Overview
+    </button>
 
-        </button>
+    <div class="menu-label">AI & COMMUNITY</div>
 
+    <button class="menu-item" data-section="ai">
+        <span class="menu-icon">🤖</span>
+        JayVon AI
+    </button>
 
-        <div class="menu-label">
-            AI & COMMUNITY
-        </div>
+    <button class="menu-item" data-section="moderation">
+        <span class="menu-icon">🛡️</span>
+        Moderation
+    </button>
 
-        <button
-            class="menu-item"
-            data-section="ai">
+    <button class="menu-item" data-section="media">
+        <span class="menu-icon">🖼️</span>
+        Media Channels
+    </button>
 
-            <span class="menu-icon">🤖</span>
-            JayVon AI
+    <div class="menu-label">SOCIAL</div>
 
-        </button>
+    <button class="menu-item" data-section="notifications">
+        <span class="menu-icon">🔔</span>
+        Notifications
+    </button>
 
-        <button
-            class="menu-item"
-            data-section="moderation">
+    <div class="menu-label">COMMUNITY TOOLS</div>
 
-            <span class="menu-icon">🛡️</span>
-            Moderation
+    <button class="menu-item" data-section="welcome">
+        <span class="menu-icon">👋</span>
+        Welcome
+    </button>
 
-        </button>
+    <button class="menu-item" data-section="tickets">
+        <span class="menu-icon">🎫</span>
+        Tickets
+    </button>
 
-        <button
-            class="menu-item"
-            data-section="media">
+    <button class="menu-item" data-section="giveaways">
+        <span class="menu-icon">🎉</span>
+        Giveaways
+    </button>
 
-            <span class="menu-icon">🖼️</span>
-            Media Channels
+    <button class="menu-item" data-section="music">
+        <span class="menu-icon">🎵</span>
+        Music
+    </button>
 
-        </button>
+    <div class="menu-label">COMMUNITY GROWTH</div>
 
+    <button class="menu-item" data-section="levels">
+        <span class="menu-icon">📈</span>
+        Levels & XP
+        <span class="menu-badge">SOON</span>
+    </button>
 
-        <div class="menu-label">
-            SOCIAL
-        </div>
+    <div class="menu-label">SETTINGS</div>
 
-        <button
-            class="menu-item"
-            data-section="notifications">
+    <button class="menu-item" data-section="settings">
+        <span class="menu-icon">⚙️</span>
+        Settings
+    </button>
 
-            <span class="menu-icon">🔔</span>
-            Notifications
+</div>
 
-        </button>
+<div class="sidebar-bottom">
 
+    <a href="index.html" class="back-home">
+        ← Back to The Vonverse
+    </a>
 
-        <div class="menu-label">
-            COMMUNITY TOOLS
-        </div>
-
-        <button
-            class="menu-item"
-            data-section="welcome">
-
-            <span class="menu-icon">👋</span>
-            Welcome
-
-        </button>
-
-        <button
-            class="menu-item"
-            data-section="tickets">
-
-            <span class="menu-icon">🎫</span>
-            Tickets
-
-        </button>
-
-        <button
-            class="menu-item"
-            data-section="giveaways">
-
-            <span class="menu-icon">🎉</span>
-            Giveaways
-
-        </button>
-
-        <button
-            class="menu-item"
-            data-section="music">
-
-            <span class="menu-icon">🎵</span>
-            Music
-
-        </button>
-
-
-        <div class="menu-label">
-            COMMUNITY GROWTH
-        </div>
-
-        <button
-            class="menu-item"
-            data-section="levels">
-
-            <span class="menu-icon">📈</span>
-            Levels & XP
-
-            <span class="menu-badge">
-                SOON
-            </span>
-
-        </button>
-
-
-        <div class="menu-label">
-            SETTINGS
-        </div>
-
-        <button
-            class="menu-item"
-            data-section="settings">
-
-            <span class="menu-icon">⚙️</span>
-            Settings
-
-        </button>
-
-    </div>
-
-    <div class="sidebar-bottom">
-
-        <a
-            href="index.html"
-            class="back-home">
-
-            ← Back to The Vonverse
-
-        </a>
-
-    </div>
+</div>
+```
 
 </aside>
 
@@ -1206,1604 +1220,2057 @@ a{
 
 <header class="topbar">
 
-    <button
-        class="mobile-menu"
-        onclick="toggleSidebar()">
-        ☰
-    </button>
+```
+<button class="mobile-menu" onclick="toggleSidebar()">
+    ☰
+</button>
 
-    <div class="page-heading">
+<div class="page-heading">
 
-        <h1 id="pageTitle">
-            Dashboard
-        </h1>
+    <h1 id="pageTitle">Dashboard</h1>
 
-        <p id="pageDescription">
-            Manage JayVon AI and your Discord community.
-        </p>
+    <p id="pageDescription">
+        Manage JayVon AI and your Discord community.
+    </p>
 
-    </div>
+</div>
 
-    <div class="server-selector">
-
-        <span class="server-dot"></span>
-
-        Your Discord Server
-
-        ▾
-
-    </div>
+<div class="server-selector">
+    <span class="server-dot"></span>
+    Discord Server
+    ▾
+</div>
+```
 
 </header>
 
 <div class="content">
 
-<!-- OVERVIEW -->
+<!-- ================= OVERVIEW ================= -->
 
-<section
-    class="section active"
-    id="overview">
+<section class="section active" id="overview">
 
-    <div class="section-header">
+```
+<div class="section-header">
+    <h2>Welcome to JayVon AI.</h2>
+    <p>Your control center for The Vonverse.</p>
+</div>
 
-        <h2>
-            Welcome to JayVon AI.
-        </h2>
+<div class="card-grid">
 
-        <p>
-            Your control center for The Vonverse.
+    <div class="stat-card">
+        <div class="stat-top">
+            Connected Servers
+            <span class="stat-icon">🌐</span>
+        </div>
+
+        <div class="stat-number">1</div>
+
+        <div class="stat-small">
+            JayVon AI connected
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-top">
+            Moderation
+            <span class="stat-icon">🛡️</span>
+        </div>
+
+        <div class="stat-number">Protected</div>
+
+        <div class="stat-small">
+            Security systems ready
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-top">
+            Features
+            <span class="stat-icon">✨</span>
+        </div>
+
+        <div class="stat-number">9+</div>
+
+        <div class="stat-small">
+            Available and planned
+        </div>
+    </div>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>🚀 JayVon AI</h3>
+
+        <p class="card-description">
+            Configure your intelligent Discord assistant.
         </p>
 
-    </div>
+        <div class="setting-row">
 
-    <div class="card-grid">
-
-        <div class="stat-card">
-
-            <div class="stat-top">
-                Connected Servers
-                <span class="stat-icon">🌐</span>
+            <div class="setting-info">
+                <strong>AI Conversation</strong>
+                <span>Allow JayVon AI to respond in configured channels.</span>
             </div>
 
-            <div class="stat-number">
-                1
-            </div>
-
-            <div class="stat-small">
-                JayVon AI connected
-            </div>
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
 
         </div>
 
-        <div class="stat-card">
+        <div class="setting-row">
 
-            <div class="stat-top">
-                Moderation
-                <span class="stat-icon">🛡️</span>
+            <div class="setting-info">
+                <strong>Smart Responses</strong>
+                <span>Enable contextual community responses.</span>
             </div>
 
-            <div class="stat-number">
-                Protected
-            </div>
-
-            <div class="stat-small">
-                Security systems ready
-            </div>
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
 
         </div>
 
-        <div class="stat-card">
-
-            <div class="stat-top">
-                Features
-                <span class="stat-icon">✨</span>
-            </div>
-
-            <div class="stat-number">
-                9+
-            </div>
-
-            <div class="stat-small">
-                Available and planned
-            </div>
-
+        <div class="save-bar">
+            <span class="save-status">✓ Saved</span>
+            <button class="button" onclick="saveSettings(this)">
+                Save Settings
+            </button>
         </div>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                🚀 JayVon AI
-            </h3>
-
-            <p class="card-description">
-                Configure your intelligent Discord assistant.
-            </p>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>AI Conversation</strong>
-                    <span>Allow JayVon AI to respond in configured channels.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Smart Responses</strong>
-                    <span>Enable contextual community responses.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                🛡️ Security Status
-            </h3>
-
-            <p class="card-description">
-                Your moderation protection overview.
-            </p>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Anti-Spam</strong>
-                    <span>Protection active.</span>
-                </div>
-
-                <span style="color:#4ade80;font-size:9px;">
-                    ACTIVE
-                </span>
-
-            </div>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Raid Protection</strong>
-                    <span>Protection ready.</span>
-                </div>
-
-                <span style="color:#4ade80;font-size:9px;">
-                    ACTIVE
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- AI -->
-
-<section
-    class="section"
-    id="ai">
-
-    <div class="section-header">
-
-        <h2>
-            🤖 JayVon AI
-        </h2>
-
-        <p>
-            Configure how JayVon AI interacts with your community.
-        </p>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                AI Configuration
-            </h3>
-
-            <p class="card-description">
-                Control where and how JayVon AI responds.
-            </p>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Enable AI</strong>
-                    <span>Turn JayVon AI conversations on or off.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Reply to Mentions</strong>
-                    <span>Respond when JayVon AI is mentioned.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Moderation Awareness</strong>
-                    <span>Allow AI to understand moderation context.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                Allowed Channels
-            </h3>
-
-            <p class="card-description">
-                Choose where JayVon AI can respond.
-            </p>
-
-            <div class="chips">
-
-                <span class="chip active">
-                    #general
-                </span>
-
-                <span class="chip active">
-                    #chat
-                </span>
-
-                <span class="chip">
-                    #media
-                </span>
-
-                <span class="chip">
-                    #support
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MODERATION -->
-
-<section
-    class="section"
-    id="moderation">
-
-    <div class="section-header">
-
-        <h2>
-            🛡️ Advanced Moderation
-        </h2>
-
-        <p>
-            Configure JayVon AI's complete server protection system.
-        </p>
 
     </div>
 
     <div class="card">
 
-        <h3>
-            Protection Systems
-        </h3>
+        <h3>🛡️ Security Status</h3>
 
         <p class="card-description">
-            Enable or disable individual protection systems.
+            Your moderation protection overview.
         </p>
 
-        <div class="mod-grid">
+        <div class="setting-row">
 
-            <div class="mod-option">
-                <div class="mod-option-icon">💬</div>
-                <div>
-                    <strong>Anti-Spam</strong>
-                    <span>Repeated messages</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
+            <div class="setting-info">
+                <strong>Anti-Spam</strong>
+                <span>Protection active.</span>
             </div>
 
-            <div class="mod-option">
-                <div class="mod-option-icon">🔠</div>
-                <div>
-                    <strong>Anti-Caps</strong>
-                    <span>Excessive capitals</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">📢</div>
-                <div>
-                    <strong>Mention Spam</strong>
-                    <span>Repeated mentions</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">📣</div>
-                <div>
-                    <strong>Mass Mention Protection</strong>
-                    <span>@everyone and @here abuse</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🚫</div>
-                <div>
-                    <strong>Bad Word Filter</strong>
-                    <span>Blocked terminology</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🔗</div>
-                <div>
-                    <strong>Link Filter</strong>
-                    <span>Unauthorized links</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">💬</div>
-                <div>
-                    <strong>Discord Invite Filter</strong>
-                    <span>Unauthorized invites</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🎣</div>
-                <div>
-                    <strong>Scam / Phishing Protection</strong>
-                    <span>Suspicious links</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">📺</div>
-                <div>
-                    <strong>Advertisement Filter</strong>
-                    <span>Unwanted advertising</span>
-                </div>
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">♻️</div>
-                <div>
-                    <strong>Duplicate Messages</strong>
-                    <span>Repeated content</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🚨</div>
-                <div>
-                    <strong>Raid Protection</strong>
-                    <span>Large-scale joins</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">👥</div>
-                <div>
-                    <strong>Join Spam Protection</strong>
-                    <span>Rapid member joins</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">📅</div>
-                <div>
-                    <strong>Account Age Protection</strong>
-                    <span>New account detection</span>
-                </div>
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🤖</div>
-                <div>
-                    <strong>Bot Join Protection</strong>
-                    <span>Unexpected bots</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🖼️</div>
-                <div>
-                    <strong>Image / Media Filtering</strong>
-                    <span>Media content controls</span>
-                </div>
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">😀</div>
-                <div>
-                    <strong>Emoji Spam</strong>
-                    <span>Excessive emoji usage</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="mod-option">
-                <div class="mod-option-icon">🔁</div>
-                <div>
-                    <strong>Repeated Characters</strong>
-                    <span>AAAAAAA / !!!!! protection</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-        </div>
-
-    </div>
-
-    <br>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                ⚡ Automatic Punishments
-            </h3>
-
-            <p class="card-description">
-                Decide what JayVon AI does after detecting violations.
-            </p>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Auto Warning</strong>
-                    <span>Warn the member automatically.</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Auto Delete</strong>
-                    <span>Remove violating messages.</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Auto Timeout</strong>
-                    <span>Temporarily restrict members.</span>
-                </div>
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Auto Kick</strong>
-                    <span>Remove serious offenders.</span>
-                </div>
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Auto Ban</strong>
-                    <span>Ban severe offenders.</span>
-                </div>
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                📋 Moderation Logs
-            </h3>
-
-            <p class="card-description">
-                Preview how JayVon AI will report actions.
-            </p>
-
-            <div class="log-preview">
-
-                <div class="log-header">
-
-                    <div class="log-header-icon">
-                        🛡️
-                    </div>
-
-                    <strong>
-                        Moderation Action
-                    </strong>
-
-                </div>
-
-                <div class="log-line">
-                    <span>Member</span>
-                    <b>@Example</b>
-                </div>
-
-                <div class="log-line">
-                    <span>Action</span>
-                    <b>Timeout</b>
-                </div>
-
-                <div class="log-line">
-                    <span>Reason</span>
-                    <b>Spam</b>
-                </div>
-
-                <div class="log-line">
-                    <span>Moderator</span>
-                    <b>JayVon AI</b>
-                </div>
-
-                <div class="log-line">
-                    <span>Channel</span>
-                    <b>#general</b>
-                </div>
-
-            </div>
-
-            <br>
-
-            <div class="field">
-
-                <label>
-                    MOD-LOG CHANNEL
-                </label>
-
-                <select class="select">
-                    <option>#mod-logs</option>
-                    <option>#logs</option>
-                    <option>#staff</option>
-                </select>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MEDIA -->
-
-<section
-    class="section"
-    id="media">
-
-    <div class="section-header">
-
-        <h2>
-            🖼️ Media Channels
-        </h2>
-
-        <p>
-            Create channels where JayVon controls exactly what members can send.
-        </p>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                Channel Configuration
-            </h3>
-
-            <p class="card-description">
-                Select what content is allowed.
-            </p>
-
-            <div class="field">
-                <label>MEDIA CHANNEL</label>
-
-                <select class="select">
-                    <option>#media</option>
-                    <option>#pictures</option>
-                    <option>#memes</option>
-                    <option>#clips</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>CHANNEL TYPE</label>
-
-                <select class="select">
-                    <option>Images Only</option>
-                    <option>Videos Only</option>
-                    <option>Images + Videos</option>
-                    <option>All Media</option>
-                </select>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Block Text</strong>
-                    <span>Delete normal text messages.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Block Links</strong>
-                    <span>Prevent external links.</span>
-                </div>
-
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Block Files</strong>
-                    <span>Only allow configured media types.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                🖼️ Media Preview
-            </h3>
-
-            <p class="card-description">
-                Example of an image-only channel.
-            </p>
-
-            <div class="media-preview">
-
-                <div class="media-preview-icon">
-                    🖼️
-                </div>
-
-                <strong>
-                    #media
-                </strong>
-
-                <p>
-                    Images are allowed here.
-                    Text messages are automatically removed.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-
-<section
-    class="section"
-    id="notifications">
-
-    <div class="section-header">
-
-        <h2>
-            🔔 Social Notifications
-        </h2>
-
-        <p>
-            Connect TikTok and YouTube and automatically notify your Discord community.
-        </p>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="social-card">
-
-            <div class="social-title">
-
-                <div class="social-icon">
-                    🎵
-                </div>
-
-                <div>
-
-                    <strong>
-                        TikTok
-                    </strong>
-
-                    <span>
-                        New video notifications
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    TIKTOK USERNAME
-                </label>
-
-                <input
-                    class="input"
-                    placeholder="@username"
-                    value="@SS_DEMON2"
-                >
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    NOTIFICATION CHANNEL
-                </label>
-
-                <select class="select">
-                    <option>#social-notifications</option>
-                    <option>#tiktok</option>
-                    <option>#announcements</option>
-                </select>
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    MENTION ROLE
-                </label>
-
-                <select class="select">
-                    <option>@everyone</option>
-                    <option>@Members</option>
-                    <option>@Notifications</option>
-                    <option>No mention</option>
-                </select>
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    CUSTOM MESSAGE
-                </label>
-
-                <textarea class="textarea">🔥 {user} just posted a new TikTok!
-
-🔗 {link}</textarea>
-
-            </div>
-
-            <button class="button">
-                Connect TikTok
-            </button>
-
-            <span class="connected" style="margin-left:10px;">
-                Ready
+            <span style="color:#4ade80;font-size:9px;">
+                ACTIVE
             </span>
 
         </div>
 
+        <div class="setting-row">
 
-        <div class="social-card">
-
-            <div class="social-title">
-
-                <div class="social-icon">
-                    ▶️
-                </div>
-
-                <div>
-
-                    <strong>
-                        YouTube
-                    </strong>
-
-                    <span>
-                        New video notifications
-                    </span>
-
-                </div>
-
+            <div class="setting-info">
+                <strong>Raid Protection</strong>
+                <span>Protection ready.</span>
             </div>
 
-            <div class="field">
+            <span style="color:#4ade80;font-size:9px;">
+                ACTIVE
+            </span>
 
-                <label>
-                    YOUTUBE CHANNEL
-                </label>
+        </div>
 
-                <input
-                    class="input"
-                    placeholder="Channel URL or username"
-                >
+    </div>
 
+</div>
+```
+
+</section>
+
+<!-- ================= AI ================= -->
+
+<section class="section" id="ai">
+
+```
+<div class="section-header">
+
+    <h2>🤖 JayVon AI</h2>
+
+    <p>
+        Configure how JayVon AI interacts with your community.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>AI Configuration</h3>
+
+        <p class="card-description">
+            Control where and how JayVon AI responds.
+        </p>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Enable AI</strong>
+                <span>Turn JayVon AI conversations on or off.</span>
             </div>
 
-            <div class="field">
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
 
-                <label>
-                    NOTIFICATION CHANNEL
-                </label>
+        </div>
 
-                <select class="select">
-                    <option>#social-notifications</option>
-                    <option>#youtube</option>
-                    <option>#announcements</option>
-                </select>
+        <div class="setting-row">
 
+            <div class="setting-info">
+                <strong>Reply to Mentions</strong>
+                <span>Respond when JayVon AI is mentioned.</span>
             </div>
 
-            <div class="field">
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
 
-                <label>
-                    MENTION ROLE
-                </label>
+        </div>
 
-                <select class="select">
-                    <option>@everyone</option>
-                    <option>@Members</option>
-                    <option>@Notifications</option>
-                    <option>No mention</option>
-                </select>
+        <div class="setting-row">
 
+            <div class="setting-info">
+                <strong>Moderation Awareness</strong>
+                <span>Allow AI to understand moderation context.</span>
             </div>
 
-            <div class="field">
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
 
-                <label>
-                    CUSTOM MESSAGE
-                </label>
+        </div>
 
-                <textarea class="textarea">🎬 {user} just uploaded a new YouTube video!
+        <div class="save-bar">
+            <span class="save-status">✓ Saved</span>
+            <button class="button" onclick="saveSettings(this)">
+                Save Settings
+            </button>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Allowed Channels</h3>
+
+        <p class="card-description">
+            Add the Discord channels where JayVon AI may respond.
+        </p>
+
+        <div class="field">
+            <label>CHANNEL NAME</label>
+
+            <input
+                class="input"
+                id="aiChannelInput"
+                placeholder="#channel-name"
+            >
+        </div>
+
+        <button class="button secondary" onclick="addChip('aiChannelInput','aiChannels')">
+            + Add Channel
+        </button>
+
+        <br><br>
+
+        <div class="chips" id="aiChannels"></div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= MODERATION ================= -->
+
+<section class="section" id="moderation">
+
+```
+<div class="section-header">
+
+    <h2>🛡️ Advanced Moderation</h2>
+
+    <p>
+        Configure JayVon AI's complete server protection system.
+    </p>
+
+</div>
+
+<div class="card">
+
+    <h3>Protection Systems</h3>
+
+    <p class="card-description">
+        Choose which protection systems you want JayVon AI to use.
+    </p>
+
+    <div class="mod-grid">
+
+        <div class="mod-option">
+            <div class="mod-option-icon">💬</div>
+            <div>
+                <strong>Anti-Spam</strong>
+                <span>Repeated messages</span>
+            </div>
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🔠</div>
+            <div>
+                <strong>Anti-Caps</strong>
+                <span>Excessive capitals</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">📢</div>
+            <div>
+                <strong>Mention Spam</strong>
+                <span>Repeated mentions</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">📣</div>
+            <div>
+                <strong>Mass Mention Protection</strong>
+                <span>@everyone and @here abuse</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🚫</div>
+            <div>
+                <strong>Bad Word Filter</strong>
+                <span>Blocked terminology</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🔗</div>
+            <div>
+                <strong>Link Filter</strong>
+                <span>Unauthorized links</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">💬</div>
+            <div>
+                <strong>Discord Invite Filter</strong>
+                <span>Unauthorized invites</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🎣</div>
+            <div>
+                <strong>Scam / Phishing Protection</strong>
+                <span>Suspicious links</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">📺</div>
+            <div>
+                <strong>Advertisement Filter</strong>
+                <span>Unwanted advertising</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">♻️</div>
+            <div>
+                <strong>Duplicate Messages</strong>
+                <span>Repeated content</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🚨</div>
+            <div>
+                <strong>Raid Protection</strong>
+                <span>Large-scale joins</span>
+            </div>
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">👥</div>
+            <div>
+                <strong>Join Spam Protection</strong>
+                <span>Rapid member joins</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">📅</div>
+            <div>
+                <strong>Account Age Protection</strong>
+                <span>New account detection</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🤖</div>
+            <div>
+                <strong>Bot Join Protection</strong>
+                <span>Unexpected bots</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🖼️</div>
+            <div>
+                <strong>Image / Media Filtering</strong>
+                <span>Media content controls</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">😀</div>
+            <div>
+                <strong>Emoji Spam</strong>
+                <span>Excessive emoji usage</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mod-option">
+            <div class="mod-option-icon">🔁</div>
+            <div>
+                <strong>Repeated Characters</strong>
+                <span>AAAAAAA / !!!!! protection</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="save-bar">
+        <span class="save-status">✓ Saved</span>
+        <button class="button" onclick="saveSettings(this)">
+            Save Moderation Settings
+        </button>
+    </div>
+
+</div>
+
+<br>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>⚡ Automatic Punishments</h3>
+
+        <p class="card-description">
+            Decide what JayVon AI does after detecting violations.
+        </p>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Auto Warning</strong>
+                <span>Warn the member automatically.</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Auto Delete</strong>
+                <span>Remove violating messages.</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Auto Timeout</strong>
+                <span>Temporarily restrict members.</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Auto Kick</strong>
+                <span>Remove serious offenders.</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Auto Ban</strong>
+                <span>Ban severe offenders.</span>
+            </div>
+            <button class="toggle" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="save-bar">
+            <span class="save-status">✓ Saved</span>
+            <button class="button" onclick="saveSettings(this)">
+                Save Settings
+            </button>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📋 Moderation Logs</h3>
+
+        <p class="card-description">
+            Configure where JayVon AI reports moderation actions.
+        </p>
+
+        <div class="log-preview">
+
+            <div class="log-header">
+                <div class="log-header-icon">🛡️</div>
+                <strong>Moderation Action</strong>
+            </div>
+
+            <div class="log-line">
+                <span>Member</span>
+                <b>@Example</b>
+            </div>
+
+            <div class="log-line">
+                <span>Action</span>
+                <b>Timeout</b>
+            </div>
+
+            <div class="log-line">
+                <span>Reason</span>
+                <b>Spam</b>
+            </div>
+
+            <div class="log-line">
+                <span>Moderator</span>
+                <b>JayVon AI</b>
+            </div>
+
+            <div class="log-line">
+                <span>Channel</span>
+                <b>#general</b>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label>MOD-LOG CHANNEL</label>
+
+            <input
+                class="input"
+                placeholder="#mod-logs"
+            >
+        </div>
+
+        <div class="save-bar">
+            <span class="save-status">✓ Saved</span>
+            <button class="button" onclick="saveSettings(this)">
+                Save Settings
+            </button>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= MEDIA ================= -->
+
+<section class="section" id="media">
+
+```
+<div class="section-header">
+
+    <h2>🖼️ Media Channels</h2>
+
+    <p>
+        Create channels where JayVon controls exactly what members can send.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>Channel Configuration</h3>
+
+        <p class="card-description">
+            Enter your own Discord channel and choose the media rules.
+        </p>
+
+        <div class="field">
+            <label>MEDIA CHANNEL</label>
+
+            <input
+                class="input"
+                id="mediaChannel"
+                placeholder="#media"
+            >
+        </div>
+
+        <div class="field">
+            <label>CHANNEL TYPE</label>
+
+            <select class="select" id="mediaType">
+                <option value="Images Only">Images Only</option>
+                <option value="Videos Only">Videos Only</option>
+                <option value="Images + Videos">Images + Videos</option>
+                <option value="All Media">All Media</option>
+            </select>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Block Text</strong>
+                <span>Delete normal text messages.</span>
+            </div>
+
+            <button class="toggle on" onclick="toggleSetting(this);updateMediaPreview()">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Block Links</strong>
+                <span>Prevent external links.</span>
+            </div>
+
+            <button class="toggle" onclick="toggleSetting(this);updateMediaPreview()">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Block Files</strong>
+                <span>Only allow configured media types.</span>
+            </div>
+
+            <button class="toggle on" onclick="toggleSetting(this);updateMediaPreview()">
+                <span></span>
+            </button>
+        </div>
+
+        <div class="save-bar">
+            <span class="save-status">✓ Saved</span>
+            <button class="button" onclick="saveSettings(this)">
+                Save Media Settings
+            </button>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>🖼️ Media Preview</h3>
+
+        <p class="card-description">
+            Live preview of your media channel.
+        </p>
+
+        <div class="media-preview">
+
+            <div class="media-preview-icon">🖼️</div>
+
+            <strong id="mediaPreviewChannel">
+                #your-media-channel
+            </strong>
+
+            <p id="mediaPreviewText">
+                Choose your settings to control what members can upload.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= NOTIFICATIONS ================= -->
+
+<section class="section" id="notifications">
+
+```
+<div class="section-header">
+
+    <h2>🔔 Social Notifications</h2>
+
+    <p>
+        Link your TikTok and YouTube accounts and automatically notify your Discord community.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <!-- TIKTOK -->
+
+    <div class="social-card">
+
+        <div class="social-title">
+
+            <div class="social-icon">🎵</div>
+
+            <div>
+                <strong>TikTok</strong>
+                <span>New video notifications</span>
+            </div>
+
+        </div>
+
+        <div id="tiktokStatus" class="link-status">
+            ⚪ TikTok account not linked
+        </div>
+
+        <div class="field">
+
+            <label>TIKTOK ACCOUNT</label>
+
+            <input
+                class="input"
+                id="tiktokUsername"
+                placeholder="@yourusername"
+            >
+
+        </div>
+
+        <button
+            class="button"
+            onclick="connectSocial('TikTok')"
+            style="margin-bottom:15px;"
+        >
+            🔗 Link TikTok Account
+        </button>
+
+        <div class="field">
+
+            <label>NOTIFICATION CHANNEL</label>
+
+            <input
+                class="input"
+                id="tiktokChannel"
+                placeholder="#social-notifications"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>MENTION</label>
+
+            <input
+                class="input"
+                id="tiktokMention"
+                placeholder="@everyone / @Members / role"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>CUSTOM MESSAGE</label>
+
+            <textarea
+                class="textarea"
+                id="tiktokMessage"
+            >🔥 {user} just posted a new TikTok!
+```
 
 🔗 {link}</textarea>
 
+```
+        </div>
+
+        <div class="discord-preview">
+
+            <div class="preview-user">
+                <div class="preview-avatar">JV</div>
+
+                <div>
+                    <div class="preview-name">JayVon AI</div>
+                    <div class="preview-tag">TikTok Notification</div>
+                </div>
             </div>
 
-            <button class="button">
-                Connect YouTube
+            <div
+                class="preview-message"
+                id="tiktokPreview"
+            >
+                🔥 {user} just posted a new TikTok!
+                <br><br>
+                🔗 https://tiktok.com/your-video
+            </div>
+
+        </div>
+
+        <div class="save-bar">
+
+            <span class="save-status">✓ Saved</span>
+
+            <button class="button" onclick="saveSettings(this)">
+                Save TikTok Settings
             </button>
 
         </div>
 
     </div>
 
-    <br>
 
-    <div class="card">
+    <!-- YOUTUBE -->
 
-        <h3>
-            Available Variables
-        </h3>
+    <div class="social-card">
 
-        <p class="card-description">
-            Use these variables inside your notification messages.
-        </p>
+        <div class="social-title">
 
-        <div class="chips">
+            <div class="social-icon">▶️</div>
 
-            <span class="chip active">{user}</span>
-            <span class="chip active">{username}</span>
-            <span class="chip active">{title}</span>
-            <span class="chip active">{link}</span>
-            <span class="chip active">{platform}</span>
+            <div>
+                <strong>YouTube</strong>
+                <span>New video notifications</span>
+            </div>
+
+        </div>
+
+        <div id="youtubeStatus" class="link-status">
+            ⚪ YouTube channel not linked
+        </div>
+
+        <div class="field">
+
+            <label>YOUTUBE CHANNEL</label>
+
+            <input
+                class="input"
+                id="youtubeChannelAccount"
+                placeholder="Channel URL or username"
+            >
+
+        </div>
+
+        <button
+            class="button"
+            onclick="connectSocial('YouTube')"
+            style="margin-bottom:15px;"
+        >
+            🔗 Link YouTube Channel
+        </button>
+
+        <div class="field">
+
+            <label>NOTIFICATION CHANNEL</label>
+
+            <input
+                class="input"
+                id="youtubeDiscordChannel"
+                placeholder="#social-notifications"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>MENTION</label>
+
+            <input
+                class="input"
+                id="youtubeMention"
+                placeholder="@everyone / @Members / role"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>CUSTOM MESSAGE</label>
+
+            <textarea
+                class="textarea"
+                id="youtubeMessage"
+            >🎬 {user} just uploaded a new YouTube video!
+```
+
+🔗 {link}</textarea>
+
+```
+        </div>
+
+        <div class="discord-preview">
+
+            <div class="preview-user">
+                <div class="preview-avatar">JV</div>
+
+                <div>
+                    <div class="preview-name">JayVon AI</div>
+                    <div class="preview-tag">YouTube Notification</div>
+                </div>
+            </div>
+
+            <div
+                class="preview-message"
+                id="youtubePreview"
+            >
+                🎬 {user} just uploaded a new YouTube video!
+                <br><br>
+                🔗 https://youtube.com/watch?v=your-video
+            </div>
+
+        </div>
+
+        <div class="save-bar">
+
+            <span class="save-status">✓ Saved</span>
+
+            <button class="button" onclick="saveSettings(this)">
+                Save YouTube Settings
+            </button>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
+<br>
 
-<!-- WELCOME -->
+<div class="card">
 
-<section
-    class="section"
-    id="welcome">
+    <h3>Available Variables</h3>
 
-    <div class="section-header">
+    <p class="card-description">
+        Use these variables inside your notification messages.
+    </p>
 
-        <h2>
-            👋 Welcome System
-        </h2>
+    <div class="chips">
 
-        <p>
-            Automatically welcome members and give them roles.
-        </p>
+        <span class="chip active">{user}</span>
+        <span class="chip active">{username}</span>
+        <span class="chip active">{title}</span>
+        <span class="chip active">{link}</span>
+        <span class="chip active">{platform}</span>
 
     </div>
 
-    <div class="two-column">
+</div>
+```
 
-        <div class="card">
+</section>
 
-            <h3>
-                Welcome Settings
-            </h3>
+<!-- ================= WELCOME ================= -->
 
-            <p class="card-description">
-                Configure what happens when someone joins.
-            </p>
+<section class="section" id="welcome">
 
-            <div class="field">
+```
+<div class="section-header">
 
-                <label>
-                    WELCOME CHANNEL
-                </label>
+    <h2>👋 Welcome System</h2>
 
-                <select class="select">
-                    <option>#welcome</option>
-                    <option>#general</option>
-                    <option>#community</option>
-                </select>
+    <p>
+        Automatically welcome members and give them roles.
+    </p>
 
-            </div>
+</div>
 
-            <div class="field">
+<div class="two-column">
 
-                <label>
-                    AUTO ROLE
-                </label>
+    <div class="card">
 
-                <select class="select">
-                    <option>@Member</option>
-                    <option>@Verified</option>
-                    <option>@Community</option>
-                    <option>No role</option>
-                </select>
+        <h3>Welcome Settings</h3>
 
-            </div>
+        <p class="card-description">
+            Configure what happens when someone joins.
+        </p>
 
-            <div class="field">
+        <div class="field">
 
-                <label>
-                    WELCOME MESSAGE
-                </label>
+            <label>WELCOME CHANNEL</label>
 
-                <textarea class="textarea">👋 Welcome {user} to The Vonverse!
+            <input
+                class="input"
+                id="welcomeChannel"
+                placeholder="#welcome"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>AUTO ROLE</label>
+
+            <input
+                class="input"
+                id="welcomeRole"
+                placeholder="@Member"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>WELCOME MESSAGE</label>
+
+            <textarea
+                class="textarea"
+                id="welcomeMessage"
+            >👋 Welcome {user} to The Vonverse!
+```
 
 You are member #{membercount}.</textarea>
 
-            </div>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Welcome DM</strong>
-                    <span>Send the member a private welcome message.</span>
-                </div>
-
-                <button class="toggle" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
-            <div class="setting-row">
-
-                <div class="setting-info">
-                    <strong>Profile Card</strong>
-                    <span>Show the member's avatar and server information.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-
-            </div>
-
+```
         </div>
 
-        <div class="card">
+        <div class="setting-row">
 
-            <h3>
-                Welcome Preview
-            </h3>
-
-            <p class="card-description">
-                Live-style preview of your welcome message.
-            </p>
-
-            <div class="welcome-preview">
-
-                <div class="welcome-preview-avatar">
-                    JD
-                </div>
-
-                <h3>
-                    Welcome @SS_DEMON2
-                </h3>
-
-                <p>
-                    👋 Welcome to The Vonverse!
-                    <br>
-                    You are member #126.
-                </p>
-
+            <div class="setting-info">
+                <strong>Welcome DM</strong>
+                <span>Send the member a private welcome message.</span>
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TICKETS -->
-
-<section
-    class="section"
-    id="tickets">
-
-    <div class="section-header">
-
-        <h2>
-            🎫 Tickets
-        </h2>
-
-        <p>
-            Build private support channels for your community.
-        </p>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                Ticket Configuration
-            </h3>
-
-            <p class="card-description">
-                Configure your ticket system.
-            </p>
-
-            <div class="field">
-                <label>TICKET CHANNEL</label>
-
-                <select class="select">
-                    <option>#support</option>
-                    <option>#tickets</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>TICKET CATEGORY</label>
-
-                <select class="select">
-                    <option>Support Tickets</option>
-                    <option>Community Support</option>
-                    <option>Staff Tickets</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>STAFF ROLE</label>
-
-                <select class="select">
-                    <option>@Staff</option>
-                    <option>@Moderator</option>
-                    <option>@Support</option>
-                </select>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Claim System</strong>
-                    <span>Allow staff members to claim tickets.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Transcripts</strong>
-                    <span>Save ticket transcripts when closed.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h3>
-                Ticket Panel Preview
-            </h3>
-
-            <p class="card-description">
-                This is what members will see.
-            </p>
-
-            <div class="ticket-preview">
-
-                <div class="ticket-preview-icon">
-                    🎫
-                </div>
-
-                <h3>
-                    Need Help?
-                </h3>
-
-                <p>
-                    Click below to contact the staff team.
-                </p>
-
-                <span class="ticket-button">
-                    🎫 Open Ticket
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- GIVEAWAYS -->
-
-<section
-    class="section"
-    id="giveaways">
-
-    <div class="section-header">
-
-        <h2>
-            🎉 Giveaways
-        </h2>
-
-        <p>
-            Create and configure community giveaways.
-        </p>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                Giveaway Configuration
-            </h3>
-
-            <p class="card-description">
-                Configure your giveaway before launching it.
-            </p>
-
-            <div class="field">
-                <label>PRIZE</label>
-
-                <input
-                    class="input"
-                    value="$50 Roblox Gift Card"
-                >
-            </div>
-
-            <div class="field">
-                <label>WINNERS</label>
-
-                <input
-                    class="input"
-                    type="number"
-                    value="2"
-                >
-            </div>
-
-            <div class="field">
-                <label>DURATION</label>
-
-                <select class="select">
-                    <option>1 hour</option>
-                    <option>6 hours</option>
-                    <option>12 hours</option>
-                    <option>24 hours</option>
-                    <option>7 days</option>
-                </select>
-            </div>
-
-            <button class="button">
-                🎉 Create Giveaway
+            <button
+                class="toggle"
+                id="welcomeDMToggle"
+                onclick="toggleSetting(this);toggleDMFields()"
+            >
+                <span></span>
             </button>
 
         </div>
 
-        <div class="card">
+        <div id="dmFields" style="display:none;margin-top:5px;">
 
-            <h3>
-                Giveaway Preview
-            </h3>
+            <div class="field">
 
-            <p class="card-description">
-                Example of the Discord giveaway message.
-            </p>
+                <label>WELCOME DM MESSAGE</label>
 
-            <div class="giveaway-preview">
+                <textarea
+                    class="textarea"
+                    id="welcomeDMMessage"
+                >👋 Welcome to The Vonverse!
+```
 
-                <div class="giveaway-top">
-                    🎉 GIVEAWAY
-                </div>
+We're glad to have you here, {user}.</textarea>
 
-                <div class="giveaway-prize">
-                    $50 Roblox Gift Card
-                </div>
-
-                <div class="giveaway-info">
-                    React below to enter!
-                    <br>
-                    🏆 Winners: 2
-                    <br>
-                    ⏰ Ends: 1 hour
-                    <br><br>
-                    🎉 Enter Giveaway
-                </div>
-
+```
             </div>
 
         </div>
 
-    </div>
+        <div class="setting-row">
 
-</section>
-
-
-<!-- MUSIC -->
-
-<section
-    class="section"
-    id="music">
-
-    <div class="section-header">
-
-        <h2>
-            🎵 Music
-        </h2>
-
-        <p>
-            Control music permissions and access.
-        </p>
-
-    </div>
-
-    <div class="two-column">
-
-        <div class="card">
-
-            <h3>
-                Music Controls
-            </h3>
-
-            <p class="card-description">
-                Decide who can use JayVon's music commands.
-            </p>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Music System</strong>
-                    <span>Enable music commands.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
+            <div class="setting-info">
+                <strong>Profile Card</strong>
+                <span>Show the member's avatar and server information.</span>
             </div>
 
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>DJ Role</strong>
-                    <span>Allow a role to control playback.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>Queue Control</strong>
-                    <span>Control who can modify the queue.</span>
-                </div>
-
-                <button class="toggle on" onclick="toggleSetting(this)">
-                    <span></span>
-                </button>
-            </div>
+            <button
+                class="toggle on"
+                onclick="toggleSetting(this);updateWelcomePreview()"
+            >
+                <span></span>
+            </button>
 
         </div>
 
-        <div class="card">
+        <div class="save-bar">
 
-            <h3>
-                Allowed Roles
-            </h3>
+            <span class="save-status">✓ Saved</span>
 
-            <p class="card-description">
-                Roles allowed to use music controls.
-            </p>
-
-            <div class="chips">
-
-                <span class="chip active">
-                    @DJ
-                </span>
-
-                <span class="chip active">
-                    @Staff
-                </span>
-
-                <span class="chip">
-                    @Member
-                </span>
-
-            </div>
+            <button class="button" onclick="saveSettings(this)">
+                Save Welcome Settings
+            </button>
 
         </div>
 
     </div>
-
-</section>
-
-
-<!-- LEVELS -->
-
-<section
-    class="section"
-    id="levels">
 
     <div class="card">
 
-        <div class="upcoming">
+        <h3>Welcome Preview</h3>
 
-            <div class="upcoming-icon">
-                📈
-            </div>
-
-            <h3>
-                Levels & XP
-            </h3>
-
-            <div style="margin-top:10px;">
-                <span class="upcoming-badge">
-                    🚧 UPCOMING
-                </span>
-            </div>
-
-            <p>
-                Levels & XP is currently being developed
-                for JayVon AI.
-                <br><br>
-                Stay tuned for XP rewards, level-up messages,
-                level roles, XP multipliers and leaderboards.
-            </p>
-
-            <button
-                class="button secondary"
-                onclick="showUpcoming()">
-                Stay Tuned
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SETTINGS -->
-
-<section
-    class="section"
-    id="settings">
-
-    <div class="section-header">
-
-        <h2>
-            ⚙️ Settings
-        </h2>
-
-        <p>
-            General JayVon AI dashboard settings.
+        <p class="card-description">
+            Live preview of your welcome message.
         </p>
 
-    </div>
+        <div class="welcome-preview">
 
-    <div class="two-column">
+            <div
+                class="welcome-preview-avatar"
+                id="welcomeAvatar"
+            >
+                JD
+            </div>
 
-        <div class="card">
-
-            <h3>
-                Server Configuration
+            <h3 id="welcomePreviewTitle">
+                Welcome @User
             </h3>
 
-            <p class="card-description">
-                General server preferences.
+            <p id="welcomePreviewText">
+                👋 Welcome to The Vonverse!
+                <br>
+                You are member #126.
             </p>
 
-            <div class="field">
-                <label>SERVER NAME</label>
+        </div>
 
-                <input
-                    class="input"
-                    value="The Vonverse"
-                >
+        <br>
+
+        <div
+            id="dmPreview"
+            class="discord-preview"
+            style="display:none;"
+        >
+
+            <div class="preview-user">
+
+                <div class="preview-avatar">
+                    ✉️
+                </div>
+
+                <div>
+                    <div class="preview-name">
+                        JayVon AI
+                    </div>
+
+                    <div class="preview-tag">
+                        Private Welcome DM
+                    </div>
+                </div>
+
             </div>
 
-            <div class="field">
-                <label>TIMEZONE</label>
+            <div
+                class="preview-message"
+                id="dmPreviewText"
+            ></div>
 
-                <select class="select">
-                    <option>Auto Detect</option>
-                    <option>UTC</option>
-                    <option>GMT+2</option>
-                    <option>GMT-5</option>
-                </select>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= TICKETS ================= -->
+
+<section class="section" id="tickets">
+
+```
+<div class="section-header">
+
+    <h2>🎫 Tickets</h2>
+
+    <p>
+        Build private support channels for your community.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>Ticket Configuration</h3>
+
+        <p class="card-description">
+            Customize exactly what your ticket panel says.
+        </p>
+
+        <div class="field">
+
+            <label>TICKET PANEL CHANNEL</label>
+
+            <input
+                class="input"
+                id="ticketChannel"
+                placeholder="#support"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>TICKET CATEGORY</label>
+
+            <input
+                class="input"
+                id="ticketCategory"
+                placeholder="Support Tickets"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>STAFF ROLE</label>
+
+            <input
+                class="input"
+                id="ticketStaffRole"
+                placeholder="@Staff"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>TICKET TITLE</label>
+
+            <input
+                class="input"
+                id="ticketTitle"
+                value="Need Help?"
+                maxlength="80"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>TICKET MESSAGE</label>
+
+            <textarea
+                class="textarea"
+                id="ticketMessage"
+            >Click below to contact the staff team.</textarea>
+
+        </div>
+
+        <div class="field">
+
+            <label>OPEN TICKET BUTTON</label>
+
+            <input
+                class="input"
+                id="ticketButton"
+                value="🎫 Open Ticket"
+                maxlength="35"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>OPENED TICKET MESSAGE</label>
+
+            <textarea
+                class="textarea"
+                id="openedTicketMessage"
+            >Thanks for opening a ticket!
+```
+
+Please explain what you need help with and a staff member will assist you shortly.</textarea>
+
+```
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Claim System</strong>
+                <span>Allow staff members to claim tickets.</span>
             </div>
 
-            <button class="button">
-                Save Changes
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
             </button>
 
         </div>
 
-        <div class="card">
+        <div class="setting-row">
 
-            <h3>
-                JayVon AI
-            </h3>
-
-            <p class="card-description">
-                Dashboard and bot information.
-            </p>
-
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>JayVon AI</strong>
-                    <span>Discord community assistant.</span>
-                </div>
-
-                <span style="color:#4ade80;font-size:9px;">
-                    ONLINE
-                </span>
+            <div class="setting-info">
+                <strong>Transcripts</strong>
+                <span>Save ticket transcripts when closed.</span>
             </div>
 
-            <div class="setting-row">
-                <div class="setting-info">
-                    <strong>The Vonverse</strong>
-                    <span>JayVon AI's home universe.</span>
-                </div>
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
 
-                <span style="color:#9cc5ff;font-size:9px;">
-                    ACTIVE
+        </div>
+
+        <div class="save-bar">
+
+            <span class="save-status">✓ Saved</span>
+
+            <button class="button" onclick="saveSettings(this)">
+                Save Ticket Settings
+            </button>
+
+            <button
+                class="button green"
+                onclick="sendTicketPanel()"
+            >
+                🎫 Send Ticket Panel
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Ticket Panel Preview</h3>
+
+        <p class="card-description">
+            This preview updates as you edit your ticket settings.
+        </p>
+
+        <div class="ticket-preview">
+
+            <div class="ticket-preview-icon">
+                🎫
+            </div>
+
+            <h3 id="ticketPreviewTitle">
+                Need Help?
+            </h3>
+
+            <p id="ticketPreviewMessage">
+                Click below to contact the staff team.
+            </p>
+
+            <span
+                class="ticket-button"
+                id="ticketPreviewButton"
+            >
+                🎫 Open Ticket
+            </span>
+
+        </div>
+
+        <br>
+
+        <div class="discord-preview">
+
+            <div class="preview-message">
+
+                <strong style="font-size:11px;">
+                    When the ticket opens:
+                </strong>
+
+                <br><br>
+
+                <span id="openedTicketPreview">
+                    Thanks for opening a ticket!
                 </span>
+
             </div>
 
         </div>
 
     </div>
 
+</div>
+```
+
 </section>
 
+<!-- ================= GIVEAWAYS ================= -->
+
+<section class="section" id="giveaways">
+
+```
+<div class="section-header">
+
+    <h2>🎉 Giveaways</h2>
+
+    <p>
+        Create and configure community giveaways.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>Giveaway Configuration</h3>
+
+        <p class="card-description">
+            Configure your giveaway before launching it.
+        </p>
+
+        <div class="field">
+
+            <label>GIVEAWAY CHANNEL</label>
+
+            <input
+                class="input"
+                id="giveawayChannel"
+                placeholder="#giveaways"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>PRIZE</label>
+
+            <input
+                class="input"
+                id="giveawayPrize"
+                value="$50 Roblox Gift Card"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>WINNERS</label>
+
+            <input
+                class="input"
+                id="giveawayWinners"
+                type="number"
+                min="1"
+                value="2"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>DURATION</label>
+
+            <select
+                class="select"
+                id="giveawayDuration"
+            >
+                <option>1 hour</option>
+                <option>6 hours</option>
+                <option>12 hours</option>
+                <option>24 hours</option>
+                <option>7 days</option>
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>WINNER ROLE — OPTIONAL</label>
+
+            <input
+                class="input"
+                id="giveawayWinnerRole"
+                placeholder="@Giveaway Winner"
+            >
+
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Winner Role</strong>
+                <span>Automatically give winners the selected role.</span>
+            </div>
+
+            <button
+                class="toggle"
+                id="winnerRoleToggle"
+                onclick="toggleSetting(this)"
+            >
+                <span></span>
+            </button>
+
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Private Winner Claim</strong>
+                <span>Allow winners to privately claim their prize.</span>
+            </div>
+
+            <button
+                class="toggle"
+                id="claimToggle"
+                onclick="toggleSetting(this);toggleClaimFields()"
+            >
+                <span></span>
+            </button>
+
+        </div>
+
+        <div
+            id="claimFields"
+            style="display:none;margin-top:8px;"
+        >
+
+            <div class="field">
+
+                <label>CLAIM MESSAGE</label>
+
+                <textarea
+                    class="textarea"
+                    id="claimMessage"
+                >🎉 Congratulations!
+```
+
+You won the giveaway.
+
+Please follow the instructions from the staff team to claim your prize.</textarea>
+
+```
+            </div>
+
+        </div>
+
+        <div class="field">
+
+            <label>GIVEAWAY MESSAGE</label>
+
+            <textarea
+                class="textarea"
+                id="giveawayMessage"
+            >React below to enter!</textarea>
+
+        </div>
+
+        <div class="save-bar">
+
+            <span class="save-status">✓ Saved</span>
+
+            <button class="button" onclick="saveSettings(this)">
+                Save Giveaway Settings
+            </button>
+
+            <button
+                class="button green"
+                onclick="sendGiveaway()"
+            >
+                🎉 Send Giveaway
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Giveaway Preview</h3>
+
+        <p class="card-description">
+            Your Discord giveaway message updates live while you edit it.
+        </p>
+
+        <div class="giveaway-preview">
+
+            <div class="giveaway-top">
+                🎉 GIVEAWAY
+            </div>
+
+            <div
+                class="giveaway-prize"
+                id="giveawayPreviewPrize"
+            >
+                $50 Roblox Gift Card
+            </div>
+
+            <div
+                class="giveaway-info"
+                id="giveawayPreviewInfo"
+            >
+                React below to enter!
+                <br>
+                🏆 Winners: 2
+                <br>
+                ⏰ Ends: 1 hour
+            </div>
+
+            <span class="giveaway-entry">
+                🎉 Enter Giveaway
+            </span>
+
+        </div>
+
+        <br>
+
+        <div
+            id="claimPreview"
+            class="discord-preview"
+            style="display:none;"
+        >
+
+            <div class="preview-user">
+
+                <div class="preview-avatar">
+                    🏆
+                </div>
+
+                <div>
+                    <div class="preview-name">
+                        JayVon AI
+                    </div>
+
+                    <div class="preview-tag">
+                        Private Winner Claim
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                class="preview-message"
+                id="claimPreviewText"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= MUSIC ================= -->
+
+<section class="section" id="music">
+
+```
+<div class="section-header">
+
+    <h2>🎵 Music</h2>
+
+    <p>
+        Control music permissions and access.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>Music Controls</h3>
+
+        <p class="card-description">
+            Decide who can use JayVon's music commands.
+        </p>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Music System</strong>
+                <span>Enable music commands.</span>
+            </div>
+
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>DJ Role</strong>
+                <span>Allow a role to control playback.</span>
+            </div>
+
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Queue Control</strong>
+                <span>Control who can modify the queue.</span>
+            </div>
+
+            <button class="toggle on" onclick="toggleSetting(this)">
+                <span></span>
+            </button>
+
+        </div>
+
+        <div class="save-bar">
+
+            <span class="save-status">✓ Saved</span>
+
+            <button class="button" onclick="saveSettings(this)">
+                Save Music Settings
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Allowed Roles</h3>
+
+        <p class="card-description">
+            Add the roles allowed to use music controls.
+        </p>
+
+        <div class="field">
+
+            <label>ROLE</label>
+
+            <input
+                class="input"
+                id="musicRoleInput"
+                placeholder="@DJ"
+            >
+
+        </div>
+
+        <button
+            class="button secondary"
+            onclick="addChip('musicRoleInput','musicRoles')"
+        >
+            + Add Role
+        </button>
+
+        <br><br>
+
+        <div class="chips" id="musicRoles"></div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= LEVELS ================= -->
+
+<section class="section" id="levels">
+
+```
+<div class="card">
+
+    <div class="upcoming">
+
+        <div class="upcoming-icon">📈</div>
+
+        <h3>Levels & XP</h3>
+
+        <div style="margin-top:10px;">
+
+            <span class="upcoming-badge">
+                🚧 UPCOMING
+            </span>
+
+        </div>
+
+        <p>
+            Levels & XP is currently being developed
+            for JayVon AI.
+            <br><br>
+            Stay tuned for XP rewards, level-up messages,
+            level roles, XP multipliers and leaderboards.
+        </p>
+
+        <button
+            class="button secondary"
+            onclick="showUpcoming()"
+        >
+            Stay Tuned
+        </button>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ================= SETTINGS ================= -->
+
+<section class="section" id="settings">
+
+```
+<div class="section-header">
+
+    <h2>⚙️ Settings</h2>
+
+    <p>
+        General JayVon AI dashboard settings.
+    </p>
+
+</div>
+
+<div class="two-column">
+
+    <div class="card">
+
+        <h3>Server Configuration</h3>
+
+        <p class="card-description">
+            General server preferences.
+        </p>
+
+        <div class="field">
+
+            <label>SERVER NAME</label>
+
+            <input
+                class="input"
+                id="serverName"
+                placeholder="Your Discord Server"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>SYSTEM LANGUAGE</label>
+
+            <select
+                class="select"
+                id="systemLanguage"
+                onchange="changeLanguage()"
+            >
+
+                <option value="English">English</option>
+                <option value="Spanish">Español</option>
+                <option value="French">Français</option>
+                <option value="German">Deutsch</option>
+                <option value="Portuguese">Português</option>
+                <option value="Italian">Italiano</option>
+                <option value="Dutch">Nederlands</option>
+                <option value="Polish">Polski</option>
+                <option value="Turkish">Türkçe</option>
+                <option value="Arabic">العربية</option>
+                <option value="Hindi">हिन्दी</option>
+                <option value="Chinese">中文</option>
+                <option value="Japanese">日本語</option>
+                <option value="Korean">한국어</option>
+                <option value="Russian">Русский</option>
+                <option value="Ukrainian">Українська</option>
+                <option value="Swedish">Svenska</option>
+                <option value="Norwegian">Norsk</option>
+                <option value="Danish">Dansk</option>
+                <option value="Finnish">Suomi</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>TIMEZONE</label>
+
+            <select class="select">
+
+                <option value="">
+                    Auto Detect
+                </option>
+
+                <option>UTC</option>
+                <option>GMT+2</option>
+                <option>GMT-5</option>
+                <option>GMT+1</option>
+                <option>GMT+8</option>
+                <option>GMT+9</option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>DATE FORMAT</label>
+
+            <select class="select">
+
+                <option>DD/MM/YYYY</option>
+                <option>MM/DD/YYYY</option>
+                <option>YYYY-MM-DD</option>
+
+            </select>
+
+        </div>
+
+        <div class="save-bar">
+
+            <span class="save-status">✓ Saved</span>
+
+            <button class="button" onclick="saveSettings(this)">
+                Save Settings
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>JayVon AI</h3>
+
+        <p class="card-description">
+            Dashboard and bot information.
+        </p>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>JayVon AI</strong>
+                <span>Discord community assistant.</span>
+            </div>
+
+            <span style="color:#4ade80;font-size:9px;">
+                ONLINE
+            </span>
+
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>The Vonverse</strong>
+                <span>JayVon AI's home universe.</span>
+            </div>
+
+            <span style="color:#9cc5ff;font-size:9px;">
+                ACTIVE
+            </span>
+
+        </div>
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+                <strong>Dashboard Language</strong>
+                <span id="languageStatus">
+                    English
+                </span>
+            </div>
+
+            <span style="color:#9cc5ff;font-size:9px;">
+                SYSTEM
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h3>🌐 Language Information</h3>
+
+    <p class="card-description">
+        Choose the language you want the JayVon AI dashboard interface to use.
+        Your Discord messages, server content and bot responses are not automatically translated by this setting.
+    </p>
+
+    <div class="chips">
+
+        <span class="chip active">Dashboard UI</span>
+        <span class="chip active">Navigation</span>
+        <span class="chip active">Settings</span>
+        <span class="chip active">Controls</span>
+        <span class="chip">Discord content</span>
+        <span class="chip">AI responses</span>
+
+    </div>
+
+</div>
+```
+
+</section>
 
 <div class="dashboard-footer">
 
-    © 2026 JayVon AI • 🌐 The Vonverse • Created by SS_DEMON2
+```
+© 2026 JayVon AI • 🌐 The Vonverse • Created by SS_DEMON2
+```
 
 </div>
 
@@ -2812,7 +3279,6 @@ You are member #{membercount}.</textarea>
 </main>
 
 </div>
-
 
 <!-- UPCOMING POPUP -->
 
@@ -2832,62 +3298,71 @@ You are member #{membercount}.</textarea>
     onclick="closeUpcomingOutside(event,this)"
 >
 
-    <div
-        style="
-            width:min(430px,100%);
-            background:#111116;
-            border:1px solid rgba(139,92,246,.2);
-            border-radius:18px;
-            padding:30px;
-            text-align:center;
-            box-shadow:0 30px 100px rgba(0,0,0,.7);
-            animation:sectionIn .25s ease;
-        "
-    >
+```
+<div
+    style="
+        width:min(430px,100%);
+        background:#111116;
+        border:1px solid rgba(139,92,246,.2);
+        border-radius:18px;
+        padding:30px;
+        text-align:center;
+        box-shadow:0 30px 100px rgba(0,0,0,.7);
+        animation:sectionIn .25s ease;
+    "
+>
 
-        <div style="
-            font-size:45px;
-            margin-bottom:15px;
-        ">
-            🚧
-        </div>
-
-        <h2 style="
-            font-family:'Space Grotesk',sans-serif;
-            font-size:22px;
-        ">
-            Coming Soon
-        </h2>
-
-        <p style="
-            color:#777781;
-            font-size:11px;
-            line-height:1.8;
-            margin-top:10px;
-        ">
-            Levels & XP is currently being developed
-            for JayVon AI.
-            <br><br>
-            Stay tuned — XP, level-up messages,
-            level roles and leaderboards are coming.
-        </p>
-
-        <button
-            class="button secondary"
-            onclick="closeUpcoming()"
-            style="margin-top:20px;"
-        >
-            Close
-        </button>
-
+    <div style="
+        font-size:45px;
+        margin-bottom:15px;
+    ">
+        🚧
     </div>
+
+    <h2 style="
+        font-family:'Space Grotesk',sans-serif;
+        font-size:23px;
+    ">
+        Coming Soon
+    </h2>
+
+    <p style="
+        color:#777781;
+        font-size:11px;
+        line-height:1.8;
+        margin-top:10px;
+    ">
+        Levels & XP is currently being developed
+        for JayVon AI.
+        <br><br>
+        Stay tuned — XP, level-up messages,
+        level roles and leaderboards are coming.
+    </p>
+
+    <button
+        class="button secondary"
+        onclick="closeUpcoming()"
+        style="margin-top:20px;"
+    >
+        Close
+    </button>
+
+</div>
+```
 
 </div>
 
+<!-- TOAST -->
+
+<div id="toast" class="toast">
+    Saved successfully.
+</div>
 
 <script>
 
-/* SECTION SWITCHING */
+/* =========================================================
+   SECTION SWITCHING
+========================================================= */
 
 const menuItems =
     document.querySelectorAll(".menu-item");
@@ -2976,9 +3451,7 @@ menuItems.forEach(function(item){
             item.classList.add("active");
 
             sections.forEach(function(sectionElement){
-
                 sectionElement.classList.remove("active");
-
             });
 
             const target =
@@ -2999,9 +3472,11 @@ menuItems.forEach(function(item){
             }
 
             if(window.innerWidth <= 760){
+
                 document
                     .getElementById("sidebar")
                     .classList.remove("open");
+
             }
 
             window.scrollTo({
@@ -3015,7 +3490,9 @@ menuItems.forEach(function(item){
 });
 
 
-/* TOGGLES */
+/* =========================================================
+   TOGGLES
+========================================================= */
 
 function toggleSetting(button){
 
@@ -3024,7 +3501,9 @@ function toggleSetting(button){
 }
 
 
-/* MOBILE SIDEBAR */
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
 
 function toggleSidebar(){
 
@@ -3035,7 +3514,66 @@ function toggleSidebar(){
 }
 
 
-/* LEVELS UPCOMING */
+/* =========================================================
+   SAVE SETTINGS
+========================================================= */
+
+function saveSettings(button){
+
+    const bar =
+        button.closest(".save-bar");
+
+    const status =
+        bar.querySelector(".save-status");
+
+    if(status){
+
+        status.classList.add("show");
+
+        setTimeout(function(){
+
+            status.classList.remove("show");
+
+        },2200);
+
+    }
+
+    showToast("✓ Settings saved successfully.");
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(function(){
+
+            toast.classList.remove("show");
+
+        },2500);
+
+}
+
+
+/* =========================================================
+   UPCOMING
+========================================================= */
 
 function showUpcoming(){
 
@@ -3071,7 +3609,9 @@ function closeUpcomingOutside(
 }
 
 
-/* ESCAPE */
+/* =========================================================
+   ESCAPE
+========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -3087,12 +3627,583 @@ document.addEventListener(
 );
 
 
-/*
-   LOGO BACKGROUND REMOVER
+/* =========================================================
+   SOCIAL ACCOUNT LINKING UI
+========================================================= */
 
-   Keeps dark/black artwork while removing
-   light/white background pixels.
-*/
+function connectSocial(platform){
+
+    if(platform === "TikTok"){
+
+        const username =
+            document
+                .getElementById("tiktokUsername")
+                .value
+                .trim();
+
+        if(!username){
+
+            showToast("Enter your TikTok username first.");
+
+            document
+                .getElementById("tiktokUsername")
+                .focus();
+
+            return;
+
+        }
+
+        const status =
+            document.getElementById("tiktokStatus");
+
+        status.classList.add("connected");
+
+        status.textContent =
+            "🟢 TikTok account ready to connect";
+
+        showToast(
+            "TikTok account prepared for connection."
+        );
+
+    }
+
+    if(platform === "YouTube"){
+
+        const channel =
+            document
+                .getElementById("youtubeChannelAccount")
+                .value
+                .trim();
+
+        if(!channel){
+
+            showToast("Enter your YouTube channel first.");
+
+            document
+                .getElementById("youtubeChannelAccount")
+                .focus();
+
+            return;
+
+        }
+
+        const status =
+            document.getElementById("youtubeStatus");
+
+        status.classList.add("connected");
+
+        status.textContent =
+            "🟢 YouTube channel ready to connect";
+
+        showToast(
+            "YouTube channel prepared for connection."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SOCIAL LIVE PREVIEWS
+========================================================= */
+
+function updateSocialPreview(){
+
+    const tiktokMessage =
+        document
+            .getElementById("tiktokMessage")
+            .value;
+
+    const youtubeMessage =
+        document
+            .getElementById("youtubeMessage")
+            .value;
+
+    document
+        .getElementById("tiktokPreview")
+        .innerHTML =
+        escapeHTML(
+            tiktokMessage
+                .replaceAll(
+                    "{link}",
+                    "https://tiktok.com/your-video"
+                )
+        )
+        .replaceAll("\n","<br>");
+
+    document
+        .getElementById("youtubePreview")
+        .innerHTML =
+        escapeHTML(
+            youtubeMessage
+                .replaceAll(
+                    "{link}",
+                    "https://youtube.com/watch?v=your-video"
+                )
+        )
+        .replaceAll("\n","<br>");
+
+}
+
+document
+    .getElementById("tiktokMessage")
+    .addEventListener("input",updateSocialPreview);
+
+document
+    .getElementById("youtubeMessage")
+    .addEventListener("input",updateSocialPreview);
+
+
+/* =========================================================
+   MEDIA PREVIEW
+========================================================= */
+
+function updateMediaPreview(){
+
+    const channel =
+        document
+            .getElementById("mediaChannel")
+            .value
+            .trim();
+
+    const type =
+        document
+            .getElementById("mediaType")
+            .value;
+
+    document
+        .getElementById("mediaPreviewChannel")
+        .textContent =
+        channel || "#your-media-channel";
+
+    document
+        .getElementById("mediaPreviewText")
+        .textContent =
+        type + " are allowed in this channel.";
+
+}
+
+document
+    .getElementById("mediaChannel")
+    .addEventListener("input",updateMediaPreview);
+
+document
+    .getElementById("mediaType")
+    .addEventListener("change",updateMediaPreview);
+
+
+/* =========================================================
+   WELCOME PREVIEW
+========================================================= */
+
+function updateWelcomePreview(){
+
+    const message =
+        document
+            .getElementById("welcomeMessage")
+            .value;
+
+    const dmMessage =
+        document
+            .getElementById("welcomeDMMessage")
+            .value;
+
+    document
+        .getElementById("welcomePreviewText")
+        .textContent =
+        message
+            .replaceAll("{user}","@User")
+            .replaceAll("{membercount}","126");
+
+    document
+        .getElementById("dmPreviewText")
+        .textContent =
+        dmMessage
+            .replaceAll("{user}","@User");
+
+}
+
+document
+    .getElementById("welcomeMessage")
+    .addEventListener(
+        "input",
+        updateWelcomePreview
+    );
+
+document
+    .getElementById("welcomeDMMessage")
+    .addEventListener(
+        "input",
+        updateWelcomePreview
+    );
+
+
+function toggleDMFields(){
+
+    const toggle =
+        document.getElementById("welcomeDMToggle");
+
+    const fields =
+        document.getElementById("dmFields");
+
+    const preview =
+        document.getElementById("dmPreview");
+
+    if(toggle.classList.contains("on")){
+
+        fields.style.display =
+            "block";
+
+        preview.style.display =
+            "block";
+
+    }
+    else{
+
+        fields.style.display =
+            "none";
+
+        preview.style.display =
+            "none";
+
+    }
+
+    updateWelcomePreview();
+
+}
+
+
+/* =========================================================
+   TICKET LIVE PREVIEW
+========================================================= */
+
+function updateTicketPreview(){
+
+    const title =
+        document.getElementById("ticketTitle").value;
+
+    const message =
+        document.getElementById("ticketMessage").value;
+
+    const button =
+        document.getElementById("ticketButton").value;
+
+    const opened =
+        document.getElementById("openedTicketMessage").value;
+
+    document
+        .getElementById("ticketPreviewTitle")
+        .textContent =
+        title || "Need Help?";
+
+    document
+        .getElementById("ticketPreviewMessage")
+        .textContent =
+        message ||
+        "Click below to contact the staff team.";
+
+    document
+        .getElementById("ticketPreviewButton")
+        .textContent =
+        button || "🎫 Open Ticket";
+
+    document
+        .getElementById("openedTicketPreview")
+        .textContent =
+        opened ||
+        "Thanks for opening a ticket!";
+
+}
+
+[
+    "ticketTitle",
+    "ticketMessage",
+    "ticketButton",
+    "openedTicketMessage"
+].forEach(function(id){
+
+    document
+        .getElementById(id)
+        .addEventListener(
+            "input",
+            updateTicketPreview
+        );
+
+});
+
+
+function sendTicketPanel(){
+
+    const channel =
+        document
+            .getElementById("ticketChannel")
+            .value
+            .trim();
+
+    if(!channel){
+
+        showToast(
+            "Choose a ticket panel channel first."
+        );
+
+        return;
+
+    }
+
+    showToast(
+        "🎫 Ticket panel ready to send to " + channel
+    );
+
+}
+
+
+/* =========================================================
+   GIVEAWAY LIVE PREVIEW
+========================================================= */
+
+function updateGiveawayPreview(){
+
+    const prize =
+        document
+            .getElementById("giveawayPrize")
+            .value;
+
+    const winners =
+        document
+            .getElementById("giveawayWinners")
+            .value;
+
+    const duration =
+        document
+            .getElementById("giveawayDuration")
+            .value;
+
+    const message =
+        document
+            .getElementById("giveawayMessage")
+            .value;
+
+    document
+        .getElementById("giveawayPreviewPrize")
+        .textContent =
+        prize || "Your Prize";
+
+    document
+        .getElementById("giveawayPreviewInfo")
+        .innerHTML =
+        escapeHTML(
+            message || "React below to enter!"
+        ).replaceAll("\n","<br>") +
+        "<br>🏆 Winners: " +
+        escapeHTML(winners || "1") +
+        "<br>⏰ Ends: " +
+        escapeHTML(duration);
+
+}
+
+[
+    "giveawayPrize",
+    "giveawayWinners",
+    "giveawayMessage"
+].forEach(function(id){
+
+    document
+        .getElementById(id)
+        .addEventListener(
+            "input",
+            updateGiveawayPreview
+        );
+
+});
+
+document
+    .getElementById("giveawayDuration")
+    .addEventListener(
+        "change",
+        updateGiveawayPreview
+    );
+
+
+function toggleClaimFields(){
+
+    const toggle =
+        document.getElementById("claimToggle");
+
+    const fields =
+        document.getElementById("claimFields");
+
+    const preview =
+        document.getElementById("claimPreview");
+
+    if(toggle.classList.contains("on")){
+
+        fields.style.display =
+            "block";
+
+        preview.style.display =
+            "block";
+
+    }
+    else{
+
+        fields.style.display =
+            "none";
+
+        preview.style.display =
+            "none";
+
+    }
+
+    updateClaimPreview();
+
+}
+
+
+function updateClaimPreview(){
+
+    const message =
+        document
+            .getElementById("claimMessage")
+            .value;
+
+    document
+        .getElementById("claimPreviewText")
+        .textContent =
+        message;
+
+}
+
+document
+    .getElementById("claimMessage")
+    .addEventListener(
+        "input",
+        updateClaimPreview
+    );
+
+
+function sendGiveaway(){
+
+    const channel =
+        document
+            .getElementById("giveawayChannel")
+            .value
+            .trim();
+
+    const prize =
+        document
+            .getElementById("giveawayPrize")
+            .value
+            .trim();
+
+    if(!channel){
+
+        showToast(
+            "Choose a giveaway channel first."
+        );
+
+        return;
+
+    }
+
+    if(!prize){
+
+        showToast(
+            "Enter a giveaway prize first."
+        );
+
+        return;
+
+    }
+
+    showToast(
+        "🎉 Giveaway ready to send to " + channel
+    );
+
+}
+
+
+/* =========================================================
+   DYNAMIC CHIPS
+========================================================= */
+
+function addChip(
+    inputId,
+    containerId
+){
+
+    const input =
+        document.getElementById(inputId);
+
+    const container =
+        document.getElementById(containerId);
+
+    const value =
+        input.value.trim();
+
+    if(!value){
+
+        showToast("Enter something first.");
+
+        return;
+
+    }
+
+    const chip =
+        document.createElement("span");
+
+    chip.className =
+        "chip active";
+
+    chip.textContent =
+        value;
+
+    chip.style.cursor =
+        "pointer";
+
+    chip.title =
+        "Click to remove";
+
+    chip.onclick =
+        function(){
+
+            chip.remove();
+
+        };
+
+    container.appendChild(chip);
+
+    input.value = "";
+
+}
+
+
+/* =========================================================
+   LANGUAGE SYSTEM
+========================================================= */
+
+function changeLanguage(){
+
+    const language =
+        document
+            .getElementById("systemLanguage")
+            .value;
+
+    document
+        .getElementById("languageStatus")
+        .textContent =
+        language;
+
+    showToast(
+        "🌐 Dashboard language changed to " + language
+    );
+
+}
+
+
+/* =========================================================
+   LOGO BACKGROUND REMOVER
+========================================================= */
 
 function cleanLogo(img){
 
@@ -3204,6 +4315,34 @@ document
         }
 
     });
+
+
+/* =========================================================
+   BASIC HTML ESCAPE
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   INITIAL PREVIEWS
+========================================================= */
+
+updateSocialPreview();
+updateMediaPreview();
+updateWelcomePreview();
+updateTicketPreview();
+updateGiveawayPreview();
+updateClaimPreview();
 
 </script>
 
