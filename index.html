@@ -48,12 +48,9 @@ html{
 
 body{
     font-family:Inter,Arial,sans-serif;
-
     background:#050508;
     color:#fff;
-
     min-height:100vh;
-
     overflow-x:hidden;
 }
 
@@ -90,9 +87,7 @@ a{
 .global-bg{
     position:fixed;
     inset:0;
-
     z-index:-10;
-
     overflow:hidden;
     pointer-events:none;
 
@@ -476,7 +471,7 @@ a{
 ========================================================= */
 
 .home-nav{
-    height:78px;
+    min-height:78px;
 
     display:flex;
 
@@ -513,6 +508,8 @@ a{
     align-items:center;
 
     gap:7px;
+
+    flex-wrap:wrap;
 }
 
 .home-link{
@@ -571,6 +568,39 @@ a{
             rgba(59,130,246,.28),
             rgba(139,92,246,.22)
         );
+}
+
+/* LOGIN BUTTON */
+
+.login-nav{
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34,197,94,.14),
+            rgba(59,130,246,.14)
+        );
+
+    border:
+        1px solid
+        rgba(34,197,94,.22);
+
+    box-shadow:
+        0 8px 25px
+        rgba(34,197,94,.05);
+}
+
+.login-nav:hover{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34,197,94,.24),
+            rgba(59,130,246,.22)
+        );
+
+    border-color:
+        rgba(34,197,94,.35);
 }
 
 /* =========================================================
@@ -790,6 +820,88 @@ a{
     transform:translateY(-3px);
 
     background:#17171f;
+}
+
+/* =========================================================
+   LOGIN / SERVER ACCESS NOTICE
+========================================================= */
+
+.server-access{
+    margin-top:26px;
+
+    width:100%;
+    max-width:620px;
+
+    padding:14px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    border:
+        1px solid
+        rgba(59,130,246,.13);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(59,130,246,.055),
+            rgba(139,92,246,.045)
+        );
+
+    border-radius:12px;
+
+    color:#777781;
+
+    font-size:11px;
+
+    line-height:1.6;
+}
+
+.server-access-icon{
+    width:36px;
+    height:36px;
+
+    min-width:36px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:
+        rgba(59,130,246,.10);
+
+    border:
+        1px solid
+        rgba(59,130,246,.15);
+
+    font-size:17px;
+}
+
+.server-access strong{
+    color:#c8c8d2;
+}
+
+.server-access button{
+    border:0;
+
+    background:none;
+
+    color:#60a5fa;
+
+    font-size:11px;
+    font-weight:700;
+
+    margin-left:4px;
+}
+
+.server-access button:hover{
+    color:#93c5fd;
 }
 
 /* =========================================================
@@ -1361,6 +1473,13 @@ a{
         justify-content:center;
     }
 
+    .server-access{
+        margin-left:auto;
+        margin-right:auto;
+
+        text-align:left;
+    }
+
     .hero-visual{
         height:470px;
 
@@ -1473,6 +1592,10 @@ a{
     .secondary-btn{
         width:100%;
 
+        max-width:280px;
+    }
+
+    .server-access{
         max-width:280px;
     }
 
@@ -1619,6 +1742,16 @@ a{
 
         </a>
 
+        <!-- LOGIN -->
+
+        <a
+            class="home-link login-nav"
+            href="/api/auth/discord">
+
+            🔐 Login with Discord
+
+        </a>
+
         <!-- SERVER MANAGEMENT -->
 
         <a
@@ -1682,19 +1815,6 @@ a{
 
             <div class="hero-buttons">
 
-                <!--
-                    IMPORTANT:
-
-                    This now starts your Vercel OAuth flow.
-
-                    Your backend should have:
-
-                    /api/login
-
-                    The backend then redirects the user
-                    to Discord's OAuth2 authorization page.
-                -->
-
                 <button
                     class="primary-btn"
                     onclick="addJayVon()">
@@ -1710,6 +1830,35 @@ a{
                     📊 Dashboard
 
                 </a>
+
+            </div>
+
+            <!-- LOGIN / SERVER ACCESS -->
+
+            <div class="server-access">
+
+                <div class="server-access-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <strong>
+                        Manage your Discord servers
+                    </strong>
+
+                    <br>
+
+                    Log in with Discord to view servers
+                    you own or have permission to manage.
+
+                    <button
+                        onclick="loginDiscord()">
+
+                        Login →
+                    </button>
+
+                </div>
 
             </div>
 
@@ -2217,33 +2366,18 @@ window.addEventListener("load", function(){
    ADD JAYVON AI
 ========================================================= */
 
-/*
-    DO NOT send the user directly to:
-
-    discord.com/oauth2/authorize
-
-    anymore.
-
-    Instead:
-
-    Website
-       ↓
-    /api/login
-       ↓
-    Vercel backend
-       ↓
-    Discord OAuth2
-       ↓
-    User authorizes
-       ↓
-    Discord returns to backend
-       ↓
-    Backend creates session
-       ↓
-    Dashboard
-*/
-
 function addJayVon(){
+
+    window.location.href =
+        "/api/auth/discord";
+
+}
+
+/* =========================================================
+   LOGIN WITH DISCORD
+========================================================= */
+
+function loginDiscord(){
 
     window.location.href =
         "/api/auth/discord";
