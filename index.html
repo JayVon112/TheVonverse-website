@@ -8,9 +8,17 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+>
 
 <style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 *{
     margin:0;
@@ -23,8 +31,12 @@
     --panel:#0d0d13;
     --panel2:#111119;
     --line:rgba(255,255,255,.08);
+
     --muted:#858590;
+
     --blue:#3b82f6;
+    --blue2:#2563eb;
+
     --red:#ef4444;
     --purple:#8b5cf6;
     --green:#22c55e;
@@ -36,9 +48,12 @@ html{
 
 body{
     font-family:Inter,Arial,sans-serif;
+
     background:#050508;
     color:#fff;
+
     min-height:100vh;
+
     overflow-x:hidden;
 }
 
@@ -69,13 +84,15 @@ a{
 }
 
 /* =========================================================
-   BACKGROUND
+   GLOBAL BACKGROUND
 ========================================================= */
 
 .global-bg{
     position:fixed;
     inset:0;
+
     z-index:-10;
+
     overflow:hidden;
     pointer-events:none;
 
@@ -85,16 +102,19 @@ a{
             rgba(59,130,246,.10),
             transparent 30%
         ),
+
         radial-gradient(
             circle at 85% 70%,
             rgba(239,68,68,.08),
             transparent 30%
         ),
+
         #050508;
 }
 
 .global-bg:before{
     content:"";
+
     position:absolute;
     inset:-20%;
 
@@ -103,6 +123,7 @@ a{
             rgba(255,255,255,.018) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(255,255,255,.018) 1px,
@@ -153,23 +174,8 @@ a{
 }
 
 /* =========================================================
-   VONVERSE LOGO
+   LOGO
 ========================================================= */
-
-/*
-   The uploaded Vonverse logo has a light background.
-
-   invert(1):
-   - turns the black Vonverse artwork white
-   - turns the white/light background dark
-
-   screen:
-   - makes that dark background blend into the website
-
-   Result:
-   - NO white rectangle
-   - Vonverse artwork remains visible
-*/
 
 .logo-image{
     display:block;
@@ -200,6 +206,7 @@ a{
     z-index:99999;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -211,11 +218,13 @@ a{
             rgba(59,130,246,.13),
             transparent 32%
         ),
+
         radial-gradient(
             circle at 50% 65%,
             rgba(139,92,246,.08),
             transparent 32%
         ),
+
         #050508;
 
     opacity:1;
@@ -309,6 +318,7 @@ a{
 
     from{
         opacity:0;
+
         transform:
             translateY(25px)
             scale(.92);
@@ -316,6 +326,7 @@ a{
 
     to{
         opacity:1;
+
         transform:
             translateY(0)
             scale(1);
@@ -468,6 +479,7 @@ a{
     height:78px;
 
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
@@ -497,7 +509,9 @@ a{
 
 .home-links{
     display:flex;
+
     align-items:center;
+
     gap:7px;
 }
 
@@ -533,6 +547,32 @@ a{
         rgba(59,130,246,.18);
 }
 
+/* SERVER BUTTON */
+
+.server-nav{
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(59,130,246,.18),
+            rgba(139,92,246,.14)
+        );
+
+    border:
+        1px solid
+        rgba(59,130,246,.25);
+}
+
+.server-nav:hover{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(59,130,246,.28),
+            rgba(139,92,246,.22)
+        );
+}
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -545,6 +585,7 @@ a{
     position:relative;
 
     display:flex;
+
     align-items:center;
 
     padding:
@@ -581,6 +622,7 @@ a{
 
 .hero-badge{
     display:inline-flex;
+
     align-items:center;
 
     gap:9px;
@@ -664,12 +706,6 @@ a{
     }
 }
 
-.hero h1 .jay,
-.hero h1 .von,
-.hero h1 .ai-word{
-    display:inline;
-}
-
 .hero-description{
     max-width:670px;
 
@@ -737,6 +773,7 @@ a{
 
 .secondary-btn{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
@@ -751,11 +788,12 @@ a{
 
 .secondary-btn:hover{
     transform:translateY(-3px);
+
     background:#17171f;
 }
 
 /* =========================================================
-   BIG RIGHT-SIDE LOGO
+   LOGO VISUAL
 ========================================================= */
 
 .hero-visual{
@@ -764,6 +802,7 @@ a{
     height:520px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 }
@@ -1024,6 +1063,7 @@ a{
     height:43px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -1038,6 +1078,7 @@ a{
 
 .feature h3{
     font-size:15px;
+
     margin-bottom:8px;
 }
 
@@ -1061,6 +1102,7 @@ a{
     padding:30px 7%;
 
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
@@ -1145,6 +1187,7 @@ a{
 
     from{
         opacity:0;
+
         transform:
             translateY(15px)
             scale(.98);
@@ -1310,6 +1353,7 @@ a{
 
     .hero-copy{
         max-width:760px;
+
         margin:auto;
     }
 
@@ -1319,6 +1363,7 @@ a{
 
     .hero-visual{
         height:470px;
+
         order:-1;
     }
 
@@ -1370,6 +1415,7 @@ a{
 
     .home-link{
         padding:8px 10px;
+
         font-size:10px;
     }
 
@@ -1419,12 +1465,14 @@ a{
 
     .hero-buttons{
         flex-direction:column;
+
         align-items:center;
     }
 
     .primary-btn,
     .secondary-btn{
         width:100%;
+
         max-width:280px;
     }
 
@@ -1434,6 +1482,7 @@ a{
 
     .home-footer{
         flex-direction:column;
+
         text-align:center;
     }
 
@@ -1444,6 +1493,7 @@ a{
 
     .landing-title{
         font-size:52px;
+
         letter-spacing:-4px;
     }
 
@@ -1458,7 +1508,9 @@ a{
     *::before,
     *::after{
         animation-duration:.01ms !important;
+
         animation-iteration-count:1 !important;
+
         scroll-behavior:auto !important;
     }
 }
@@ -1467,6 +1519,10 @@ a{
 </head>
 
 <body>
+
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
 
 <div class="global-bg">
     <div class="bg-light"></div>
@@ -1493,7 +1549,11 @@ a{
         </div>
 
         <div class="landing-title">
-            <span class="jay">Jay</span><span class="von">Von</span><span class="landing-ai">AI</span>
+
+            <span class="jay">Jay</span>
+            <span class="von">Von</span>
+            <span class="landing-ai">AI</span>
+
         </div>
 
         <div class="landing-line"></div>
@@ -1519,7 +1579,10 @@ a{
 <nav class="home-nav">
 
     <div class="home-brand">
-        <span class="jay">Jay</span><span class="von">Von</span> AI
+
+        <span class="jay">Jay</span>
+        <span class="von">Von</span> AI
+
     </div>
 
     <div class="home-links">
@@ -1527,31 +1590,51 @@ a{
         <button
             class="home-link"
             onclick="openInfo('featuresModal')">
+
             Features
+
         </button>
 
         <button
             class="home-link"
             onclick="openInfo('creditsModal')">
+
             Credits
+
         </button>
 
         <a
             class="home-link"
             href="terms.html">
+
             Terms
+
         </a>
 
         <a
             class="home-link"
             href="privacy.html">
+
             Privacy
+
+        </a>
+
+        <!-- SERVER MANAGEMENT -->
+
+        <a
+            class="home-link server-nav"
+            href="dashboard.html">
+
+            🛡️ My Servers
+
         </a>
 
         <a
             class="home-link primary-nav"
             href="dashboard.html">
+
             📊 Dashboard
+
         </a>
 
     </div>
@@ -1569,12 +1652,19 @@ a{
         <div class="hero-copy">
 
             <div class="hero-badge">
+
                 <span></span>
+
                 JAYVON AI IS ONLINE
+
             </div>
 
             <h1>
-                <span class="jay">Jay</span><span class="von">Von</span><span class="ai-word"> AI</span>
+
+                <span class="jay">Jay</span>
+                <span class="von">Von</span>
+                <span class="ai-word"> AI</span>
+
             </h1>
 
             <p class="hero-description">
@@ -1592,16 +1682,33 @@ a{
 
             <div class="hero-buttons">
 
+                <!--
+                    IMPORTANT:
+
+                    This now starts your Vercel OAuth flow.
+
+                    Your backend should have:
+
+                    /api/login
+
+                    The backend then redirects the user
+                    to Discord's OAuth2 authorization page.
+                -->
+
                 <button
                     class="primary-btn"
                     onclick="addJayVon()">
+
                     ✨ Add JayVon AI
+
                 </button>
 
                 <a
                     class="secondary-btn"
                     href="dashboard.html">
+
                     📊 Dashboard
+
                 </a>
 
             </div>
@@ -1781,9 +1888,11 @@ a{
 
             <p>
                 XP, level roles and leaderboards.
+
                 <b style="color:#8b5cf6;">
                     Upcoming
                 </b>
+
             </p>
 
         </div>
@@ -1816,13 +1925,18 @@ a{
 <footer class="home-footer">
 
     <div class="footer-brand">
-        <span class="jay">Jay</span><span class="von">Von</span> AI
+
+        <span class="jay">Jay</span>
+        <span class="von">Von</span> AI
+
     </div>
 
     <div class="credit">
+
         Made by
         <strong>SS_DEMON2</strong>
         • JayVon AI • The Vonverse
+
     </div>
 
     <div>
@@ -1926,7 +2040,9 @@ a{
             <button
                 class="modal-button"
                 onclick="closeInfo('featuresModal')">
+
                 Close
+
             </button>
 
         </div>
@@ -1966,7 +2082,8 @@ a{
 
             <br><br>
 
-            <span class="jay">Jay</span><span class="von">Von</span> AI
+            <span class="jay">Jay</span>
+            <span class="von">Von</span> AI
 
             <br>
 
@@ -1989,7 +2106,9 @@ a{
             <button
                 class="modal-button"
                 onclick="closeInfo('creditsModal')">
+
                 Close
+
             </button>
 
         </div>
@@ -2043,9 +2162,11 @@ a{
                 <br><br>
 
                 <span class="stay">
+
                     Stay tuned for XP,
                     level-up messages,
                     level roles and leaderboards.
+
                 </span>
 
             </div>
@@ -2055,7 +2176,9 @@ a{
                 <button
                     class="modal-button"
                     onclick="closeInfo('upcomingModal')">
+
                     Close
+
                 </button>
 
             </div>
@@ -2081,7 +2204,9 @@ window.addEventListener("load", function(){
             document.getElementById("landing");
 
         if(landing){
+
             landing.classList.add("hidden");
+
         }
 
     }, 3000);
@@ -2092,24 +2217,44 @@ window.addEventListener("load", function(){
    ADD JAYVON AI
 ========================================================= */
 
+/*
+    DO NOT send the user directly to:
+
+    discord.com/oauth2/authorize
+
+    anymore.
+
+    Instead:
+
+    Website
+       ↓
+    /api/login
+       ↓
+    Vercel backend
+       ↓
+    Discord OAuth2
+       ↓
+    User authorizes
+       ↓
+    Discord returns to backend
+       ↓
+    Backend creates session
+       ↓
+    Dashboard
+*/
+
 function addJayVon(){
 
-    const clientId = "1542585733145952287";
+    const oauthURL =
+        "/api/login";
 
-    const permissions = "8";
-
-    const inviteURL =
-        "https://discord.com/oauth2/authorize" +
-        "?client_id=" + clientId +
-        "&scope=bot%20applications.commands" +
-        "&permissions=" + permissions;
-
-    window.location.href = inviteURL;
+    window.location.href =
+        oauthURL;
 
 }
 
 /* =========================================================
-   MODALS
+   OPEN MODAL
 ========================================================= */
 
 function openInfo(id){
@@ -2128,6 +2273,10 @@ function openInfo(id){
 
 }
 
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
 function closeInfo(id){
 
     const modal =
@@ -2144,6 +2293,10 @@ function closeInfo(id){
 
 }
 
+/* =========================================================
+   CLOSE OUTSIDE
+========================================================= */
+
 function closeOutside(event, element){
 
     if(event.target === element){
@@ -2158,7 +2311,7 @@ function closeOutside(event, element){
 }
 
 /* =========================================================
-   ESC CLOSE
+   ESCAPE
 ========================================================= */
 
 document.addEventListener(
