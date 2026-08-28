@@ -1,0 +1,1345 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard — JayVon AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07070a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        button,
+        select,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 250px;
+            background: #0c0c10;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            padding: 25px 15px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: block;
+            padding: 0 12px;
+            margin-bottom: 35px;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        .server-box {
+            background: #141419;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 25px;
+        }
+
+        .server-label {
+            color: #73737d;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .server-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .nav-title {
+            color: #65656e;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 12px;
+            margin-bottom: 8px;
+        }
+
+        .nav-item {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: #96969f;
+            text-align: left;
+            padding: 11px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 3px;
+            transition: 0.2s;
+        }
+
+        .nav-item:hover {
+            background: #15151b;
+            color: white;
+        }
+
+        .nav-item.active {
+            background: #21153d;
+            color: #cbb6ff;
+        }
+
+        .nav-icon {
+            width: 24px;
+            display: inline-block;
+        }
+
+        .sidebar-bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 15px;
+            right: 15px;
+        }
+
+        .sidebar-link {
+            display: block;
+            color: #777781;
+            padding: 9px 12px;
+            font-size: 13px;
+        }
+
+        .sidebar-link:hover {
+            color: white;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 72px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 35px;
+            background: rgba(7,7,10,0.85);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .page-title {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8f8f99;
+            font-size: 13px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+        }
+
+        .content {
+            max-width: 1200px;
+            padding: 40px;
+            margin: 0 auto;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 32px;
+            letter-spacing: -1px;
+            margin-bottom: 7px;
+        }
+
+        .heading p {
+            color: #85858f;
+            font-size: 14px;
+        }
+
+        /* CARDS */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #101015;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .card-icon {
+            font-size: 25px;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .card p {
+            color: #80808a;
+            font-size: 13px;
+        }
+
+        /* SETTINGS */
+
+        .settings-card {
+            background: #101015;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            margin-bottom: 18px;
+            overflow: hidden;
+        }
+
+        .settings-header {
+            padding: 20px 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .settings-header h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .settings-header p {
+            color: #777781;
+            font-size: 13px;
+        }
+
+        .setting {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 19px 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .setting:last-child {
+            border-bottom: 0;
+        }
+
+        .setting-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .setting-info p {
+            color: #777781;
+            font-size: 12px;
+        }
+
+        select,
+        input,
+        textarea {
+            width: 240px;
+            background: #18181e;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: white;
+            outline: none;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select:focus,
+        input:focus,
+        textarea:focus {
+            border-color: #8b5cf6;
+        }
+
+        /* TOGGLE */
+
+        .toggle {
+            position: relative;
+            width: 46px;
+            height: 25px;
+            flex-shrink: 0;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #292930;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 19px;
+            height: 19px;
+            left: 3px;
+            top: 3px;
+            background: #aaa;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .toggle input:checked + .slider {
+            background: #7c3aed;
+        }
+
+        .toggle input:checked + .slider:before {
+            transform: translateX(21px);
+            background: white;
+        }
+
+        /* BUTTON */
+
+        .button {
+            border: 0;
+            background: #7c3aed;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #8b5cf6;
+            transform: translateY(-1px);
+        }
+
+        .button.secondary {
+            background: #1b1b22;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .button.secondary:hover {
+            background: #24242c;
+        }
+
+        /* WELCOME */
+
+        .message-builder {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 20px;
+        }
+
+        .preview {
+            background: #18181e;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .preview-title {
+            color: #777781;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .preview-message {
+            color: #c9c9d0;
+            font-size: 14px;
+        }
+
+        /* PERMISSIONS */
+
+        .role-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .role {
+            padding: 8px 12px;
+            background: #18181e;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 7px;
+            color: #aaaab3;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .role.selected {
+            border-color: #8b5cf6;
+            background: #21153d;
+            color: #d4c4ff;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .sidebar {
+                width: 210px;
+            }
+
+            .main {
+                margin-left: 210px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .message-builder {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+            .sidebar-bottom {
+                position: static;
+                margin-top: 20px;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .topbar {
+                position: relative;
+            }
+
+            .content {
+                padding: 25px 18px;
+            }
+
+            .setting {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            select,
+            input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            JayVon <span>AI</span>
+        </div>
+
+        <div class="server-box">
+            <div class="server-label">Managing Server</div>
+            <div class="server-name">Your Discord Server</div>
+        </div>
+
+        <div class="nav-title">Dashboard</div>
+
+        <button class="nav-item active" onclick="showSection('overview', this)">
+            <span class="nav-icon">🏠</span> Overview
+        </button>
+
+        <button class="nav-item" onclick="showSection('ai', this)">
+            <span class="nav-icon">🤖</span> AI
+        </button>
+
+        <button class="nav-item" onclick="showSection('music', this)">
+            <span class="nav-icon">🎵</span> Music
+        </button>
+
+        <button class="nav-item" onclick="showSection('tickets', this)">
+            <span class="nav-icon">🎫</span> Tickets
+        </button>
+
+        <button class="nav-item" onclick="showSection('giveaways', this)">
+            <span class="nav-icon">🎉</span> Giveaways
+        </button>
+
+        <button class="nav-item" onclick="showSection('welcome', this)">
+            <span class="nav-icon">👋</span> Welcome
+        </button>
+
+        <button class="nav-item" onclick="showSection('moderation', this)">
+            <span class="nav-icon">🛡️</span> Moderation
+        </button>
+
+        <button class="nav-item" onclick="showSection('commands', this)">
+            <span class="nav-icon">📋</span> Commands
+        </button>
+
+        <button class="nav-item" onclick="showSection('settings', this)">
+            <span class="nav-icon">⚙️</span> Server Settings
+        </button>
+
+        <div class="sidebar-bottom">
+
+            <a href="/terms.html" class="sidebar-link">
+                Terms of Service
+            </a>
+
+            <a href="/privacy.html" class="sidebar-link">
+                Privacy Policy
+            </a>
+
+            <a href="/" class="sidebar-link">
+                ← Back to The Vonverse
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div class="page-title">
+                JayVon AI Dashboard
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Bot Online
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- OVERVIEW -->
+
+            <section id="overview" class="section active">
+
+                <div class="heading">
+
+                    <h1>Welcome to JayVon AI.</h1>
+
+                    <p>
+                        Manage your Discord server and configure JayVon AI.
+                    </p>
+
+                </div>
+
+                <div class="grid">
+
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3>AI Assistant</h3>
+                        <p>
+                            Configure how JayVon AI interacts with your community.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎵</div>
+                        <h3>Music</h3>
+                        <p>
+                            Configure music permissions, voting and controls.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3>Moderation</h3>
+                        <p>
+                            Manage moderation tools and staff permissions.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎫</div>
+                        <h3>Tickets</h3>
+                        <p>
+                            Configure your support ticket system.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎉</div>
+                        <h3>Giveaways</h3>
+                        <p>
+                            Manage giveaway channels, permissions and defaults.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">👋</div>
+                        <h3>Welcome</h3>
+                        <p>
+                            Customize your server's welcome experience.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- AI -->
+
+            <section id="ai" class="section">
+
+                <div class="heading">
+
+                    <h1>🤖 AI Settings</h1>
+
+                    <p>
+                        Configure the JayVon AI conversation system.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>AI Assistant</h3>
+                        <p>Control how JayVon AI operates in your server.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Enable AI</h4>
+                            <p>Allow JayVon AI to respond to conversations.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>AI Channel</h4>
+                            <p>Choose where JayVon AI can automatically respond.</p>
+                        </div>
+
+                        <select>
+                            <option>Select channel</option>
+                            <option>#general</option>
+                            <option>#ai-chat</option>
+                            <option>#chat</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>AI Personality</h4>
+                            <p>Customize how JayVon AI communicates.</p>
+                        </div>
+
+                        <select>
+                            <option>Friendly</option>
+                            <option>Professional</option>
+                            <option>Funny</option>
+                            <option>Custom</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MUSIC -->
+
+            <section id="music" class="section">
+
+                <div class="heading">
+
+                    <h1>🎵 Music</h1>
+
+                    <p>
+                        Configure music controls and permissions.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Music System</h3>
+                        <p>Control who can use JayVon AI music commands.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Enable Music</h4>
+                            <p>Allow members to use music commands.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Music Control Role</h4>
+                            <p>
+                                Members with this role can control music instantly.
+                            </p>
+                        </div>
+
+                        <select>
+                            <option>Select Discord role</option>
+                            <option>Music</option>
+                            <option>DJ</option>
+                            <option>Moderator</option>
+                            <option>Administrator</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Require Voting</h4>
+                            <p>
+                                Members without the selected role must vote.
+                            </p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Votes Required</h4>
+                            <p>Number of votes required for regular members.</p>
+                        </div>
+
+                        <select>
+                            <option>1</option>
+                            <option selected>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TICKETS -->
+
+            <section id="tickets" class="section">
+
+                <div class="heading">
+
+                    <h1>🎫 Tickets</h1>
+
+                    <p>
+                        Build and manage your server support system.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Ticket System</h3>
+                        <p>Configure how members create and manage tickets.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Enable Tickets</h4>
+                            <p>Allow members to create support tickets.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Ticket Channel</h4>
+                            <p>Channel where the ticket panel will be posted.</p>
+                        </div>
+
+                        <select>
+                            <option>Select channel</option>
+                            <option>#tickets</option>
+                            <option>#support</option>
+                            <option>#help</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Staff Role</h4>
+                            <p>Role that can manage and close tickets.</p>
+                        </div>
+
+                        <select>
+                            <option>Select Discord role</option>
+                            <option>Support</option>
+                            <option>Moderator</option>
+                            <option>Administrator</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Ticket Message</h3>
+                        <p>Customize the message members see when opening tickets.</p>
+                    </div>
+
+                    <div style="padding:22px">
+
+                        <textarea>
+🎫 Need help?
+
+Click the button below to create a support ticket.
+
+Our staff team will assist you as soon as possible.
+                        </textarea>
+
+                        <br><br>
+
+                        <button class="button">
+                            Save Ticket Message
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- GIVEAWAYS -->
+
+            <section id="giveaways" class="section">
+
+                <div class="heading">
+
+                    <h1>🎉 Giveaways</h1>
+
+                    <p>
+                        Configure your giveaway system.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Giveaway Settings</h3>
+                        <p>Configure where and who can create giveaways.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Enable Giveaways</h4>
+                            <p>Allow the giveaway system to be used.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Giveaway Channel</h4>
+                            <p>Default channel for giveaways.</p>
+                        </div>
+
+                        <select>
+                            <option>Select channel</option>
+                            <option>#giveaways</option>
+                            <option>#events</option>
+                            <option>#community</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Giveaway Manager Role</h4>
+                            <p>Role allowed to create giveaways.</p>
+                        </div>
+
+                        <select>
+                            <option>Select Discord role</option>
+                            <option>Giveaway Host</option>
+                            <option>Moderator</option>
+                            <option>Administrator</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- WELCOME -->
+
+            <section id="welcome" class="section">
+
+                <div class="heading">
+
+                    <h1>👋 Welcome</h1>
+
+                    <p>
+                        Customize messages sent when members join your server.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Welcome System</h3>
+                        <p>Choose where and how welcome messages appear.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Enable Welcome Messages</h4>
+                            <p>Send a message when a new member joins.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Welcome Channel</h4>
+                            <p>Channel where welcome messages will be sent.</p>
+                        </div>
+
+                        <select>
+                            <option>Select channel</option>
+                            <option>#welcome</option>
+                            <option>#general</option>
+                            <option>#community</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Welcome Message</h3>
+                        <p>
+                            Use variables like {user}, {username}, and {membercount}.
+                        </p>
+                    </div>
+
+                    <div style="padding:22px">
+
+                        <div class="message-builder">
+
+                            <div>
+
+                                <textarea id="welcomeMessage"
+                                oninput="updatePreview()">👋 Welcome {user} to {server}!
+
+You are member #{membercount}.
+
+Enjoy your stay!</textarea>
+
+                                <br><br>
+
+                                <button class="button">
+                                    Save Welcome Message
+                                </button>
+
+                            </div>
+
+                            <div class="preview">
+
+                                <div class="preview-title">
+                                    Preview
+                                </div>
+
+                                <div id="welcomePreview"
+                                class="preview-message">
+                                    👋 Welcome @NewMember to Your Server!
+                                    <br><br>
+                                    You are member #125.
+                                    <br><br>
+                                    Enjoy your stay!
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MODERATION -->
+
+            <section id="moderation" class="section">
+
+                <div class="heading">
+
+                    <h1>🛡️ Moderation</h1>
+
+                    <p>
+                        Configure moderation tools and staff permissions.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Moderation System</h3>
+                        <p>Control JayVon AI moderation features.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Enable Moderation</h4>
+                            <p>Enable moderation commands.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Moderator Role</h4>
+                            <p>Role allowed to use moderation commands.</p>
+                        </div>
+
+                        <select>
+                            <option>Select Discord role</option>
+                            <option>Moderator</option>
+                            <option>Admin</option>
+                            <option>Staff</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Log Channel</h4>
+                            <p>Channel where moderation actions are logged.</p>
+                        </div>
+
+                        <select>
+                            <option>Select channel</option>
+                            <option>#mod-logs</option>
+                            <option>#logs</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- COMMANDS -->
+
+            <section id="commands" class="section">
+
+                <div class="heading">
+
+                    <h1>📋 Commands</h1>
+
+                    <p>
+                        Manage JayVon AI slash and prefix commands.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>Command System</h3>
+                        <p>
+                            JayVon AI supports both slash and prefix commands.
+                        </p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Prefix</h4>
+                            <p>Prefix used for traditional commands.</p>
+                        </div>
+
+                        <input value="!" maxlength="3">
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Slash Commands</h4>
+                            <p>Enable commands such as /ticket and /giveaway.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Prefix Commands</h4>
+                            <p>Enable commands such as !ticket and !giveaway.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section id="settings" class="section">
+
+                <div class="heading">
+
+                    <h1>⚙️ Server Settings</h1>
+
+                    <p>
+                        General JayVon AI configuration.
+                    </p>
+
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="settings-header">
+                        <h3>General</h3>
+                        <p>Configure your server's JayVon AI experience.</p>
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Bot Language</h4>
+                            <p>Choose JayVon AI's default language.</p>
+                        </div>
+
+                        <select>
+                            <option>English</option>
+                        </select>
+
+                    </div>
+
+                    <div class="setting">
+
+                        <div class="setting-info">
+                            <h4>Command Notifications</h4>
+                            <p>Show confirmations when commands are completed.</p>
+                        </div>
+
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function showSection(sectionId, button) {
+
+            document.querySelectorAll(".section").forEach(section => {
+                section.classList.remove("active");
+            });
+
+            document.getElementById(sectionId).classList.add("active");
+
+            document.querySelectorAll(".nav-item").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            const titles = {
+                overview: "Overview",
+                ai: "AI Settings",
+                music: "Music",
+                tickets: "Tickets",
+                giveaways: "Giveaways",
+                welcome: "Welcome",
+                moderation: "Moderation",
+                commands: "Commands",
+                settings: "Server Settings"
+            };
+
+            document.querySelector(".page-title").textContent =
+                "JayVon AI • " + titles[sectionId];
+        }
+
+
+        function updatePreview() {
+
+            const message =
+                document.getElementById("welcomeMessage").value;
+
+            const preview =
+                message
+                .replaceAll("{user}", "@NewMember")
+                .replaceAll("{username}", "NewMember")
+                .replaceAll("{server}", "Your Server")
+                .replaceAll("{membercount}", "125")
+                .replace(/\n/g, "<br>");
+
+            document.getElementById("welcomePreview").innerHTML = preview;
+        }
+
+    </script>
+
+</body>
+</html>
+```
