@@ -2,541 +2,2104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Vonverse — JayVon AI</title>
+<title>Dashboard — JayVon AI</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #07070a;
-            color: #ffffff;
-            min-height: 100vh;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#07070a;
+    color:white;
+    min-height:100vh;
+}
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+button,input,select,textarea{
+    font:inherit;
+}
 
-        /* NAVBAR */
+button{
+    cursor:pointer;
+}
 
-        nav {
-            width: 100%;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            background: rgba(7,7,10,0.85);
-            backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:250px;
+    background:#0c0c10;
+    border-right:1px solid rgba(255,255,255,.08);
+    padding:24px 15px;
+    z-index:100;
+}
 
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+.logo{
+    font-size:21px;
+    font-weight:800;
+    padding:0 12px;
+    margin-bottom:30px;
+}
 
-        .logo span {
-            color: #8b5cf6;
-        }
+.logo span{
+    color:#8b5cf6;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-        }
+.server-box{
+    background:#141419;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:11px;
+    padding:13px;
+    margin-bottom:25px;
+}
 
-        .nav-links a {
-            color: #a9a9b2;
-            font-size: 14px;
-            transition: 0.2s;
-        }
+.server-label{
+    color:#707079;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
 
-        .nav-links a:hover {
-            color: #ffffff;
-        }
+.server-name{
+    font-size:14px;
+    font-weight:700;
+}
 
-        .nav-button {
-            background: #ffffff;
-            color: #09090b !important;
-            padding: 10px 17px;
-            border-radius: 9px;
-            font-weight: 700;
-        }
+.nav-title{
+    color:#5f5f68;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding:0 12px;
+    margin-bottom:8px;
+}
 
-        .nav-button:hover {
-            background: #e8e8e8;
-        }
+.nav-item{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#96969f;
+    text-align:left;
+    padding:11px 12px;
+    border-radius:8px;
+    margin-bottom:3px;
+    transition:.2s;
+}
 
-        /* HERO */
+.nav-item:hover{
+    background:#15151b;
+    color:white;
+}
 
-        .hero {
-            min-height: 680px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 90px 20px;
-            position: relative;
-            overflow: hidden;
-        }
+.nav-item.active{
+    background:#21153d;
+    color:#d1bdff;
+}
 
-        .glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: #6d28d9;
-            opacity: 0.12;
-            filter: blur(130px);
-            border-radius: 50%;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+.nav-icon{
+    width:25px;
+    display:inline-block;
+}
 
-        .hero-content {
-            max-width: 850px;
-            position: relative;
-            z-index: 2;
-        }
+.sidebar-bottom{
+    position:absolute;
+    left:15px;
+    right:15px;
+    bottom:20px;
+}
 
-        .badge {
-            display: inline-block;
-            padding: 8px 14px;
-            border: 1px solid rgba(139,92,246,0.35);
-            background: rgba(139,92,246,0.08);
-            color: #bda4ff;
-            border-radius: 999px;
-            font-size: 13px;
-            margin-bottom: 25px;
-        }
+.sidebar-link{
+    display:block;
+    color:#777781;
+    padding:8px 12px;
+    font-size:13px;
+}
 
-        h1 {
-            font-size: clamp(55px, 8vw, 100px);
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 25px;
-        }
+.sidebar-link:hover{
+    color:white;
+}
 
-        h1 span {
-            background: linear-gradient(90deg, #ffffff, #9b7cff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
 
-        .hero p {
-            color: #a7a7b1;
-            font-size: 19px;
-            line-height: 1.7;
-            max-width: 680px;
-            margin: auto;
-        }
+.topbar{
+    height:72px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 35px;
+    background:rgba(7,7,10,.9);
+    backdrop-filter:blur(15px);
+    position:sticky;
+    top:0;
+    z-index:50;
+}
 
-        .hero-buttons {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
+.page-title{
+    font-weight:700;
+}
 
-        .primary {
-            background: #7c3aed;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
+.status{
+    color:#91919a;
+    font-size:13px;
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
 
-        .primary:hover {
-            background: #8b5cf6;
-            transform: translateY(-2px);
-        }
+.status-dot{
+    width:8px;
+    height:8px;
+    background:#22c55e;
+    border-radius:50%;
+    box-shadow:0 0 10px #22c55e;
+}
 
-        .secondary {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
+.content{
+    max-width:1250px;
+    margin:auto;
+    padding:40px;
+}
 
-        .secondary:hover {
-            background: rgba(255,255,255,0.1);
-        }
+.section{
+    display:none;
+}
 
-        /* SECTIONS */
+.section.active{
+    display:block;
+}
 
-        section {
-            padding: 100px 7%;
-        }
+.heading{
+    margin-bottom:28px;
+}
 
-        .section-title {
-            text-align: center;
-            max-width: 700px;
-            margin: auto;
-        }
+.heading h1{
+    font-size:32px;
+    letter-spacing:-1px;
+    margin-bottom:7px;
+}
 
-        .section-title h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            letter-spacing: -1.5px;
-        }
+.heading p{
+    color:#85858f;
+    font-size:14px;
+}
 
-        .section-title p {
-            color: #92929b;
-            line-height: 1.7;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
 
-        /* CARDS */
+.card{
+    background:#101015;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:15px;
+    padding:23px;
+    transition:.2s;
+}
 
-        .cards {
-            max-width: 1100px;
-            margin: 55px auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
+.card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(139,92,246,.35);
+}
 
-        .card {
-            background: #101015;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 30px;
-            transition: 0.25s;
-        }
+.card-icon{
+    font-size:25px;
+    margin-bottom:14px;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(139,92,246,0.35);
-        }
+.card h3{
+    margin-bottom:7px;
+}
 
-        .icon {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(139,92,246,0.12);
-            border-radius: 12px;
-            font-size: 21px;
-            margin-bottom: 20px;
-        }
+.card p{
+    color:#80808a;
+    font-size:13px;
+    line-height:1.6;
+}
 
-        .card h3 {
-            margin-bottom: 10px;
-            font-size: 19px;
-        }
+.settings-card{
+    background:#101015;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    margin-bottom:18px;
+    overflow:hidden;
+}
 
-        .card p {
-            color: #92929b;
-            line-height: 1.6;
-            font-size: 14px;
-        }
+.settings-header{
+    padding:20px 22px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
 
-        /* CTA */
+.settings-header h3{
+    font-size:16px;
+    margin-bottom:5px;
+}
 
-        .cta {
-            text-align: center;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 70px 30px;
-            background: linear-gradient(
-                135deg,
-                rgba(124,58,237,0.18),
-                rgba(255,255,255,0.03)
-            );
-            border: 1px solid rgba(139,92,246,0.18);
-            border-radius: 22px;
-        }
+.settings-header p{
+    color:#777781;
+    font-size:13px;
+    line-height:1.5;
+}
 
-        .cta h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
+.setting{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    padding:18px 22px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
 
-        .cta p {
-            color: #9999a3;
-            margin-bottom: 30px;
-        }
+.setting:last-child{
+    border-bottom:0;
+}
 
-        /* FOOTER */
+.setting-info{
+    flex:1;
+}
 
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 35px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #777781;
-            font-size: 13px;
-        }
+.setting-info h4{
+    font-size:14px;
+    margin-bottom:4px;
+}
 
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
+.setting-info p{
+    color:#777781;
+    font-size:12px;
+    line-height:1.5;
+}
 
-        .footer-links a:hover {
-            color: white;
-        }
+select,
+input,
+textarea{
+    background:#18181e;
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:8px;
+    outline:none;
+    padding:10px 12px;
+}
 
-        /* MOBILE */
+select,
+input{
+    width:260px;
+}
 
-        @media (max-width: 800px) {
+textarea{
+    width:100%;
+    min-height:120px;
+    resize:vertical;
+}
 
-            .nav-links a:not(.nav-button) {
-                display: none;
-            }
+select:focus,
+input:focus,
+textarea:focus{
+    border-color:#8b5cf6;
+}
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
+.toggle{
+    width:46px;
+    height:25px;
+    position:relative;
+    flex-shrink:0;
+}
 
-            h1 {
-                letter-spacing: -3px;
-            }
+.toggle input{
+    display:none;
+}
 
-            section {
-                padding: 75px 5%;
-            }
+.slider{
+    position:absolute;
+    inset:0;
+    background:#292930;
+    border-radius:30px;
+}
 
-            footer {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-    </style>
+.slider:before{
+    content:"";
+    position:absolute;
+    width:19px;
+    height:19px;
+    top:3px;
+    left:3px;
+    background:#aaa;
+    border-radius:50%;
+    transition:.2s;
+}
+
+.toggle input:checked + .slider{
+    background:#7c3aed;
+}
+
+.toggle input:checked + .slider:before{
+    transform:translateX(21px);
+    background:white;
+}
+
+.button{
+    border:0;
+    background:#7c3aed;
+    color:white;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.button:hover{
+    background:#8b5cf6;
+    transform:translateY(-1px);
+}
+
+.button.secondary{
+    background:#1b1b22;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.button.danger{
+    background:#7f1d1d;
+}
+
+.message-builder{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:20px;
+}
+
+.preview{
+    background:#18181e;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+    padding:20px;
+}
+
+.preview-title{
+    color:#777781;
+    font-size:10px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+}
+
+.profile-preview{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.profile-preview img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#292930;
+}
+
+.preview-message{
+    color:#c9c9d0;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.notice{
+    background:rgba(124,58,237,.08);
+    border:1px solid rgba(139,92,246,.2);
+    padding:15px;
+    border-radius:10px;
+    color:#bca9df;
+    font-size:12px;
+    line-height:1.6;
+    margin:18px 22px;
+}
+
+.warning{
+    background:rgba(245,158,11,.07);
+    border:1px solid rgba(245,158,11,.2);
+    color:#d6b06a;
+}
+
+.role-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.role{
+    padding:8px 12px;
+    background:#18181e;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:7px;
+    color:#aaaab3;
+    cursor:pointer;
+}
+
+.role.selected{
+    background:#21153d;
+    border-color:#8b5cf6;
+    color:#d7c7ff;
+}
+
+.optional{
+    color:#7c7c86;
+    font-size:10px;
+    margin-left:7px;
+    border:1px solid rgba(255,255,255,.1);
+    padding:3px 6px;
+    border-radius:5px;
+}
+
+.upcoming{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
+
+.upcoming-box{
+    width:min(430px,90%);
+    background:#111116;
+    border:1px solid rgba(139,92,246,.25);
+    border-radius:18px;
+    padding:32px;
+    text-align:center;
+    box-shadow:0 20px 80px rgba(0,0,0,.5);
+}
+
+.upcoming-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.upcoming-box h2{
+    margin-bottom:10px;
+}
+
+.upcoming-box p{
+    color:#888892;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+.badge-upcoming{
+    display:inline-block;
+    color:#c6b3ff;
+    background:#21153d;
+    border:1px solid rgba(139,92,246,.25);
+    border-radius:999px;
+    padding:7px 12px;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.save-row{
+    display:flex;
+    justify-content:flex-end;
+    padding:18px 22px;
+    gap:10px;
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:210px;
+    }
+
+    .main{
+        margin-left:210px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .message-builder{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .sidebar-bottom{
+        position:static;
+        margin-top:20px;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .content{
+        padding:22px 16px;
+    }
+
+    .setting{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    select,
+    input{
+        width:100%;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+<aside class="sidebar">
 
-    <nav>
+<div class="logo">
+    JayVon <span>AI</span>
+</div>
 
-        <a href="/" class="logo">
-            The <span>Vonverse</span>
-        </a>
+<div class="server-box">
+    <div class="server-label">Managing Server</div>
+    <div class="server-name" id="serverName">
+        Your Discord Server
+    </div>
+</div>
 
-        <div class="nav-links">
+<div class="nav-title">Dashboard</div>
 
-            <a href="#features">
-                Features
-            </a>
+<button class="nav-item active" onclick="showSection('overview',this)">
+    <span class="nav-icon">🏠</span> Overview
+</button>
 
-            <a href="#about">
-                About
-            </a>
+<button class="nav-item" onclick="showSection('ai',this)">
+    <span class="nav-icon">🤖</span> AI
+</button>
 
-            <a href="/terms.html">
-                Terms
-            </a>
+<button class="nav-item" onclick="showSection('music',this)">
+    <span class="nav-icon">🎵</span> Music
+</button>
 
-            <a href="/privacy.html">
-                Privacy
-            </a>
+<button class="nav-item" onclick="showSection('tickets',this)">
+    <span class="nav-icon">🎫</span> Tickets
+</button>
 
-            <a href="/dashboard.html" class="nav-button">
-                Dashboard
-            </a>
+<button class="nav-item" onclick="showSection('giveaways',this)">
+    <span class="nav-icon">🎉</span> Giveaways
+</button>
 
-        </div>
+<button class="nav-item" onclick="showSection('welcome',this)">
+    <span class="nav-icon">👋</span> Welcome
+</button>
 
-    </nav>
+<button class="nav-item" onclick="showSection('moderation',this)">
+    <span class="nav-icon">🛡️</span> Moderation
+</button>
 
+<button class="nav-item" onclick="showSection('commands',this)">
+    <span class="nav-icon">📋</span> Commands
+</button>
 
-    <!-- MAIN -->
+<button class="nav-item" onclick="showUpcoming()">
+    <span class="nav-icon">📈</span> Levels
+</button>
 
-    <main>
+<button class="nav-item" onclick="showSection('settings',this)">
+    <span class="nav-icon">⚙️</span> Server Settings
+</button>
 
-        <!-- HERO -->
+<div class="sidebar-bottom">
 
-        <section class="hero">
+<a href="/terms.html" class="sidebar-link">
+Terms of Service
+</a>
 
-            <div class="glow"></div>
+<a href="/privacy.html" class="sidebar-link">
+Privacy Policy
+</a>
 
-            <div class="hero-content">
+<a href="/" class="sidebar-link">
+← Back to The Vonverse
+</a>
 
-                <div class="badge">
-                    ✦ Powered by JayVon AI
-                </div>
+</div>
 
-                <h1>
-                    Welcome to<br>
-                    <span>The Vonverse.</span>
-                </h1>
+</aside>
 
-                <p>
-                    Meet JayVon AI — an intelligent Discord companion
-                    built to bring conversations, community tools,
-                    automation, and smarter server experiences together.
-                </p>
 
-                <div class="hero-buttons">
+<main class="main">
 
-                    <a href="#" class="primary">
-                        Add JayVon AI
-                    </a>
+<header class="topbar">
 
-                    <a href="/dashboard.html" class="secondary">
-                        Open Dashboard
-                    </a>
+<div class="page-title">
+JayVon AI • Overview
+</div>
 
-                </div>
+<div class="status">
+<span class="status-dot"></span>
+Bot Online
+</div>
 
-            </div>
+</header>
 
-        </section>
 
+<div class="content">
 
-        <!-- FEATURES -->
 
-        <section id="features">
+<!-- OVERVIEW -->
 
-            <div class="section-title">
+<section id="overview" class="section active">
 
-                <h2>
-                    Built for your community.
-                </h2>
+<div class="heading">
 
-                <p>
-                    JayVon AI is designed to become the central assistant
-                    for your Discord community.
-                </p>
+<h1>Welcome to JayVon AI.</h1>
 
-            </div>
+<p>
+Your server's control center for AI, moderation, music, tickets and community tools.
+</p>
 
+</div>
 
-            <div class="cards">
+<div class="grid">
 
-                <div class="card">
+<div class="card">
+<div class="card-icon">🤖</div>
+<h3>AI Assistant</h3>
+<p>Configure JayVon AI conversations and control where the AI can respond.</p>
+</div>
 
-                    <div class="icon">
-                        🤖
-                    </div>
+<div class="card">
+<div class="card-icon">🛡️</div>
+<h3>Advanced Moderation</h3>
+<p>Protect your community with filters, anti-link protection, logs and staff controls.</p>
+</div>
 
-                    <h3>
-                        JayVon AI
-                    </h3>
+<div class="card">
+<div class="card-icon">🎫</div>
+<h3>Tickets</h3>
+<p>Create a complete private support system with roles, categories and transcripts.</p>
+</div>
 
-                    <p>
-                        An AI conversation layer that can interact with
-                        your community and provide intelligent responses.
-                    </p>
+<div class="card">
+<div class="card-icon">🎉</div>
+<h3>Giveaways</h3>
+<p>Create configurable giveaways with winners, durations, roles and claim channels.</p>
+</div>
 
-                </div>
+<div class="card">
+<div class="card-icon">🎵</div>
+<h3>Music</h3>
+<p>Choose exactly which Discord roles can control JayVon AI music.</p>
+</div>
 
+<div class="card">
+<div class="card-icon">👋</div>
+<h3>Welcome System</h3>
+<p>Customize welcome messages, member profiles, backgrounds and DMs.</p>
+</div>
 
-                <div class="card">
+</div>
 
-                    <div class="icon">
-                        ⚙️
-                    </div>
+</section>
 
-                    <h3>
-                        Server Dashboard
-                    </h3>
 
-                    <p>
-                        Manage JayVon AI and configure your server from
-                        one clean dashboard.
-                    </p>
+<!-- AI -->
 
-                </div>
+<section id="ai" class="section">
 
+<div class="heading">
+<h1>🤖 AI Settings</h1>
+<p>Configure how JayVon AI communicates with your community.</p>
+</div>
 
-                <div class="card">
+<div class="settings-card">
 
-                    <div class="icon">
-                        🛡️
-                    </div>
+<div class="settings-header">
+<h3>AI Assistant</h3>
+<p>Control the AI conversation layer.</p>
+</div>
 
-                    <h3>
-                        Community Tools
-                    </h3>
+<div class="setting">
 
-                    <p>
-                        Powerful tools designed to help administrators
-                        manage and organize their communities.
-                    </p>
+<div class="setting-info">
+<h4>Enable AI</h4>
+<p>Allow JayVon AI to respond to conversations.</p>
+</div>
 
-                </div>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
 
-            </div>
+</div>
 
-        </section>
+<div class="setting">
 
+<div class="setting-info">
+<h4>AI Channel</h4>
+<p>Choose the Discord channel where automatic AI responses are allowed.</p>
+</div>
 
-        <!-- ABOUT -->
+<select>
+<option>Select Discord channel</option>
+</select>
 
-        <section id="about">
+</div>
 
-            <div class="cta">
+<div class="setting">
 
-                <h2>
-                    The Vonverse is growing.
-                </h2>
+<div class="setting-info">
+<h4>AI Personality</h4>
+<p>Choose the default personality for JayVon AI.</p>
+</div>
 
-                <p>
-                    JayVon AI is only the beginning.
-                    More features, tools, and experiences are coming.
-                </p>
+<select>
+<option>Friendly</option>
+<option>Professional</option>
+<option>Funny</option>
+<option>Custom</option>
+</select>
 
-                <a href="/dashboard.html" class="primary">
-                    Enter the Dashboard
-                </a>
+</div>
 
-            </div>
+</div>
 
-        </section>
+</section>
 
-    </main>
 
+<!-- MUSIC -->
 
-    <!-- FOOTER -->
+<section id="music" class="section">
 
-    <footer>
+<div class="heading">
+<h1>🎵 Music</h1>
+<p>Control who can operate JayVon AI's music system.</p>
+</div>
 
-        <div>
-            © 2026 The Vonverse. All rights reserved.
-        </div>
+<div class="settings-card">
 
-        <div class="footer-links">
+<div class="settings-header">
+<h3>Music Permissions</h3>
+<p>Select real Discord roles that should receive instant music controls.</p>
+</div>
 
-            <a href="/terms.html">
-                Terms of Service
-            </a>
+<div class="setting">
 
-            <a href="/privacy.html">
-                Privacy Policy
-            </a>
+<div class="setting-info">
+<h4>Enable Music</h4>
+<p>Allow members to use music commands.</p>
+</div>
 
-            <a href="/dashboard.html">
-                Dashboard
-            </a>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
 
-        </div>
+</div>
 
-    </footer>
+<div class="setting">
+
+<div class="setting-info">
+<h4>Music Control Roles</h4>
+<p>Members with these roles can use !play, !pause, !skip and other controls instantly.</p>
+</div>
+
+<div class="role-list">
+
+<div class="role" onclick="toggleRole(this)">
+DJ
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Music
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Moderator
+</div>
+
+</div>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Require Voting</h4>
+<p>Members without a control role must receive enough votes before controlling playback.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Votes Required</h4>
+<p>Number of regular members required.</p>
+</div>
+
+<select>
+<option>1</option>
+<option selected>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TICKETS -->
+
+<section id="tickets" class="section">
+
+<div class="heading">
+<h1>🎫 Tickets</h1>
+<p>Build a complete private ticket system for your server.</p>
+</div>
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Ticket Panel</h3>
+<p>Choose where your ticket panel is posted and customize exactly what members see.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Ticket Panel Channel</h4>
+<p>The Discord channel where members will see the ticket panel.</p>
+</div>
+
+<select>
+<option>Select Discord channel</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Panel Title</h4>
+<p>Title displayed above the ticket button.</p>
+</div>
+
+<input value="Need help?">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Panel Message</h4>
+<p>Explain why members should create a ticket.</p>
+</div>
+
+<input value="Create a ticket below and our staff team will assist you.">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Open Ticket Button</h4>
+<p>Short text displayed directly on the button.</p>
+</div>
+
+<input value="🎫 Open Ticket" maxlength="32">
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Ticket Access</h3>
+<p>Control exactly who can create and view tickets.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Ticket Staff Roles</h4>
+<p>These roles can see tickets created by members. The ticket owner can always see their own ticket.</p>
+</div>
+
+<div class="role-list">
+
+<div class="role selected" onclick="toggleRole(this)">
+Support
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Moderator
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Administrator
+</div>
+
+</div>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Who Can Create Tickets?</h4>
+<p>Select roles that are allowed to open tickets.</p>
+</div>
+
+<div class="role-list">
+
+<div class="role selected" onclick="toggleRole(this)">
+Member
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+VIP
+</div>
+
+</div>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Blocked Ticket Roles</h4>
+<p>Members with these roles cannot create tickets.</p>
+</div>
+
+<div class="role-list">
+
+<div class="role" onclick="toggleRole(this)">
+Muted
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Banned
+</div>
+
+</div>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Ticket Category</h4>
+<p>Private tickets can automatically be created inside this Discord category.</p>
+</div>
+
+<select>
+<option>Select ticket category</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Transcript / Log Channel</h4>
+<p>Save closed ticket transcripts here.</p>
+</div>
+
+<select>
+<option>Select Discord channel</option>
+</select>
+
+</div>
+
+<div class="notice">
+💡 <b>How ticket privacy works:</b> when someone opens a ticket, JayVon AI creates a private channel such as <b>#ticket-0042</b>. The ticket creator and selected staff roles can view it. Everyone else is denied access.
+</div>
+
+</div>
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Ticket Controls</h3>
+<p>Buttons available inside each ticket.</p>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Claim Ticket</h4>
+<p>Allow a staff member to claim a ticket.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Close Ticket</h4>
+<p>Allow authorized staff to close the ticket.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GIVEAWAYS -->
+
+<section id="giveaways" class="section">
+
+<div class="heading">
+<h1>🎉 Giveaways</h1>
+<p>Create giveaways without needing to manually configure every command.</p>
+</div>
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Giveaway Builder</h3>
+<p>Configure the giveaway message members will see.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Giveaway Channel</h4>
+<p>Discord channel where the giveaway will be posted.</p>
+</div>
+
+<select>
+<option>Select Discord channel</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Giveaway Title</h4>
+<p>The main title displayed in the giveaway.</p>
+</div>
+
+<input value="🎉 Giveaway Time!">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Giveaway Message</h4>
+<p>Tell members what they can win and how to enter.</p>
+</div>
+
+<input value="React below to enter for a chance to win!">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Entry Button</h4>
+<p>Short text shown on the giveaway button.</p>
+</div>
+
+<input value="🎉 Enter Giveaway" maxlength="32">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Number of Winners</h4>
+<p>How many members should win?</p>
+</div>
+
+<select>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>5</option>
+<option>10</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Duration</h4>
+<p>How long the giveaway should remain active.</p>
+</div>
+
+<select>
+<option>10 minutes</option>
+<option>30 minutes</option>
+<option>1 hour</option>
+<option>6 hours</option>
+<option>12 hours</option>
+<option>1 day</option>
+<option>3 days</option>
+<option>7 days</option>
+</select>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Winner Rewards</h3>
+<p>Optional rewards that can be given after someone wins.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Winner Role <span class="optional">OPTIONAL</span></h4>
+<p>Automatically give the selected Discord role to giveaway winners.</p>
+</div>
+
+<select>
+<option>No winner role</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Claim Channel <span class="optional">OPTIONAL</span></h4>
+<p>Send winners to this channel to claim their prize.</p>
+</div>
+
+<select>
+<option>No claim channel</option>
+</select>
+
+</div>
+
+<div class="notice">
+🎁 <b>Optional means optional.</b> You can run a normal giveaway without giving winners a role or using a separate claim channel.
+</div>
+
+<div class="save-row">
+<button class="button">
+Save Giveaway Settings
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WELCOME -->
+
+<section id="welcome" class="section">
+
+<div class="heading">
+<h1>👋 Welcome</h1>
+<p>Create a personalized experience for every new member.</p>
+</div>
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Welcome System</h3>
+<p>Choose where your welcome messages are sent.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Enable Welcome Messages</h4>
+<p>Send a welcome message when a member joins.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Welcome Channel</h4>
+<p>Discord channel where the public welcome message is sent.</p>
+</div>
+
+<select>
+<option>Select Discord channel</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Welcome Profile</h4>
+<p>Show the new member's Discord avatar in the welcome message.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Welcome Background</h4>
+<p>Choose the background used behind the member's welcome profile.</p>
+</div>
+
+<select>
+<option>JayVon AI — Purple</option>
+<option>JayVon AI — Dark</option>
+<option>JayVon AI — Neon</option>
+<option>JayVon AI — Vonverse</option>
+<option>Custom Upload</option>
+</select>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Welcome Message</h3>
+<p>
+Use {user}, {username}, {server}, and {membercount}.
+</p>
+</div>
+
+<div style="padding:22px">
+
+<div class="message-builder">
+
+<div>
+
+<textarea id="welcomeMessage" oninput="updatePreview()">👋 Welcome {user} to {server}!
+
+You are member #{membercount}.
+
+Enjoy your stay in the community!</textarea>
+
+<br><br>
+
+<button class="button">
+Save Welcome Message
+</button>
+
+</div>
+
+<div class="preview">
+
+<div class="preview-title">
+Live Preview
+</div>
+
+<div class="profile-preview">
+
+<img id="previewAvatar"
+src="https://cdn.discordapp.com/embed/avatars/0.png">
+
+<div>
+<b>@NewMember</b>
+<br>
+<span style="color:#777781;font-size:12px">
+New member
+</span>
+</div>
+
+</div>
+
+<div id="welcomePreview" class="preview-message">
+👋 Welcome @NewMember to Your Server!
+<br><br>
+You are member #125.
+<br><br>
+Enjoy your stay in the community!
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Welcome DM</h3>
+<p>JayVon AI can also send a private welcome message directly to the new member.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Send Welcome DM</h4>
+<p>Send a private message when the member joins.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div style="padding:22px">
+
+<textarea>👋 Welcome to {server}, {username}!
+
+We're glad to have you here.
+
+Make sure to check out the server rules and enjoy your stay!</textarea>
+
+<br><br>
+
+<button class="button">
+Save Welcome DM
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MODERATION -->
+
+<section id="moderation" class="section">
+
+<div class="heading">
+
+<h1>🛡️ Advanced Moderation</h1>
+
+<p>
+Powerful protection, filtering, staff controls and detailed server logging.
+</p>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Moderation System</h3>
+<p>Core protection settings for your community.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Enable Moderation</h4>
+<p>Enable JayVon AI moderation systems.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Moderator Roles</h4>
+<p>Select the real Discord roles that can use moderation commands.</p>
+</div>
+
+<div class="role-list">
+
+<div class="role selected" onclick="toggleRole(this)">
+Moderator
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Admin
+</div>
+
+<div class="role" onclick="toggleRole(this)">
+Staff
+</div>
+
+</div>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Moderation Log Channel</h4>
+<p>Channel where JayVon AI records moderation actions.</p>
+</div>
+
+<select>
+<option>Select Discord channel</option>
+</select>
+
+</div>
+
+<div class="notice warning">
+
+⚠️ <b>Recommended:</b> create a private channel such as
+<b>#mod-logs</b> and only allow your moderation/admin roles to view it.
+JayVon AI should use that channel for moderation logs.
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>🔗 Link Protection</h3>
+<p>Automatically detect and remove unwanted links.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Block Links</h4>
+<p>Delete links sent by members who are not allowed to post them.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Allowed Link Domains</h4>
+<p>Domains that should be allowed even when link protection is enabled.</p>
+</div>
+
+<input placeholder="discord.com, youtube.com">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Blocked Link Message</h4>
+<p>Message JayVon AI sends after removing a blocked link.</p>
+</div>
+
+<input
+value="@{user} you can't send that link here!"
+maxlength="150"
+>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Delete Blocked Message</h4>
+<p>Remove the original message containing the blocked link.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Link Warning Channel</h4>
+<p>Optional channel for link protection events.</p>
+</div>
+
+<select>
+<option>Use moderation log channel</option>
+</select>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>💬 Chat Protection</h3>
+<p>Prevent spam and abusive behavior before it becomes a problem.</p>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Anti-Spam</h4>
+<p>Detect members repeatedly sending messages quickly.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Anti-Caps</h4>
+<p>Detect excessive capital letters.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Mention Spam</h4>
+<p>Detect members mentioning too many users or roles.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Bad Word Filter</h4>
+<p>Automatically detect configured blocked words.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>🚨 Raid & Join Protection</h3>
+<p>Additional protection against suspicious waves of new members.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Anti-Raid Mode</h4>
+<p>Detect unusually high numbers of joins within a short period.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Join Alert Channel</h4>
+<p>Send suspicious join alerts to your moderation logs.</p>
+</div>
+
+<select>
+<option>Use moderation log channel</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Automatic Protection</h4>
+<p>Temporarily increase protection when a raid is detected.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>⚖️ Moderation Actions</h3>
+<p>Configure the actions JayVon AI can perform.</p>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Warn</h4>
+<p>Allow staff to warn members.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Timeout</h4>
+<p>Allow staff to temporarily restrict members.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Kick</h4>
+<p>Allow authorized staff to kick members.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Ban</h4>
+<p>Allow authorized staff to ban members.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>📝 Custom Moderation Messages</h3>
+<p>Owners can customize what JayVon AI says to members.</p>
+</div>
+
+<div style="padding:22px">
+
+<label style="display:block;color:#aaa;font-size:12px;margin-bottom:8px;">
+Blocked Link Response
+</label>
+
+<input
+style="width:100%;"
+value="@{user} you can't send that link here!"
+maxlength="150"
+>
+
+<br><br>
+
+<label style="display:block;color:#aaa;font-size:12px;margin-bottom:8px;">
+Spam Response
+</label>
+
+<input
+style="width:100%;"
+value="@{user} please slow down — spam isn't allowed here."
+maxlength="150"
+>
+
+<br><br>
+
+<label style="display:block;color:#aaa;font-size:12px;margin-bottom:8px;">
+Unauthorized Command Response
+</label>
+
+<input
+style="width:100%;"
+value="@{user} you don't have permission to use this command."
+maxlength="150"
+>
+
+<br><br>
+
+<button class="button">
+Save Moderation Messages
+</button>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>📋 What Gets Logged?</h3>
+<p>JayVon AI can record important moderation activity.</p>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Warnings</h4>
+<p>Who was warned, who issued it and why.</p>
+</div>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Timeouts</h4>
+<p>Member, moderator, duration and reason.</p>
+</div>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Kicks & Bans</h4>
+<p>Detailed staff action records.</p>
+</div>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Deleted Messages</h4>
+<p>Record protected messages removed by JayVon AI.</p>
+</div>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="setting">
+<div class="setting-info">
+<h4>Configuration Changes</h4>
+<p>Record important dashboard setting changes.</p>
+</div>
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COMMANDS -->
+
+<section id="commands" class="section">
+
+<div class="heading">
+<h1>📋 Commands</h1>
+<p>Control JayVon AI slash and prefix commands.</p>
+</div>
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>Command System</h3>
+<p>JayVon AI supports both slash and traditional prefix commands.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Prefix</h4>
+<p>Prefix used for commands such as !play and !giveaway.</p>
+</div>
+
+<input value="!" maxlength="3">
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Slash Commands</h4>
+<p>Enable commands such as /ticket, /giveaway and /play.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Prefix Commands</h4>
+<p>Enable commands such as !ticket, !giveaway and !play.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section id="settings" class="section">
+
+<div class="heading">
+<h1>⚙️ Server Settings</h1>
+<p>General JayVon AI configuration.</p>
+</div>
+
+<div class="settings-card">
+
+<div class="settings-header">
+<h3>General</h3>
+<p>Configure your server's JayVon AI experience.</p>
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Bot Language</h4>
+<p>Choose JayVon AI's default language.</p>
+</div>
+
+<select>
+<option>English</option>
+</select>
+
+</div>
+
+<div class="setting">
+
+<div class="setting-info">
+<h4>Command Notifications</h4>
+<p>Show confirmations when commands are completed.</p>
+</div>
+
+<label class="toggle">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+
+<!-- UPCOMING MODAL -->
+
+<div class="upcoming" id="upcomingModal">
+
+<div class="upcoming-box">
+
+<div class="upcoming-icon">
+📈
+</div>
+
+<div class="badge-upcoming">
+UPCOMING FEATURE
+</div>
+
+<h2>Levels & XP</h2>
+
+<p>
+JayVon AI Levels is currently being developed.
+Members will eventually be able to earn XP, level up, unlock rewards,
+and compete on a server leaderboard.
+</p>
+
+<button class="button" onclick="closeUpcoming()">
+Close
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function showSection(sectionId,button){
+
+document.querySelectorAll(".section").forEach(section=>{
+section.classList.remove("active");
+});
+
+document.getElementById(sectionId).classList.add("active");
+
+document.querySelectorAll(".nav-item").forEach(item=>{
+item.classList.remove("active");
+});
+
+button.classList.add("active");
+
+const titles={
+overview:"Overview",
+ai:"AI Settings",
+music:"Music",
+tickets:"Tickets",
+giveaways:"Giveaways",
+welcome:"Welcome",
+moderation:"Moderation",
+commands:"Commands",
+settings:"Server Settings"
+};
+
+document.querySelector(".page-title").textContent=
+"JayVon AI • "+titles[sectionId];
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function toggleRole(role){
+
+role.classList.toggle("selected");
+
+}
+
+
+function updatePreview(){
+
+const message=
+document.getElementById("welcomeMessage").value;
+
+const preview=
+message
+.replaceAll("{user}","@NewMember")
+.replaceAll("{username}","NewMember")
+.replaceAll("{server}","Your Server")
+.replaceAll("{membercount}","125")
+.replace(/\n/g,"<br>");
+
+document.getElementById("welcomePreview").innerHTML=preview;
+
+}
+
+
+function showUpcoming(){
+
+document.getElementById("upcomingModal").style.display="flex";
+
+}
+
+
+function closeUpcoming(){
+
+document.getElementById("upcomingModal").style.display="none";
+
+}
+
+
+document.getElementById("upcomingModal").addEventListener("click",function(e){
+
+if(e.target===this){
+closeUpcoming();
+}
+
+});
+
+</script>
 
 </body>
 </html>
