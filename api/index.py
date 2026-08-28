@@ -12,9 +12,15 @@ from flask import Flask, redirect, request, session, jsonify
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv(
-    "SESSION_SECRET",
-    secrets.token_hex(32)
+app.secret_key = os.getenv("SESSION_SECRET")
+
+if not app.secret_key:
+    raise RuntimeError("SESSION_SECRET is missing")
+
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
 )
 
 
