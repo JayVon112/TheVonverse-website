@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>Dashboard — JayVon AI | The Vonverse</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -73,8 +71,6 @@ a{
     color:inherit;
 }
 
-/* BACKGROUND */
-
 .dashboard-bg{
     position:fixed;
     inset:0;
@@ -107,30 +103,17 @@ a{
 }
 
 @keyframes dashGlobe{
-    0%,100%{
-        transform:rotate(-3deg);
-    }
-    50%{
-        transform:rotate(9deg);
-    }
+    0%,100%{transform:rotate(-3deg)}
+    50%{transform:rotate(9deg)}
 }
 
-.jay{
-    color:#3b82f6;
-}
-
-.von{
-    color:#ef4444;
-}
-
-/* LAYOUT */
+.jay{color:#3b82f6}
+.von{color:#ef4444}
 
 .dashboard-layout{
     min-height:100vh;
     display:flex;
 }
-
-/* SIDEBAR */
 
 .sidebar{
     width:255px;
@@ -258,15 +241,11 @@ a{
     border-color:rgba(59,130,246,.2);
 }
 
-/* MAIN */
-
 .main{
     margin-left:255px;
     width:calc(100% - 255px);
     min-height:100vh;
 }
-
-/* TOPBAR */
 
 .topbar{
     height:78px;
@@ -314,8 +293,6 @@ a{
     box-shadow:0 0 9px #22c55e;
 }
 
-/* CONTENT */
-
 .content{
     padding:30px;
     max-width:1400px;
@@ -356,8 +333,6 @@ a{
     font-size:11px;
     margin-top:7px;
 }
-
-/* CARDS */
 
 .card-grid{
     display:grid;
@@ -431,8 +406,6 @@ a{
     gap:16px;
 }
 
-/* SETTINGS */
-
 .setting-row{
     display:flex;
     align-items:center;
@@ -466,7 +439,6 @@ a{
 }
 
 /* FIXED TOGGLE */
-
 .toggle{
     position:relative;
     width:44px;
@@ -482,7 +454,6 @@ a{
     display:flex;
     align-items:center;
     justify-content:flex-start;
-    box-shadow:none;
     appearance:none;
     -webkit-appearance:none;
 }
@@ -507,8 +478,6 @@ a{
     transform:translateX(18px);
     box-shadow:0 0 10px rgba(59,130,246,.5);
 }
-
-/* MODERATION OPTION */
 
 .mod-grid{
     display:grid;
@@ -554,12 +523,6 @@ a{
     font-size:8px;
     margin-top:3px;
 }
-
-.mod-option .toggle{
-    margin-left:auto;
-}
-
-/* CONFIG BOX */
 
 .config-box{
     display:none;
@@ -656,8 +619,6 @@ a{
     padding:4px 0;
 }
 
-/* CHECK OPTIONS */
-
 .check-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -686,8 +647,6 @@ a{
 .check-option input{
     accent-color:#3b82f6;
 }
-
-/* FORMS */
 
 .field{
     margin-bottom:14px;
@@ -755,8 +714,6 @@ a{
     color:#f87171;
 }
 
-/* CHIPS */
-
 .chips{
     display:flex;
     flex-wrap:wrap;
@@ -777,8 +734,6 @@ a{
     border-color:rgba(59,130,246,.2);
     background:rgba(59,130,246,.08);
 }
-
-/* DISCORD PREVIEW */
 
 .discord-preview{
     background:#2b2d31;
@@ -821,8 +776,6 @@ a{
     font-size:11px;
     line-height:1.6;
 }
-
-/* LOG */
 
 .log-preview{
     background:#09090e;
@@ -867,8 +820,6 @@ a{
     color:#c3c3cb;
 }
 
-/* SOCIAL */
-
 .social-card{
     padding:20px;
 }
@@ -901,22 +852,6 @@ a{
     color:#666670;
     font-size:9px;
     margin-top:3px;
-}
-
-.connected{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    color:#4ade80;
-    font-size:8px;
-}
-
-.connected:before{
-    content:"";
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:#22c55e;
 }
 
 .connection-status{
@@ -952,7 +887,22 @@ a{
     padding:3px;
 }
 
-/* MEDIA */
+.connection-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:#4ade80;
+    font-size:8px;
+    margin-left:10px;
+}
+
+.connection-badge:before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#22c55e;
+}
 
 .media-preview{
     border:1px dashed rgba(59,130,246,.2);
@@ -976,8 +926,6 @@ a{
     font-size:9px;
     margin-top:5px;
 }
-
-/* TICKET */
 
 .ticket-preview{
     background:#2b2d31;
@@ -1011,8 +959,6 @@ a{
     font-weight:700;
 }
 
-/* GIVEAWAY */
-
 .giveaway-preview{
     background:#2b2d31;
     border-radius:11px;
@@ -1037,8 +983,6 @@ a{
     font-size:9px;
     line-height:1.8;
 }
-
-/* WELCOME */
 
 .welcome-preview{
     background:linear-gradient(135deg,#15151d,#0c0c11);
@@ -1071,8 +1015,6 @@ a{
     margin-top:7px;
 }
 
-/* EDITABLE PREVIEW */
-
 .edit-preview{
     margin-top:15px;
     padding-top:15px;
@@ -1082,8 +1024,6 @@ a{
 .edit-preview.hidden{
     display:none;
 }
-
-/* MUSIC */
 
 .music-command-box{
     background:#09090e;
@@ -1119,8 +1059,6 @@ a{
     font-size:8px;
 }
 
-/* UPCOMING */
-
 .upcoming{
     text-align:center;
     padding:35px 20px;
@@ -1133,12 +1071,8 @@ a{
 }
 
 @keyframes floatIcon{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-6px);
-    }
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
 }
 
 .upcoming h3{
@@ -1165,16 +1099,12 @@ a{
     font-weight:700;
 }
 
-/* FOOTER */
-
 .dashboard-footer{
     color:#484850;
     text-align:center;
     padding:30px;
     font-size:9px;
 }
-
-/* MOBILE */
 
 .mobile-menu{
     display:none;
@@ -1189,24 +1119,15 @@ a{
 }
 
 @media(max-width:1050px){
-
-    .sidebar{
-        width:220px;
-    }
-
+    .sidebar{width:220px}
     .main{
         margin-left:220px;
         width:calc(100% - 220px);
     }
-
-    .card-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
+    .card-grid{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:760px){
-
     .sidebar{
         transform:translateX(-100%);
         transition:.25s ease;
@@ -1253,9 +1174,7 @@ a{
     .inline-input{
         flex-direction:column;
     }
-
 }
-
 </style>
 
 </head>
@@ -1271,21 +1190,12 @@ a{
 <aside class="sidebar" id="sidebar">
 
 <div class="sidebar-brand">
+    <img src="vonverse-logo.png" class="sidebar-logo" alt="The Vonverse" data-logo>
 
 ```
-<img
-    src="vonverse-logo.png"
-    class="sidebar-logo"
-    alt="The Vonverse"
-    data-logo
->
-
 <div class="sidebar-brand-text">
     <span class="jay">Jay</span><span class="von">Von</span> AI
-
-    <small>
-        THE VONVERSE
-    </small>
+    <small>THE VONVERSE</small>
 </div>
 ```
 
@@ -1293,7 +1203,6 @@ a{
 
 <div class="sidebar-scroll">
 
-```
 <div class="menu-label">OVERVIEW</div>
 
 <button class="menu-item active" data-section="overview">
@@ -1361,7 +1270,6 @@ a{
     <span class="menu-icon">⚙️</span>
     Settings
 </button>
-```
 
 </div>
 
@@ -1377,23 +1285,11 @@ a{
 
 <header class="topbar">
 
-```
-<button
-    class="mobile-menu"
-    onclick="toggleSidebar()">
-    ☰
-</button>
+<button class="mobile-menu" onclick="toggleSidebar()">☰</button>
 
 <div class="page-heading">
-
-    <h1 id="pageTitle">
-        Dashboard
-    </h1>
-
-    <p id="pageDescription">
-        Manage JayVon AI and your Discord community.
-    </p>
-
+    <h1 id="pageTitle">Dashboard</h1>
+    <p id="pageDescription">Manage JayVon AI and your Discord community.</p>
 </div>
 
 <div class="server-selector">
@@ -1401,17 +1297,13 @@ a{
     Your Discord Server
     ▾
 </div>
-```
 
 </header>
 
 <div class="content">
 
-<!-- ========================= OVERVIEW ========================= -->
-
 <section class="section active" id="overview">
 
-```
 <div class="section-header">
     <h2>Welcome to JayVon AI.</h2>
     <p>Your control center for The Vonverse.</p>
@@ -1419,2195 +1311,1342 @@ a{
 
 <div class="card-grid">
 
-    <div class="stat-card">
-        <div class="stat-top">
-            Connected Servers
-            <span class="stat-icon">🌐</span>
-        </div>
-
-        <div class="stat-number">1</div>
-
-        <div class="stat-small">
-            JayVon AI connected
-        </div>
+<div class="stat-card">
+    <div class="stat-top">
+        Connected Servers
+        <span class="stat-icon">🌐</span>
     </div>
+    <div class="stat-number">1</div>
+    <div class="stat-small">JayVon AI connected</div>
+</div>
 
-    <div class="stat-card">
-        <div class="stat-top">
-            Moderation
-            <span class="stat-icon">🛡️</span>
-        </div>
-
-        <div class="stat-number">Protected</div>
-
-        <div class="stat-small">
-            Security systems ready
-        </div>
+<div class="stat-card">
+    <div class="stat-top">
+        Moderation
+        <span class="stat-icon">🛡️</span>
     </div>
+    <div class="stat-number">Protected</div>
+    <div class="stat-small">Security systems ready</div>
+</div>
 
-    <div class="stat-card">
-        <div class="stat-top">
-            Features
-            <span class="stat-icon">✨</span>
-        </div>
-
-        <div class="stat-number">9+</div>
-
-        <div class="stat-small">
-            Available and planned
-        </div>
+<div class="stat-card">
+    <div class="stat-top">
+        Features
+        <span class="stat-icon">✨</span>
     </div>
+    <div class="stat-number">9+</div>
+    <div class="stat-small">Available and planned</div>
+</div>
 
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
+    <h3>🚀 JayVon AI</h3>
+    <p class="card-description">Configure your intelligent Discord assistant.</p>
 
-        <h3>🚀 JayVon AI</h3>
-
-        <p class="card-description">
-            Configure your intelligent Discord assistant.
-        </p>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>AI Conversation</strong>
-                <span>
-                    Allow JayVon AI to respond in configured channels.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)" aria-label="Toggle AI Conversation">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Smart Responses</strong>
-                <span>
-                    Enable contextual community responses.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)" aria-label="Toggle Smart Responses">
-                <span></span>
-            </button>
-
-        </div>
-
+```
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>AI Conversation</strong>
+        <span>Allow JayVon AI to respond in configured channels.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)" aria-label="Toggle AI Conversation">
+        <span></span>
+    </button>
+</div>
 
-    <div class="card">
-
-        <h3>🛡️ Security Status</h3>
-
-        <p class="card-description">
-            Your moderation protection overview.
-        </p>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Anti-Spam</strong>
-                <span>Protection active.</span>
-            </div>
-
-            <span style="color:#4ade80;font-size:9px;">
-                ACTIVE
-            </span>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Raid Protection</strong>
-                <span>Protection ready.</span>
-            </div>
-
-            <span style="color:#4ade80;font-size:9px;">
-                ACTIVE
-            </span>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Smart Responses</strong>
+        <span>Enable contextual community responses.</span>
     </div>
-
+    <button class="toggle on" onclick="toggleSetting(this)" aria-label="Toggle Smart Responses">
+        <span></span>
+    </button>
 </div>
 ```
 
-</section>
+</div>
 
-<!-- ========================= AI ========================= -->
+<div class="card">
+    <h3>🛡️ Security Status</h3>
+    <p class="card-description">Your moderation protection overview.</p>
+
+```
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Anti-Spam</strong>
+        <span>Protection active.</span>
+    </div>
+    <span style="color:#4ade80;font-size:9px;">ACTIVE</span>
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Raid Protection</strong>
+        <span>Protection ready.</span>
+    </div>
+    <span style="color:#4ade80;font-size:9px;">ACTIVE</span>
+</div>
+```
+
+</div>
+
+</div>
+</section>
 
 <section class="section" id="ai">
 
-```
 <div class="section-header">
-
     <h2>🤖 JayVon AI</h2>
-
-    <p>
-        Configure how JayVon AI interacts with your community.
-    </p>
-
+    <p>Configure how JayVon AI interacts with your community.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
+    <h3>AI Configuration</h3>
+    <p class="card-description">Control where and how JayVon AI responds.</p>
 
-        <h3>AI Configuration</h3>
-
-        <p class="card-description">
-            Control where and how JayVon AI responds.
-        </p>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Enable AI</strong>
-                <span>Turn JayVon AI conversations on or off.</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Reply to Mentions</strong>
-                <span>Respond when JayVon AI is mentioned.</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Moderation Awareness</strong>
-                <span>
-                    Allow AI to understand moderation context.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
+```
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Enable AI</strong>
+        <span>Turn JayVon AI conversations on or off.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
-    <div class="card">
-
-        <h3>Allowed Channels</h3>
-
-        <p class="card-description">
-            Choose where JayVon AI can respond.
-        </p>
-
-        <div class="chips">
-
-            <span class="chip active">#general</span>
-            <span class="chip active">#chat</span>
-            <span class="chip">#media</span>
-            <span class="chip">#support</span>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Reply to Mentions</strong>
+        <span>Respond when JayVon AI is mentioned.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Moderation Awareness</strong>
+        <span>Allow AI to understand moderation context.</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
 </div>
 ```
 
-</section>
+</div>
 
-<!-- ========================= MODERATION ========================= -->
+<div class="card">
+    <h3>Allowed Channels</h3>
+    <p class="card-description">Choose where JayVon AI can respond.</p>
+
+```
+<div class="field">
+    <label>AI CHANNEL</label>
+    <select class="select channel-select">
+        <option value="">No server channels loaded yet</option>
+    </select>
+</div>
+
+<div class="chips">
+    <span class="chip active">#general</span>
+    <span class="chip active">#chat</span>
+    <span class="chip">#media</span>
+    <span class="chip">#support</span>
+</div>
+```
+
+</div>
+
+</div>
+</section>
 
 <section class="section" id="moderation">
 
-```
 <div class="section-header">
-
     <h2>🛡️ Advanced Moderation</h2>
-
-    <p>
-        Configure JayVon AI's complete server protection system.
-    </p>
-
+    <p>Configure JayVon AI's complete server protection system.</p>
 </div>
 
 <div class="card">
 
-    <h3>Protection Systems</h3>
-
-    <p class="card-description">
-        Enable or disable individual protection systems.
-    </p>
-
-    <div class="mod-grid">
-
-        <!-- ANTI SPAM -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">💬</div>
-
-            <div class="mod-option-content">
-                <strong>Anti-Spam</strong>
-                <span>Repeated messages</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- ANTI CAPS -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🔠</div>
-
-            <div class="mod-option-content">
-                <strong>Anti-Caps</strong>
-                <span>Excessive capitals</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- MENTION SPAM -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">📢</div>
-
-            <div class="mod-option-content">
-                <strong>Mention Spam</strong>
-                <span>Repeated mentions</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- MASS MENTION -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">📣</div>
-
-            <div class="mod-option-content">
-                <strong>Mass Mention Protection</strong>
-                <span>@everyone and @here abuse</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- BAD WORD FILTER -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🚫</div>
-
-            <div class="mod-option-content">
-                <strong>Bad Word Filter</strong>
-                <span>Blocked terminology</span>
-            </div>
-
-            <button
-                class="toggle"
-                id="badWordToggle"
-                onclick="toggleBadWords(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- LINK FILTER -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🔗</div>
-
-            <div class="mod-option-content">
-                <strong>Link Filter</strong>
-                <span>Unauthorized links</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- DISCORD INVITES -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">💬</div>
-
-            <div class="mod-option-content">
-                <strong>Discord Invite Filter</strong>
-                <span>Unauthorized invites</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- SCAM -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🎣</div>
-
-            <div class="mod-option-content">
-                <strong>Scam / Phishing Protection</strong>
-                <span>Suspicious links</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- ADVERTISEMENT -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">📺</div>
-
-            <div class="mod-option-content">
-                <strong>Advertisement Filter</strong>
-                <span>Unwanted advertising</span>
-            </div>
-
-            <button class="toggle" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- DUPLICATE -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">♻️</div>
-
-            <div class="mod-option-content">
-                <strong>Duplicate Messages</strong>
-                <span>Repeated content</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- RAID -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🚨</div>
-
-            <div class="mod-option-content">
-                <strong>Raid Protection</strong>
-                <span>Large-scale joins</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- JOIN SPAM -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">👥</div>
-
-            <div class="mod-option-content">
-                <strong>Join Spam Protection</strong>
-                <span>Rapid member joins</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- ACCOUNT AGE -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">📅</div>
-
-            <div class="mod-option-content">
-                <strong>Account Age Protection</strong>
-                <span>New account detection</span>
-            </div>
-
-            <button class="toggle" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- BOT JOIN -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🤖</div>
-
-            <div class="mod-option-content">
-                <strong>Bot Join Protection</strong>
-                <span>Unexpected bots</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- IMAGE -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🖼️</div>
-
-            <div class="mod-option-content">
-                <strong>Image / Media Filtering</strong>
-                <span>Media content controls</span>
-            </div>
-
-            <button class="toggle" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- EMOJI -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">😀</div>
-
-            <div class="mod-option-content">
-                <strong>Emoji Spam</strong>
-                <span>Excessive emoji usage</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- REPEATED CHARACTERS -->
-
-        <div class="mod-option">
-
-            <div class="mod-option-icon">🔁</div>
-
-            <div class="mod-option-content">
-                <strong>Repeated Characters</strong>
-                <span>AAAAAAA / !!!!! protection</span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
+<h3>Protection Systems</h3>
+<p class="card-description">Enable or disable individual protection systems.</p>
+
+<div class="mod-grid">
+
+<div class="mod-option">
+    <div class="mod-option-icon">💬</div>
+    <div class="mod-option-content">
+        <strong>Anti-Spam</strong>
+        <span>Repeated messages</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
-    <!-- BAD WORD CONFIG -->
-
-    <div class="config-box" id="badWordConfig">
-
-        <div class="config-title">
-
-            <strong>🚫 Blocked Words</strong>
-
-            <span>
-                Add words that JayVon AI should block.
-            </span>
-
-        </div>
-
-        <div class="inline-input">
-
-            <input
-                id="badWordInput"
-                class="input"
-                placeholder="Type a word and press Enter..."
-                autocomplete="off"
-            >
-
-            <button
-                class="small-button"
-                onclick="addBadWord()">
-                + Add Word
-            </button>
-
-        </div>
-
-        <div
-            class="word-list"
-            id="badWordList">
-
-            <div class="empty-words">
-                No blocked words added yet.
-            </div>
-
-        </div>
-
+<div class="mod-option">
+    <div class="mod-option-icon">🔠</div>
+    <div class="mod-option-content">
+        <strong>Anti-Caps</strong>
+        <span>Excessive capitals</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">📢</div>
+    <div class="mod-option-content">
+        <strong>Mention Spam</strong>
+        <span>Repeated mentions</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">📣</div>
+    <div class="mod-option-content">
+        <strong>Mass Mention Protection</strong>
+        <span>@everyone and @here abuse</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🚫</div>
+    <div class="mod-option-content">
+        <strong>Bad Word Filter</strong>
+        <span>Blocked terminology</span>
+    </div>
+    <button class="toggle" id="badWordToggle" onclick="toggleBadWords(this)">
+        <span></span>
+    </button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🔗</div>
+    <div class="mod-option-content">
+        <strong>Link Filter</strong>
+        <span>Unauthorized links</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">💬</div>
+    <div class="mod-option-content">
+        <strong>Discord Invite Filter</strong>
+        <span>Unauthorized invites</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🎣</div>
+    <div class="mod-option-content">
+        <strong>Scam / Phishing Protection</strong>
+        <span>Suspicious links</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">📺</div>
+    <div class="mod-option-content">
+        <strong>Advertisement Filter</strong>
+        <span>Unwanted advertising</span>
+    </div>
+    <button class="toggle" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">♻️</div>
+    <div class="mod-option-content">
+        <strong>Duplicate Messages</strong>
+        <span>Repeated content</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🚨</div>
+    <div class="mod-option-content">
+        <strong>Raid Protection</strong>
+        <span>Large-scale joins</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">👥</div>
+    <div class="mod-option-content">
+        <strong>Join Spam Protection</strong>
+        <span>Rapid member joins</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">📅</div>
+    <div class="mod-option-content">
+        <strong>Account Age Protection</strong>
+        <span>New account detection</span>
+    </div>
+    <button class="toggle" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🤖</div>
+    <div class="mod-option-content">
+        <strong>Bot Join Protection</strong>
+        <span>Unexpected bots</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🖼️</div>
+    <div class="mod-option-content">
+        <strong>Image / Media Filtering</strong>
+        <span>Media content controls</span>
+    </div>
+    <button class="toggle" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">😀</div>
+    <div class="mod-option-content">
+        <strong>Emoji Spam</strong>
+        <span>Excessive emoji usage</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="mod-option">
+    <div class="mod-option-icon">🔁</div>
+    <div class="mod-option-content">
+        <strong>Repeated Characters</strong>
+        <span>AAAAAAA / !!!!! protection</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+</div>
+
+<div class="config-box" id="badWordConfig">
+
+<div class="config-title">
+    <strong>🚫 Blocked Words</strong>
+    <span>Add words that JayVon AI should block.</span>
+</div>
+
+<div class="inline-input">
+    <input id="badWordInput" class="input" placeholder="Type a word and press Enter..." autocomplete="off">
+    <button class="small-button" onclick="addBadWord()">+ Add Word</button>
+</div>
+
+<div class="word-list" id="badWordList"></div>
+
+</div>
 
 </div>
 
 <br>
 
-<!-- AUTOMATIC PUNISHMENTS -->
-
 <div class="two-column">
 
-    <div class="card">
-
-        <h3>⚡ Automatic Punishments</h3>
-
-        <p class="card-description">
-            Decide what JayVon AI does after detecting violations.
-        </p>
-
-        <!-- WARNING -->
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Auto Warning</strong>
-                <span>
-                    Warn the member automatically.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <!-- AUTO DELETE -->
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Auto Delete</strong>
-                <span>
-                    Delete the types of violations you select below.
-                </span>
-            </div>
-
-            <button
-                class="toggle on"
-                id="autoDeleteToggle"
-                onclick="toggleAutoDelete(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div
-            class="config-box show"
-            id="autoDeleteConfig">
-
-            <div class="config-title">
-
-                <strong>🗑️ Delete These Violations</strong>
-
-                <span>
-                    Choose what gets automatically deleted.
-                </span>
-
-            </div>
-
-            <div class="check-grid">
-
-                <label class="check-option">
-                    <input type="checkbox" checked data-delete-type="links">
-                    Links
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" checked data-delete-type="invites">
-                    Discord Invites
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" checked data-delete-type="badwords">
-                    Bad Words
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" checked data-delete-type="spam">
-                    Spam
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" data-delete-type="caps">
-                    Excessive Caps
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" data-delete-type="mentions">
-                    Mention Spam
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" data-delete-type="media">
-                    Blocked Media
-                </label>
-
-                <label class="check-option">
-                    <input type="checkbox" data-delete-type="advertisements">
-                    Advertisements
-                </label>
-
-            </div>
-
-        </div>
-
-        <!-- AUTO TIMEOUT -->
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Auto Timeout</strong>
-                <span>
-                    Temporarily restrict members after selected violations.
-                </span>
-            </div>
-
-            <button
-                class="toggle on"
-                id="autoTimeoutToggle"
-                onclick="toggleAutoTimeout(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div
-            class="config-box show"
-            id="autoTimeoutConfig">
-
-            <div class="config-title">
-
-                <strong>⏱️ Timeout Duration</strong>
-
-                <span>
-                    Choose how long the member is timed out.
-                </span>
-
-            </div>
-
-            <div class="field">
-
-                <label>TIMEOUT DURATION</label>
-
-                <select class="select" id="timeoutDuration">
-
-                    <option value="60">
-                        1 minute
-                    </option>
-
-                    <option value="300">
-                        5 minutes
-                    </option>
-
-                    <option value="600">
-                        10 minutes
-                    </option>
-
-                    <option value="1800">
-                        30 minutes
-                    </option>
-
-                    <option value="3600" selected>
-                        1 hour
-                    </option>
-
-                    <option value="21600">
-                        6 hours
-                    </option>
-
-                    <option value="43200">
-                        12 hours
-                    </option>
-
-                    <option value="86400">
-                        1 day
-                    </option>
-
-                    <option value="259200">
-                        3 days
-                    </option>
-
-                    <option value="604800">
-                        7 days
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="field">
-
-                <label>TIMEOUT FOR</label>
-
-                <div class="check-grid">
-
-                    <label class="check-option">
-                        <input type="checkbox" checked>
-                        Spam
-                    </label>
-
-                    <label class="check-option">
-                        <input type="checkbox" checked>
-                        Bad Words
-                    </label>
-
-                    <label class="check-option">
-                        <input type="checkbox">
-                        Links
-                    </label>
-
-                    <label class="check-option">
-                        <input type="checkbox">
-                        Mention Spam
-                    </label>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- AUTO KICK -->
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Auto Kick</strong>
-                <span>
-                    Remove serious offenders from the server.
-                </span>
-            </div>
-
-            <button class="toggle" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
+<div class="card">
+
+<h3>⚡ Automatic Punishments</h3>
+<p class="card-description">Decide what JayVon AI does after detecting violations.</p>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Auto Warning</strong>
+        <span>Warn the member automatically.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
-    <!-- MODERATION LOGS -->
-
-    <div class="card">
-
-        <h3>📋 Moderation Logs</h3>
-
-        <p class="card-description">
-            Preview how JayVon AI will report actions.
-        </p>
-
-        <div class="log-preview">
-
-            <div class="log-header">
-
-                <div class="log-header-icon">
-                    🛡️
-                </div>
-
-                <strong>
-                    Moderation Action
-                </strong>
-
-            </div>
-
-            <div class="log-line">
-                <span>Member</span>
-                <b>@Example</b>
-            </div>
-
-            <div class="log-line">
-                <span>Action</span>
-                <b>Timeout</b>
-            </div>
-
-            <div class="log-line">
-                <span>Reason</span>
-                <b>Spam</b>
-            </div>
-
-            <div class="log-line">
-                <span>Moderator</span>
-                <b>JayVon AI</b>
-            </div>
-
-            <div class="log-line">
-                <span>Channel</span>
-                <b>#general</b>
-            </div>
-
-        </div>
-
-        <br>
-
-        <div class="field">
-
-            <label>MOD-LOG CHANNEL</label>
-
-            <select class="select channel-select">
-                <option value="">
-                    No server channels loaded yet
-                </option>
-            </select>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Auto Delete</strong>
+        <span>Delete the types of violations you select below.</span>
     </div>
+    <button class="toggle on" id="autoDeleteToggle" onclick="toggleAutoDelete(this)">
+        <span></span>
+    </button>
+</div>
+
+<div class="config-box show" id="autoDeleteConfig">
+
+<div class="config-title">
+    <strong>🗑️ Delete These Violations</strong>
+    <span>Choose what gets automatically deleted.</span>
+</div>
+
+<div class="check-grid">
+
+<label class="check-option">
+    <input type="checkbox" checked data-delete-type="links">
+    Links
+</label>
+
+<label class="check-option">
+    <input type="checkbox" checked data-delete-type="invites">
+    Discord Invites
+</label>
+
+<label class="check-option">
+    <input type="checkbox" checked data-delete-type="badwords">
+    Bad Words
+</label>
+
+<label class="check-option">
+    <input type="checkbox" checked data-delete-type="spam">
+    Spam
+</label>
+
+<label class="check-option">
+    <input type="checkbox" data-delete-type="caps">
+    Excessive Caps
+</label>
+
+<label class="check-option">
+    <input type="checkbox" data-delete-type="mentions">
+    Mention Spam
+</label>
+
+<label class="check-option">
+    <input type="checkbox" data-delete-type="media">
+    Blocked Media
+</label>
+
+<label class="check-option">
+    <input type="checkbox" data-delete-type="advertisements">
+    Advertisements
+</label>
 
 </div>
-```
+</div>
 
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Auto Timeout</strong>
+        <span>Temporarily restrict members after selected violations.</span>
+    </div>
+    <button class="toggle on" id="autoTimeoutToggle" onclick="toggleAutoTimeout(this)">
+        <span></span>
+    </button>
+</div>
+
+<div class="config-box show" id="autoTimeoutConfig">
+
+<div class="config-title">
+    <strong>⏱️ Timeout Duration</strong>
+    <span>Choose how long the member is timed out.</span>
+</div>
+
+<div class="field">
+<label>TIMEOUT DURATION</label>
+
+<select class="select" id="timeoutDuration">
+    <option value="60">1 minute</option>
+    <option value="300">5 minutes</option>
+    <option value="600">10 minutes</option>
+    <option value="1800">30 minutes</option>
+    <option value="3600" selected>1 hour</option>
+    <option value="21600">6 hours</option>
+    <option value="43200">12 hours</option>
+    <option value="86400">1 day</option>
+    <option value="259200">3 days</option>
+    <option value="604800">7 days</option>
+</select>
+</div>
+
+<div class="field">
+<label>TIMEOUT FOR</label>
+
+<div class="check-grid">
+
+<label class="check-option">
+    <input type="checkbox" checked data-timeout-type="spam">
+    Spam
+</label>
+
+<label class="check-option">
+    <input type="checkbox" checked data-timeout-type="badwords">
+    Bad Words
+</label>
+
+<label class="check-option">
+    <input type="checkbox" data-timeout-type="links">
+    Links
+</label>
+
+<label class="check-option">
+    <input type="checkbox" data-timeout-type="mentions">
+    Mention Spam
+</label>
+
+</div>
+</div>
+
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Auto Kick</strong>
+        <span>Remove serious offenders from the server.</span>
+    </div>
+    <button class="toggle" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>📋 Moderation Logs</h3>
+<p class="card-description">Preview how JayVon AI will report actions.</p>
+
+<div class="log-preview">
+
+<div class="log-header">
+    <div class="log-header-icon">🛡️</div>
+    <strong>Moderation Action</strong>
+</div>
+
+<div class="log-line">
+    <span>Member</span>
+    <b>@Example</b>
+</div>
+
+<div class="log-line">
+    <span>Action</span>
+    <b>Timeout</b>
+</div>
+
+<div class="log-line">
+    <span>Reason</span>
+    <b>Spam</b>
+</div>
+
+<div class="log-line">
+    <span>Moderator</span>
+    <b>JayVon AI</b>
+</div>
+
+<div class="log-line">
+    <span>Channel</span>
+    <b>#general</b>
+</div>
+
+</div>
+
+<br>
+
+<div class="field">
+<label>MOD-LOG CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
+
+</div>
+
+</div>
 </section>
-
-<!-- ========================= MEDIA ========================= -->
 
 <section class="section" id="media">
 
-```
 <div class="section-header">
-
     <h2>🖼️ Media Channels</h2>
-
-    <p>
-        Create channels where JayVon controls exactly what members can send.
-    </p>
-
+    <p>Create channels where JayVon controls exactly what members can send.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
 
-        <h3>Channel Configuration</h3>
+<h3>Channel Configuration</h3>
+<p class="card-description">Select what content is allowed.</p>
 
-        <p class="card-description">
-            Select what content is allowed.
-        </p>
+<div class="field">
+<label>MEDIA CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
 
-        <div class="field">
+<div class="field">
+<label>CHANNEL TYPE</label>
+<select class="select">
+    <option value="">Select channel type</option>
+    <option>Images Only</option>
+    <option>Videos Only</option>
+    <option>Images + Videos</option>
+    <option>All Media</option>
+</select>
+</div>
 
-            <label>MEDIA CHANNEL</label>
-
-            <select class="select channel-select">
-                <option value="">
-                    No server channels loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>CHANNEL TYPE</label>
-
-            <select class="select">
-
-                <option value="">
-                    Select channel type
-                </option>
-
-                <option>
-                    Images Only
-                </option>
-
-                <option>
-                    Videos Only
-                </option>
-
-                <option>
-                    Images + Videos
-                </option>
-
-                <option>
-                    All Media
-                </option>
-
-            </select>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Block Text</strong>
-                <span>
-                    Delete normal text messages.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Block Links</strong>
-                <span>
-                    Prevent external links.
-                </span>
-            </div>
-
-            <button class="toggle" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Block Files</strong>
-                <span>
-                    Only allow configured media types.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Block Text</strong>
+        <span>Delete normal text messages.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
-    <div class="card">
-
-        <h3>🖼️ Media Preview</h3>
-
-        <p class="card-description">
-            Example of an image-only channel.
-        </p>
-
-        <div class="media-preview">
-
-            <div class="media-preview-icon">
-                🖼️
-            </div>
-
-            <strong>#media</strong>
-
-            <p>
-                Images are allowed here.
-                Text messages are automatically removed.
-            </p>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Block Links</strong>
+        <span>Prevent external links.</span>
     </div>
+    <button class="toggle" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Block Files</strong>
+        <span>Only allow configured media types.</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
 </div>
-```
 
+<div class="card">
+
+<h3>🖼️ Media Preview</h3>
+<p class="card-description">Example of an image-only channel.</p>
+
+<div class="media-preview">
+    <div class="media-preview-icon">🖼️</div>
+    <strong>#media</strong>
+    <p>Images are allowed here. Text messages are automatically removed.</p>
+</div>
+
+</div>
+
+</div>
 </section>
-
-<!-- ========================= NOTIFICATIONS ========================= -->
 
 <section class="section" id="notifications">
 
-```
 <div class="section-header">
-
     <h2>🔔 Social Notifications</h2>
-
-    <p>
-        Connect TikTok and YouTube and automatically notify your Discord community.
-    </p>
-
+    <p>Connect TikTok and YouTube and automatically notify your Discord community.</p>
 </div>
 
 <div class="two-column">
 
-    <!-- TIKTOK -->
+<div class="social-card">
 
-    <div class="social-card">
+<div class="social-title">
+    <div class="social-icon">🎵</div>
+    <div>
+        <strong>TikTok</strong>
+        <span>New video notifications</span>
+    </div>
+</div>
 
-        <div class="social-title">
+<div class="field">
+<label>TIKTOK USERNAME</label>
+<input id="tiktokUsername" class="input" placeholder="@username" autocomplete="off">
+</div>
 
-            <div class="social-icon">
-                🎵
-            </div>
+<div class="field">
+<label>NOTIFICATION CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
 
-            <div>
+<div class="field">
+<label>MENTION ROLE</label>
+<select class="select role-select">
+    <option value="">No server roles loaded yet</option>
+</select>
+</div>
 
-                <strong>TikTok</strong>
-
-                <span>
-                    New video notifications
-                </span>
-
-            </div>
-
-        </div>
-
-        <div class="field">
-
-            <label>TIKTOK USERNAME</label>
-
-            <input
-                id="tiktokUsername"
-                class="input"
-                placeholder="@username"
-                autocomplete="off"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>NOTIFICATION CHANNEL</label>
-
-            <select class="select channel-select">
-                <option value="">
-                    No server channels loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>MENTION ROLE</label>
-
-            <select class="select role-select">
-                <option value="">
-                    No server roles loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>CUSTOM MESSAGE</label>
-
-            <textarea
-                id="tiktokMessage"
-                class="textarea">🔥 {user} just posted a new TikTok!
-```
+<div class="field">
+<label>CUSTOM MESSAGE</label>
+<textarea id="tiktokMessage" class="textarea">🔥 {user} just posted a new TikTok!
 
 🔗 {link}</textarea>
 
-```
-        </div>
+</div>
 
-        <button
-            class="button"
-            id="tiktokConnectButton"
-            onclick="connectTikTok()">
-            Connect TikTok
-        </button>
+<button class="button" id="tiktokConnectButton" onclick="connectTikTok()">
+    Connect TikTok
+</button>
 
-        <span
-            class="connected"
-            id="tiktokReady"
-            style="margin-left:10px;">
-            Ready
-        </span>
+<div class="connection-status" id="tiktokStatus"></div>
 
-        <div
-            class="connection-status"
-            id="tiktokStatus">
-        </div>
+</div>
 
+<div class="social-card">
+
+<div class="social-title">
+    <div class="social-icon">▶️</div>
+    <div>
+        <strong>YouTube</strong>
+        <span>New video notifications</span>
     </div>
+</div>
 
-    <!-- YOUTUBE -->
+<div class="field">
+<label>YOUTUBE CHANNEL</label>
+<input id="youtubeChannel" class="input" placeholder="Channel URL or username" autocomplete="off">
+</div>
 
-    <div class="social-card">
+<div class="field">
+<label>NOTIFICATION CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
 
-        <div class="social-title">
+<div class="field">
+<label>MENTION ROLE</label>
+<select class="select role-select">
+    <option value="">No server roles loaded yet</option>
+</select>
+</div>
 
-            <div class="social-icon">
-                ▶️
-            </div>
-
-            <div>
-
-                <strong>YouTube</strong>
-
-                <span>
-                    New video notifications
-                </span>
-
-            </div>
-
-        </div>
-
-        <div class="field">
-
-            <label>YOUTUBE CHANNEL</label>
-
-            <input
-                id="youtubeChannel"
-                class="input"
-                placeholder="Channel URL or username"
-                autocomplete="off"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>NOTIFICATION CHANNEL</label>
-
-            <select class="select channel-select">
-                <option value="">
-                    No server channels loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>MENTION ROLE</label>
-
-            <select class="select role-select">
-                <option value="">
-                    No server roles loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>CUSTOM MESSAGE</label>
-
-            <textarea
-                id="youtubeMessage"
-                class="textarea">🎬 {user} just uploaded a new YouTube video!
-```
+<div class="field">
+<label>CUSTOM MESSAGE</label>
+<textarea id="youtubeMessage" class="textarea">🎬 {user} just uploaded a new YouTube video!
 
 🔗 {link}</textarea>
 
-```
-        </div>
+</div>
 
-        <button
-            class="button"
-            id="youtubeConnectButton"
-            onclick="connectYouTube()">
-            Connect YouTube
-        </button>
+<button class="button" id="youtubeConnectButton" onclick="connectYouTube()">
+    Connect YouTube
+</button>
 
-        <div
-            class="connection-status"
-            id="youtubeStatus">
-        </div>
+<div class="connection-status" id="youtubeStatus"></div>
 
-    </div>
+</div>
 
 </div>
 
 <br>
 
 <div class="card">
+<h3>Available Variables</h3>
+<p class="card-description">Use these variables inside your notification messages.</p>
 
-    <h3>Available Variables</h3>
-
-    <p class="card-description">
-        Use these variables inside your notification messages.
-    </p>
-
-    <div class="chips">
-
-        <span class="chip active">{user}</span>
-        <span class="chip active">{username}</span>
-        <span class="chip active">{title}</span>
-        <span class="chip active">{link}</span>
-        <span class="chip active">{platform}</span>
-
-    </div>
-
+<div class="chips">
+    <span class="chip active">{user}</span>
+    <span class="chip active">{username}</span>
+    <span class="chip active">{title}</span>
+    <span class="chip active">{link}</span>
+    <span class="chip active">{platform}</span>
 </div>
-```
+</div>
 
 </section>
-
-<!-- ========================= WELCOME ========================= -->
 
 <section class="section" id="welcome">
 
-```
 <div class="section-header">
-
     <h2>👋 Welcome System</h2>
-
-    <p>
-        Automatically welcome members and give them roles.
-    </p>
-
+    <p>Configure welcomes, messages, previews, edits and welcome DMs.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
 
-        <h3>Welcome Configuration</h3>
+<h3>Welcome Configuration</h3>
+<p class="card-description">Configure what happens when someone joins.</p>
 
-        <p class="card-description">
-            Configure what happens when someone joins.
-        </p>
+<div class="field">
+<label>WELCOME CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
 
-        <div class="field">
+<div class="field">
+<label>AUTO ROLE</label>
+<select class="select role-select">
+    <option value="">No server roles loaded yet</option>
+</select>
+</div>
 
-            <label>WELCOME CHANNEL</label>
-
-            <select class="select channel-select">
-                <option value="">
-                    No server channels loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>AUTO ROLE</label>
-
-            <select class="select role-select">
-                <option value="">
-                    No server roles loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>WELCOME MESSAGE</label>
-
-            <textarea
-                id="welcomeMessage"
-                class="textarea">👋 Welcome {user} to The Vonverse!
-```
+<div class="field">
+<label>WELCOME MESSAGE</label>
+<textarea id="welcomeMessage" class="textarea">👋 Welcome {user} to The Vonverse!
 
 You are member #{membercount}.</textarea>
-
-```
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Welcome DM</strong>
-                <span>
-                    Send the member a private welcome message.
-                </span>
-            </div>
-
-            <button class="toggle" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Profile Card</strong>
-                <span>
-                    Show the member's avatar and server information.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <button
-            class="button secondary"
-            onclick="toggleEditPreview('welcomeEdit')"
-            style="margin-top:15px;">
-            ✏️ Edit Preview
-        </button>
-
-    </div>
-
-    <div class="card">
-
-        <h3>Welcome Preview</h3>
-
-        <p class="card-description">
-            Live-style preview of your welcome message.
-        </p>
-
-        <div class="welcome-preview">
-
-            <div class="welcome-preview-avatar">
-                JD
-            </div>
-
-            <h3>
-                Welcome @SS_DEMON2
-            </h3>
-
-            <p id="welcomePreviewText">
-                👋 Welcome to The Vonverse!
-                <br>
-                You are member #126.
-            </p>
-
-        </div>
-
-        <div
-            class="edit-preview hidden"
-            id="welcomeEdit">
-
-            <div class="field">
-
-                <label>EDIT WELCOME MESSAGE</label>
-
-                <textarea
-                    class="textarea"
-                    id="welcomeEditText">👋 Welcome {user} to The Vonverse!
-```
-
-You are member #{membercount}.</textarea>
-
-```
-            </div>
-
-            <button
-                class="button"
-                onclick="saveWelcomePreview()">
-                Save Preview
-            </button>
-
-        </div>
-
-    </div>
 
 </div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Welcome DM</strong>
+        <span>Send the member a private welcome message.</span>
+    </div>
+    <button class="toggle" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="config-box" id="welcomeDmConfig">
+
+<div class="config-title">
+    <strong>💌 Welcome DM Message</strong>
+    <span>Configure the private message sent to new members.</span>
+</div>
+
+<div class="field">
+<label>DM MESSAGE</label>
+<textarea id="welcomeDmMessage" class="textarea">👋 Welcome to The Vonverse!
+
+We're glad to have you here, {user}.</textarea>
+
+</div>
+
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Profile Card</strong>
+        <span>Show the member's avatar and server information.</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:15px;">
+    <button class="button secondary" onclick="toggleEditPreview('welcomeEdit')">
+        ✏️ Edit
+    </button>
+
+```
+<button class="button secondary" onclick="updateWelcomePreview()">
+    👁️ Preview
+</button>
+
+<button class="button" onclick="saveWelcomePreview()">
+    💾 Save
+</button>
 ```
 
-</section>
+</div>
 
-<!-- ========================= TICKETS ========================= -->
+</div>
+
+<div class="card">
+
+<h3>Welcome Preview</h3>
+<p class="card-description">Live-style preview of your welcome message.</p>
+
+<div class="welcome-preview">
+
+<div class="welcome-preview-avatar">JD</div>
+
+<h3>Welcome @SS_DEMON2</h3>
+
+<p id="welcomePreviewText">
+    👋 Welcome to The Vonverse!
+    <br>
+    You are member #126.
+</p>
+
+</div>
+
+<div class="edit-preview hidden" id="welcomeEdit">
+
+<div class="field">
+<label>EDIT WELCOME MESSAGE</label>
+
+<textarea class="textarea" id="welcomeEditText">👋 Welcome {user} to The Vonverse!
+
+You are member #{membercount}.</textarea>
+
+</div>
+
+<button class="button" onclick="saveWelcomePreview()">
+    Save Preview
+</button>
+
+</div>
+
+</div>
+
+</div>
+</section>
 
 <section class="section" id="tickets">
 
-```
 <div class="section-header">
-
     <h2>🎫 Tickets</h2>
-
-    <p>
-        Build private support channels for your community.
-    </p>
-
+    <p>Build private support channels for your community.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
 
-        <h3>Ticket Configuration</h3>
+<h3>Ticket Configuration</h3>
+<p class="card-description">Configure your ticket system and panel message.</p>
 
-        <p class="card-description">
-            Configure your ticket system and panel message.
-        </p>
+<div class="field">
+<label>TICKET CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
 
-        <div class="field">
+<div class="field">
+<label>TICKET CATEGORY</label>
+<select class="select category-select">
+    <option value="">No server categories loaded yet</option>
+</select>
+</div>
 
-            <label>TICKET CHANNEL</label>
+<div class="field">
+<label>STAFF ROLE</label>
+<select class="select role-select">
+    <option value="">No server roles loaded yet</option>
+</select>
+</div>
 
-            <select class="select channel-select">
-                <option value="">
-                    No server channels loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>TICKET CATEGORY</label>
-
-            <select class="select category-select">
-                <option value="">
-                    No server categories loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>STAFF ROLE</label>
-
-            <select class="select role-select">
-                <option value="">
-                    No server roles loaded yet
-                </option>
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>TICKET MESSAGE</label>
-
-            <textarea
-                id="ticketMessage"
-                class="textarea">🎫 Need help?
-```
+<div class="field">
+<label>TICKET MESSAGE</label>
+<textarea id="ticketMessage" class="textarea">🎫 Need help?
 
 Click the button below to open a private ticket with our staff team.</textarea>
 
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Claim System</strong>
+        <span>Allow staff members to claim tickets.</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Transcripts</strong>
+        <span>Save ticket transcripts when closed.</span>
+    </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:15px;">
+    <button class="button secondary" onclick="toggleEditPreview('ticketEdit')">
+        ✏️ Edit
+    </button>
+
 ```
-        </div>
+<button class="button secondary" onclick="updateTicketPreview()">
+    👁️ Preview
+</button>
 
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Claim System</strong>
-                <span>
-                    Allow staff members to claim tickets.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Transcripts</strong>
-                <span>
-                    Save ticket transcripts when closed.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <button
-            class="button secondary"
-            onclick="toggleEditPreview('ticketEdit')"
-            style="margin-top:15px;">
-            ✏️ Edit Preview
-        </button>
-
-    </div>
-
-    <div class="card">
-
-        <h3>Ticket Panel Preview</h3>
-
-        <p class="card-description">
-            This is what members will see.
-        </p>
-
-        <div class="ticket-preview">
-
-            <div class="ticket-preview-icon">
-                🎫
-            </div>
-
-            <h3>
-                Need Help?
-            </h3>
-
-            <p id="ticketPreviewText">
-                Click below to contact the staff team.
-            </p>
-
-            <span class="ticket-button">
-                🎫 Open Ticket
-            </span>
-
-        </div>
-
-        <div
-            class="edit-preview hidden"
-            id="ticketEdit">
-
-            <div class="field">
-
-                <label>EDIT TICKET MESSAGE</label>
-
-                <textarea
-                    class="textarea"
-                    id="ticketEditText">Click below to contact the staff team.</textarea>
-
-            </div>
-
-            <button
-                class="button"
-                onclick="saveTicketPreview()">
-                Save Preview
-            </button>
-
-        </div>
-
-    </div>
+<button class="button" onclick="saveTicketPreview()">
+    💾 Save
+</button>
+```
 
 </div>
-```
 
+</div>
+
+<div class="card">
+
+<h3>Ticket Panel Preview</h3>
+<p class="card-description">This is what members will see.</p>
+
+<div class="ticket-preview">
+
+<div class="ticket-preview-icon">🎫</div>
+
+<h3>Need Help?</h3>
+
+<p id="ticketPreviewText">
+    Click below to contact the staff team.
+</p>
+
+<span class="ticket-button">🎫 Open Ticket</span>
+
+</div>
+
+<div class="edit-preview hidden" id="ticketEdit">
+
+<div class="field">
+<label>EDIT TICKET MESSAGE</label>
+<textarea class="textarea" id="ticketEditText">Click below to contact the staff team.</textarea>
+</div>
+
+<button class="button" onclick="saveTicketPreview()">
+    Save Preview
+</button>
+
+</div>
+
+</div>
+
+</div>
 </section>
-
-<!-- ========================= GIVEAWAYS ========================= -->
 
 <section class="section" id="giveaways">
 
-```
 <div class="section-header">
-
     <h2>🎉 Giveaways</h2>
-
-    <p>
-        Create and configure community giveaways.
-    </p>
-
+    <p>Create and configure community giveaways.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
 
-        <h3>Giveaway Configuration</h3>
+<h3>Giveaway Configuration</h3>
+<p class="card-description">Configure your giveaway before launching it.</p>
 
-        <p class="card-description">
-            Configure your giveaway before launching it.
-        </p>
+<div class="field">
+<label>GIVEAWAY CHANNEL</label>
+<select class="select channel-select">
+    <option value="">No server channels loaded yet</option>
+</select>
+</div>
 
-        <div class="field">
+<div class="field">
+<label>PRIZE</label>
+<input id="giveawayPrize" class="input" value="$50 Roblox Gift Card">
+</div>
 
-            <label>PRIZE</label>
+<div class="field">
+<label>WINNERS</label>
+<input id="giveawayWinners" class="input" type="number" value="2" min="1">
+</div>
 
-            <input
-                id="giveawayPrize"
-                class="input"
-                value="$50 Roblox Gift Card"
-            >
+<div class="field">
+<label>DURATION</label>
+<select id="giveawayDuration" class="select">
+    <option>1 hour</option>
+    <option>6 hours</option>
+    <option>12 hours</option>
+    <option selected>24 hours</option>
+    <option>7 days</option>
+</select>
+</div>
 
-        </div>
-
-        <div class="field">
-
-            <label>WINNERS</label>
-
-            <input
-                id="giveawayWinners"
-                class="input"
-                type="number"
-                value="2"
-                min="1"
-            >
-
-        </div>
-
-        <div class="field">
-
-            <label>DURATION</label>
-
-            <select
-                id="giveawayDuration"
-                class="select">
-
-                <option>1 hour</option>
-                <option>6 hours</option>
-                <option>12 hours</option>
-                <option selected>24 hours</option>
-                <option>7 days</option>
-
-            </select>
-
-        </div>
-
-        <div class="field">
-
-            <label>GIVEAWAY MESSAGE</label>
-
-            <textarea
-                id="giveawayMessage"
-                class="textarea">🎉 React below to enter!
-```
+<div class="field">
+<label>GIVEAWAY MESSAGE</label>
+<textarea id="giveawayMessage" class="textarea">🎉 React below to enter!
 
 🏆 Winners: {winners}
 ⏰ Ends: {duration}</textarea>
 
+</div>
+
+<div style="display:flex;gap:7px;flex-wrap:wrap;">
+    <button class="button secondary" onclick="toggleEditPreview('giveawayEdit')">
+        ✏️ Edit
+    </button>
+
 ```
-        </div>
+<button class="button secondary" onclick="updateGiveawayPreview()">
+    👁️ Preview
+</button>
 
-        <button
-            class="button"
-            onclick="updateGiveawayPreview()">
-            🎉 Update Giveaway
-        </button>
-
-        <button
-            class="button secondary"
-            onclick="toggleEditPreview('giveawayEdit')"
-            style="margin-left:7px;">
-            ✏️ Edit Preview
-        </button>
-
-    </div>
-
-    <div class="card">
-
-        <h3>Giveaway Preview</h3>
-
-        <p class="card-description">
-            Example of the Discord giveaway message.
-        </p>
-
-        <div class="giveaway-preview">
-
-            <div class="giveaway-top">
-                🎉 GIVEAWAY
-            </div>
-
-            <div
-                class="giveaway-prize"
-                id="giveawayPreviewPrize">
-                $50 Roblox Gift Card
-            </div>
-
-            <div
-                class="giveaway-info"
-                id="giveawayPreviewInfo">
-
-                React below to enter!
-                <br>
-                🏆 Winners: 2
-                <br>
-                ⏰ Ends: 24 hours
-                <br><br>
-                🎉 Enter Giveaway
-
-            </div>
-
-        </div>
-
-        <div
-            class="edit-preview hidden"
-            id="giveawayEdit">
-
-            <div class="field">
-
-                <label>EDIT GIVEAWAY MESSAGE</label>
-
-                <textarea
-                    class="textarea"
-                    id="giveawayEditText">React below to enter!</textarea>
-
-            </div>
-
-            <button
-                class="button"
-                onclick="saveGiveawayPreview()">
-                Save Preview
-            </button>
-
-        </div>
-
-    </div>
+<button class="button" onclick="saveGiveawayPreview()">
+    💾 Save
+</button>
+```
 
 </div>
-```
 
+</div>
+
+<div class="card">
+
+<h3>Giveaway Preview</h3>
+<p class="card-description">Example of the Discord giveaway message.</p>
+
+<div class="giveaway-preview">
+
+<div class="giveaway-top">🎉 GIVEAWAY</div>
+
+<div class="giveaway-prize" id="giveawayPreviewPrize">
+    $50 Roblox Gift Card
+</div>
+
+<div class="giveaway-info" id="giveawayPreviewInfo">
+    React below to enter!
+    <br>
+    🏆 Winners: 2
+    <br>
+    ⏰ Ends: 24 hours
+    <br><br>
+    🎉 Enter Giveaway
+</div>
+
+</div>
+
+<div class="edit-preview hidden" id="giveawayEdit">
+
+<div class="field">
+<label>EDIT GIVEAWAY MESSAGE</label>
+
+<textarea class="textarea" id="giveawayEditText">React below to enter!</textarea>
+
+</div>
+
+<button class="button" onclick="saveGiveawayPreview()">
+    Save Preview
+</button>
+
+</div>
+
+</div>
+
+</div>
 </section>
-
-<!-- ========================= MUSIC ========================= -->
 
 <section class="section" id="music">
 
-```
 <div class="section-header">
-
     <h2>🎵 Music</h2>
-
-    <p>
-        Control music permissions and who can instantly pause playback.
-    </p>
-
+    <p>Control music permissions and who can instantly pause playback.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
 
-        <h3>Music Controls</h3>
+<h3>Music Controls</h3>
+<p class="card-description">Configure JayVon's music system.</p>
 
-        <p class="card-description">
-            Configure JayVon's music system.
-        </p>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Music System</strong>
-                <span>
-                    Enable music commands.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Queue Control</strong>
-                <span>
-                    Control who can modify the queue.
-                </span>
-            </div>
-
-            <button class="toggle on" onclick="toggleSetting(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>Instant Pause Permissions</strong>
-                <span>
-                    Only selected roles can instantly pause another user's music session.
-                </span>
-            </div>
-
-            <button
-                class="toggle on"
-                onclick="toggleMusicPause(this)">
-                <span></span>
-            </button>
-
-        </div>
-
-        <div
-            class="config-box show"
-            id="musicPauseConfig">
-
-            <div class="config-title">
-
-                <strong>⏸️ Roles That Can Pause Instantly</strong>
-
-                <span>
-                    Select the Discord role allowed to use instant pause.
-                </span>
-
-            </div>
-
-            <div class="field">
-
-                <label>PAUSE ROLE</label>
-
-                <select
-                    class="select role-select"
-                    id="musicPauseRole">
-
-                    <option value="">
-                        No server roles loaded yet
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="music-command-box">
-
-                <div class="command-line">
-
-                    <span class="command-code">
-                        !pause
-                    </span>
-
-                    <span class="command-description">
-                        Pause the current music playback.
-                    </span>
-
-                </div>
-
-                <div class="command-line">
-
-                    <span class="command-code">
-                        !pause 1
-                    </span>
-
-                    <span class="command-description">
-                        Pause nested playback slot 1.
-                    </span>
-
-                </div>
-
-                <div class="command-line">
-
-                    <span class="command-code">
-                        !pause 2
-                    </span>
-
-                    <span class="command-description">
-                        Pause nested playback slot 2.
-                    </span>
-
-                </div>
-
-            </div>
-
-            <p style="
-                color:#555560;
-                font-size:8px;
-                line-height:1.7;
-                margin-top:11px;
-            ">
-                Members without the selected role will not be allowed
-                to instantly pause another user's playback.
-                The real permission check will be handled by the Discord
-                backend when it is connected.
-            </p>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Music System</strong>
+        <span>Enable music commands.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
 
-    <div class="card">
-
-        <h3>Music Permissions</h3>
-
-        <p class="card-description">
-            Choose which server role receives music controls.
-        </p>
-
-        <div class="field">
-
-            <label>MUSIC CONTROL ROLE</label>
-
-            <select class="select role-select">
-
-                <option value="">
-                    No server roles loaded yet
-                </option>
-
-            </select>
-
-        </div>
-
-        <div class="chips">
-
-            <span class="chip active">
-                ▶️ Play
-            </span>
-
-            <span class="chip active">
-                ⏭️ Skip
-            </span>
-
-            <span class="chip active">
-                🔊 Volume
-            </span>
-
-            <span class="chip active">
-                📋 Queue
-            </span>
-
-            <span class="chip active">
-                ⏸️ Pause
-            </span>
-
-        </div>
-
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Queue Control</strong>
+        <span>Control who can modify the queue.</span>
     </div>
+    <button class="toggle on" onclick="toggleSetting(this)"><span></span></button>
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>Instant Pause Permissions</strong>
+        <span>Only selected roles can instantly pause another user's music session.</span>
+    </div>
+    <button class="toggle on" onclick="toggleMusicPause(this)">
+        <span></span>
+    </button>
+</div>
+
+<div class="config-box show" id="musicPauseConfig">
+
+<div class="config-title">
+    <strong>⏸️ Roles That Can Pause Instantly</strong>
+    <span>Select the Discord role allowed to instantly pause.</span>
+</div>
+
+<div class="field">
+<label>PAUSE ROLE</label>
+
+<select class="select role-select" id="musicPauseRole">
+    <option value="">No server roles loaded yet</option>
+</select>
+</div>
+
+<div class="music-command-box">
+
+<div class="command-line">
+    <span class="command-code">!pause</span>
+    <span class="command-description">Pause the current music playback.</span>
+</div>
+
+<div class="command-line">
+    <span class="command-code">!pause 1</span>
+    <span class="command-description">Pause playback slot 1.</span>
+</div>
+
+<div class="command-line">
+    <span class="command-code">!pause 2</span>
+    <span class="command-description">Pause playback slot 2.</span>
+</div>
 
 </div>
-```
 
+<p style="color:#555560;font-size:8px;line-height:1.7;margin-top:11px;">
+    Members without the selected role will not be allowed to instantly pause another user's playback.
+    The real permission check will be handled by the Discord backend when it is connected.
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Music Permissions</h3>
+<p class="card-description">Choose which server role receives music controls.</p>
+
+<div class="field">
+<label>MUSIC CONTROL ROLE</label>
+
+<select class="select role-select">
+    <option value="">No server roles loaded yet</option>
+</select>
+</div>
+
+<div class="chips">
+    <span class="chip active">▶️ Play</span>
+    <span class="chip active">⏭️ Skip</span>
+    <span class="chip active">🔊 Volume</span>
+    <span class="chip active">📋 Queue</span>
+    <span class="chip active">⏸️ Pause</span>
+</div>
+
+</div>
+
+</div>
 </section>
-
-<!-- ========================= LEVELS ========================= -->
 
 <section class="section" id="levels">
 
-```
 <div class="card">
 
-    <div class="upcoming">
+<div class="upcoming">
 
-        <div class="upcoming-icon">
-            📈
-        </div>
+<div class="upcoming-icon">📈</div>
 
-        <h3>Levels & XP</h3>
+<h3>Levels & XP</h3>
 
-        <div style="margin-top:10px;">
+<div style="margin-top:10px;">
+    <span class="upcoming-badge">🚧 UPCOMING</span>
+</div>
 
-            <span class="upcoming-badge">
-                🚧 UPCOMING
-            </span>
+<p>
+    Levels & XP is currently being developed for JayVon AI.
+    <br><br>
+    Stay tuned for XP rewards, level-up messages, level roles,
+    XP multipliers and leaderboards.
+</p>
 
-        </div>
-
-        <p>
-            Levels & XP is currently being developed
-            for JayVon AI.
-            <br><br>
-            Stay tuned for XP rewards, level-up messages,
-            level roles, XP multipliers and leaderboards.
-        </p>
-
-        <button
-            class="button secondary"
-            onclick="showUpcoming()">
-            Stay Tuned
-        </button>
-
-    </div>
+<button class="button secondary" onclick="showUpcoming()">
+    Stay Tuned
+</button>
 
 </div>
-```
 
+</div>
 </section>
-
-<!-- ========================= SETTINGS ========================= -->
 
 <section class="section" id="settings">
 
-```
 <div class="section-header">
-
     <h2>⚙️ Settings</h2>
-
-    <p>
-        General JayVon AI dashboard settings.
-    </p>
-
+    <p>General JayVon AI dashboard settings.</p>
 </div>
 
 <div class="two-column">
 
-    <div class="card">
+<div class="card">
 
-        <h3>Server Configuration</h3>
+<h3>Server Configuration</h3>
+<p class="card-description">General server preferences.</p>
 
-        <p class="card-description">
-            General server preferences.
-        </p>
+<div class="field">
+<label>SERVER NAME</label>
+<input class="input" value="The Vonverse">
+</div>
 
-        <div class="field">
-
-            <label>SERVER NAME</label>
-
-            <input
-                class="input"
-                value="The Vonverse"
-            >
-
-        </div>
-
-        <button class="button">
-            Save Changes
-        </button>
-
-    </div>
-
-    <div class="card">
-
-        <h3>JayVon AI</h3>
-
-        <p class="card-description">
-            Dashboard and bot information.
-        </p>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>JayVon AI</strong>
-                <span>
-                    Discord community assistant.
-                </span>
-            </div>
-
-            <span style="color:#4ade80;font-size:9px;">
-                ONLINE
-            </span>
-
-        </div>
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-                <strong>The Vonverse</strong>
-                <span>
-                    JayVon AI's home universe.
-                </span>
-            </div>
-
-            <span style="color:#9cc5ff;font-size:9px;">
-                ACTIVE
-            </span>
-
-        </div>
-
-    </div>
+<button class="button">Save Changes</button>
 
 </div>
-```
 
+<div class="card">
+
+<h3>JayVon AI</h3>
+<p class="card-description">Dashboard and bot information.</p>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>JayVon AI</strong>
+        <span>Discord community assistant.</span>
+    </div>
+    <span style="color:#4ade80;font-size:9px;">ONLINE</span>
+</div>
+
+<div class="setting-row">
+    <div class="setting-info">
+        <strong>The Vonverse</strong>
+        <span>JayVon AI's home universe.</span>
+    </div>
+    <span style="color:#9cc5ff;font-size:9px;">ACTIVE</span>
+</div>
+
+</div>
+
+</div>
 </section>
 
 <div class="dashboard-footer">
-
-```
-© 2026 JayVon AI • 🌐 The Vonverse • Created by SS_DEMON2
-```
-
+    © 2026 JayVon AI • 🌐 The Vonverse • Created by SS_DEMON2
 </div>
 
 </div>
-
 </main>
-
 </div>
 
-<!-- ========================= UPCOMING POPUP ========================= -->
+<div id="upcomingPopup"
+style="
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.78);
+backdrop-filter:blur(10px);
+z-index:9999;
+"
+onclick="closeUpcomingOutside(event,this)">
 
-<div
-    id="upcomingPopup"
-    style="
-        position:fixed;
-        inset:0;
-        display:none;
-        align-items:center;
-        justify-content:center;
-        padding:20px;
-        background:rgba(0,0,0,.78);
-        backdrop-filter:blur(10px);
-        z-index:9999;
-    "
-    onclick="closeUpcomingOutside(event,this)"
->
+<div style="
+width:min(430px,100%);
+background:#111116;
+border:1px solid rgba(139,92,246,.2);
+border-radius:18px;
+padding:30px;
+text-align:center;
+box-shadow:0 30px 100px rgba(0,0,0,.7);
+animation:sectionIn .25s ease;
+">
 
-```
-<div
-    style="
-        width:min(430px,100%);
-        background:#111116;
-        border:1px solid rgba(139,92,246,.2);
-        border-radius:18px;
-        padding:30px;
-        text-align:center;
-        box-shadow:0 30px 100px rgba(0,0,0,.7);
-        animation:sectionIn .25s ease;
-    "
->
+<div style="font-size:45px;margin-bottom:15px;">🚧</div>
 
-    <div style="
-        font-size:45px;
-        margin-bottom:15px;
-    ">
-        🚧
-    </div>
+<h2 style="font-family:'Space Grotesk',sans-serif;font-size:22px;">
+    Coming Soon
+</h2>
 
-    <h2 style="
-        font-family:'Space Grotesk',sans-serif;
-        font-size:22px;
-    ">
-        Coming Soon
-    </h2>
+<p style="color:#777781;font-size:11px;line-height:1.8;margin-top:10px;">
+    Levels & XP is currently being developed for JayVon AI.
+    <br><br>
+    Stay tuned — XP, level-up messages, level roles and leaderboards are coming.
+</p>
 
-    <p style="
-        color:#777781;
-        font-size:11px;
-        line-height:1.8;
-        margin-top:10px;
-    ">
-        Levels & XP is currently being developed
-        for JayVon AI.
-        <br><br>
-        Stay tuned — XP, level-up messages,
-        level roles and leaderboards are coming.
-    </p>
-
-    <button
-        class="button secondary"
-        onclick="closeUpcoming()"
-        style="margin-top:20px;"
-    >
-        Close
-    </button>
+<button class="button secondary" onclick="closeUpcoming()" style="margin-top:20px;">
+    Close
+</button>
 
 </div>
-```
-
 </div>
 
 <script>
@@ -3616,134 +2655,66 @@ Click the button below to open a private ticket with our staff team.</textarea>
    SECTION SWITCHING
 ========================================================= */
 
-const menuItems =
-    document.querySelectorAll(".menu-item");
-
-const sections =
-    document.querySelectorAll(".section");
-
-const pageTitle =
-    document.getElementById("pageTitle");
-
-const pageDescription =
-    document.getElementById("pageDescription");
+const menuItems = document.querySelectorAll(".menu-item");
+const sections = document.querySelectorAll(".section");
+const pageTitle = document.getElementById("pageTitle");
+const pageDescription = document.getElementById("pageDescription");
 
 const titles = {
-
-    overview:[
-        "Dashboard",
-        "Manage JayVon AI and your Discord community."
-    ],
-
-    ai:[
-        "JayVon AI",
-        "Configure your intelligent Discord assistant."
-    ],
-
-    moderation:[
-        "Advanced Moderation",
-        "Protect your Discord community."
-    ],
-
-    media:[
-        "Media Channels",
-        "Control images, videos and media uploads."
-    ],
-
-    notifications:[
-        "Social Notifications",
-        "Connect TikTok and YouTube notifications."
-    ],
-
-    welcome:[
-        "Welcome System",
-        "Configure new member welcomes."
-    ],
-
-    tickets:[
-        "Tickets",
-        "Build your private support system."
-    ],
-
-    giveaways:[
-        "Giveaways",
-        "Create community giveaways."
-    ],
-
-    music:[
-        "Music",
-        "Control music permissions."
-    ],
-
-    levels:[
-        "Levels & XP",
-        "An upcoming JayVon AI feature."
-    ],
-
-    settings:[
-        "Settings",
-        "Configure JayVon AI."
-    ]
-
+    overview:["Dashboard","Manage JayVon AI and your Discord community."],
+    ai:["JayVon AI","Configure your intelligent Discord assistant."],
+    moderation:["Advanced Moderation","Protect your Discord community."],
+    media:["Media Channels","Control images, videos and media uploads."],
+    notifications:["Social Notifications","Connect TikTok and YouTube notifications."],
+    welcome:["Welcome System","Configure new member welcomes."],
+    tickets:["Tickets","Build your private support system."],
+    giveaways:["Giveaways","Create community giveaways."],
+    music:["Music","Control music permissions."],
+    levels:["Levels & XP","An upcoming JayVon AI feature."],
+    settings:["Settings","Configure JayVon AI."]
 };
 
 menuItems.forEach(function(item){
 
-    item.addEventListener(
-        "click",
-        function(){
+    item.addEventListener("click",function(){
 
-            const section =
-                item.dataset.section;
+        const section = item.dataset.section;
 
-            menuItems.forEach(function(button){
-                button.classList.remove("active");
-            });
+        menuItems.forEach(function(button){
+            button.classList.remove("active");
+        });
 
-            item.classList.add("active");
+        item.classList.add("active");
 
-            sections.forEach(function(sectionElement){
-                sectionElement.classList.remove("active");
-            });
+        sections.forEach(function(sectionElement){
+            sectionElement.classList.remove("active");
+        });
 
-            const target =
-                document.getElementById(section);
+        const target = document.getElementById(section);
 
-            if(target){
-                target.classList.add("active");
-            }
-
-            if(titles[section]){
-
-                pageTitle.textContent =
-                    titles[section][0];
-
-                pageDescription.textContent =
-                    titles[section][1];
-
-            }
-
-            if(window.innerWidth <= 760){
-
-                document
-                    .getElementById("sidebar")
-                    .classList.remove("open");
-
-            }
-
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            });
-
+        if(target){
+            target.classList.add("active");
         }
-    );
 
+        if(titles[section]){
+            pageTitle.textContent = titles[section][0];
+            pageDescription.textContent = titles[section][1];
+        }
+
+        if(window.innerWidth <= 760){
+            document.getElementById("sidebar").classList.remove("open");
+        }
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    });
 });
 
 
 /* =========================================================
-   NORMAL TOGGLE
+   TOGGLES
 ========================================================= */
 
 function toggleSetting(button){
@@ -3754,6 +2725,20 @@ function toggleSetting(button){
 
     button.classList.toggle("on");
 
+    if(button.closest(".setting-row")){
+
+        const label =
+            button.closest(".setting-row")
+            .querySelector(".setting-info strong");
+
+        if(label){
+            button.setAttribute(
+                "aria-label",
+                label.textContent +
+                (button.classList.contains("on") ? " enabled" : " disabled")
+            );
+        }
+    }
 }
 
 
@@ -3767,61 +2752,48 @@ function toggleBadWords(button){
 
     button.classList.toggle("on");
 
-    const config =
-        document.getElementById("badWordConfig");
+    const config = document.getElementById("badWordConfig");
 
-    if(button.classList.contains("on")){
-
-        config.classList.add("show");
-
-    }
-    else{
-
-        config.classList.remove("show");
-
+    if(!config){
+        return;
     }
 
+    config.classList.toggle(
+        "show",
+        button.classList.contains("on")
+    );
 }
 
 function addBadWord(){
 
-    const input =
-        document.getElementById("badWordInput");
+    const input = document.getElementById("badWordInput");
 
     if(!input){
         return;
     }
 
-    const word =
-        input.value.trim();
+    const word = input.value.trim();
 
     if(!word){
         return;
     }
 
-    const normalized =
-        word.toLowerCase();
+    const normalized = word.toLowerCase();
 
     if(blockedWords.includes(normalized)){
-
         input.value = "";
-
         return;
-
     }
 
     blockedWords.push(normalized);
-
     input.value = "";
 
     renderBadWords();
-
 }
 
 function renderBadWords(){
 
-    const list =
-        document.getElementById("badWordList");
+    const list = document.getElementById("badWordList");
 
     if(!list){
         return;
@@ -3831,86 +2803,58 @@ function renderBadWords(){
 
     if(!blockedWords.length){
 
-        const empty =
-            document.createElement("div");
+        const empty = document.createElement("div");
 
-        empty.className =
-            "empty-words";
-
-        empty.textContent =
-            "No blocked words added yet.";
+        empty.className = "empty-words";
+        empty.textContent = "No blocked words added yet.";
 
         list.appendChild(empty);
 
         return;
-
     }
 
     blockedWords.forEach(function(word,index){
 
-        const chip =
-            document.createElement("div");
+        const chip = document.createElement("div");
+        chip.className = "word-chip";
 
-        chip.className =
-            "word-chip";
+        const text = document.createElement("span");
+        text.textContent = word;
 
-        const text =
-            document.createElement("span");
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "×";
+        remove.title = "Remove " + word;
 
-        text.textContent =
-            word;
+        remove.onclick = function(){
 
-        const remove =
-            document.createElement("button");
+            blockedWords.splice(index,1);
+            renderBadWords();
 
-        remove.type =
-            "button";
-
-        remove.textContent =
-            "×";
-
-        remove.title =
-            "Remove " + word;
-
-        remove.onclick =
-            function(){
-
-                blockedWords.splice(index,1);
-
-                renderBadWords();
-
-            };
+        };
 
         chip.appendChild(text);
-
         chip.appendChild(remove);
 
         list.appendChild(chip);
 
     });
-
 }
 
-const badWordInput =
-    document.getElementById("badWordInput");
+const badWordInput = document.getElementById("badWordInput");
 
 if(badWordInput){
 
-    badWordInput.addEventListener(
-        "keydown",
-        function(event){
+    badWordInput.addEventListener("keydown",function(event){
 
-            if(event.key === "Enter"){
+        if(event.key === "Enter"){
 
-                event.preventDefault();
-
-                addBadWord();
-
-            }
+            event.preventDefault();
+            addBadWord();
 
         }
-    );
 
+    });
 }
 
 
@@ -3925,17 +2869,12 @@ function toggleAutoDelete(button){
     const config =
         document.getElementById("autoDeleteConfig");
 
-    if(button.classList.contains("on")){
-
-        config.classList.add("show");
-
+    if(config){
+        config.classList.toggle(
+            "show",
+            button.classList.contains("on")
+        );
     }
-    else{
-
-        config.classList.remove("show");
-
-    }
-
 }
 
 
@@ -3950,22 +2889,17 @@ function toggleAutoTimeout(button){
     const config =
         document.getElementById("autoTimeoutConfig");
 
-    if(button.classList.contains("on")){
-
-        config.classList.add("show");
-
+    if(config){
+        config.classList.toggle(
+            "show",
+            button.classList.contains("on")
+        );
     }
-    else{
-
-        config.classList.remove("show");
-
-    }
-
 }
 
 
 /* =========================================================
-   MUSIC PAUSE PERMISSIONS
+   MUSIC PAUSE
 ========================================================= */
 
 function toggleMusicPause(button){
@@ -3975,17 +2909,12 @@ function toggleMusicPause(button){
     const config =
         document.getElementById("musicPauseConfig");
 
-    if(button.classList.contains("on")){
-
-        config.classList.add("show");
-
+    if(config){
+        config.classList.toggle(
+            "show",
+            button.classList.contains("on")
+        );
     }
-    else{
-
-        config.classList.remove("show");
-
-    }
-
 }
 
 
@@ -3998,7 +2927,6 @@ function toggleSidebar(){
     document
         .getElementById("sidebar")
         .classList.toggle("open");
-
 }
 
 
@@ -4008,69 +2936,57 @@ function toggleSidebar(){
 
 function showUpcoming(){
 
-    document
-        .getElementById("upcomingPopup")
-        .style.display = "flex";
+    const popup =
+        document.getElementById("upcomingPopup");
 
-    document.body.style.overflow =
-        "hidden";
+    if(!popup){
+        return;
+    }
 
+    popup.style.display = "flex";
+    document.body.style.overflow = "hidden";
 }
 
 function closeUpcoming(){
 
-    document
-        .getElementById("upcomingPopup")
-        .style.display = "none";
+    const popup =
+        document.getElementById("upcomingPopup");
 
-    document.body.style.overflow =
-        "";
+    if(!popup){
+        return;
+    }
 
+    popup.style.display = "none";
+    document.body.style.overflow = "";
 }
 
-function closeUpcomingOutside(
-    event,
-    element
-){
+function closeUpcomingOutside(event,element){
 
     if(event.target === element){
         closeUpcoming();
     }
-
 }
 
+document.addEventListener("keydown",function(event){
 
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            closeUpcoming();
-
-        }
-
+    if(event.key === "Escape"){
+        closeUpcoming();
     }
-);
+
+});
 
 
 /* =========================================================
-   SOCIAL NOTIFICATIONS
-   FRONTEND ONLY
+   SOCIAL CONNECTIONS
 ========================================================= */
 
-let tiktokConnected =
-    false;
-
-let youtubeConnected =
-    false;
+let tiktokConnected = false;
+let youtubeConnected = false;
 
 
-/* TIKTOK */
+/* =========================================================
+   TIKTOK
+========================================================= */
 
 function connectTikTok(){
 
@@ -4079,9 +2995,6 @@ function connectTikTok(){
 
     const button =
         document.getElementById("tiktokConnectButton");
-
-    const ready =
-        document.getElementById("tiktokReady");
 
     const status =
         document.getElementById("tiktokStatus");
@@ -4095,30 +3008,25 @@ function connectTikTok(){
 
     if(!username){
 
-        status.className =
-            "connection-status show error";
-
-        status.innerHTML =
-            "<span>Enter a TikTok username first.</span>";
+        showConnectionError(
+            status,
+            "Enter a TikTok username first."
+        );
 
         return;
-
     }
 
     if(username.length < 2){
 
-        status.className =
-            "connection-status show error";
-
-        status.innerHTML =
-            "<span>Enter a valid TikTok username.</span>";
+        showConnectionError(
+            status,
+            "Enter a valid TikTok username."
+        );
 
         return;
-
     }
 
-    tiktokConnected =
-        true;
+    tiktokConnected = true;
 
     localStorage.setItem(
         "jayvon_tiktok_username",
@@ -4129,30 +3037,20 @@ function connectTikTok(){
         "connection-status show";
 
     status.innerHTML =
-        "<span>✓ TikTok configured as " +
+        "<span>✓ TikTok connected as " +
         escapeHtml(username) +
         "</span>" +
         "<button class='disconnect' type='button' onclick='disconnectTikTok()'>Disconnect</button>";
 
-    button.textContent =
-        "Connected";
+    button.textContent = "Connected ✓";
 
     button.style.background =
         "linear-gradient(135deg,#16a34a,#15803d)";
-
-    if(ready){
-
-        ready.style.display =
-            "none";
-
-    }
-
 }
 
 function disconnectTikTok(){
 
-    tiktokConnected =
-        false;
+    tiktokConnected = false;
 
     localStorage.removeItem(
         "jayvon_tiktok_username"
@@ -4164,17 +3062,12 @@ function disconnectTikTok(){
     const status =
         document.getElementById("tiktokStatus");
 
-    const ready =
-        document.getElementById("tiktokReady");
-
     if(button){
 
         button.textContent =
             "Connect TikTok";
 
-        button.style.background =
-            "";
-
+        button.style.background = "";
     }
 
     if(status){
@@ -4182,22 +3075,14 @@ function disconnectTikTok(){
         status.className =
             "connection-status";
 
-        status.innerHTML =
-            "";
-
+        status.innerHTML = "";
     }
-
-    if(ready){
-
-        ready.style.display =
-            "inline-flex";
-
-    }
-
 }
 
 
-/* YOUTUBE */
+/* =========================================================
+   YOUTUBE
+========================================================= */
 
 function connectYouTube(){
 
@@ -4219,30 +3104,25 @@ function connectYouTube(){
 
     if(!channel){
 
-        status.className =
-            "connection-status show error";
-
-        status.innerHTML =
-            "<span>Enter a YouTube channel URL or username first.</span>";
+        showConnectionError(
+            status,
+            "Enter a YouTube channel URL or username first."
+        );
 
         return;
-
     }
 
     if(channel.length < 2){
 
-        status.className =
-            "connection-status show error";
-
-        status.innerHTML =
-            "<span>Enter a valid YouTube channel or username.</span>";
+        showConnectionError(
+            status,
+            "Enter a valid YouTube channel or username."
+        );
 
         return;
-
     }
 
-    youtubeConnected =
-        true;
+    youtubeConnected = true;
 
     localStorage.setItem(
         "jayvon_youtube_channel",
@@ -4253,23 +3133,21 @@ function connectYouTube(){
         "connection-status show";
 
     status.innerHTML =
-        "<span>✓ YouTube configured as " +
+        "<span>✓ YouTube connected as " +
         escapeHtml(channel) +
         "</span>" +
         "<button class='disconnect' type='button' onclick='disconnectYouTube()'>Disconnect</button>";
 
     button.textContent =
-        "Connected";
+        "Connected ✓";
 
     button.style.background =
         "linear-gradient(135deg,#16a34a,#15803d)";
-
 }
 
 function disconnectYouTube(){
 
-    youtubeConnected =
-        false;
+    youtubeConnected = false;
 
     localStorage.removeItem(
         "jayvon_youtube_channel"
@@ -4286,9 +3164,7 @@ function disconnectYouTube(){
         button.textContent =
             "Connect YouTube";
 
-        button.style.background =
-            "";
-
+        button.style.background = "";
     }
 
     if(status){
@@ -4296,11 +3172,19 @@ function disconnectYouTube(){
         status.className =
             "connection-status";
 
-        status.innerHTML =
-            "";
-
+        status.innerHTML = "";
     }
+}
 
+function showConnectionError(status,message){
+
+    status.className =
+        "connection-status show error";
+
+    status.innerHTML =
+        "<span>" +
+        escapeHtml(message) +
+        "</span>";
 }
 
 
@@ -4316,7 +3200,6 @@ function escapeHtml(value){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
 
 
@@ -4334,79 +3217,110 @@ function toggleEditPreview(id){
     }
 
     element.classList.toggle("hidden");
-
 }
 
 
-/* WELCOME */
+/* =========================================================
+   WELCOME PREVIEW
+========================================================= */
+
+function updateWelcomePreview(){
+
+    const input =
+        document.getElementById("welcomeMessage");
+
+    const editInput =
+        document.getElementById("welcomeEditText");
+
+    const preview =
+        document.getElementById("welcomePreviewText");
+
+    if(!preview){
+        return;
+    }
+
+    const source =
+        editInput && editInput.value.trim()
+        ? editInput.value
+        : input
+            ? input.value
+            : "👋 Welcome {user} to The Vonverse!";
+
+    const text =
+        source
+            .replace(/\{user\}/g,"@SS_DEMON2")
+            .replace(/\{username\}/g,"SS_DEMON2")
+            .replace(/\{membercount\}/g,"126");
+
+    preview.innerHTML =
+        escapeHtml(text)
+        .replace(/\n/g,"<br>");
+}
 
 function saveWelcomePreview(){
 
     const input =
         document.getElementById("welcomeEditText");
 
-    const preview =
-        document.getElementById("welcomePreviewText");
-
     const original =
         document.getElementById("welcomeMessage");
 
-    if(!input || !preview){
-        return;
+    if(input && original){
+        original.value = input.value;
     }
 
-    const text =
-        input.value
-            .replace(
-                /\{user\}/g,
-                "@SS_DEMON2"
-            )
-            .replace(
-                /\{membercount\}/g,
-                "126"
-            );
-
-    preview.innerHTML =
-        escapeHtml(text)
-            .replace(/\n/g,"<br>");
-
-    if(original){
-        original.value =
-            input.value;
-    }
-
+    updateWelcomePreview();
 }
 
 
-/* TICKET */
+/* =========================================================
+   TICKET PREVIEW
+========================================================= */
+
+function updateTicketPreview(){
+
+    const input =
+        document.getElementById("ticketMessage");
+
+    const edit =
+        document.getElementById("ticketEditText");
+
+    const preview =
+        document.getElementById("ticketPreviewText");
+
+    if(!preview){
+        return;
+    }
+
+    const source =
+        edit && edit.value.trim()
+        ? edit.value
+        : input
+            ? input.value
+            : "Click below to contact the staff team.";
+
+    preview.textContent = source;
+}
 
 function saveTicketPreview(){
 
     const input =
         document.getElementById("ticketEditText");
 
-    const preview =
-        document.getElementById("ticketPreviewText");
-
     const original =
         document.getElementById("ticketMessage");
 
-    if(!input || !preview){
-        return;
+    if(input && original){
+        original.value = input.value;
     }
 
-    preview.textContent =
-        input.value;
-
-    if(original){
-        original.value =
-            input.value;
-    }
-
+    updateTicketPreview();
 }
 
 
-/* GIVEAWAY */
+/* =========================================================
+   GIVEAWAY PREVIEW
+========================================================= */
 
 function saveGiveawayPreview(){
 
@@ -4416,17 +3330,11 @@ function saveGiveawayPreview(){
     const message =
         document.getElementById("giveawayMessage");
 
-    if(!input){
-        return;
-    }
-
-    if(message){
-        message.value =
-            input.value;
+    if(input && message){
+        message.value = input.value;
     }
 
     updateGiveawayPreview();
-
 }
 
 function updateGiveawayPreview(){
@@ -4460,8 +3368,7 @@ function updateGiveawayPreview(){
     }
 
     previewPrize.textContent =
-        prize.value ||
-        "Giveaway Prize";
+        prize.value || "Giveaway Prize";
 
     let custom =
         message
@@ -4469,24 +3376,17 @@ function updateGiveawayPreview(){
             : "React below to enter!";
 
     if(!custom){
-        custom =
-            "React below to enter!";
+        custom = "React below to enter!";
     }
 
     custom =
         custom
-            .replace(
-                /\{winners\}/g,
-                winners.value
-            )
-            .replace(
-                /\{duration\}/g,
-                duration.value
-            );
+            .replace(/\{winners\}/g,winners.value)
+            .replace(/\{duration\}/g,duration.value);
 
     previewInfo.innerHTML =
         escapeHtml(custom)
-            .replace(/\n/g,"<br>") +
+        .replace(/\n/g,"<br>") +
         "<br><br>" +
         "🏆 Winners: " +
         escapeHtml(winners.value) +
@@ -4495,280 +3395,197 @@ function updateGiveawayPreview(){
         escapeHtml(duration.value) +
         "<br><br>" +
         "🎉 Enter Giveaway";
-
 }
 
 
 /* =========================================================
-   DISCORD SERVER DATA
-   BACKEND WILL EVENTUALLY PROVIDE THIS
+   BACKEND DROPDOWN HOOKS
 ========================================================= */
 
 let serverRoles = [];
-
 let serverChannels = [];
-
 let serverCategories = [];
-
-
-/* =========================================================
-   POPULATE ROLES
-========================================================= */
 
 function populateRoles(){
 
-    const roleSelects =
-        document.querySelectorAll(".role-select");
+    document
+        .querySelectorAll(".role-select")
+        .forEach(function(select){
 
-    roleSelects.forEach(function(select){
+            const previousValue =
+                select.value;
 
-        const previousValue =
-            select.value;
+            select.innerHTML = "";
 
-        select.innerHTML = "";
+            if(!serverRoles.length){
 
-        if(!serverRoles.length){
+                const option =
+                    document.createElement("option");
 
-            const option =
+                option.value = "";
+                option.textContent =
+                    "No server roles loaded yet";
+
+                select.appendChild(option);
+
+                return;
+            }
+
+            const defaultOption =
                 document.createElement("option");
 
-            option.value =
-                "";
+            defaultOption.value = "";
+            defaultOption.textContent =
+                "Select a server role";
 
-            option.textContent =
-                "No server roles loaded yet";
+            select.appendChild(defaultOption);
 
-            select.appendChild(option);
+            serverRoles.forEach(function(role){
 
-            return;
+                const option =
+                    document.createElement("option");
 
-        }
+                option.value = role.id;
+                option.textContent = "@" + role.name;
 
-        const defaultOption =
-            document.createElement("option");
+                select.appendChild(option);
+            });
 
-        defaultOption.value =
-            "";
-
-        defaultOption.textContent =
-            "Select a server role";
-
-        select.appendChild(defaultOption);
-
-        serverRoles.forEach(function(role){
-
-            const option =
-                document.createElement("option");
-
-            option.value =
-                role.id;
-
-            option.textContent =
-                "@" + role.name;
-
-            select.appendChild(option);
-
+            if(previousValue){
+                select.value = previousValue;
+            }
         });
-
-        if(previousValue){
-
-            select.value =
-                previousValue;
-
-        }
-
-    });
-
 }
-
-
-/* =========================================================
-   POPULATE CHANNELS
-========================================================= */
 
 function populateChannels(){
 
-    const channelSelects =
-        document.querySelectorAll(".channel-select");
+    document
+        .querySelectorAll(".channel-select")
+        .forEach(function(select){
 
-    channelSelects.forEach(function(select){
+            const previousValue =
+                select.value;
 
-        const previousValue =
-            select.value;
+            select.innerHTML = "";
 
-        select.innerHTML = "";
+            if(!serverChannels.length){
 
-        if(!serverChannels.length){
+                const option =
+                    document.createElement("option");
 
-            const option =
+                option.value = "";
+                option.textContent =
+                    "No server channels loaded yet";
+
+                select.appendChild(option);
+
+                return;
+            }
+
+            const defaultOption =
                 document.createElement("option");
 
-            option.value =
-                "";
+            defaultOption.value = "";
+            defaultOption.textContent =
+                "Select a server channel";
 
-            option.textContent =
-                "No server channels loaded yet";
+            select.appendChild(defaultOption);
 
-            select.appendChild(option);
+            serverChannels.forEach(function(channel){
 
-            return;
+                const option =
+                    document.createElement("option");
 
-        }
+                option.value = channel.id;
+                option.textContent = "#" + channel.name;
 
-        const defaultOption =
-            document.createElement("option");
+                select.appendChild(option);
+            });
 
-        defaultOption.value =
-            "";
-
-        defaultOption.textContent =
-            "Select a server channel";
-
-        select.appendChild(defaultOption);
-
-        serverChannels.forEach(function(channel){
-
-            const option =
-                document.createElement("option");
-
-            option.value =
-                channel.id;
-
-            option.textContent =
-                "#" + channel.name;
-
-            select.appendChild(option);
-
+            if(previousValue){
+                select.value = previousValue;
+            }
         });
-
-        if(previousValue){
-
-            select.value =
-                previousValue;
-
-        }
-
-    });
-
 }
-
-
-/* =========================================================
-   POPULATE CATEGORIES
-========================================================= */
 
 function populateCategories(){
 
-    const categorySelects =
-        document.querySelectorAll(".category-select");
+    document
+        .querySelectorAll(".category-select")
+        .forEach(function(select){
 
-    categorySelects.forEach(function(select){
+            const previousValue =
+                select.value;
 
-        const previousValue =
-            select.value;
+            select.innerHTML = "";
 
-        select.innerHTML = "";
+            if(!serverCategories.length){
 
-        if(!serverCategories.length){
+                const option =
+                    document.createElement("option");
 
-            const option =
+                option.value = "";
+                option.textContent =
+                    "No server categories loaded yet";
+
+                select.appendChild(option);
+
+                return;
+            }
+
+            const defaultOption =
                 document.createElement("option");
 
-            option.value =
-                "";
+            defaultOption.value = "";
+            defaultOption.textContent =
+                "Select a server category";
 
-            option.textContent =
-                "No server categories loaded yet";
+            select.appendChild(defaultOption);
 
-            select.appendChild(option);
+            serverCategories.forEach(function(category){
 
-            return;
+                const option =
+                    document.createElement("option");
 
-        }
+                option.value = category.id;
+                option.textContent = category.name;
 
-        const defaultOption =
-            document.createElement("option");
+                select.appendChild(option);
+            });
 
-        defaultOption.value =
-            "";
-
-        defaultOption.textContent =
-            "Select a server category";
-
-        select.appendChild(defaultOption);
-
-        serverCategories.forEach(function(category){
-
-            const option =
-                document.createElement("option");
-
-            option.value =
-                category.id;
-
-            option.textContent =
-                category.name;
-
-            select.appendChild(option);
-
+            if(previousValue){
+                select.value = previousValue;
+            }
         });
-
-        if(previousValue){
-
-            select.value =
-                previousValue;
-
-        }
-
-    });
-
 }
 
 
 /* =========================================================
-   BACKEND HOOK
+   BACKEND DATA ENTRY POINT
 ========================================================= */
 
 function setServerData(data){
 
-    if(
-        data &&
-        Array.isArray(data.roles)
-    ){
-
-        serverRoles =
-            data.roles;
-
+    if(data && Array.isArray(data.roles)){
+        serverRoles = data.roles;
     }
 
-    if(
-        data &&
-        Array.isArray(data.channels)
-    ){
-
-        serverChannels =
-            data.channels;
-
+    if(data && Array.isArray(data.channels)){
+        serverChannels = data.channels;
     }
 
-    if(
-        data &&
-        Array.isArray(data.categories)
-    ){
-
-        serverCategories =
-            data.categories;
-
+    if(data && Array.isArray(data.categories)){
+        serverCategories = data.categories;
     }
 
     populateRoles();
     populateChannels();
     populateCategories();
-
 }
 
 
 /* =========================================================
-   LOGO BACKGROUND REMOVER
+   LOGO CLEANUP
 ========================================================= */
 
 function cleanLogo(img){
@@ -4777,95 +3594,90 @@ function cleanLogo(img){
         !img.complete ||
         !img.naturalWidth
     ){
-
         return;
-
     }
 
-    const canvas =
-        document.createElement("canvas");
+    try{
 
-    const ctx =
-        canvas.getContext("2d");
+        const canvas =
+            document.createElement("canvas");
 
-    canvas.width =
-        img.naturalWidth;
+        const ctx =
+            canvas.getContext("2d");
 
-    canvas.height =
-        img.naturalHeight;
+        canvas.width =
+            img.naturalWidth;
 
-    ctx.drawImage(
-        img,
-        0,
-        0
-    );
+        canvas.height =
+            img.naturalHeight;
 
-    const imageData =
-        ctx.getImageData(
+        ctx.drawImage(img,0,0);
+
+        const imageData =
+            ctx.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+        const pixels =
+            imageData.data;
+
+        for(
+            let i = 0;
+            i < pixels.length;
+            i += 4
+        ){
+
+            const r = pixels[i];
+            const g = pixels[i + 1];
+            const b = pixels[i + 2];
+
+            if(
+                r > 220 &&
+                g > 220 &&
+                b > 220
+            ){
+                pixels[i + 3] = 0;
+            }
+
+            else if(
+                r > 180 &&
+                g > 180 &&
+                b > 180
+            ){
+
+                const brightness =
+                    (r + g + b) / 3;
+
+                pixels[i + 3] =
+                    Math.max(
+                        0,
+                        255 -
+                        ((brightness - 180) * 3)
+                    );
+            }
+        }
+
+        ctx.putImageData(
+            imageData,
             0,
-            0,
-            canvas.width,
-            canvas.height
+            0
         );
 
-    const pixels =
-        imageData.data;
-
-    for(
-        let i = 0;
-        i < pixels.length;
-        i += 4
-    ){
-
-        const r =
-            pixels[i];
-
-        const g =
-            pixels[i + 1];
-
-        const b =
-            pixels[i + 2];
-
-        if(
-            r > 220 &&
-            g > 220 &&
-            b > 220
-        ){
-
-            pixels[i + 3] =
-                0;
-
-        }
-
-        else if(
-            r > 180 &&
-            g > 180 &&
-            b > 180
-        ){
-
-            const brightness =
-                (r + g + b) / 3;
-
-            pixels[i + 3] =
-                Math.max(
-                    0,
-                    255 -
-                    ((brightness - 180) * 3)
-                );
-
-        }
+        img.src =
+            canvas.toDataURL("image/png");
 
     }
+    catch(error){
 
-    ctx.putImageData(
-        imageData,
-        0,
-        0
-    );
+        console.warn(
+            "Logo cleanup skipped:",
+            error
+        );
 
-    img.src =
-        canvas.toDataURL("image/png");
-
+    }
 }
 
 document
@@ -4873,23 +3685,16 @@ document
     .forEach(function(img){
 
         if(img.complete){
-
             cleanLogo(img);
-
         }
         else{
-
             img.addEventListener(
                 "load",
                 function(){
-
                     cleanLogo(img);
-
                 }
             );
-
         }
-
     });
 
 
@@ -4917,12 +3722,10 @@ function loadSavedConnections(){
             );
 
         if(input){
-            input.value =
-                savedTikTok;
+            input.value = savedTikTok;
         }
 
         connectTikTok();
-
     }
 
     if(savedYouTube){
@@ -4933,15 +3736,63 @@ function loadSavedConnections(){
             );
 
         if(input){
-            input.value =
-                savedYouTube;
+            input.value = savedYouTube;
         }
 
         connectYouTube();
-
     }
-
 }
+
+
+/* =========================================================
+   LIVE PREVIEW INPUTS
+========================================================= */
+
+const welcomeMessage =
+    document.getElementById("welcomeMessage");
+
+if(welcomeMessage){
+
+    welcomeMessage.addEventListener(
+        "input",
+        updateWelcomePreview
+    );
+}
+
+const ticketMessage =
+    document.getElementById("ticketMessage");
+
+if(ticketMessage){
+
+    ticketMessage.addEventListener(
+        "input",
+        updateTicketPreview
+    );
+}
+
+[
+    "giveawayPrize",
+    "giveawayWinners",
+    "giveawayDuration",
+    "giveawayMessage"
+].forEach(function(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.addEventListener(
+            "input",
+            updateGiveawayPreview
+        );
+
+        element.addEventListener(
+            "change",
+            updateGiveawayPreview
+        );
+    }
+});
 
 
 /* =========================================================
@@ -4952,6 +3803,11 @@ populateRoles();
 populateChannels();
 populateCategories();
 renderBadWords();
+
+updateWelcomePreview();
+updateTicketPreview();
+updateGiveawayPreview();
+
 loadSavedConnections();
 
 </script>
