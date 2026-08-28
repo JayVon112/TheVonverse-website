@@ -2094,8 +2094,17 @@ window.addEventListener("load", function(){
 
 function addJayVon(){
 
-    window.location.href =
-        "/api/auth/discord";
+    const clientId = "1542585733145952287";
+
+    const permissions = "8";
+
+    const inviteURL =
+        "https://discord.com/oauth2/authorize" +
+        "?client_id=" + clientId +
+        "&scope=bot%20applications.commands" +
+        "&permissions=" + permissions;
+
+    window.location.href = inviteURL;
 
 }
 
