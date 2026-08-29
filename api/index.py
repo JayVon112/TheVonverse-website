@@ -337,7 +337,7 @@ def discord_callback():
     # GO TO DASHBOARD
     # ========================================================
 
-    return redirect("/dashboard.html")
+    return redirect("https://thevonverse.vercel.app/dashboard.html")
 
 
 # ============================================================
