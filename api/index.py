@@ -2,7 +2,6 @@ import os
 import secrets
 import requests
 from flask import Flask, redirect, request, session, jsonify, send_from_directory
-app = Flask(__name__)
 
 # ============================================================
 # JAYVON AI — THE VONVERSE
@@ -11,18 +10,23 @@ app = Flask(__name__)
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv("SESSION_SECRET")
+# ============================================================
+# SESSION SECURITY
+# ============================================================
 
-if not app.secret_key:
-    raise RuntimeError("SESSION_SECRET is missing")
+SESSION_SECRET = os.getenv("SESSION_SECRET")
 
+if not SESSION_SECRET:
+    raise RuntimeError("SESSION_SECRET is missing from Vercel Environment Variables")
+
+app.secret_key = SESSION_SECRET
 
 app.config.update(
     SESSION_COOKIE_SECURE=True,
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_PATH="/",
 )
-
 
 # ============================================================
 # DISCORD CONFIG
