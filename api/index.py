@@ -117,7 +117,7 @@ def jayvon_invite():
 # BASIC TEST
 # ============================================================
 
-@app.route("/api")
+@app.route("/api", endpoint="basic_api")
 def api_home():
 
     return jsonify({
@@ -126,7 +126,6 @@ def api_home():
         "project": "The Vonverse",
         "message": "JayVon AI backend is online."
     })
-
 # ============================================================
 # DISCORD LOGIN
 # ============================================================
