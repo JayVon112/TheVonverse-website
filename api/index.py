@@ -458,43 +458,20 @@ def jayvon_ai():
         }), 200
 
 
-    except Exception as error:
+  except Exception as error:
 
-        # IMPORTANT:
-        # This prints the real error in Vercel logs.
-        # Do NOT return the exception to Discord because
-        # it could potentially expose internal information.
+    print("================================================")
+    print("[GEMINI ERROR]")
+    print(f"Type: {type(error).__name__}")
+    print(f"Error: {error}")
+    print("================================================")
 
-        print(
-            "================================================"
-        )
+    return jsonify({
 
-        print(
-            "❌ GEMINI REQUEST FAILED"
-        )
+        "error":
+            f"{type(error).__name__}: {error}"
 
-        print(
-            f"Model: {GEMINI_MODEL}"
-        )
-
-        print(
-            f"Error type: {type(error).__name__}"
-        )
-
-        print(
-            f"Error: {error}"
-        )
-
-        print(
-            "================================================"
-        )
-
-
-        return jsonify({
-
-            "error":
-                "JayVon AI could not generate a response."
-        }), 500
+    }), 500
 
 
 # ============================================================
