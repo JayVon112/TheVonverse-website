@@ -97,7 +97,22 @@ def website_terms():
         "terms.html"
     )
 
+# ============================================================
+# JAYVON AI — PROFESSIONAL INVITE
+# ============================================================
 
+@app.route("/invite")
+def jayvon_invite():
+
+    invite_url = (
+        "https://discord.com/oauth2/authorize"
+        "?client_id=1542585733145952287"
+        "&scope=bot%20applications.commands"
+        "&permissions=8"
+    )
+
+    return redirect(invite_url)
+    
 # ============================================================
 # BASIC TEST
 # ============================================================
