@@ -1,29 +1,21 @@
 {
-  "version": 2,
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/invite",
+      "destination": "https://discord.com/oauth2/authorize?client_id=1542585733145952287&scope=bot%20applications.commands&permissions=8",
+      "permanent": false
+    }
+  ],
   "builds": [
     {
       "src": "api/index.py",
       "use": "@vercel/python"
     }
   ],
-  "functions": {
-    "api/index.py": {
-      "includeFiles": [
-        "index.html",
-        "dashboard.html",
-        "privacy.html",
-        "terms.html",
-        "vonverse-logo.png"
-      ]
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/(.*)",
       "dest": "/api/index.py"
     }
   ]
