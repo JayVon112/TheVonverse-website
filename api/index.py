@@ -1,8 +1,8 @@
 import os
 import secrets
 import requests
-from flask import Flask, redirect, request, session, jsonify
-
+from flask import Flask, redirect, request, session, jsonify, send_from_directory
+app = Flask(__name__)
 
 # ============================================================
 # JAYVON AI — THE VONVERSE
