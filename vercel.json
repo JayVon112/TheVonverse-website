@@ -6,6 +6,17 @@
       "use": "@vercel/python"
     }
   ],
+  "functions": {
+    "api/index.py": {
+      "includeFiles": [
+        "index.html",
+        "dashboard.html",
+        "privacy.html",
+        "terms.html",
+        "vonverse-logo.png"
+      ]
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -13,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/api/index.py"
     }
   ]
 }
