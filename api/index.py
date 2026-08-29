@@ -127,22 +127,6 @@ def api_home():
         "message": "JayVon AI backend is online."
     })
 
-
-# ============================================================
-# BASIC TEST
-# ============================================================
-
-@app.route("/api")
-def api_home():
-
-    return jsonify({
-        "online": True,
-        "name": "JayVon AI",
-        "project": "The Vonverse",
-        "message": "JayVon AI backend is online."
-    })
-
-
 # ============================================================
 # DISCORD LOGIN
 # ============================================================
