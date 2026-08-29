@@ -56,6 +56,64 @@ DISCORD_API = "https://discord.com/api/v10"
 
 
 # ============================================================
+# WEBSITE FILES
+# ============================================================
+
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
+)
+
+
+@app.route("/")
+def website_home():
+    return send_from_directory(
+        BASE_DIR,
+        "index.html"
+    )
+
+
+@app.route("/dashboard.html")
+def website_dashboard():
+    return send_from_directory(
+        BASE_DIR,
+        "dashboard.html"
+    )
+
+
+@app.route("/privacy.html")
+def website_privacy():
+    return send_from_directory(
+        BASE_DIR,
+        "privacy.html"
+    )
+
+
+@app.route("/terms.html")
+def website_terms():
+    return send_from_directory(
+        BASE_DIR,
+        "terms.html"
+    )
+
+
+# ============================================================
+# BASIC TEST
+# ============================================================
+
+@app.route("/api")
+def api_home():
+
+    return jsonify({
+        "online": True,
+        "name": "JayVon AI",
+        "project": "The Vonverse",
+        "message": "JayVon AI backend is online."
+    })
+
+
+# ============================================================
 # BASIC TEST
 # ============================================================
 
