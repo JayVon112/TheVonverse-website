@@ -1,3 +1,7 @@
-Flask
-requests
+discord.py
+google-genai
 python-dotenv
+fastapi
+uvicorn
+flask
+requests
