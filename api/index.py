@@ -79,10 +79,7 @@ GEMINI_API_KEY = os.getenv(
     ""
 ).strip()
 
-GEMINI_MODEL = os.getenv(
-    "GEMINI_MODEL",
-    "gemini-2.5-flash"
-).strip()
+GEMINI_MODEL = "gemini-2.5-flash"
 gemini_client = None
 
 if GEMINI_API_KEY:
