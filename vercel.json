@@ -6,17 +6,5 @@
       "destination": "https://discord.com/oauth2/authorize?client_id=1542585733145952287&scope=bot%20applications.commands&permissions=8",
       "permanent": false
     }
-  ],
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    }
   ]
 }
