@@ -26,7 +26,10 @@ app = Flask(__name__)
 # SESSION SECURITY
 # ============================================================
 
-SESSION_SECRET = os.getenv("SESSION_SECRET", "").strip()
+SESSION_SECRET = os.getenv(
+    "SESSION_SECRET",
+    ""
+).strip()
 
 if not SESSION_SECRET:
     raise RuntimeError(
@@ -79,11 +82,16 @@ GEMINI_API_KEY = os.getenv(
     ""
 ).strip()
 
+# DO NOT add GEMINI_MODEL to Vercel.
+# We keep the model here.
 GEMINI_MODEL = "gemini-2.5-flash"
+
 gemini_client = None
 
 if GEMINI_API_KEY:
+
     try:
+
         gemini_client = genai.Client(
             api_key=GEMINI_API_KEY
         )
@@ -96,7 +104,23 @@ if GEMINI_API_KEY:
     except Exception as error:
 
         print(
-            f"❌ Gemini client initialization failed: {error}"
+            "================================================"
+        )
+
+        print(
+            "[GEMINI INIT ERROR]"
+        )
+
+        print(
+            f"Type: {type(error).__name__}"
+        )
+
+        print(
+            f"Error: {error}"
+        )
+
+        print(
+            "================================================"
         )
 
         gemini_client = None
@@ -125,8 +149,15 @@ IDENTITY:
 CREATOR:
 JayVon (SS_DEMON2) created JayVon AI and JayVon Security.
 
-If a user asks who created you, who made you, who owns you,
-who JayVon is, or who made JayVon AI, clearly answer:
+If a user asks:
+- Who created you?
+- Who made you?
+- Who is your creator?
+- Who owns you?
+- Who is JayVon?
+- Who made JayVon AI?
+
+Clearly answer:
 
 "JayVon, also known as SS_DEMON2, is my creator."
 
@@ -269,11 +300,14 @@ def api_home():
 
     return jsonify({
 
-        "online": True,
+        "online":
+            True,
 
-        "name": "JayVon AI",
+        "name":
+            "JayVon AI",
 
-        "project": "The Vonverse",
+        "project":
+            "The Vonverse",
 
         "message":
             "JayVon AI backend is online.",
@@ -287,7 +321,7 @@ def api_home():
 
 
 # ============================================================
-# GEMINI AI CHAT
+# JAYVON AI — GEMINI CHAT
 # ============================================================
 
 @app.route(
@@ -297,7 +331,7 @@ def api_home():
 def jayvon_ai():
 
     # --------------------------------------------------------
-    # CHECK API KEY
+    # CHECK GEMINI API KEY
     # --------------------------------------------------------
 
     if not GEMINI_API_KEY:
@@ -314,7 +348,7 @@ def jayvon_ai():
 
 
     # --------------------------------------------------------
-    # CHECK CLIENT
+    # CHECK GEMINI CLIENT
     # --------------------------------------------------------
 
     if gemini_client is None:
@@ -348,7 +382,7 @@ def jayvon_ai():
 
 
     # --------------------------------------------------------
-    # GET MESSAGE
+    # GET USER MESSAGE
     # --------------------------------------------------------
 
     user_message = data.get(
@@ -389,22 +423,30 @@ def jayvon_ai():
 
 
     # --------------------------------------------------------
-    # GEMINI CONTENT
+    # CREATE PROMPT
     # --------------------------------------------------------
 
     full_prompt = (
+
         JAYVON_SYSTEM_PROMPT
+
         + "\n\n"
+
         + "USER MESSAGE:\n"
+
         + user_message
     )
 
 
     # --------------------------------------------------------
-    # GENERATE RESPONSE
+    # GEMINI REQUEST
     # --------------------------------------------------------
 
     try:
+
+        print(
+            "================================================"
+        )
 
         print(
             f"[GEMINI] Generating response using "
@@ -418,6 +460,10 @@ def jayvon_ai():
             contents=full_prompt
         )
 
+
+        # ----------------------------------------------------
+        # GET RESPONSE TEXT
+        # ----------------------------------------------------
 
         answer = getattr(
             result,
@@ -436,6 +482,10 @@ def jayvon_ai():
                 f"[GEMINI DEBUG] Result: {result}"
             )
 
+            print(
+                "================================================"
+            )
+
             return jsonify({
 
                 "error":
@@ -450,6 +500,14 @@ def jayvon_ai():
             "[GEMINI] Response generated successfully."
         )
 
+        print(
+            "================================================"
+        )
+
+
+        # ----------------------------------------------------
+        # RETURN RESPONSE
+        # ----------------------------------------------------
 
         return jsonify({
 
@@ -458,20 +516,39 @@ def jayvon_ai():
         }), 200
 
 
-  except Exception as error:
+    except Exception as error:
 
-    print("================================================")
-    print("[GEMINI ERROR]")
-    print(f"Type: {type(error).__name__}")
-    print(f"Error: {error}")
-    print("================================================")
+        # ----------------------------------------------------
+        # DETAILED GEMINI ERROR
+        # ----------------------------------------------------
 
-    return jsonify({
+        print(
+            "================================================"
+        )
 
-        "error":
-            f"{type(error).__name__}: {error}"
+        print(
+            "[GEMINI ERROR]"
+        )
 
-    }), 500
+        print(
+            f"Type: {type(error).__name__}"
+        )
+
+        print(
+            f"Error: {error}"
+        )
+
+        print(
+            "================================================"
+        )
+
+
+        return jsonify({
+
+            "error":
+                f"{type(error).__name__}: {error}"
+
+        }), 500
 
 
 # ============================================================
@@ -499,12 +576,20 @@ def discord_login():
         )
 
 
+    # --------------------------------------------------------
+    # CREATE OAUTH STATE
+    # --------------------------------------------------------
+
     state = secrets.token_urlsafe(
         32
     )
 
     session["oauth_state"] = state
 
+
+    # --------------------------------------------------------
+    # DISCORD AUTH URL
+    # --------------------------------------------------------
 
     authorization_url = (
 
@@ -544,6 +629,10 @@ def discord_callback():
     )
 
 
+    # --------------------------------------------------------
+    # DISCORD AUTH ERROR
+    # --------------------------------------------------------
+
     if error:
 
         return f"""
@@ -582,6 +671,10 @@ def discord_callback():
         """, 400
 
 
+    # --------------------------------------------------------
+    # GET CODE
+    # --------------------------------------------------------
+
     code = request.args.get(
         "code"
     )
@@ -594,6 +687,10 @@ def discord_callback():
             400
         )
 
+
+    # --------------------------------------------------------
+    # CHECK OAUTH STATE
+    # --------------------------------------------------------
 
     received_state = request.args.get(
         "state"
@@ -653,7 +750,7 @@ def discord_callback():
 
 
     # --------------------------------------------------------
-    # TOKEN EXCHANGE
+    # EXCHANGE CODE FOR TOKEN
     # --------------------------------------------------------
 
     try:
@@ -704,7 +801,7 @@ def discord_callback():
     if not token_response.ok:
 
         print(
-            "DISCORD TOKEN ERROR:"
+            "[DISCORD TOKEN ERROR]"
         )
 
         print(
@@ -734,7 +831,7 @@ def discord_callback():
 
 
     # --------------------------------------------------------
-    # USER
+    # GET DISCORD USER
     # --------------------------------------------------------
 
     user_headers = {
@@ -766,7 +863,7 @@ def discord_callback():
 
 
     # --------------------------------------------------------
-    # GUILDS
+    # GET USER GUILDS
     # --------------------------------------------------------
 
     guild_response = requests.get(
@@ -788,7 +885,7 @@ def discord_callback():
 
 
     # --------------------------------------------------------
-    # SESSION
+    # SAVE SESSION
     # --------------------------------------------------------
 
     session.pop(
@@ -816,6 +913,10 @@ def discord_callback():
     session["discord_guilds"] = guilds
 
 
+    # --------------------------------------------------------
+    # LOG
+    # --------------------------------------------------------
+
     print()
     print(
         "=============================================="
@@ -838,13 +939,17 @@ def discord_callback():
     print()
 
 
+    # --------------------------------------------------------
+    # DASHBOARD
+    # --------------------------------------------------------
+
     return redirect(
         "https://thevonverse.vercel.app/dashboard.html"
     )
 
 
 # ============================================================
-# CURRENT USER
+# CURRENT USER + MANAGEABLE SERVERS
 # ============================================================
 
 @app.route(
@@ -914,8 +1019,11 @@ def current_user():
 
 
         can_manage = (
+
             owner
+
             or administrator
+
             or manage_guild
         )
 
@@ -1049,7 +1157,7 @@ def guild_info(
 
 
     # --------------------------------------------------------
-    # CHECK BOT
+    # CHECK IF BOT IS IN SERVER
     # --------------------------------------------------------
 
     bot_present = False
@@ -1057,25 +1165,33 @@ def guild_info(
 
     if DISCORD_BOT_TOKEN:
 
-        bot_response = requests.get(
+        try:
 
-            f"{DISCORD_API}/guilds/"
-            f"{guild_id}/members/"
-            f"{DISCORD_CLIENT_ID}",
+            bot_response = requests.get(
 
-            headers={
+                f"{DISCORD_API}/guilds/"
+                f"{guild_id}/members/"
+                f"{DISCORD_CLIENT_ID}",
 
-                "Authorization":
-                    f"Bot {DISCORD_BOT_TOKEN}"
-            },
+                headers={
 
-            timeout=15
-        )
+                    "Authorization":
+                        f"Bot {DISCORD_BOT_TOKEN}"
+                },
+
+                timeout=15
+            )
 
 
-        bot_present = (
-            bot_response.status_code == 200
-        )
+            bot_present = (
+                bot_response.status_code == 200
+            )
+
+        except requests.RequestException as error:
+
+            print(
+                f"[BOT CHECK ERROR] {error}"
+            )
 
 
     return jsonify({
@@ -1101,7 +1217,7 @@ def guild_info(
 
 
 # ============================================================
-# ADD BOT
+# ADD BOT TO SERVER
 # ============================================================
 
 @app.route(
@@ -1187,6 +1303,10 @@ def add_bot(
         """, 403
 
 
+    # --------------------------------------------------------
+    # BOT INVITE
+    # --------------------------------------------------------
+
     permissions_to_request = "8"
 
 
@@ -1230,5 +1350,35 @@ def logout():
 # ============================================================
 # VERCEL ENTRYPOINT
 # ============================================================
+#
+# IMPORTANT:
+#
+# Vercel looks for a top-level object called "app".
+#
+# We already have:
+#
+#     app = Flask(__name__)
+#
+# at the top of this file.
+#
+# DO NOT put "app" inside another function.
+#
+# ============================================================
 
-# Vercel detects the Flask "app" object.
+
+# ============================================================
+# LOCAL TESTING ONLY
+# ============================================================
+
+if __name__ == "__main__":
+
+    app.run(
+        host="0.0.0.0",
+        port=int(
+            os.getenv(
+                "PORT",
+                "5000"
+            )
+        ),
+        debug=False
+    )
